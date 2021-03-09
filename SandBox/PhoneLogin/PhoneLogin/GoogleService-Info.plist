@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>744552683270-tjtd5jhktvvvugogodkgnt79baooa2ui.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.744552683270-tjtd5jhktvvvugogodkgnt79baooa2ui</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBjW-Ilo-9cpxvmHkVIXjmg4zM77TGD1ZU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>744552683270</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.PhoneLogin.jeongwootest</string>
+	<key>PROJECT_ID</key>
+	<string>kotingdemo</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kotingdemo.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:744552683270:ios:4dd1e730e501ceae9d7087</string>
+</dict>
+</plist>
