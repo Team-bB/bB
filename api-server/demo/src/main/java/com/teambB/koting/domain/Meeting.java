@@ -1,9 +1,11 @@
 package com.teambB.koting.domain;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,24 +16,21 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-public class Member {
-
+public class Meeting {
   @Id @GeneratedValue
-  @Column(name = "member_id")
+  @Column(name = "meeting_id")
   private Long id;
 
-  private String college;
-  private String subject;
-  private int height;
-  private int age;
-  private String mbti;
-  private String email;
-  private String number;
+  private int player;
+  private LocalDateTime createDate;
+
+  @Enumerated(EnumType.STRING)
+  private MeetingStatus meeting_status;
 
   @OneToOne
   @JoinColumn(name = "creation_id")
-  private Creation myMeeting;
+  private Creation owner;
 
-  @OneToMany(mappedBy = "member")
-  private List<Order> meetings = new ArrayList<>();
+  @OneToMany(mappedBy = "meeting")
+  private List<Order> participants;
 }
