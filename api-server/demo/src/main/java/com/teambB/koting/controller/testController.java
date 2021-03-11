@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class testController {
 
   @PostMapping("/test")
-  public void testMapping() {
-    System.out.println("1");
+  public String testMapping() {
+    return "success";
   }
 }
