@@ -1,4 +1,5 @@
 GoogleService-Info.plist
+api-server/demo/src/main/resources/application.yml
 # Created by https://www.toptal.com/developers/gitignore/api/macos,xcode,cocoapods,carthage
 #
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,xcode,cocoapods,carthage

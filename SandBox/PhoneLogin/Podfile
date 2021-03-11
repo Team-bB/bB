@@ -7,4 +7,5 @@ target 'PhoneLogin' do
 
   # Pods for PhoneLogin
 pod 'Firebase/Auth'
+pod 'Alamofire', '~> 5.1'
 end

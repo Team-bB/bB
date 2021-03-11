@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883FFF6C25F763670092E125 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883FFF6B25F763670092E125 /* SignUp.storyboard */; };
 		88D6614E25F6833000550B96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6614D25F6833000550B96 /* AppDelegate.swift */; };
 		88D6615025F6833000550B96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6614F25F6833000550B96 /* SceneDelegate.swift */; };
 		88D6615225F6833000550B96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6615125F6833000550B96 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		883FFF6B25F763670092E125 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		88D6614A25F6833000550B96 /* Koting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D6614D25F6833000550B96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88D6614F25F6833000550B96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,9 +39,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		883FFF6E25F765160092E125 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				883FFF6B25F763670092E125 /* SignUp.storyboard */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		88D6614125F6833000550B96 = {
 			isa = PBXGroup;
 			children = (
+				883FFF6E25F765160092E125 /* SignUp */,
 				88D6614C25F6833000550B96 /* Koting */,
 				88D6614B25F6833000550B96 /* Products */,
 			);
@@ -59,10 +70,10 @@
 				88D6614D25F6833000550B96 /* AppDelegate.swift */,
 				88D6614F25F6833000550B96 /* SceneDelegate.swift */,
 				88D6615125F6833000550B96 /* ViewController.swift */,
-				88D6615325F6833000550B96 /* Main.storyboard */,
 				88D6615625F6833200550B96 /* Assets.xcassets */,
-				88D6615825F6833200550B96 /* LaunchScreen.storyboard */,
 				88D6615B25F6833200550B96 /* Info.plist */,
+				88D6615825F6833200550B96 /* LaunchScreen.storyboard */,
+				88D6615325F6833000550B96 /* Main.storyboard */,
 			);
 			path = Koting;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 			files = (
 				88D6615A25F6833200550B96 /* LaunchScreen.storyboard in Resources */,
 				88D6615725F6833200550B96 /* Assets.xcassets in Resources */,
+				883FFF6C25F763670092E125 /* SignUp.storyboard in Resources */,
 				88D6615525F6833000550B96 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
