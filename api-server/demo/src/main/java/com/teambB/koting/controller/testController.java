@@ -14,7 +14,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @RestController
 public class testController {
 
-  private HashMap<String, String> dic = new HashMap<String, String>;
+  private HashMap<String, String> dic = new HashMap<String, String>();
 
   @PostMapping("/auth")
   public void sendCode(@RequestBody JSONObject object) {
