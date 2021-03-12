@@ -3,6 +3,8 @@
 REPOSITORY=~/bB/api-server
 PROJECT_NAME=demo
 
+sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+
 cd $REPOSITORY/$PROJECT_NAME/
 
 echo "> Git Pull"
@@ -41,4 +43,4 @@ JAR_NAME=$(ls -tr $REPOSITORY/ | grep *.jar | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
-nohup java -jar $REPOSITORY/$JAR_NAME 2>&1 &E
+java -jar $REPOSITORY/$JAR_NAME
