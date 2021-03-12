@@ -17,7 +17,7 @@ public class testController {
   private HashMap<String, String> dic = new HashMap<String, String>();
 
   @PostMapping("/auth")
-  public void sendCode(@RequestBody JSONObject object) {
+  public boolean sendCode(@RequestBody JSONObject object) {
     String phoneNumber = object.get("phoneNumber").toString();
     String api_key = "NCSRF0PYIQASDVPU";
     String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
@@ -39,7 +39,9 @@ public class testController {
     } catch (CoolsmsException e) {
       System.out.println(e.getMessage());
       System.out.println(e.getCode());
+      return false;
     }
+    return true;
   }
 
   @PostMapping("/auth/number")
