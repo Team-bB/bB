@@ -19,10 +19,5 @@ public class testController {
   public MemberTest memberGetTest() {
     return new MemberTest(0L, "Jongho Han", "is GetMan");
   }
-
-  @PostMapping("/")
-  public MemberTest memberPostTest() {
-    return new MemberTest(0L, "Jongho Han", "is PostMan");
-  }
 }
 
