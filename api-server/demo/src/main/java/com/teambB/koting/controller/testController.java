@@ -18,12 +18,15 @@ public class testController {
 
   @PostMapping("/auth")
   public boolean sendCode(@RequestBody JSONObject object) {
+
     String phoneNumber = object.get("phoneNumber").toString();
     String api_key = "NCSRF0PYIQASDVPU";
     String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
     Message coolsms = new Message(api_key, api_secret);
     String code = makeRandom();
     String message = "[코팅] 인증번호[" + code + "]를 입력해주세요.";
+
+    System.out.println(code);
 
     dic.put(phoneNumber, code);
 
@@ -48,7 +51,7 @@ public class testController {
   public boolean checkCode(@RequestBody JSONObject object) {
     String phoneNumber = object.get("phoneNumber").toString();
     String code = object.get("code").toString();
-    if (dic.get(phoneNumber).equals(code)) {  // 인증번호 일치
+    if (dic.get(phoneNumber).toString().equals(code)) {  // 인증번호 일치
       // 2가지 경우
       // 1. 가입 된 경우   -> 필요한 정보들 전체 리턴
       // 2. 미 가입된 경우  -> 회원가입 창으로 보내게끔 리턴
