@@ -31,7 +31,7 @@ public class MemberServiceTest {
       //when
     Long savedId = memberService.join(member);
 
-    //then
+      //then
     assertEquals(member, memberRepository.findById(savedId));
   }
 

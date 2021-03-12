@@ -33,4 +33,6 @@ public class Meeting {
 
   @OneToMany(mappedBy = "meeting")
   private List<Order> participants;
+
+
 }
