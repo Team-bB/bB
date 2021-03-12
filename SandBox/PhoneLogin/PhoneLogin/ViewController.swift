@@ -9,13 +9,20 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
-
+    let maxLength = 11
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    
+    @IBOutlet weak var sendButton: UIButton!
+    // MARK: viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        phoneNumberTextField.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: phoneNumberTextField)
+        
     }
     @IBAction func btnTapped(_ sender: Any) {
-        postTest()
+//        postTest()
     }
     
     func postTest() {
@@ -42,6 +49,29 @@ class ViewController: UIViewController {
                 print(response.result)
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+            }
+        }
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        
+        if text.count >= maxLength && range.length == 0{
+            return false
+        }
+
+        return true
+    }
+    
+    @objc private func textDidChange(_ notification: Notification) {
+        if let textField = notification.object as? UITextField {
+            if let text = textField.text {
+                if text.count == maxLength {
+                    textField.resignFirstResponder()
+                    sendButton.isEnabled = true
+                } else { sendButton.isEnabled = false }
             }
         }
     }
