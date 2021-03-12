@@ -29,14 +29,15 @@ class AuthViewController: UIViewController {
     }
     
     private func postTest() {
-        let url = API.shared.codeURL
+        let url = API.shared.BASE_URL + "/auth/number"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
         // POST 로 보낼 정보
-        let params = ["code": authNumberTextField.text] as Dictionary
+        let params = ["phoneNumber" : API.shared.phoneNumber!,
+                      "code": authNumberTextField.text!] as Dictionary
         
         // httpBody 에 parameters 추가
         do {
@@ -49,7 +50,7 @@ class AuthViewController: UIViewController {
             switch response.result {
             case .success:
                 print("POST 성공")
-                print(response.result)
+                debugPrint(response)
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
@@ -62,7 +63,7 @@ extension AuthViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
         
-        if text.count >= maxLength && range.length == 0{
+        if text.count >= maxLength && range.length == 0 {
             return false
         }
 
