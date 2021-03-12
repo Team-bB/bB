@@ -3,8 +3,6 @@
 REPOSITORY=~/bB/api-server
 PROJECT_NAME=demo
 
-sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
-
 cd $REPOSITORY/$PROJECT_NAME/
 
 echo "> Git Pull"
