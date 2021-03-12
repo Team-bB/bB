@@ -31,11 +31,14 @@ class ViewController: UIViewController {
     // MARK: IBAction 함수 ------------------------
     @IBAction func btnTapped(_ sender: Any) {
         postTest()
+        if let number = phoneNumberTextField.text {
+            API.shared.phoneNumber = number
+        }
     }
     
     // MARK: Alamofire ------------------------
     private func postTest() {
-        let url = API.shared.phoneNumberURL
+        let url = API.shared.BASE_URL + "/auth"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -55,7 +58,7 @@ class ViewController: UIViewController {
             switch response.result {
             case .success:
                 print("POST 성공")
-                print(response.result)
+                debugPrint(response)
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
