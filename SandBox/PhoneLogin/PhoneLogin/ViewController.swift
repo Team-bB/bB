@@ -19,21 +19,22 @@ class ViewController: UIViewController {
         
         phoneNumberTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: phoneNumberTextField)
+        sendButton.layer.cornerRadius = 15
         
     }
     @IBAction func btnTapped(_ sender: Any) {
-//        postTest()
+        postTest()
     }
     
     func postTest() {
-        let url = "http://15.165.143.51"
+        let url = "http://15.165.143.51/phone/auth"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
         // POST 로 보낼 정보
-        let params = ["id":"ppdd", "pw":"1234"] as Dictionary
+        let params = ["phoneNumber": phoneNumberTextField.text] as Dictionary
         
         // httpBody 에 parameters 추가
         do {
@@ -71,7 +72,11 @@ extension ViewController: UITextFieldDelegate {
                 if text.count == maxLength {
                     textField.resignFirstResponder()
                     sendButton.isEnabled = true
-                } else { sendButton.isEnabled = false }
+                    sendButton.backgroundColor = .black
+                } else {
+                    sendButton.isEnabled = false
+                    sendButton.backgroundColor = .gray
+                }
             }
         }
     }
