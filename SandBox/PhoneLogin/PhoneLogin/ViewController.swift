@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }
     
     func postTest() {
-        let url = "http://15.165.143.51:8080/test"
+        let url = "http://15.165.143.51"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
