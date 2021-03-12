@@ -11,8 +11,11 @@ import Alamofire
 class ViewController: UIViewController {
     // MARK: IBOutlet 및 변수 ------------------------
     let maxLength = 11
+    let grayColor = #colorLiteral(red: 0.7036006266, green: 0.7036006266, blue: 0.7036006266, alpha: 1)
+    let orangeColor = #colorLiteral(red: 1, green: 0.6597687742, blue: 0.3187801202, alpha: 1)
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    
     
     // MARK: viewDidLoad() ------------------------
     override func viewDidLoad() {
@@ -20,7 +23,8 @@ class ViewController: UIViewController {
         
         phoneNumberTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: phoneNumberTextField)
-        sendButton.layer.cornerRadius = 15
+        sendButton.layer.cornerRadius = 10
+        sendButton.backgroundColor = grayColor
         
     }
     
@@ -77,10 +81,10 @@ extension ViewController: UITextFieldDelegate {
                 if text.count == maxLength {
                     textField.resignFirstResponder()
                     sendButton.isEnabled = true
-                    sendButton.backgroundColor = .black
+                    sendButton.backgroundColor = orangeColor
                 } else {
                     sendButton.isEnabled = false
-                    sendButton.backgroundColor = .gray
+                    sendButton.backgroundColor = grayColor
                 }
             }
         }
