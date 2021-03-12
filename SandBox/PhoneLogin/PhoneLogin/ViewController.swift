@@ -9,11 +9,12 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
+    // MARK: IBOutlet 및 변수 ------------------------
     let maxLength = 11
     @IBOutlet weak var phoneNumberTextField: UITextField!
-    
     @IBOutlet weak var sendButton: UIButton!
-    // MARK: viewDidLoad()
+    
+    // MARK: viewDidLoad() ------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,10 +23,13 @@ class ViewController: UIViewController {
         sendButton.layer.cornerRadius = 15
         
     }
+    
+    // MARK: IBAction 함수 ------------------------
     @IBAction func btnTapped(_ sender: Any) {
         postTest()
     }
     
+    // MARK: Alamofire ------------------------
     func postTest() {
         let url = "http://15.165.143.51/phone/auth"
         var request = URLRequest(url: URL(string: url)!)
@@ -55,6 +59,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: TextField ------------------------
 extension ViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
