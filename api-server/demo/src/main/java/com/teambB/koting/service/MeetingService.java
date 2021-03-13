@@ -1,5 +1,8 @@
 package com.teambB.koting.service;
 
+import com.teambB.koting.domain.Apply;
+import com.teambB.koting.domain.Member;
+import com.teambB.koting.repository.MemberRepository;
 import java.util.List;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.repository.MeetingRepository;
@@ -11,7 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MeetingService {
+
   private final MeetingRepository meetingRepository;
+  private final MemberRepository memberRepository;
 
   @Transactional
   public void saveMeeting(Meeting meeting) {
@@ -23,6 +28,6 @@ public class MeetingService {
   }
 
   public Meeting findOne(Long meetingId) {
-    return meetingRepository.findOne(meetingId);
+    return meetingRepository.findById(meetingId);
   }
 }

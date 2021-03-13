@@ -1,8 +1,12 @@
 package com.teambB.koting.service;
 
+import com.teambB.koting.domain.Apply;
+import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
+import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 
   private final MemberRepository memberRepository;
+  private final MeetingRepository meetingRepository;
 
-  // 회원가입
+  // 인증 후 회원가입
   public Long join(Member member) {
     validateMember(member);
     memberRepository.save(member);
