@@ -9,17 +9,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class MeetingRepository {
+
   private final EntityManager em;
 
-  public void save(Meeting meeting) {
+  public Meeting save(Meeting meeting) {
     if (meeting.getId() == null) {
       em.persist(meeting);
     } else {
       em.merge(meeting);
     }
+    return meeting;
   }
 
-  public Meeting findOne(Long id) {
+  public Meeting findById(Long id) {
     return em.find(Meeting.class, id);
   }
 
