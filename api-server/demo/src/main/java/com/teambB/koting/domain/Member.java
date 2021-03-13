@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
+import org.json.simple.JSONObject;
 
 @Entity
 @Getter @Setter
@@ -29,11 +30,23 @@ public class Member {
   private String number;
 
   @OneToOne
-  @JoinColumn(name = "creation_id")
-  private Creation myMeeting;
+  @JoinColumn(name = "owner")
+  private Meeting myMeeting;
 
   @OneToMany(mappedBy = "member")
-  private List<Order> meetings = new ArrayList<>();
+  private List<Apply> meetings = new ArrayList<>();
 
-
+  public static Member createMember(JSONObject object) {
+    Member member = new Member();
+    /*
+    member.setCollege(object.get("college").toString());
+    member.setSubject(object.get("subject").toString());
+    member.setHeight(Integer.parseInt(object.get("height").toString()));
+    member.setAge(Integer.parseInt(object.get("college").toString()));
+    member.setMbti(object.get("mbti").toString());
+    member.setEmail(object.get("email").toString());
+     */
+    member.setNumber(object.get("number").toString());
+    return member;
+  }
 }

@@ -1,6 +1,5 @@
 package com.teambB.koting.controller;
 
-import com.teambB.koting.domain.MemberTest;
 import java.util.Random;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +44,7 @@ public class testController {
       System.out.println(e.getCode());
       return false;
     }
-    */
+     */
     return true;
   }
 
@@ -64,14 +63,15 @@ public class testController {
     return false;
   }
 
-  @PostMapping("/")
-  public Object testMapping(@RequestBody Object params) {
+  @GetMapping("/")
+  public Object testGet(@RequestBody Object params) {
     return params;
   }
 
-  @GetMapping("/")
-  public MemberTest memberGetTest() {
-    return new MemberTest(0L, "Jongho Han", "is GetMan");
+
+  @PostMapping("/")
+  public Object testPost(@RequestBody Object params) {
+    return params;
   }
 
   public String makeRandom() {

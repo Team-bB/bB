@@ -8,7 +8,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Getter;
@@ -17,6 +16,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 public class Meeting {
+
   @Id @GeneratedValue
   @Column(name = "meeting_id")
   private Long id;
@@ -27,12 +27,16 @@ public class Meeting {
   @Enumerated(EnumType.STRING)
   private MeetingStatus meeting_status;
 
-  @OneToOne
-  @JoinColumn(name = "creation_id")
-  private Creation owner;
+  @OneToOne(mappedBy = "myMeeting")
+  private Member owner;
 
   @OneToMany(mappedBy = "meeting")
-  private List<Order> participants;
+  private List<Apply> participants;
 
-
+  public static Meeting createMeeting(Member member, int player) {
+    Meeting meeting = new Meeting();
+    meeting.setOwner(member);
+    meeting.setPlayer(player);
+    return meeting;
+  }
 }
