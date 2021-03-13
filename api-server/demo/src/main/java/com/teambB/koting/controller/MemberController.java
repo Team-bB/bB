@@ -1,5 +1,6 @@
 package com.teambB.koting.controller;
 
+import com.teambB.koting.domain.Member;
 import java.util.Random;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,7 @@ import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @RestController
-public class testController {
+public class MemberController {
 
   private HashMap<String, String> dic = new HashMap<String, String>();
 
