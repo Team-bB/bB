@@ -10,8 +10,9 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
       hibernate:
         format_sql: true
 
