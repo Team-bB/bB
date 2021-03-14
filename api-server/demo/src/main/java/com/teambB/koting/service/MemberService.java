@@ -36,7 +36,7 @@ public class MemberService {
 
   // 회원 번호로 조회
   @Transactional(readOnly = true)
-  public Member findOne(String number) {
-    return memberRepository.findByNumber(number);
+  public Member findOne(Long id) {
+    return memberRepository.findById(id);
   }
 }

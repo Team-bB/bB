@@ -19,6 +19,16 @@ public class ApplyService {
   private final MemberRepository memberRepository;
   private final ApplyRepository applyRepository;
 
+  public Long join(Apply apply) {
+    applyRepository.save(apply);
+    return apply.getId();
+  }
+
+  @Transactional(readOnly = true)
+  public Apply findOne(Long id) {
+    return applyRepository.findById(id);
+  }
+
   public Long apply(Long memberId, Long meetingId) {
     Member member = memberRepository.findById(memberId);
     Meeting meeting = meetingRepository.findById(meetingId);

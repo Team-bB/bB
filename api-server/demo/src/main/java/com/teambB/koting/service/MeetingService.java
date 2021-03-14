@@ -11,23 +11,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 @RequiredArgsConstructor
 public class MeetingService {
 
   private final MeetingRepository meetingRepository;
-  private final MemberRepository memberRepository;
 
-  @Transactional
-  public void saveMeeting(Meeting meeting) {
+  public Long join(Meeting meeting) {
     meetingRepository.save(meeting);
+    return meeting.getId();
   }
 
   public List<Meeting> findMeetings() {
     return meetingRepository.findAll();
   }
 
-  public Meeting findOne(Long meetingId) {
-    return meetingRepository.findById(meetingId);
+  @Transactional(readOnly = true)
+  public Meeting findOne(Long id) {
+    return meetingRepository.findById(id);
   }
 }
