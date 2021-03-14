@@ -1,27 +1,30 @@
 package com.teambB.koting.repository;
 
+import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
 import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @RequiredArgsConstructor
+@Transactional
 public class MemberRepository {
 
   private final EntityManager em;
 
   public void save(Member member) {
-    em.persist(member);
+    if (member.getId() == null) {
+      em.persist(member);
+    } else {
+      em.merge(member);
+    }
   }
 
   public Member findById(Long id) {
     return em.find(Member.class, id);
-  }
-
-  public Member findByNumber(String number) {
-    return em.find(Member.class, number);
   }
 
   public List<Member> findAll() {
