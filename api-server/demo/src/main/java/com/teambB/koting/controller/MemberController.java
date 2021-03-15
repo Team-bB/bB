@@ -139,7 +139,7 @@ public class MemberController {
 
   public void sendMail(String email, String authKey) throws MessagingException, UnsupportedEncodingException {
 
-    String to = "trhjh@naver.com";
+    String to = email;
     String from = "admin@koting.com";
     String subject = "[Koting] 회원가입 인증메일입니다. ";
     String url = "http://15.165.143.51/signUpEmail?email=" + email + "&authKey=" + authKey;
