@@ -54,14 +54,14 @@ public class MemberController {
   }
 
   @GetMapping("/signUpEmail")
-  public boolean authEmail(@RequestParam("email") String email, @RequestParam("authKey") String authKey) {
+  public String authEmail(@RequestParam("email") String email, @RequestParam("authKey") String authKey) {
     Member findMember = memberService.findOneByEmail(email);
     if (findMember.getAuthKey().equals(authKey)) {
       findMember.setAuthStatus(true);
       memberRepository.save(findMember);
-      return true;
+      return "동국대학교 학생인증이 완료되었습니다. 지금부터 정상적으로 서비스 이용이 가능합니다.";
     }
-    return false;
+    return "인증에 실패하였습니다.";
   }
 
   @PostMapping("/auth")
