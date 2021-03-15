@@ -88,3 +88,4 @@ DerivedData/
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode,cocoapods,carthage
 
 api-server/local.sh
+api-server/demo/src/main/resources/application.yml
