@@ -36,7 +36,7 @@ class AuthViewController: UIViewController {
         request.timeoutInterval = 10
         
         // POST 로 보낼 정보
-        let params = ["phoneNumber" : API.shared.phoneNumber!,
+        let params = ["phoneNumber" : API.shared.phoneNumber, //!뺌
                       "code": authNumberTextField.text!] as Dictionary
         
         // httpBody 에 parameters 추가

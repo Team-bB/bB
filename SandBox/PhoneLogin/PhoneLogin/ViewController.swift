@@ -30,9 +30,19 @@ class ViewController: UIViewController {
     
     // MARK: IBAction 함수 ------------------------
     @IBAction func btnTapped(_ sender: Any) {
-        postTest()
-        if let number = phoneNumberTextField.text {
-            API.shared.phoneNumber = number
+        guard let text = phoneNumberTextField.text else { return }
+        let firstIndex = text.index(text.startIndex, offsetBy: 0)
+        let forthIndex = text.index(text.startIndex, offsetBy: 3)
+        let fifthIndex = text.index(text.startIndex, offsetBy: 4)
+        let zeroOneZero = "\(text[firstIndex..<forthIndex])"
+        let forthNumber = Int("\(text[forthIndex..<fifthIndex])") ?? 0
+        if zeroOneZero == "010" && forthNumber >= 2 {
+            postTest()
+            if let number = phoneNumberTextField.text {
+                API.shared.phoneNumber = number
+            }
+        } else {
+            Output_Alert(title: "실패", message: "번호를 다시 확인하세요.", text: "확인")
         }
     }
     
@@ -63,6 +73,14 @@ class ViewController: UIViewController {
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
         }
+    }
+    // MARK: Alter function ---------------------
+    func Output_Alert(title : String, message : String, text : String) {
+
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: text, style: UIAlertAction.Style.cancel, handler: nil)
+        alertController.addAction(okButton)
+        return self.present(alertController, animated: true, completion: nil)
     }
 }
 
