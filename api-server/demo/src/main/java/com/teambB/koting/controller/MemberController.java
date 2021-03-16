@@ -153,7 +153,11 @@ public class MemberController {
 
     StringBuilder body = new StringBuilder();
     body.append("<html> <body>");
+<<<<<<< HEAD
     body.append("<div> 동국대학교 학우님 반갑습니다! <br> 하단의 링크를 클릭해주세요</div>");
+=======
+    body.append("<div> 아래의 링크를 클릭해주세요!</div>");
+>>>>>>> aa5fe743888744e0e270e36c56215ab3d167c0a5
     body.append("<a href=\"" + url + "\">인증하기</a>");
     body.append("</body> </html>");
 

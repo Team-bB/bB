@@ -27,23 +27,30 @@ class ViewController: UIViewController {
         sendButton.backgroundColor = grayColor
         
     }
-    
+
     // MARK: IBAction 함수 ------------------------
     @IBAction func btnTapped(_ sender: Any) {
-        guard let text = phoneNumberTextField.text else { return }
-        let firstIndex = text.index(text.startIndex, offsetBy: 0)
-        let forthIndex = text.index(text.startIndex, offsetBy: 3)
-        let fifthIndex = text.index(text.startIndex, offsetBy: 4)
-        let zeroOneZero = "\(text[firstIndex..<forthIndex])"
-        let forthNumber = Int("\(text[forthIndex..<fifthIndex])") ?? 0
-        if zeroOneZero == "010" && forthNumber >= 2 {
+        guard let phoneNumber = phoneNumberTextField.text else { return }
+
+        if checkPhoneNumber(phoneNumber) {
             postTest()
-            if let number = phoneNumberTextField.text {
-                API.shared.phoneNumber = number
-            }
+            API.shared.phoneNumber = phoneNumber
         } else {
             Output_Alert(title: "실패", message: "번호를 다시 확인하세요.", text: "확인")
         }
+    }
+    
+    // MARK: 전화번호 유효성 검사
+    func checkPhoneNumber(_ phoneNumber: String) -> Bool {
+        let firstIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 0)
+        let forthIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 3)
+        let fifthIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 4)
+        let zeroOneZero = "\(phoneNumber[firstIndex..<forthIndex])"
+        let forthNumber = Int("\(phoneNumber[forthIndex..<fifthIndex])") ?? 0
+        
+        if zeroOneZero == "010" && forthNumber >= 2  { return true }
+        
+        return false
     }
     
     // MARK: Alamofire ------------------------
@@ -74,6 +81,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
     // MARK: Alter function ---------------------
     func Output_Alert(title : String, message : String, text : String) {
 

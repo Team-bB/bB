@@ -20,7 +20,7 @@ Carthage/Build
 #           - Also handy if you have a large number of dependant pods
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
 
-# Pods/
+ Pods/
 
 ### macOS ###
 # General
@@ -88,4 +88,3 @@ DerivedData/
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode,cocoapods,carthage
 
 api-server/local.sh
-api-server/demo/src/main/resources/application.yml
