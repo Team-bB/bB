@@ -147,7 +147,7 @@ public class MemberController {
     StringBuilder body = new StringBuilder();
     body.append("<html> <body>");
     body.append("<div> 아래의 링크를 클릭해주세요!</div>");
-    body.append("<br><div>" + url + "</div");
+    body.append("<a href=" + url + ">인증하기</a>");
     body.append("</body> </html>");
 
     MimeMessage message = javaMailSender.createMimeMessage();
