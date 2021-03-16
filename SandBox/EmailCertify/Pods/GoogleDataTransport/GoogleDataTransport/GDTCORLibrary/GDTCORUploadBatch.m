@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import "GoogleDataTransport/GDTCORLibrary/Private/GDTCORUploadBatch.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation GDTCORUploadBatch
 
-/** Returns the current version of Firebase. */
-NS_SWIFT_NAME(FirebaseVersion())
-NSString* FIRFirebaseVersion(void);
+- (instancetype)initWithBatchID:(NSNumber *)batchID events:(NSSet<GDTCOREvent *> *)events {
+  self = [super init];
+  if (self) {
+    _batchID = batchID;
+    _events = events;
+  }
+  return self;
+}
 
-NS_ASSUME_NONNULL_END
+@end

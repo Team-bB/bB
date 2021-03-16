@@ -16,10 +16,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class GDTCOREvent;
+
 NS_ASSUME_NONNULL_BEGIN
 
-/** Returns the current version of Firebase. */
-NS_SWIFT_NAME(FirebaseVersion())
-NSString* FIRFirebaseVersion(void);
+/// A data object representing a batch of events scheduled for upload.
+@interface GDTCORUploadBatch : NSObject
+
+/// An ID used to identify the batch in the storage.
+@property(nonatomic, readonly) NSNumber *batchID;
+
+/// The collection of the events in the batch.
+@property(nonatomic, readonly) NSSet<GDTCOREvent *> *events;
+
+/// The default initializer. See also docs for the corresponding properties.
+- (instancetype)initWithBatchID:(NSNumber *)batchID events:(NSSet<GDTCOREvent *> *)events;
+
+@end
 
 NS_ASSUME_NONNULL_END
