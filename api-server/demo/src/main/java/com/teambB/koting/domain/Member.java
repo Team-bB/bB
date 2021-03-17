@@ -25,6 +25,7 @@ public class Member {
   @Column(name = "member_id")
   private Long id;
 
+  private String sex;
   private String college;
   private String subject;
   private String height;
@@ -44,6 +45,7 @@ public class Member {
 
   public static Member createMember(JSONObject object, String authKey) {
     Member member = new Member();
+    member.setSex(object.get("sex").toString());
     member.setCollege(object.get("college").toString());
     member.setSubject(object.get("subject").toString());
     member.setHeight(object.get("height").toString());
