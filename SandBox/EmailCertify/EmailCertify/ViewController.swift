@@ -67,7 +67,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: textFields)
+        //NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: textFields)
         
         okayButton.isEnabled = false
         okayButton.layer.cornerRadius = 10
@@ -124,20 +124,40 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+    //MARK: ToolBar --------------------
     func createToolBar(){
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(onPickExit))
+        let doneBtn = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(buttonAction))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        toolBar.setItems([flexibleSpace,doneBtn], animated: false)
+        toolBar.setItems([flexibleSpace,doneBtn], animated: true)
+        toolBar.isUserInteractionEnabled = true
         textFields[0].inputAccessoryView = toolBar
         textFields[1].inputAccessoryView = toolBar
         textFields[4].inputAccessoryView = toolBar
         }
-    @objc func onPickExit() {
-        self.view.endEditing(true)
+    @objc func buttonAction() {
+        textFields[0].resignFirstResponder()
+        textFields[1].resignFirstResponder()
+        textFields[4].resignFirstResponder()
     }
+    
+    @IBAction func okayBtnTapped(_ sender: UIButton) {
+        var count = 0
+        for i in textFields {
+            if i.text == "" {
+                count += 1
+            }
+        }
+        if count == 0 {
+            okayButton.isEnabled = true
+            okayButton.backgroundColor = orangeColor
+        } else {
+            okayButton.isEnabled = false
+            okayButton.backgroundColor = grayColor
+        }
+    }
+    
 }
 
 // MARK: TetxField -----------------------
@@ -158,6 +178,21 @@ extension ViewController: UITextFieldDelegate, UIPickerViewDelegate, UIPickerVie
                 okayButton.isEnabled = false
                 okayButton.backgroundColor = grayColor
             }
+        }
+    }
+    func allTextFilled(_ textFields: [UITextField]) {
+        var count = 0
+        for i in textFields {
+            if i.text == "" {
+                count += 1
+            }
+        }
+        if count == 0 {
+            okayButton.isEnabled = true
+            okayButton.backgroundColor = orangeColor
+        } else {
+            okayButton.isEnabled = false
+            okayButton.backgroundColor = grayColor
         }
     }
     
@@ -247,9 +282,7 @@ extension ViewController: UITextFieldDelegate, UIPickerViewDelegate, UIPickerVie
         switch pickerView.tag {
         case 1:
             textFields[0].text = colleges[row]
-            textFields[0].resignFirstResponder()
             textFields[1].text = ""
-            textFields[1].resignFirstResponder()
         case 2:
             if textFields[0].text == "불교대학" {
                 textFields[1].text = majors[0][row]
@@ -278,10 +311,8 @@ extension ViewController: UITextFieldDelegate, UIPickerViewDelegate, UIPickerVie
             } else {
                 textFields[1].text = majors[12][row]
             }
-            textFields[1].resignFirstResponder()
         case 3:
             textFields[4].text = mbtis[row]
-            textFields[4].resignFirstResponder()
         default:
             return
         }
