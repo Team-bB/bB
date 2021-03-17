@@ -149,12 +149,12 @@ public class MemberController {
     String to = email;
     String from = "admin@koting.com";
     String subject = "[코팅] 회원가입 인증메일입니다. ";
-    String url = "http://15.165.143.51/signUpEmail?email=" + email + "&authKey=" + authKey;
+    String url = "http://koting.kr/signUpEmail?email=" + email + "&authKey=" + authKey;
 
     StringBuilder body = new StringBuilder();
     body.append("<html> <body>");
-    body.append("<div> 동국대학교 학우님 반갑습니다! <br> 하단의 링크를 클릭해주세요</div>");
-    body.append("<div> 아래의 링크를 클릭해주세요!</div>");
+    body.append("<div> 동국대학교 학우님 반갑습니다! </div>");
+    body.append("<div> 하단의 링크를 클릭해주세요! </div>");
     body.append("<a href=\"" + url + "\">인증하기</a>");
     body.append("</body> </html>");
 
