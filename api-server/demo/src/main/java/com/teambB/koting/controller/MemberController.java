@@ -84,7 +84,7 @@ public class MemberController {
     params.put("text", message);
     params.put("app_version", "test app 1.2");
 
-    //
+    /*
     try {
       JSONObject obj = (JSONObject) coolsms.send(params);
       System.out.println(obj.toString());
@@ -93,7 +93,7 @@ public class MemberController {
       System.out.println(e.getCode());
       return false;
     }
-     //
+     */
 
     return true;
   }
@@ -160,3 +160,4 @@ public class MemberController {
     javaMailSender.send(message);
   }
 }
+
