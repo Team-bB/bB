@@ -34,9 +34,12 @@ public class MemberController {
   private HashMap<String, String> dic = new HashMap<String, String>();
 
   @GetMapping("/")
-  public Object testGet(@RequestBody Object params) {
-    return params;
+  public String testPage() {
+    return "hello";
   }
+//  public Object testGet(@RequestBody Object params) {
+//    return params;
+//  }
 
   @PostMapping("/")
   public String testPost() {
