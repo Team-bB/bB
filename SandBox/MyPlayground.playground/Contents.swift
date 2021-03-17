@@ -16,3 +16,8 @@ import UIKit
 //// 그 이후 접근하면 처음에 생성된 인스턴스의 참조값을 전달한다.
 //let student2 = StudentInfo.shared
 
+let asd: String? = nil
+
+if let la = asd {
+    print(la)
+}
