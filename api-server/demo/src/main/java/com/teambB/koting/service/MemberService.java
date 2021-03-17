@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 
   private final MemberRepository memberRepository;
-  private final MeetingRepository meetingRepository;
 
   // 인증 후 회원가입
   public Long join(Member member) {
