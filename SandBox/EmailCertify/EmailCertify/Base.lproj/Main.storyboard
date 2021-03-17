@@ -16,64 +16,116 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="단과대학" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2K-17-Npa">
-                                <rect key="frame" x="101" y="265" width="212" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="단과대학" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B2K-17-Npa">
+                                <rect key="frame" x="101" y="182" width="212" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="GIu-EM-EI2"/>
+                                    <constraint firstAttribute="height" constant="34" id="guZ-v5-MGP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Rz-31-e4u">
-                                <rect key="frame" x="101" y="339" width="212" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Rz-31-e4u">
+                                <rect key="frame" x="101" y="248" width="212" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="a7M-0f-sDJ"/>
+                                    <constraint firstAttribute="width" constant="212" id="tvb-oZ-Qfp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="나이" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbM-Q7-sab">
-                                <rect key="frame" x="101" y="409" width="212" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="나이" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbM-Q7-sab">
+                                <rect key="frame" x="101" y="315" width="212" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Gbi-h5-RBb"/>
+                                    <constraint firstAttribute="width" constant="212" id="yrP-3f-FYb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="키" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u0q-0x-GXS">
-                                <rect key="frame" x="101" y="475" width="212" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="키" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u0q-0x-GXS">
+                                <rect key="frame" x="101" y="381" width="212" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="GRd-fo-Jb7"/>
+                                    <constraint firstAttribute="height" constant="34" id="YEI-xk-LpW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ByK-K0-chj">
-                                <rect key="frame" x="101" y="611" width="212" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ByK-K0-chj">
+                                <rect key="frame" x="101" y="510" width="118" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="PYr-nO-U5Y"/>
+                                    <constraint firstAttribute="width" constant="118" id="buI-TK-JhC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpe-hE-whB">
-                                <rect key="frame" x="127" y="688" width="161" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mbti" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-MD-1ur">
+                                <rect key="frame" x="101" y="449" width="212" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="NiY-Z7-aVq"/>
+                                    <constraint firstAttribute="height" constant="34" id="oKn-EC-1BM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@dgu.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XZ-up-O9q">
+                                <rect key="frame" x="227" y="524" width="78" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="hgm-Yi-Wfa"/>
+                                    <constraint firstAttribute="width" constant="78" id="ucz-GD-Jo7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpe-hE-whB">
+                                <rect key="frame" x="127" y="599" width="161" height="30"/>
                                 <state key="normal" title="확인">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="okayBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6pR-dm-w3R"/>
                                     <segue destination="P4q-L0-wRb" kind="show" id="BfY-t0-dHu"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mbti" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-MD-1ur">
-                                <rect key="frame" x="101" y="544" width="212" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gOg-MD-1ur" secondAttribute="trailing" constant="101" id="2rL-yq-HjD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u0q-0x-GXS" secondAttribute="trailing" constant="101" id="A7Q-FB-Zuz"/>
+                            <constraint firstItem="9Rz-31-e4u" firstAttribute="top" secondItem="B2K-17-Npa" secondAttribute="bottom" constant="32" id="GAj-Lj-zcm"/>
+                            <constraint firstItem="B2K-17-Npa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="138" id="K4r-Oz-hRz"/>
+                            <constraint firstItem="HbM-Q7-sab" firstAttribute="top" secondItem="9Rz-31-e4u" secondAttribute="bottom" constant="33" id="RRH-uD-rhL"/>
+                            <constraint firstItem="Hpe-hE-whB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="127" id="SPu-av-kUX"/>
+                            <constraint firstItem="ByK-K0-chj" firstAttribute="top" secondItem="gOg-MD-1ur" secondAttribute="bottom" constant="27" id="SbL-T1-2Gd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hpe-hE-whB" secondAttribute="trailing" constant="126" id="SvZ-Ik-Zi7"/>
+                            <constraint firstItem="gOg-MD-1ur" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="TAy-B8-sAF"/>
+                            <constraint firstItem="B2K-17-Npa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="UUd-Ka-xxI"/>
+                            <constraint firstItem="Hpe-hE-whB" firstAttribute="top" secondItem="4XZ-up-O9q" secondAttribute="bottom" constant="57" id="Z5e-Rl-ZxH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="B2K-17-Npa" secondAttribute="trailing" constant="101" id="cmg-k9-2xT"/>
+                            <constraint firstItem="HbM-Q7-sab" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="eDZ-Ry-TAU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HbM-Q7-sab" secondAttribute="trailing" constant="101" id="hqN-qk-DVU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4XZ-up-O9q" secondAttribute="trailing" constant="109" id="lCW-wH-4zP"/>
+                            <constraint firstItem="u0q-0x-GXS" firstAttribute="top" secondItem="HbM-Q7-sab" secondAttribute="bottom" constant="32" id="lcE-fR-vHx"/>
+                            <constraint firstItem="9Rz-31-e4u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="pWI-Wz-MBI"/>
+                            <constraint firstItem="Hpe-hE-whB" firstAttribute="top" secondItem="ByK-K0-chj" secondAttribute="bottom" constant="55" id="poH-pz-wXe"/>
+                            <constraint firstItem="gOg-MD-1ur" firstAttribute="top" secondItem="u0q-0x-GXS" secondAttribute="bottom" constant="34" id="r2p-LC-spv"/>
+                            <constraint firstItem="ByK-K0-chj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="s60-ea-rVL"/>
+                            <constraint firstItem="u0q-0x-GXS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="101" id="sb0-oO-AgT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Rz-31-e4u" secondAttribute="trailing" constant="101" id="tzm-0i-o3t"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="ageTextField" destination="HbM-Q7-sab" id="Qht-In-Yyj"/>
-                        <outlet property="collegeTextField" destination="B2K-17-Npa" id="w3C-OK-AWN"/>
-                        <outlet property="emailTextField" destination="ByK-K0-chj" id="SyE-rJ-CeN"/>
-                        <outlet property="heightTextField" destination="u0q-0x-GXS" id="GQY-de-bk5"/>
-                        <outlet property="majorTextField" destination="9Rz-31-e4u" id="klP-Ri-GQG"/>
-                        <outlet property="mbtiTextField" destination="gOg-MD-1ur" id="yaO-C4-PQn"/>
                         <outlet property="okayButton" destination="Hpe-hE-whB" id="eTs-ch-KKr"/>
+                        <outletCollection property="textFields" destination="B2K-17-Npa" collectionClass="NSMutableArray" id="8we-dr-9jc"/>
+                        <outletCollection property="textFields" destination="9Rz-31-e4u" collectionClass="NSMutableArray" id="emC-WB-u0M"/>
+                        <outletCollection property="textFields" destination="HbM-Q7-sab" collectionClass="NSMutableArray" id="rOb-sP-kT5"/>
+                        <outletCollection property="textFields" destination="u0q-0x-GXS" collectionClass="NSMutableArray" id="tVS-hW-Lgg"/>
+                        <outletCollection property="textFields" destination="gOg-MD-1ur" collectionClass="NSMutableArray" id="FhI-no-86h"/>
+                        <outletCollection property="textFields" destination="ByK-K0-chj" collectionClass="NSMutableArray" id="cfR-68-Gzw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

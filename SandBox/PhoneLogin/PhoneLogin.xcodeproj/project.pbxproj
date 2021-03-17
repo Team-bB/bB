@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		881B0A7E26006D3400FD1E28 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B0A7D26006D3400FD1E28 /* NetworkingViewController.swift */; };
 		8885107A25FB8B3400367F83 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8885107925FB8B3400367F83 /* AuthViewController.swift */; };
 		8885107D25FB91B000367F83 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8885107C25FB91B000367F83 /* API.swift */; };
 		88D17B5C25F74C2F00200CB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D17B5B25F74C2F00200CB5 /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		3DAD030412C7D8402E7FCF05 /* Pods-PhoneLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneLogin.debug.xcconfig"; path = "Target Support Files/Pods-PhoneLogin/Pods-PhoneLogin.debug.xcconfig"; sourceTree = "<group>"; };
+		881B0A7D26006D3400FD1E28 /* NetworkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
 		8885107925FB8B3400367F83 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8885107C25FB91B000367F83 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		88D17B5825F74C2F00200CB5 /* PhoneLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 				88D17B6625F74C3200200CB5 /* LaunchScreen.storyboard */,
 				88D17B6925F74C3200200CB5 /* Info.plist */,
 				8885107C25FB91B000367F83 /* API.swift */,
+				881B0A7D26006D3400FD1E28 /* NetworkingViewController.swift */,
 			);
 			path = PhoneLogin;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				8885107A25FB8B3400367F83 /* AuthViewController.swift in Sources */,
 				88D17B6025F74C2F00200CB5 /* ViewController.swift in Sources */,
+				881B0A7E26006D3400FD1E28 /* NetworkingViewController.swift in Sources */,
 				88D17B5C25F74C2F00200CB5 /* AppDelegate.swift in Sources */,
 				88D17B5E25F74C2F00200CB5 /* SceneDelegate.swift in Sources */,
 				8885107D25FB91B000367F83 /* API.swift in Sources */,
