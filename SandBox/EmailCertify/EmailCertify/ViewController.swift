@@ -135,7 +135,8 @@ class ViewController: UIViewController {
         textFields[0].inputAccessoryView = toolBar
         textFields[1].inputAccessoryView = toolBar
         textFields[4].inputAccessoryView = toolBar
-        }
+    }
+    
     @objc func buttonAction() {
         textFields[0].resignFirstResponder()
         textFields[1].resignFirstResponder()
@@ -163,38 +164,8 @@ class ViewController: UIViewController {
 // MARK: TetxField -----------------------
 extension ViewController: UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @objc private func textDidChange(_ notification: Notification) {
-        var count = 0
-        if let textFields = notification.object as? [UITextField] {
-            for textField in textFields {
-                if textField.text == "" {
-                    count += 1
-                }
-            }
-            if count == 0 {
-                okayButton.isEnabled = true
-                okayButton.backgroundColor = orangeColor
-            } else {
-                okayButton.isEnabled = false
-                okayButton.backgroundColor = grayColor
-            }
-        }
-    }
-    func allTextFilled(_ textFields: [UITextField]) {
-        var count = 0
-        for i in textFields {
-            if i.text == "" {
-                count += 1
-            }
-        }
-        if count == 0 {
-            okayButton.isEnabled = true
-            okayButton.backgroundColor = orangeColor
-        } else {
-            okayButton.isEnabled = false
-            okayButton.backgroundColor = grayColor
-        }
-    }
+
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -235,7 +206,7 @@ extension ViewController: UITextFieldDelegate, UIPickerViewDelegate, UIPickerVie
         case 3:
             return mbtis.count
         default:
-            return 1
+            return 0
         }
     }
     

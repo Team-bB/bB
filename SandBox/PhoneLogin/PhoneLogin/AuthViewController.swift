@@ -20,8 +20,14 @@ class AuthViewController: UIViewController {
 
         authNumberTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: authNumberTextField)
+        
         sendButton.layer.cornerRadius = 10
-        sendButton.backgroundColor = grayColor
+        sendButton.backgroundColor = .opaqueSeparator
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
@@ -79,7 +85,7 @@ extension AuthViewController: UITextFieldDelegate {
                     sendButton.backgroundColor = orangeColor
                 } else {
                     sendButton.isEnabled = false
-                    sendButton.backgroundColor = grayColor
+                    sendButton.backgroundColor = .opaqueSeparator
                 }
             }
         }

@@ -23,9 +23,15 @@ class ViewController: UIViewController {
         
         phoneNumberTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: phoneNumberTextField)
-        sendButton.layer.cornerRadius = 10
-        sendButton.backgroundColor = grayColor
         
+        sendButton.layer.cornerRadius = 10
+        sendButton.backgroundColor = .opaqueSeparator
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
     }
 
     // MARK: IBAction 함수 ------------------------
@@ -113,7 +119,7 @@ extension ViewController: UITextFieldDelegate {
                     sendButton.backgroundColor = orangeColor
                 } else {
                     sendButton.isEnabled = false
-                    sendButton.backgroundColor = grayColor
+                    sendButton.backgroundColor = .opaqueSeparator
                 }
             }
         }
