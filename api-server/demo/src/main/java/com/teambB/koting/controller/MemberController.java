@@ -14,9 +14,11 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
@@ -33,17 +35,9 @@ public class MemberController {
   @Autowired EntityManager em;
   private HashMap<String, String> dic = new HashMap<String, String>();
 
-  @GetMapping("/")
+  @GetMapping("/index")
   public String testPage() {
-    return "hello";
-  }
-//  public Object testGet(@RequestBody Object params) {
-//    return params;
-//  }
-
-  @PostMapping("/")
-  public String testPost() {
-    return "test";
+    return "index";
   }
 
   @PostMapping("/test")
@@ -95,7 +89,7 @@ public class MemberController {
     params.put("text", message);
     params.put("app_version", "test app 1.2");
 
-    /*
+    //
     try {
       JSONObject obj = (JSONObject) coolsms.send(params);
       System.out.println(obj.toString());
@@ -104,7 +98,7 @@ public class MemberController {
       System.out.println(e.getCode());
       return false;
     }
-     */
+     //
 
     return true;
   }
@@ -171,4 +165,3 @@ public class MemberController {
     javaMailSender.send(message);
   }
 }
-
