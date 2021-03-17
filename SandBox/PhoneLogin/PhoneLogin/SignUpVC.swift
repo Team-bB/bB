@@ -125,7 +125,12 @@ class SignUpVC: UIViewController {
     
     // MARK: IBAction func -----------------
     @IBAction func signUpButtonTapped(_ sender: Any) {
-
+        guard  let email = mail.text else { return }
+        if (isValidEmail(email + domain)) {
+            print("ValidEmail !!")
+        } else {
+            print("Not Valid !!!!!!!!!")
+        }
     }
     
 }
@@ -203,6 +208,13 @@ extension SignUpVC {
 //
         return false
     }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
 }
 
 // MARK: TextFieldDelegate 관련 메소드 ------------------------
@@ -226,10 +238,10 @@ extension SignUpVC: UITextFieldDelegate {
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let index = 0
-        
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        let index = 0
+//
+//    }
 }
 
 // MARK: PickerViewDataSource 관련 메소드 ------------------------
