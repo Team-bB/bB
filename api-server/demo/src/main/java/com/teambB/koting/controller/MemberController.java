@@ -25,7 +25,6 @@ import java.util.HashMap;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
-@Controller
 @RestController
 @RequiredArgsConstructor
 public class MemberController {
@@ -35,11 +34,6 @@ public class MemberController {
   @Autowired private JavaMailSender javaMailSender;
   @Autowired EntityManager em;
   private HashMap<String, String> dic = new HashMap<String, String>();
-
-  @GetMapping("/index")
-  public String introPage() {
-    return "index";
-  }
 
   @PostMapping("/test")
   public String testToken(String input) {
