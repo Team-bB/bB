@@ -35,11 +35,6 @@ public class MemberController {
   @Autowired EntityManager em;
   private HashMap<String, String> dic = new HashMap<String, String>();
 
-  @GetMapping("/index")
-  public String testPage() {
-    return "index";
-  }
-
   @PostMapping("/test")
   public String testToken(String input) {
     if (input.equals("test"))
