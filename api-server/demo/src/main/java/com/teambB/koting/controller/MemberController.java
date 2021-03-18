@@ -9,6 +9,7 @@ import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -38,7 +39,7 @@ public class MemberController {
     String api_key = "NCSRF0PYIQASDVPU";
     String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
     Message coolsms = new Message(api_key, api_secret);
-    String code = Member.makeRandomNumber(6);
+    String code = Member.makeRandomNumber(4);
     String message = "[코팅] 인증번호[" + code + "]를 입력해주세요.";
     dic.put(phoneNumber, code);
 
@@ -68,9 +69,9 @@ public class MemberController {
     String code = object.get("code").toString();
     if (dic.get(phoneNumber).toString().equals(code)) {
       dic.remove(phoneNumber);
-      Member member = memberService.findOneByNumber(phoneNumber);
-      if (member.getNumber().equals(phoneNumber)) { // 가입되어 있으면
-        return member.getAccount_id();
+      List<Member> member = memberService.findOneByNumber(phoneNumber);
+      if (!member.isEmpty()) { // 가입되어 있으면
+        return member.get(0).getAccount_id();
       }
       else { // 가입되어 있지 않으면
         // 로그인페이지로 이동
