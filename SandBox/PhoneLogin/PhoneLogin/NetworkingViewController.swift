@@ -8,8 +8,9 @@
 import UIKit
 import Alamofire
 
-class NetworkingViewController: UIViewController {
+class NetworkingViewController: UIViewController, UITextViewDelegate {
     
+    @IBOutlet weak var textview: UITextField!
 
     @IBAction func getDataFromServer(_ sender: Any) {
         let url = API.shared.BASE_URL + "/test"
@@ -44,6 +45,7 @@ class NetworkingViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
     }
     
