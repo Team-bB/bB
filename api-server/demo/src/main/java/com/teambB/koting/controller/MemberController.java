@@ -33,7 +33,7 @@ public class MemberController {
   private HashMap<String, String> dic = new HashMap<String, String>();
 
   @PostMapping("/auth")
-  public boolean sendCode(@RequestBody JSONObject object) {
+  public String sendCode(@RequestBody JSONObject object) {
 
     String phoneNumber = object.get("phoneNumber").toString();
     String api_key = "NCSRF0PYIQASDVPU";
@@ -51,6 +51,7 @@ public class MemberController {
     params.put("type", "SMS");
     params.put("text", message);
     params.put("app_version", "test app 1.2");
+    /*
     try {
       JSONObject obj = (JSONObject) coolsms.send(params);
       System.out.println(obj.toString());
@@ -59,7 +60,9 @@ public class MemberController {
       System.out.println(e.getCode());
       return false;
     }
-    return true;
+
+     */
+    return code;
   }
 
   @PostMapping("/auth/number")
