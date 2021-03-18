@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 class SignUpVC: UIViewController {
-    // MARK: ----------------------- 변수
+    // MARK:- 변수
     let grayColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
     let orangeColor = #colorLiteral(red: 1, green: 0.6597687742, blue: 0.3187801202, alpha: 1)
     
@@ -67,7 +67,7 @@ class SignUpVC: UIViewController {
     
 
     
-    // MARK: ----------------------- PickerView 변수 선언
+    // MARK:- PickerView 선언
     var sexPickerView = UIPickerView()
     var collegePickerView = UIPickerView()
     var majorPickerView = UIPickerView()
@@ -75,7 +75,7 @@ class SignUpVC: UIViewController {
     var agePickerView = UIPickerView()
     var heightPickerView = UIPickerView()
     
-    // MARK: ----------------------- OUTLET
+    // MARK:- @IBOutlet 변수
     @IBOutlet weak var sex: UITextField!
     @IBOutlet weak var college: UITextField!
     @IBOutlet weak var major: UITextField!
@@ -86,13 +86,14 @@ class SignUpVC: UIViewController {
 
     @IBOutlet weak var signUpButton: UIButton!
     
+    // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         signUpButton.layer.cornerRadius = 10
         signUpButton.backgroundColor = .opaqueSeparator
         
-        // MARK: ------------------- Notification - TextField 관련
+    // MARK:- Notification Observer & delegate: TextField 관련
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: sex)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: college)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: major)
@@ -109,7 +110,7 @@ class SignUpVC: UIViewController {
         height.delegate = self
         mail.delegate = self
         
-        // MARK: ------------------- PickerView 관련
+    // MARK:- PickerView 관련
         sex.inputView = sexPickerView
         college.inputView = collegePickerView
         major.inputView = majorPickerView
@@ -146,8 +147,8 @@ class SignUpVC: UIViewController {
         super.viewDidAppear(animated)
 
     }
-    
-    // MARK: ----------------- IBAction func
+
+    // MARK:- @IBAction func
     @IBAction func signUpButtonTapped(_ sender: Any) {
         guard  let email = mail.text else { return }
         if (isValidEmail(email + domain)) {
@@ -160,7 +161,7 @@ class SignUpVC: UIViewController {
     
 }
 
-// MARK: -------------------- 추가 구현 함수들
+// MARK:- 추가 구현 함수들
 extension SignUpVC {
     private func makeHeightArray() {
         for i in 140 ... 200 {
@@ -253,7 +254,7 @@ extension SignUpVC {
     }
 }
 
-// MARK: ------------------------ TextFieldDelegate 관련 메소드
+// MARK:- TextFieldDelegate 관련 메소드
 extension SignUpVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return true
@@ -328,7 +329,7 @@ extension SignUpVC: UITextFieldDelegate {
     
 }
 
-// MARK: ------------------------ PickerViewDataSource 관련 메소
+// MARK:- PickerViewDataSource 관련 메소드
 extension SignUpVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

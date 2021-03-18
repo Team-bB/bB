@@ -13,12 +13,16 @@ struct phoneAuth: Codable {
 }
 
 class AuthViewController: UIViewController {
-    
+    // MARK:- 변수 선언
     let maxLength = 4
     let grayColor = #colorLiteral(red: 0.7036006266, green: 0.7036006266, blue: 0.7036006266, alpha: 1)
     let orangeColor = #colorLiteral(red: 1, green: 0.6597687742, blue: 0.3187801202, alpha: 1)
+    
+    // MARK:- @IBOutlet
     @IBOutlet weak var authNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    
+    // MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +38,7 @@ class AuthViewController: UIViewController {
 
     }
     
+    // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
         postTest()
 //        guard let whereTogGo = API.shared.whereToGo else { return }
@@ -45,6 +50,7 @@ class AuthViewController: UIViewController {
 //        }
     }
     
+    // MARK:- 구현 함수들
     private func postTest() {
         let url = API.shared.BASE_URL + "/auth/number"
         var request = URLRequest(url: URL(string: url)!)
@@ -103,7 +109,7 @@ class AuthViewController: UIViewController {
     }
 }
 
-// MARK: TextField ------------------------
+// MARK:- TextFieldDelegate
 extension AuthViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }

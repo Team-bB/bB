@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
-    // MARK: IBOutlet 및 변수 ------------------------
+    // MARK:- @IBOutlet 및 변수
     let maxLength = 11
     let grayColor = #colorLiteral(red: 0.7036006266, green: 0.7036006266, blue: 0.7036006266, alpha: 1)
     let orangeColor = #colorLiteral(red: 1, green: 0.6597687742, blue: 0.3187801202, alpha: 1)
@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     
-    // MARK: viewDidLoad() ------------------------
+    // MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
 
     }
 
-    // MARK: IBAction 함수 ------------------------
+    // MARK:- IBAction 함수
     @IBAction func btnTapped(_ sender: Any) {
         guard let phoneNumber = phoneNumberTextField.text else { return }
 
@@ -46,7 +46,8 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: 전화번호 유효성 검사
+    
+    // MARK:- 전화번호 유효성 검사
     func checkPhoneNumber(_ phoneNumber: String) -> Bool {
         let firstIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 0)
         let forthIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 3)
@@ -59,7 +60,7 @@ class ViewController: UIViewController {
         return false
     }
     
-    // MARK: Alamofire ------------------------
+    // MARK:- Alamofire
     private func postTest() {
         let url = API.shared.BASE_URL + "/auth"
         var request = URLRequest(url: URL(string: url)!)
@@ -88,7 +89,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: Alter function ---------------------
+    // MARK:- Alter function
     func Output_Alert(title : String, message : String, text : String) {
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -98,7 +99,7 @@ class ViewController: UIViewController {
     }
 }
 
-// MARK: TextField ------------------------
+// MARK:- TextField
 extension ViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
