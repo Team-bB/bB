@@ -1,11 +1,9 @@
 package com.teambB.koting.controller;
 
-import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MemberRepository;
 import com.teambB.koting.service.MemberService;
 import java.io.UnsupportedEncodingException;
-import java.util.Random;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityManager;
@@ -14,11 +12,9 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
@@ -35,34 +31,6 @@ public class MemberController {
   @Autowired EntityManager em;
   private HashMap<String, String> dic = new HashMap<String, String>();
 
-  @PostMapping("/test")
-  public String testToken(String input) {
-    if (input.equals("test"))
-      return "success";
-    return "fail";
-  }
-
-  @PostMapping("/signUp")
-  public boolean signUp(@RequestBody JSONObject object) throws UnsupportedEncodingException, MessagingException {
-    String email = object.get("email").toString();
-    String authKey = makeRandomString(6);
-    Member member = Member.createMember(object, authKey);
-    memberService.join(member);
-    sendMail(email, authKey);
-    return true;
-  }
-
-  @GetMapping("/signUpEmail")
-  public String authEmail(@RequestParam("email") String email, @RequestParam("authKey") String authKey) {
-    Member findMember = memberService.findOneByEmail(email);
-    if (findMember.getAuthKey().equals(authKey)) {
-      findMember.setAuthStatus(true);
-      memberRepository.save(findMember);
-      return "동국대학교 학생인증이 완료되었습니다. 지금부터 정상적으로 서비스 이용이 가능합니다.";
-    }
-    return "인증에 실패하였습니다.";
-  }
-
   @PostMapping("/auth")
   public boolean sendCode(@RequestBody JSONObject object) {
 
@@ -70,12 +38,11 @@ public class MemberController {
     String api_key = "NCSRF0PYIQASDVPU";
     String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
     Message coolsms = new Message(api_key, api_secret);
-    String code = makeRandomNumber(6);
+    String code = Member.makeRandomNumber(6);
     String message = "[코팅] 인증번호[" + code + "]를 입력해주세요.";
+    dic.put(phoneNumber, code);
 
     System.out.println(code);
-
-    dic.put(phoneNumber, code);
 
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("to", phoneNumber);
@@ -83,8 +50,6 @@ public class MemberController {
     params.put("type", "SMS");
     params.put("text", message);
     params.put("app_version", "test app 1.2");
-
-    /*
     try {
       JSONObject obj = (JSONObject) coolsms.send(params);
       System.out.println(obj.toString());
@@ -93,47 +58,50 @@ public class MemberController {
       System.out.println(e.getCode());
       return false;
     }
-     */
-
     return true;
   }
 
   @PostMapping("/auth/number")
-  public boolean checkCode(@RequestBody JSONObject object) {
+  public String checkCode(@RequestBody JSONObject object) {
+
     String phoneNumber = object.get("phoneNumber").toString();
     String code = object.get("code").toString();
-    if (dic.get(phoneNumber).toString().equals(code)) {  // 인증번호 일치
-      // 2가지 경우
-      // 1. 가입 된 경우   -> 필요한 정보들 전체 리턴
-      // 2. 미 가입된 경우  -> 회원가입 창으로 보내게끔 리턴
+    if (dic.get(phoneNumber).toString().equals(code)) {
       dic.remove(phoneNumber);
-      return true;
+      Member member = memberService.findOneByNumber(phoneNumber);
+      if (member.getNumber().equals(phoneNumber)) { // 가입되어 있으면
+        return member.getAccount_id();
+      }
+      else { // 가입되어 있지 않으면
+        // 로그인페이지로 이동
+        return "moveRegister";
+      }
     }
     dic.remove(phoneNumber);                  // 인증번호 불 일치
-    return false;
+    return "phoneAuthFailed";
   }
 
-  public String makeRandomNumber(int length) {
-    Random rand = new Random();
-    String numStr = "";
-    for (int i = 0; i < length; i++) {
-      String ran = Integer.toString(rand.nextInt(10));
-      numStr += ran;
-    }
-    System.out.println(numStr);
-    return numStr;
+  @PostMapping("/signUp")
+  public String signUp(@RequestBody JSONObject object) throws UnsupportedEncodingException, MessagingException {
+
+    String email = object.get("email").toString();
+    String authKey = Member.makeRandomString(8);
+    Member member = Member.createMember(object, authKey);
+    memberService.join(member);
+    sendMail(email, authKey);
+    return member.getAccount_id();
   }
 
-  public String makeRandomString(int length) {
-    StringBuffer buffer = new StringBuffer();
-    Random random = new Random();
+  @GetMapping("/signUpEmail")
+  public String authEmail(@RequestParam("email") String email, @RequestParam("authKey") String authKey) {
 
-    String chars[] = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,1,2,3,4,5,6,7,8,9".split(",");
-
-    for (int i = 0; i < length; i++) {
-      buffer.append(chars[random.nextInt(chars.length)]);
+    Member findMember = memberService.findOneByEmail(email);
+    if (findMember.getAuthKey().equals(authKey)) {
+      findMember.setAuthStatus(true);
+      memberRepository.save(findMember);
+      return "동국대학교 학생인증이 완료되었습니다. 지금부터 정상적으로 서비스 이용이 가능합니다.";
     }
-    return buffer.toString();
+    return "인증에 실패하였습니다.";
   }
 
   public void sendMail(String email, String authKey) throws MessagingException, UnsupportedEncodingException {

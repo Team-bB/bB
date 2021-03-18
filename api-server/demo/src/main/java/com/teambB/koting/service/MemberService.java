@@ -42,4 +42,8 @@ public class MemberService {
   public Member findOneByEmail(String email) {
     return memberRepository.findByEmail(email);
   }
+
+  public Member findOneByNumber(String number) {
+    return memberRepository.findByNumber(number);
+  }
 }

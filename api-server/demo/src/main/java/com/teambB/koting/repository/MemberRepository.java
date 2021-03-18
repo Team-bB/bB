@@ -33,6 +33,12 @@ public class MemberRepository {
         .getSingleResult();
   }
 
+  public Member findByNumber(String number) {
+    return em.createQuery("select m from Member m where m.number = :number", Member.class)
+        .setParameter("number", number)
+        .getSingleResult();
+  }
+
   public List<Member> findAll() {
     return em.createQuery("select m from Member m", Member.class)
         .getResultList();

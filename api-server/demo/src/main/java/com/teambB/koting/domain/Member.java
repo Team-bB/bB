@@ -25,6 +25,7 @@ public class Member {
   @Column(name = "member_id")
   private Long id;
 
+  private String account_id;
   private String college;
   private String subject;
   private String height;
@@ -54,10 +55,11 @@ public class Member {
     member.setNumber(object.get("number").toString());
     member.setAuthStatus(false);
     member.setAuthKey(authKey);
+    member.setAccount_id(member.makeRandomString(16));
     return member;
   }
 
-  public String makeRandomString(int length) {
+  public static String makeRandomString(int length) {
 
     StringBuffer buffer = new StringBuffer();
     Random random = new Random();
@@ -68,5 +70,16 @@ public class Member {
       buffer.append(chars[random.nextInt(chars.length)]);
     }
     return buffer.toString();
+  }
+
+  public static String makeRandomNumber(int length) {
+    Random rand = new Random();
+    String numStr = "";
+    for (int i = 0; i < length; i++) {
+      String ran = Integer.toString(rand.nextInt(10));
+      numStr += ran;
+    }
+    System.out.println(numStr);
+    return numStr;
   }
 }
