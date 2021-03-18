@@ -26,8 +26,9 @@ public class Member {
   private Long id;
 
   private String account_id;
+  private String sex;
   private String college;
-  private String subject;
+  private String major;
   private String height;
   private String age;
   private String mbti;
@@ -46,13 +47,14 @@ public class Member {
   public static Member createMember(JSONObject object, String authKey) {
 
     Member member = new Member();
+    member.setSex(object.get("sex").toString());
     member.setCollege(object.get("college").toString());
-    member.setSubject(object.get("subject").toString());
+    member.setMajor(object.get("major").toString());
     member.setHeight(object.get("height").toString());
     member.setAge(object.get("age").toString());
     member.setMbti(object.get("mbti").toString());
     member.setEmail(object.get("email").toString());
-    member.setNumber(object.get("number").toString());
+    member.setNumber(object.get("phoneNumber").toString());
     member.setAuthStatus(false);
     member.setAuthKey(authKey);
     member.setAccount_id(member.makeRandomString(16));
