@@ -152,6 +152,7 @@ class SignUpVC: UIViewController {
         guard  let email = mail.text else { return }
         if (isValidEmail(email + domain)) {
             print("ValidEmail !!")
+            postText()
         } else {
             print("Not Valid !!!!!!!!!")
         }
@@ -168,24 +169,23 @@ extension SignUpVC {
     }
     
     private func postText() {
-        let url = API.shared.BASE_URL + "/auth"
+        let url = API.shared.BASE_URL + "/signUp"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
         //POST로 보낼 정보
-        guard let sex = sex.text, let phoneNumber = API.shared.phoneNumber, let college = college.text, let major = major.text, let age = age.text, let height = height.text, let MBTI = MBTI.text, let mail = mail.text else { return }
         
         let params = [
-                        "sex" : sex,
-                        "phoneNumber" : phoneNumber,
-                        "college": college,
-                        "major": major,
-                        "age": age,
-                        "height": height,
-                        "mbti": MBTI,
-                        "email": mail + domain
+                        "sex" : sex.text!,
+                        "phoneNumber" : API.shared.phoneNumber!,
+                        "college": college.text!,
+                        "major": major.text!,
+                        "age": age.text!,
+                        "height": height.text!,
+                        "mbti": MBTI.text!,
+                        "email": mail.text! + domain
                     ] as Dictionary
         
         // httpBody에 parameters 추가
@@ -198,7 +198,7 @@ extension SignUpVC {
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:
-                print("POST 성공")
+                print("\n\nPOST 성공")
                 debugPrint(response)
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
@@ -321,7 +321,7 @@ extension SignUpVC: UITextFieldDelegate {
                 MBTI.text = mbtiArray[mbtiPikcerView.selectedRow(inComponent: 0)]
 
             default:
-                return false
+                return true
         }
         return true
     }

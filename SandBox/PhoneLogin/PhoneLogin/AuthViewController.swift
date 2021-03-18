@@ -8,6 +8,10 @@
 import UIKit
 import Alamofire
 
+struct phoneAuth: Codable {
+    var result: String
+}
+
 class AuthViewController: UIViewController {
     
     let maxLength = 4
@@ -32,6 +36,13 @@ class AuthViewController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: Any) {
         postTest()
+//        guard let whereTogGo = API.shared.whereToGo else { return }
+//
+//        if whereTogGo == "phoneAuthFailed" {
+//
+//        } else if whereTogGo == "moveRegister" {
+//
+//        }
     }
     
     private func postTest() {
@@ -42,7 +53,7 @@ class AuthViewController: UIViewController {
         request.timeoutInterval = 10
         
         // POST 로 보낼 정보
-        let params = ["phoneNumber" : API.shared.phoneNumber, //!뺌
+        let params = ["phoneNumber" : API.shared.phoneNumber!, //!뺌
                       "code": authNumberTextField.text!] as Dictionary
         
         // httpBody 에 parameters 추가
@@ -55,8 +66,36 @@ class AuthViewController: UIViewController {
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:
-                print("POST 성공")
-                debugPrint(response)
+                print("\n\nPOST 성공")
+                if let _ = response.value {
+                    let decoder = JSONDecoder()
+                    do {
+                        let product = try decoder.decode(phoneAuth.self, from: response.data!)
+                        print(product.result)
+                        API.shared.whereToGo = product.result
+                        
+                        if product.result == "phoneAuthFailed" {
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true)
+//                                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Intro") else { return }
+//                                vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+//                                self.present(vc, animated: true)
+                            }
+                        } else if product.result == "moveRegister" {
+                            DispatchQueue.main.async {
+                                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Register") else { return }
+                                vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                                self.present(vc, animated: true)
+                            }
+                        } else {
+                            // product.result 를 UserDefault에 저장
+                        }
+                        
+                    } catch {
+                        print(error)
+                    }
+//                    print(body)
+                }
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }

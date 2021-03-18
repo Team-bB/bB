@@ -39,8 +39,8 @@ class ViewController: UIViewController {
         guard let phoneNumber = phoneNumberTextField.text else { return }
 
         if checkPhoneNumber(phoneNumber) {
-            postTest()
             API.shared.phoneNumber = phoneNumber
+            postTest()
         } else {
             Output_Alert(title: "실패", message: "번호를 다시 확인하세요.", text: "확인")
         }
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         request.timeoutInterval = 10
         
         // POST 로 보낼 정보
-        let params = ["phoneNumber": phoneNumberTextField.text] as Dictionary
+        let params = ["phoneNumber": API.shared.phoneNumber!] as Dictionary
         
         // httpBody 에 parameters 추가
         do {
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:
-                print("POST 성공")
+                print("\n\nPOST 성공")
                 debugPrint(response)
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
