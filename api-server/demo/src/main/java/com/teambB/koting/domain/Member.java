@@ -3,10 +3,8 @@ package com.teambB.koting.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,9 +42,10 @@ public class Member {
   @OneToMany(mappedBy = "member")
   private List<Apply> applies = new ArrayList<>();
 
-  public static Member createMember(JSONObject object, String authKey) {
+  public static Member createMember(JSONObject object) {
 
     Member member = new Member();
+    member.setAccount_id(member.makeRandomString(16));
     member.setSex(object.get("sex").toString());
     member.setCollege(object.get("college").toString());
     member.setMajor(object.get("major").toString());
@@ -55,9 +54,8 @@ public class Member {
     member.setMbti(object.get("mbti").toString());
     member.setEmail(object.get("email").toString());
     member.setNumber(object.get("phoneNumber").toString());
+    member.setAuthKey(makeRandomString(8));
     member.setAuthStatus(false);
-    member.setAuthKey(authKey);
-    member.setAccount_id(member.makeRandomString(16));
     return member;
   }
 
@@ -66,7 +64,7 @@ public class Member {
     StringBuffer buffer = new StringBuffer();
     Random random = new Random();
 
-    String chars[] = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,1,2,3,4,5,6,7,8,9".split(",");
+    String chars[] = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,1,2,3,4,5,6,7,8,9".split(",");
 
     for (int i = 0; i < length; i++) {
       buffer.append(chars[random.nextInt(chars.length)]);

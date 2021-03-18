@@ -63,34 +63,37 @@ public class MemberController {
   }
 
   @PostMapping("/auth/number")
-  public String checkCode(@RequestBody JSONObject object) {
+  public JSONObject checkCode(@RequestBody JSONObject object) {
 
+    JSONObject retObject = new JSONObject();
     String phoneNumber = object.get("phoneNumber").toString();
     String code = object.get("code").toString();
     if (dic.get(phoneNumber).toString().equals(code)) {
       dic.remove(phoneNumber);
       List<Member> member = memberService.findOneByNumber(phoneNumber);
       if (!member.isEmpty()) { // 가입되어 있으면
-        return member.get(0).getAccount_id();
+        retObject.put("result", member.get(0).getAccount_id());
       }
       else { // 가입되어 있지 않으면
         // 로그인페이지로 이동
-        return "moveRegister";
+        retObject.put("result", "moveRegister");
       }
+      return retObject;
     }
     dic.remove(phoneNumber);                  // 인증번호 불 일치
-    return "phoneAuthFailed";
+    retObject.put("result", "phoneAuthFailed");
+    return retObject;
   }
 
   @PostMapping("/signUp")
-  public String signUp(@RequestBody JSONObject object) throws UnsupportedEncodingException, MessagingException {
+  public JSONObject signUp(@RequestBody JSONObject object) throws UnsupportedEncodingException, MessagingException {
 
-    String email = object.get("email").toString();
-    String authKey = Member.makeRandomString(8);
-    Member member = Member.createMember(object, authKey);
+    JSONObject retObejct = new JSONObject();
+    Member member = Member.createMember(object);
     memberService.join(member);
-    sendMail(email, authKey);
-    return member.getAccount_id();
+    sendMail(member.getEmail(), member.getAuthKey());
+    retObejct.put("result", member.getAccount_id());
+    return retObejct;
   }
 
   @GetMapping("/signUpEmail")
