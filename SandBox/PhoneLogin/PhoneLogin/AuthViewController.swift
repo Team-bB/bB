@@ -10,6 +10,7 @@ import Alamofire
 
 struct phoneAuth: Codable {
     var result: String
+    var mailAuth: Bool?
 }
 
 class AuthViewController: UIViewController {
@@ -51,6 +52,14 @@ class AuthViewController: UIViewController {
     }
     
     // MARK:- 구현 함수들
+    func Output_Alert(title : String, message : String, text : String) {
+
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: text, style: UIAlertAction.Style.cancel, handler: nil)
+        alertController.addAction(okButton)
+        return self.present(alertController, animated: true, completion: nil)
+    }
+    
     private func postTest() {
         let url = API.shared.BASE_URL + "/auth/number"
         var request = URLRequest(url: URL(string: url)!)
@@ -78,7 +87,7 @@ class AuthViewController: UIViewController {
                     do {
                         let product = try decoder.decode(phoneAuth.self, from: response.data!)
                         print(product.result)
-                        API.shared.whereToGo = product.result
+//                        API.shared.whereToGo = product.result
                         
                         if product.result == "phoneAuthFailed" {
                             DispatchQueue.main.async {
@@ -89,20 +98,40 @@ class AuthViewController: UIViewController {
                             }
                         } else if product.result == "moveRegister" {
                             DispatchQueue.main.async {
+                                
+                                // MARK:- 여기부분을 Segue로 구현하면 더 좋다. !!!!!!!@@@@@@@@@@@@@@@ 중요 @@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!
                                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Register") else { return }
                                 vc.modalPresentationStyle = .fullScreen
                                 self.present(vc, animated: true)
                             }
                         } else {
-                            // product.result 를 UserDefault에 저장
+                            
+                            // 이미 가입한 사람일때
+                            guard let mailAuth = product.mailAuth else { return }
+                            
+                            UserDefaults.standard.set(mailAuth, forKey: "mailAuth")
                             UserDefaults.standard.set(product.result, forKey: "accountId")
                             
-                            // 미팅리스트로 보내기 !
-                            DispatchQueue.main.async {
-                                guard let meetingListVC = self.storyboard?.instantiateViewController(identifier: "MeetingList") else {return}
-//                                meetingListVC.modalTransitionStyle = .flipHorizontal
-                                meetingListVC.modalPresentationStyle = .fullScreen
-                                self.present(meetingListVC, animated: true)
+                            if mailAuth { // 메일 인증 O
+                                
+                                // MARK:- 여기부분을 Segue로 구현하면 더 좋다. !!!!!!!@@@@@@@@@@@@@@@ 중요 @@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!
+                                DispatchQueue.main.async {
+                                    guard let meetingListVC = self.storyboard?.instantiateViewController(identifier: "MeetingList") else {return}
+    //                                meetingListVC.modalTransitionStyle = .flipHorizontal
+                                    meetingListVC.modalPresentationStyle = .fullScreen
+                                    self.present(meetingListVC, animated: true)
+                                }
+                            
+                            } else {
+                                
+                                DispatchQueue.main.async {
+                                    self.Output_Alert(title: "알림", message: "메일 인증후 이용 가능합니다!", text: "확인")
+                                    guard let introVC = self.storyboard?.instantiateViewController(identifier: "Intro") else {return}
+                                    
+                                    // MARK:- 여기부분을 Segue로 구현하면 더 좋다. !!!!!!!@@@@@@@@@@@@@@@ 중요 @@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!
+                                    introVC.modalPresentationStyle = .fullScreen
+                                    self.present(introVC, animated: true)
+                                }
                             }
  
                         }
