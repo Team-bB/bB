@@ -95,6 +95,7 @@ public class MemberController {
     memberService.join(member);
     sendMail(member.getEmail(), member.getAuthKey()); // 비동기처리
     retObejct.put("result", member.getAccount_id());
+    retObejct.put("mailAuth", member.getAuthStatus());
     return retObejct;
   }
 
