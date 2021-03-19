@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MeetController {
 
   @Autowired private final MemberService memberService;
-  @Autowired private final Member member;
 
   @PostMapping("/checkStatus")
   public JSONObject checkStatus(@RequestBody JSONObject object) {
