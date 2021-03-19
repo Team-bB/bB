@@ -8,13 +8,21 @@
 import UIKit
 import Alamofire
 
+struct phoneAuth: Codable {
+    var result: String
+}
+
 class AuthViewController: UIViewController {
-    
+    // MARK:- 변수 선언
     let maxLength = 4
     let grayColor = #colorLiteral(red: 0.7036006266, green: 0.7036006266, blue: 0.7036006266, alpha: 1)
     let orangeColor = #colorLiteral(red: 1, green: 0.6597687742, blue: 0.3187801202, alpha: 1)
+    
+    // MARK:- @IBOutlet
     @IBOutlet weak var authNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    
+    // MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,10 +38,19 @@ class AuthViewController: UIViewController {
 
     }
     
+    // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
         postTest()
+//        guard let whereTogGo = API.shared.whereToGo else { return }
+//
+//        if whereTogGo == "phoneAuthFailed" {
+//
+//        } else if whereTogGo == "moveRegister" {
+//
+//        }
     }
     
+    // MARK:- 구현 함수들
     private func postTest() {
         let url = API.shared.BASE_URL + "/auth/number"
         var request = URLRequest(url: URL(string: url)!)
@@ -42,7 +59,7 @@ class AuthViewController: UIViewController {
         request.timeoutInterval = 10
         
         // POST 로 보낼 정보
-        let params = ["phoneNumber" : API.shared.phoneNumber, //!뺌
+        let params = ["phoneNumber" : API.shared.phoneNumber!, //!뺌
                       "code": authNumberTextField.text!] as Dictionary
         
         // httpBody 에 parameters 추가
@@ -55,8 +72,36 @@ class AuthViewController: UIViewController {
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:
-                print("POST 성공")
-                debugPrint(response)
+                print("\n\nPOST 성공")
+                if let _ = response.value {
+                    let decoder = JSONDecoder()
+                    do {
+                        let product = try decoder.decode(phoneAuth.self, from: response.data!)
+                        print(product.result)
+                        API.shared.whereToGo = product.result
+                        
+                        if product.result == "phoneAuthFailed" {
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true)
+//                                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Intro") else { return }
+//                                vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+//                                self.present(vc, animated: true)
+                            }
+                        } else if product.result == "moveRegister" {
+                            DispatchQueue.main.async {
+                                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Register") else { return }
+                                vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                                self.present(vc, animated: true)
+                            }
+                        } else {
+                            // product.result 를 UserDefault에 저장
+                        }
+                        
+                    } catch {
+                        print(error)
+                    }
+//                    print(body)
+                }
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
@@ -64,7 +109,7 @@ class AuthViewController: UIViewController {
     }
 }
 
-// MARK: TextField ------------------------
+// MARK:- TextFieldDelegate
 extension AuthViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }

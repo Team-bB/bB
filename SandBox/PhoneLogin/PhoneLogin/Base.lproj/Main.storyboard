@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2n3-bS-iyj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tKS-oW-Omi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="88.392857142857139"/>
+            <point key="canvasLocation" x="19" y="113"/>
         </scene>
         <!--Networking View Controller-->
         <scene sceneID="CEU-EO-qy1">
@@ -113,7 +113,6 @@
                                 <connections>
                                     <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KTy-Sm-Ltw"/>
                                     <action selector="buttonTapped:" destination="Xbp-pJ-Of1" eventType="touchUpInside" id="0A4-hS-8JQ"/>
-                                    <segue destination="2n3-bS-iyj" kind="show" id="qUR-Ry-kdt"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x70-Ug-L8d">
@@ -150,12 +149,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0W-Hy-JWN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="820" y="88"/>
+            <point key="canvasLocation" x="923" y="113"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="dgz-2G-HvA">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="2n3-bS-iyj" customClass="SignUpVC" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" modalPresentationStyle="fullScreen" id="2n3-bS-iyj" customClass="SignUpVC" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TSu-kJ-2hd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,6 +230,7 @@
                                 <state key="normal" title="가입하기"/>
                                 <connections>
                                     <action selector="signUpButtonTapped:" destination="2n3-bS-iyj" eventType="touchUpInside" id="grd-Ba-m5N"/>
+                                    <segue destination="tKS-oW-Omi" kind="show" id="1Ld-3n-gZv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="웹 메일 인증 완료후 서비스 이용이 가능합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-vT-Bio">
@@ -271,37 +271,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOb-s3-RAX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740.5797101449277" y="87.723214285714278"/>
+            <point key="canvasLocation" x="1577" y="-631"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="5si-Zb-mbF">
             <objects>
-                <viewController id="tKS-oW-Omi" customClass="StartViewController" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Intro" modalPresentationStyle="fullScreen" id="tKS-oW-Omi" customClass="StartViewController" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dbc-6X-pv5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Koting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htX-3t-n6k">
-                                <rect key="frame" x="107" y="253" width="200" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Koting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htX-3t-n6k">
+                                <rect key="frame" x="16" y="244" width="382" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsx-qe-qxO">
-                                <rect key="frame" x="107" y="492" width="200" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsx-qe-qxO">
+                                <rect key="frame" x="100" y="496" width="214" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yjM-PN-nxk"/>
+                                </constraints>
                                 <state key="normal" title="시작하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="aD3-9l-7aB"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="" id="aD3-9l-7aB"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VUb-aR-dnc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VUb-aR-dnc" firstAttribute="trailing" secondItem="Lsx-qe-qxO" secondAttribute="trailing" constant="100" id="2fi-rU-DNt"/>
+                            <constraint firstItem="Lsx-qe-qxO" firstAttribute="top" secondItem="htX-3t-n6k" secondAttribute="bottom" constant="180" id="3Xn-Uu-32t"/>
+                            <constraint firstItem="htX-3t-n6k" firstAttribute="top" secondItem="VUb-aR-dnc" secondAttribute="top" constant="200" id="AsO-pK-FRP"/>
+                            <constraint firstItem="Lsx-qe-qxO" firstAttribute="leading" secondItem="VUb-aR-dnc" secondAttribute="leading" constant="100" id="P8I-ZP-8hQ"/>
+                            <constraint firstItem="htX-3t-n6k" firstAttribute="leading" secondItem="VUb-aR-dnc" secondAttribute="leading" constant="16" id="gUP-4M-P1o"/>
+                            <constraint firstItem="VUb-aR-dnc" firstAttribute="trailing" secondItem="htX-3t-n6k" secondAttribute="trailing" constant="16" id="nfU-W7-pt4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2lB-2W-LE6"/>
                 </viewController>

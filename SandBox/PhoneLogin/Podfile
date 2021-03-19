@@ -6,6 +6,6 @@ target 'PhoneLogin' do
   use_frameworks!
 
   # Pods for PhoneLogin
-pod 'Firebase/Auth'
 pod 'Alamofire', '~> 5.1'
+pod 'SwiftyJSON', '~> 4.0'
 end

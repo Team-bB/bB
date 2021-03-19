@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 class SignUpVC: UIViewController {
-    // MARK: ----------------------- 변수
+    // MARK:- 변수
     let grayColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
     let orangeColor = #colorLiteral(red: 1, green: 0.6597687742, blue: 0.3187801202, alpha: 1)
     
@@ -67,7 +67,7 @@ class SignUpVC: UIViewController {
     
 
     
-    // MARK: ----------------------- PickerView 변수 선언
+    // MARK:- PickerView 선언
     var sexPickerView = UIPickerView()
     var collegePickerView = UIPickerView()
     var majorPickerView = UIPickerView()
@@ -75,7 +75,7 @@ class SignUpVC: UIViewController {
     var agePickerView = UIPickerView()
     var heightPickerView = UIPickerView()
     
-    // MARK: ----------------------- OUTLET
+    // MARK:- @IBOutlet 변수
     @IBOutlet weak var sex: UITextField!
     @IBOutlet weak var college: UITextField!
     @IBOutlet weak var major: UITextField!
@@ -86,13 +86,14 @@ class SignUpVC: UIViewController {
 
     @IBOutlet weak var signUpButton: UIButton!
     
+    // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         signUpButton.layer.cornerRadius = 10
         signUpButton.backgroundColor = .opaqueSeparator
         
-        // MARK: ------------------- Notification - TextField 관련
+    // MARK:- Notification Observer & delegate: TextField 관련
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: sex)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: college)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: major)
@@ -109,7 +110,7 @@ class SignUpVC: UIViewController {
         height.delegate = self
         mail.delegate = self
         
-        // MARK: ------------------- PickerView 관련
+    // MARK:- PickerView 관련
         sex.inputView = sexPickerView
         college.inputView = collegePickerView
         major.inputView = majorPickerView
@@ -146,12 +147,13 @@ class SignUpVC: UIViewController {
         super.viewDidAppear(animated)
 
     }
-    
-    // MARK: ----------------- IBAction func
+
+    // MARK:- @IBAction func
     @IBAction func signUpButtonTapped(_ sender: Any) {
         guard  let email = mail.text else { return }
         if (isValidEmail(email + domain)) {
             print("ValidEmail !!")
+            postText()
         } else {
             print("Not Valid !!!!!!!!!")
         }
@@ -159,7 +161,7 @@ class SignUpVC: UIViewController {
     
 }
 
-// MARK: -------------------- 추가 구현 함수들
+// MARK:- 추가 구현 함수들
 extension SignUpVC {
     private func makeHeightArray() {
         for i in 140 ... 200 {
@@ -168,24 +170,23 @@ extension SignUpVC {
     }
     
     private func postText() {
-        let url = API.shared.BASE_URL + "/auth"
+        let url = API.shared.BASE_URL + "/signUp"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
         //POST로 보낼 정보
-        guard let sex = sex.text, let phoneNumber = API.shared.phoneNumber, let college = college.text, let major = major.text, let age = age.text, let height = height.text, let MBTI = MBTI.text, let mail = mail.text else { return }
         
         let params = [
-                        "sex" : sex,
-                        "phoneNumber" : phoneNumber,
-                        "college": college,
-                        "major": major,
-                        "age": age,
-                        "height": height,
-                        "mbti": MBTI,
-                        "email": mail + domain
+                        "sex" : sex.text!,
+                        "phoneNumber" : API.shared.phoneNumber!,
+                        "college": college.text!,
+                        "major": major.text!,
+                        "age": age.text!,
+                        "height": height.text!,
+                        "mbti": MBTI.text!,
+                        "email": mail.text! + domain
                     ] as Dictionary
         
         // httpBody에 parameters 추가
@@ -198,7 +199,7 @@ extension SignUpVC {
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:
-                print("POST 성공")
+                print("\n\nPOST 성공")
                 debugPrint(response)
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
@@ -253,7 +254,7 @@ extension SignUpVC {
     }
 }
 
-// MARK: ------------------------ TextFieldDelegate 관련 메소드
+// MARK:- TextFieldDelegate 관련 메소드
 extension SignUpVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return true
@@ -321,14 +322,14 @@ extension SignUpVC: UITextFieldDelegate {
                 MBTI.text = mbtiArray[mbtiPikcerView.selectedRow(inComponent: 0)]
 
             default:
-                return false
+                return true
         }
         return true
     }
     
 }
 
-// MARK: ------------------------ PickerViewDataSource 관련 메소
+// MARK:- PickerViewDataSource 관련 메소드
 extension SignUpVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
