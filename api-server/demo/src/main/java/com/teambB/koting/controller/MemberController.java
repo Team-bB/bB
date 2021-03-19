@@ -75,6 +75,7 @@ public class MemberController {
       List<Member> member = memberService.findOneByNumber(phoneNumber);
       if (!member.isEmpty()) { // 가입되어 있으면
         retObject.put("result", member.get(0).getAccount_id());
+        retObject.put("mailAuth", member.get(0).getAuthStatus());
       }
       else { // 가입되어 있지 않으면
         // 로그인페이지로 이동
