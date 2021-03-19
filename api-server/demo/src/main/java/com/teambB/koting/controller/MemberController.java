@@ -58,10 +58,10 @@ public class MemberController {
     } catch (CoolsmsException e) {
       System.out.println(e.getMessage());
       System.out.println(e.getCode());
-      return false;
+      return "false";
     }
 
-    return code;
+    return "true";
   }
 
   @PostMapping("/auth/number")
