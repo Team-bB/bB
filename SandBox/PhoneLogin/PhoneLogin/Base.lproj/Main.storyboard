@@ -151,6 +151,34 @@
             </objects>
             <point key="canvasLocation" x="923" y="113"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="und-gn-YB1">
+            <objects>
+                <viewController storyboardIdentifier="MeetingList" id="T1Q-co-H5s" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fHN-WV-CE7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 회원가입 했음, 미팅리스트 보여준다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJH-r5-sJM">
+                                <rect key="frame" x="0.0" y="288" width="414" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1dI-rB-Mnt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HJH-r5-sJM" firstAttribute="top" secondItem="1dI-rB-Mnt" secondAttribute="top" constant="244" id="5Ie-wc-VII"/>
+                            <constraint firstItem="1dI-rB-Mnt" firstAttribute="trailing" secondItem="HJH-r5-sJM" secondAttribute="trailing" id="5tJ-h2-ywE"/>
+                            <constraint firstItem="HJH-r5-sJM" firstAttribute="leading" secondItem="1dI-rB-Mnt" secondAttribute="leading" id="BBi-di-SUh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w66-yC-hKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2471" y="78"/>
+        </scene>
         <!--Sign UpVC-->
         <scene sceneID="dgz-2G-HvA">
             <objects>
@@ -211,7 +239,6 @@
                                 <state key="normal" title="가입하기"/>
                                 <connections>
                                     <action selector="signUpButtonTapped:" destination="2n3-bS-iyj" eventType="touchUpInside" id="grd-Ba-m5N"/>
-                                    <segue destination="tKS-oW-Omi" kind="show" id="1Ld-3n-gZv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="웹 메일 인증 완료후 서비스 이용이 가능합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-vT-Bio">
@@ -268,6 +295,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOb-s3-RAX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1576.8115942028987" y="-631.47321428571422"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hB5-BB-dgK">
+            <objects>
+                <viewController storyboardIdentifier="NoMail" id="Wri-sg-fvE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ixy-AC-yC6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증 완료 후 서비스 이용가능" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWX-Al-yFN">
+                                <rect key="frame" x="0.0" y="276" width="414" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Y2Z-iK-YoB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SWX-Al-yFN" firstAttribute="leading" secondItem="Y2Z-iK-YoB" secondAttribute="leading" id="Zuo-7i-PNB"/>
+                            <constraint firstItem="SWX-Al-yFN" firstAttribute="top" secondItem="Y2Z-iK-YoB" secondAttribute="top" constant="232" id="bvE-HL-JlP"/>
+                            <constraint firstItem="Y2Z-iK-YoB" firstAttribute="trailing" secondItem="SWX-Al-yFN" secondAttribute="trailing" id="jnL-j9-kkE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOK-Hd-unN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2505.7971014492755" y="-631.47321428571422"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="5si-Zb-mbF">

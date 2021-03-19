@@ -8,6 +8,10 @@
 import UIKit
 import Alamofire
 
+struct Auth: Codable {
+    var result: String
+}
+
 class SignUpVC: UIViewController {
     // MARK:- 변수
     let grayColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
@@ -200,7 +204,27 @@ extension SignUpVC {
             switch response.result {
             case .success:
                 print("\n\nPOST 성공")
-                debugPrint(response)
+                if let _ = response.value {
+                    let decoder = JSONDecoder()
+                    do {
+                        let product = try decoder.decode(Auth.self, from: response.data!)
+                        print(product.result)
+                        UserDefaults.standard.set(product.result, forKey: "accountId")
+                        
+                        
+                        // 메일인증 후 이용 가능 하다고 Alert 박스 띄우고 메인으로 이동 !!
+                        DispatchQueue.main.async {
+                            guard let noMailVC = self.storyboard?.instantiateViewController(identifier: "NoMail") else {return}
+                    
+                            noMailVC.modalPresentationStyle = .fullScreen
+                            self.present(noMailVC, animated: true)
+                        }
+                    } catch {
+                        print(error)
+                    }
+                }
+                
+                
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }

@@ -90,11 +90,21 @@ class AuthViewController: UIViewController {
                         } else if product.result == "moveRegister" {
                             DispatchQueue.main.async {
                                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "Register") else { return }
-                                vc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                                vc.modalPresentationStyle = .fullScreen
                                 self.present(vc, animated: true)
                             }
                         } else {
                             // product.result 를 UserDefault에 저장
+                            UserDefaults.standard.set(product.result, forKey: "accountId")
+                            
+                            // 미팅리스트로 보내기 !
+                            DispatchQueue.main.async {
+                                guard let meetingListVC = self.storyboard?.instantiateViewController(identifier: "MeetingList") else {return}
+//                                meetingListVC.modalTransitionStyle = .flipHorizontal
+                                meetingListVC.modalPresentationStyle = .fullScreen
+                                self.present(meetingListVC, animated: true)
+                            }
+ 
                         }
                         
                     } catch {
