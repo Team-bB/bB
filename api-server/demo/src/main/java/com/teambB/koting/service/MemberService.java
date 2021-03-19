@@ -46,4 +46,8 @@ public class MemberService {
   public List<Member> findOneByNumber(String number) {
     return memberRepository.findByNumber(number);
   }
+
+  public List<Member> findOneByAccountId(String accountId) {
+    return memberRepository.findByAccountId(accountId);
+  }
 }

@@ -93,7 +93,7 @@ public class MemberController {
     JSONObject retObejct = new JSONObject();
     Member member = Member.createMember(object);
     memberService.join(member);
-    sendMail(member.getEmail(), member.getAuthKey());
+    sendMail(member.getEmail(), member.getAuthKey()); // 비동기처리
     retObejct.put("result", member.getAccount_id());
     return retObejct;
   }

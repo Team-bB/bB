@@ -49,4 +49,10 @@ public class MemberRepository {
         .setParameter("number", number)
         .getResultList();
   }
+
+  public List<Member> findByAccountId(String accountId) {
+    return em.createQuery("select  m from Member m where m.account_id = :accountId", Member.class)
+        .setParameter("account_id", accountId)
+        .getResultList();
+  }
 }
