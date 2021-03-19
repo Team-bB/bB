@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880FCDCA2604AEAD00101F5A /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FCDC92604AEAD00101F5A /* StartViewController.swift */; };
 		881B0A7E26006D3400FD1E28 /* NetworkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881B0A7D26006D3400FD1E28 /* NetworkingViewController.swift */; };
 		8885107A25FB8B3400367F83 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8885107925FB8B3400367F83 /* AuthViewController.swift */; };
 		8885107D25FB91B000367F83 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8885107C25FB91B000367F83 /* API.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		3DAD030412C7D8402E7FCF05 /* Pods-PhoneLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneLogin.debug.xcconfig"; path = "Target Support Files/Pods-PhoneLogin/Pods-PhoneLogin.debug.xcconfig"; sourceTree = "<group>"; };
+		880FCDC92604AEAD00101F5A /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		881B0A7D26006D3400FD1E28 /* NetworkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingViewController.swift; sourceTree = "<group>"; };
 		8885107925FB8B3400367F83 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8885107C25FB91B000367F83 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				88D17B6625F74C3200200CB5 /* LaunchScreen.storyboard */,
 				88D17B6925F74C3200200CB5 /* Info.plist */,
 				8885107C25FB91B000367F83 /* API.swift */,
+				880FCDC92604AEAD00101F5A /* StartViewController.swift */,
 			);
 			path = PhoneLogin;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88A8F0D22601EAE30086EA3E /* SignUpVC.swift in Sources */,
+				880FCDCA2604AEAD00101F5A /* StartViewController.swift in Sources */,
 				8885107A25FB8B3400367F83 /* AuthViewController.swift in Sources */,
 				88D17B6025F74C2F00200CB5 /* ViewController.swift in Sources */,
 				881B0A7E26006D3400FD1E28 /* NetworkingViewController.swift in Sources */,
