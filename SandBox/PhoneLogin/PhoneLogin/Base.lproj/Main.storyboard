@@ -160,60 +160,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원정보 입력" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICh-Yq-cDI">
-                                <rect key="frame" x="0.0" y="126" width="414" height="36"/>
+                                <rect key="frame" x="0.0" y="70" width="414" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="d0A-4S-YuB">
-                                <rect key="frame" x="82" y="229" width="250" height="370"/>
+                                <rect key="frame" x="82" y="229" width="250" height="314"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vP4-e5-L2Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="34"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동국대 웹 메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mic-ve-OOq">
-                                                <rect key="frame" x="0.0" y="0.0" width="163" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="163" id="dCB-5S-e6A"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="@dgu.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-Dn-djU">
-                                                <rect key="frame" x="163" y="0.0" width="87" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="성별" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0tZ-Q6-0FY">
-                                        <rect key="frame" x="0.0" y="56" width="250" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="단과대학" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0F4-NK-oa8">
-                                        <rect key="frame" x="0.0" y="112" width="250" height="34"/>
+                                        <rect key="frame" x="0.0" y="56" width="250" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ekE-FP-6EW">
-                                        <rect key="frame" x="0.0" y="168" width="250" height="34"/>
+                                        <rect key="frame" x="0.0" y="112" width="250" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="나이" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SkS-tI-Y8M">
-                                        <rect key="frame" x="0.0" y="224" width="250" height="34"/>
+                                        <rect key="frame" x="0.0" y="168" width="250" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="키" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ve-lY-zTG">
-                                        <rect key="frame" x="0.0" y="280" width="250" height="34"/>
+                                        <rect key="frame" x="0.0" y="224" width="250" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MBTI" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ltt-17-dfv">
-                                        <rect key="frame" x="0.0" y="336" width="250" height="34"/>
+                                        <rect key="frame" x="0.0" y="280" width="250" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -223,7 +204,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4B-Aj-WoQ">
-                                <rect key="frame" x="82" y="668" width="250" height="36"/>
+                                <rect key="frame" x="82" y="612" width="250" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -234,9 +215,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="웹 메일 인증 완료후 서비스 이용이 가능합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-vT-Bio">
-                                <rect key="frame" x="82" y="200" width="250" height="14.5"/>
+                                <rect key="frame" x="16" y="200" width="382" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동국대 웹 메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mic-ve-OOq">
+                                <rect key="frame" x="82" y="158" width="129" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text=" @dgu.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdg-Dn-djU">
+                                <rect key="frame" x="228" y="166" width="86" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -244,17 +236,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ICh-Yq-cDI" firstAttribute="leading" secondItem="nno-vi-r1x" secondAttribute="leading" id="09V-WO-mtj"/>
+                            <constraint firstItem="Xdg-Dn-djU" firstAttribute="leading" secondItem="Mic-ve-OOq" secondAttribute="trailing" constant="17" id="0Wz-R8-YdL"/>
                             <constraint firstItem="q4B-Aj-WoQ" firstAttribute="top" secondItem="d0A-4S-YuB" secondAttribute="bottom" constant="69" id="3bH-AC-cVp"/>
+                            <constraint firstItem="Mic-ve-OOq" firstAttribute="leading" secondItem="nno-vi-r1x" secondAttribute="leading" constant="82" id="6vk-ya-2Fq"/>
                             <constraint firstItem="nno-vi-r1x" firstAttribute="trailing" secondItem="d0A-4S-YuB" secondAttribute="trailing" constant="82" id="83v-vb-FbZ"/>
                             <constraint firstItem="d0A-4S-YuB" firstAttribute="leading" secondItem="nno-vi-r1x" secondAttribute="leading" constant="82" id="Bse-YE-BGw"/>
                             <constraint firstItem="q4B-Aj-WoQ" firstAttribute="leading" secondItem="nno-vi-r1x" secondAttribute="leading" constant="82" id="C7z-tP-zai"/>
-                            <constraint firstItem="d0A-4S-YuB" firstAttribute="top" secondItem="ICh-Yq-cDI" secondAttribute="bottom" constant="67" id="KdC-TN-wR3"/>
-                            <constraint firstItem="hE4-vT-Bio" firstAttribute="leading" secondItem="nno-vi-r1x" secondAttribute="leading" constant="82" id="Q8o-tG-F2L"/>
+                            <constraint firstItem="hE4-vT-Bio" firstAttribute="top" secondItem="Xdg-Dn-djU" secondAttribute="bottom" constant="16" id="G5p-D1-9Ik"/>
+                            <constraint firstItem="d0A-4S-YuB" firstAttribute="top" secondItem="ICh-Yq-cDI" secondAttribute="bottom" constant="123" id="KdC-TN-wR3"/>
+                            <constraint firstItem="hE4-vT-Bio" firstAttribute="top" secondItem="Mic-ve-OOq" secondAttribute="bottom" constant="8" symbolic="YES" id="P0n-Br-Y9d"/>
+                            <constraint firstItem="hE4-vT-Bio" firstAttribute="leading" secondItem="nno-vi-r1x" secondAttribute="leading" constant="16" id="Q8o-tG-F2L"/>
                             <constraint firstItem="nno-vi-r1x" firstAttribute="trailing" secondItem="ICh-Yq-cDI" secondAttribute="trailing" id="V7G-dW-YxK"/>
-                            <constraint firstItem="nno-vi-r1x" firstAttribute="trailing" secondItem="hE4-vT-Bio" secondAttribute="trailing" constant="82" id="hiR-kN-sSR"/>
+                            <constraint firstItem="nno-vi-r1x" firstAttribute="trailing" secondItem="hE4-vT-Bio" secondAttribute="trailing" constant="16" id="hiR-kN-sSR"/>
                             <constraint firstItem="d0A-4S-YuB" firstAttribute="top" secondItem="hE4-vT-Bio" secondAttribute="bottom" constant="14.5" id="hsp-Vs-Zwi"/>
                             <constraint firstItem="nno-vi-r1x" firstAttribute="trailing" secondItem="q4B-Aj-WoQ" secondAttribute="trailing" constant="82" id="mNp-wf-e9R"/>
-                            <constraint firstItem="ICh-Yq-cDI" firstAttribute="top" secondItem="nno-vi-r1x" secondAttribute="top" constant="82" id="nl0-Yc-4wq"/>
+                            <constraint firstItem="ICh-Yq-cDI" firstAttribute="top" secondItem="nno-vi-r1x" secondAttribute="top" constant="26" id="nl0-Yc-4wq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="S78-0z-a0P"/>
@@ -271,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOb-s3-RAX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1577" y="-631"/>
+            <point key="canvasLocation" x="1576.8115942028987" y="-631.47321428571422"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="5si-Zb-mbF">
