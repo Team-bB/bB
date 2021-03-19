@@ -51,7 +51,7 @@ public class MemberController {
     params.put("type", "SMS");
     params.put("text", message);
     params.put("app_version", "test app 1.2");
-    /*
+
     try {
       JSONObject obj = (JSONObject) coolsms.send(params);
       System.out.println(obj.toString());
@@ -61,7 +61,6 @@ public class MemberController {
       return false;
     }
 
-     */
     return code;
   }
 
