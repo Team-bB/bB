@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoneAuth" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -348,7 +348,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="" id="aD3-9l-7aB"/>
+                                    <action selector="startButtonTapped:" destination="tKS-oW-Omi" eventType="touchUpInside" id="BR9-Ax-GxO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -367,7 +367,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Uz-7f-6C8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="-631"/>
+            <point key="canvasLocation" x="387" y="-654"/>
         </scene>
     </scenes>
     <resources>

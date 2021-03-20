@@ -10,6 +10,7 @@ import Alamofire
 
 struct Auth: Codable {
     var result: String
+    var mailAuth: Bool
 }
 
 class SignUpVC: UIViewController {
@@ -173,6 +174,15 @@ extension SignUpVC {
         }
     }
     
+    // MARK:- Alter function
+    func Output_Alert(title : String, message : String, text : String) {
+
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: text, style: UIAlertAction.Style.cancel, handler: nil)
+        alertController.addAction(okButton)
+        return self.present(alertController, animated: true, completion: nil)
+    }
+    
     private func postText() {
         let url = API.shared.BASE_URL + "/signUp"
         var request = URLRequest(url: URL(string: url)!)
@@ -210,14 +220,16 @@ extension SignUpVC {
                         let product = try decoder.decode(Auth.self, from: response.data!)
                         print(product.result)
                         UserDefaults.standard.set(product.result, forKey: "accountId")
-                        
+                        UserDefaults.standard.set(product.mailAuth, forKey: "mailAuth" )
                         
                         // 메일인증 후 이용 가능 하다고 Alert 박스 띄우고 메인으로 이동 !!
                         DispatchQueue.main.async {
-                            guard let noMailVC = self.storyboard?.instantiateViewController(identifier: "NoMail") else {return}
-                    
-                            noMailVC.modalPresentationStyle = .fullScreen
-                            self.present(noMailVC, animated: true)
+                            self.Output_Alert(title: "가입완료", message: "메일 인증후 이용 가능합니다!", text: "확인")
+                            guard let introVC = self.storyboard?.instantiateViewController(identifier: "Intro") else {return}
+                            
+                            // MARK:- 여기부분을 Segue로 구현하면 더 좋다. !!!!!!!@@@@@@@@@@@@@@@ 중요 @@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!
+                            introVC.modalPresentationStyle = .fullScreen
+                            self.present(introVC, animated: true)
                         }
                     } catch {
                         print(error)
