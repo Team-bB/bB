@@ -37,14 +37,14 @@ class StartViewController: UIViewController {
         return true
     }
     
-    private func checkMailAuth() -> Bool {
-        
-        let isTrue = UserDefaults.standard.bool(forKey: "mailAuth")
-        
-        if isTrue { return true }
-        
-        return false
-    }
+//    private func checkMailAuth() -> Bool {
+//
+//        let isTrue = UserDefaults.standard.bool(forKey: "mailAuth")
+//
+//        if isTrue { return true }
+//
+//        return false
+//    }
     
     private func autoLogin() {
         
@@ -52,10 +52,7 @@ class StartViewController: UIViewController {
             
             // 유저 디폴트 O 메일 인증 O -> 미팅리스트
             if self.checkAccountId() {
-                
                 self.postText()
-    
-                
             // 유저 디폴트 O 메일 인증 X ->  alert
             } else { return }
         }
@@ -100,9 +97,8 @@ class StartViewController: UIViewController {
                         let product = try decoder.decode(Status.self, from: response.data!)
                         print(product.result)
                         
-                        // 메일 인증 true로 바꾸고 미팅 리스트 보여주자
+                        // 메일 인증 true면 보낸디
                         if product.result {
-                            UserDefaults.standard.set(product.result, forKey: "mailAuth")
                             
                             DispatchQueue.main.async {
                                 guard let meetingListVC = self.storyboard?.instantiateViewController(identifier: "MeetingList") else {return}
@@ -111,13 +107,7 @@ class StartViewController: UIViewController {
                             }
                             
                         } else {
-                            
-                            DispatchQueue.main.async {
-                                
-                                self.Output_Alert(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
-                                
-                            }
-                            
+                            self.Output_Alert(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
                         }
                         
                     } catch {

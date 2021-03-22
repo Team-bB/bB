@@ -10,7 +10,6 @@ import Alamofire
 
 struct Auth: Codable {
     var result: String
-    var mailAuth: Bool
 }
 
 class SignUpVC: UIViewController {
@@ -220,7 +219,6 @@ extension SignUpVC {
                         let product = try decoder.decode(Auth.self, from: response.data!)
                         print(product.result)
                         UserDefaults.standard.set(product.result, forKey: "accountId")
-                        UserDefaults.standard.set(product.mailAuth, forKey: "mailAuth" )
                         
                         // 메일인증 후 이용 가능 하다고 Alert 박스 띄우고 메인으로 이동 !!
                         DispatchQueue.main.async {
