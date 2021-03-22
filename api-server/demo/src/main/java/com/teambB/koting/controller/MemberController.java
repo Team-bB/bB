@@ -9,7 +9,6 @@ import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;

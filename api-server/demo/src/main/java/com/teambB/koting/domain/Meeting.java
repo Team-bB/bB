@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,11 +36,11 @@ public class Meeting {
   private List<Apply> participants = new ArrayList<>();
 
   public static Meeting createMeeting(Member member, int player) {
+
     Meeting meeting = new Meeting();
     meeting.setOwner(member);
     meeting.setPlayer(player);
-    LocalDateTime date = LocalDateTime.now();
-    meeting.setCreateDate(date);
+    meeting.setCreateDate(LocalDateTime.now());
     meeting.setMember(member);
     meeting.setMeetingStatus(MeetingStatus.READY);
     return meeting;

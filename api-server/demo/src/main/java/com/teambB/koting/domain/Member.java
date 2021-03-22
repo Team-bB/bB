@@ -74,13 +74,12 @@ public class Member {
   }
 
   public static String makeRandomNumber(int length) {
-    Random rand = new Random();
+
     String numStr = "";
+    Random rand = new Random();
     for (int i = 0; i < length; i++) {
-      String ran = Integer.toString(rand.nextInt(10));
-      numStr += ran;
+      numStr += Integer.toString(rand.nextInt(10));
     }
-    System.out.println(numStr);
     return numStr;
   }
 }

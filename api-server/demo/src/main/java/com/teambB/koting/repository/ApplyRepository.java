@@ -6,7 +6,6 @@ import com.teambB.koting.domain.Member;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @RequiredArgsConstructor
@@ -20,10 +19,6 @@ public class ApplyRepository {
     } else {
       em.merge(apply);
     }
-  }
-
-  public Apply findById(Long id) {
-    return em.find(Apply.class, id);
   }
 
   public Apply findOne(Long id) {

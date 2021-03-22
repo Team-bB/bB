@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MemberService {
 
-  @Autowired private final MemberRepository memberRepository;
+  private final MemberRepository memberRepository;
 
   public Long join(Member member) {
     validateMember(member);
@@ -28,7 +28,6 @@ public class MemberService {
     }
   }
 
-  // 회원 번호로 조회
   public Member findOne(Long id) {
     return memberRepository.findById(id);
   }

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MeetingService {
 
-  @Autowired private final MeetingRepository meetingRepository;
+  private final MeetingRepository meetingRepository;
 
   public Long join(Meeting meeting) {
     meetingRepository.save(meeting);

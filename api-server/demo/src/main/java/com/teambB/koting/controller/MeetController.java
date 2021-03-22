@@ -2,7 +2,6 @@ package com.teambB.koting.controller;
 
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.service.MeetingService;
-import java.util.List;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.service.MemberService;
 import lombok.RequiredArgsConstructor;
