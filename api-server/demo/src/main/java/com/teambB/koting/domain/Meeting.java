@@ -28,7 +28,7 @@ public class Meeting {
   private LocalDateTime createDate;
 
   @Enumerated(EnumType.STRING)
-  private MeetingStatus meeting_status;
+  private MeetingStatus meetingStatus;
 
   @OneToOne(mappedBy = "myMeeting")
   private Member owner;
@@ -42,7 +42,13 @@ public class Meeting {
     meeting.setPlayer(player);
     LocalDateTime date = LocalDateTime.now();
     meeting.setCreateDate(date);
-    meeting.setMeeting_status(MeetingStatus.READY);
+    meeting.setMember(member);
+    meeting.setMeetingStatus(MeetingStatus.READY);
     return meeting;
+  }
+
+  public void setMember(Member member) {
+    this.owner = member;
+    member.setMyMeeting(this);
   }
 }

@@ -1,5 +1,6 @@
 package com.teambB.koting.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,11 +19,11 @@ public class Apply {
   @Column(name = "apply_id")
   private Long id;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "meeting_id")
   private Meeting meeting;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "member_id")
   private Member member;
 
@@ -39,8 +40,8 @@ public class Apply {
   // 생성 메서드
   public static Apply createApply(Member member, Meeting meeting) {
     Apply apply = new Apply();
-    apply.setMember(member);
     apply.setMeeting(meeting);
+    apply.setMember(member);
     return apply;
   }
 }

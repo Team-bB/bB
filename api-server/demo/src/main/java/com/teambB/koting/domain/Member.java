@@ -3,6 +3,7 @@ package com.teambB.koting.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Member {
   private String authKey;
   private Boolean authStatus;
 
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "meeting_id")
   private Meeting myMeeting;
 
