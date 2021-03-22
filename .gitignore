@@ -1,4 +1,3 @@
-API.swift
 
 GoogleService-Info.plist
 # Created by https://www.toptal.com/developers/gitignore/api/macos,xcode,cocoapods,carthage
@@ -20,7 +19,7 @@ Carthage/Build
 #           - Also handy if you have a large number of dependant pods
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
 
- Pods/
+Pods/
 
 ### macOS ###
 # General

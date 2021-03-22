@@ -3,91 +3,253 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		883FFF6C25F763670092E125 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883FFF6B25F763670092E125 /* SignUp.storyboard */; };
-		88D6614E25F6833000550B96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6614D25F6833000550B96 /* AppDelegate.swift */; };
-		88D6615025F6833000550B96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6614F25F6833000550B96 /* SceneDelegate.swift */; };
-		88D6615225F6833000550B96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6615125F6833000550B96 /* ViewController.swift */; };
-		88D6615525F6833000550B96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D6615325F6833000550B96 /* Main.storyboard */; };
-		88D6615725F6833200550B96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88D6615625F6833200550B96 /* Assets.xcassets */; };
-		88D6615A25F6833200550B96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D6615825F6833200550B96 /* LaunchScreen.storyboard */; };
+		5BAA480BD1741B8300EE6800 /* Pods_Koting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */; };
+		887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C403226089ABA00A641DA /* GettingStartedVC.swift */; };
+		887C40482608B57500A641DA /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C40472608B57500A641DA /* ViewTransition.swift */; };
+		889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4D26088F6200B3DA62 /* AppDelegate.swift */; };
+		889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */; };
+		889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F5126088F6200B3DA62 /* ViewController.swift */; };
+		889F7F5526088F6200B3DA62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F5326088F6200B3DA62 /* Main.storyboard */; };
+		889F7F5726088F6300B3DA62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F5626088F6300B3DA62 /* Assets.xcassets */; };
+		889F7F5A26088F6300B3DA62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */; };
+		889F7F7D2608907300B3DA62 /* MyInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */; };
+		889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */; };
+		889F7F83260890A200B3DA62 /* MeetingLIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */; };
+		889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F85260890B200B3DA62 /* MyInfoVC.swift */; };
+		889F7F962608966600B3DA62 /* MailAuthCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F952608966600B3DA62 /* MailAuthCheck.swift */; };
+		889F7F9A2608967700B3DA62 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F992608967700B3DA62 /* API.swift */; };
+		889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F9C2608983800B3DA62 /* IntroModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		883FFF6B25F763670092E125 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
-		88D6614A25F6833000550B96 /* Koting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koting.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		88D6614D25F6833000550B96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		88D6614F25F6833000550B96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		88D6615125F6833000550B96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		88D6615425F6833000550B96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		88D6615625F6833200550B96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		88D6615925F6833200550B96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		88D6615B25F6833200550B96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6ADA15F079F682A7912D7A20 /* Pods-Koting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.debug.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.debug.xcconfig"; sourceTree = "<group>"; };
+		7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		887C403226089ABA00A641DA /* GettingStartedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedVC.swift; sourceTree = "<group>"; };
+		887C40472608B57500A641DA /* ViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransition.swift; sourceTree = "<group>"; };
+		889F7F4A26088F6200B3DA62 /* Koting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		889F7F4D26088F6200B3DA62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		889F7F5126088F6200B3DA62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		889F7F5426088F6200B3DA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		889F7F5626088F6300B3DA62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		889F7F5926088F6300B3DA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		889F7F5B26088F6300B3DA62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoStoryboard.storyboard; sourceTree = "<group>"; };
+		889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeetingListStoryboard.storyboard; sourceTree = "<group>"; };
+		889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingLIstVC.swift; sourceTree = "<group>"; };
+		889F7F85260890B200B3DA62 /* MyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoVC.swift; sourceTree = "<group>"; };
+		889F7F952608966600B3DA62 /* MailAuthCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailAuthCheck.swift; sourceTree = "<group>"; };
+		889F7F992608967700B3DA62 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		889F7F9C2608983800B3DA62 /* IntroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroModel.swift; sourceTree = "<group>"; };
+		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		88D6614725F6833000550B96 /* Frameworks */ = {
+		889F7F4726088F6100B3DA62 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BAA480BD1741B8300EE6800 /* Pods_Koting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		883FFF6E25F765160092E125 /* SignUp */ = {
+		887C40462608B32F00A641DA /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				883FFF6B25F763670092E125 /* SignUp.storyboard */,
+				887C40472608B57500A641DA /* ViewTransition.swift */,
 			);
-			path = SignUp;
+			path = Interface;
 			sourceTree = "<group>";
 		};
-		88D6614125F6833000550B96 = {
+		889F7F4126088F6100B3DA62 = {
 			isa = PBXGroup;
 			children = (
-				883FFF6E25F765160092E125 /* SignUp */,
-				88D6614C25F6833000550B96 /* Koting */,
-				88D6614B25F6833000550B96 /* Products */,
+				889F7F4C26088F6200B3DA62 /* Koting */,
+				889F7F4B26088F6200B3DA62 /* Products */,
+				D57D0938C7778A38906F085D /* Pods */,
+				D59106D977A59FB30DD39E62 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		88D6614B25F6833000550B96 /* Products */ = {
+		889F7F4B26088F6200B3DA62 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88D6614A25F6833000550B96 /* Koting.app */,
+				889F7F4A26088F6200B3DA62 /* Koting.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		88D6614C25F6833000550B96 /* Koting */ = {
+		889F7F4C26088F6200B3DA62 /* Koting */ = {
 			isa = PBXGroup;
 			children = (
-				88D6614D25F6833000550B96 /* AppDelegate.swift */,
-				88D6614F25F6833000550B96 /* SceneDelegate.swift */,
-				88D6615125F6833000550B96 /* ViewController.swift */,
-				88D6615625F6833200550B96 /* Assets.xcassets */,
-				88D6615B25F6833200550B96 /* Info.plist */,
-				88D6615825F6833200550B96 /* LaunchScreen.storyboard */,
-				88D6615325F6833000550B96 /* Main.storyboard */,
+				887C40462608B32F00A641DA /* Interface */,
+				889F7F932608959900B3DA62 /* REST API */,
+				889F7F7426088FBF00B3DA62 /* Storyboard */,
+				889F7F7326088FB500B3DA62 /* VC */,
+				889F7F7226088FAF00B3DA62 /* Model */,
+				889F7F4D26088F6200B3DA62 /* AppDelegate.swift */,
+				889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */,
+				889F7F5126088F6200B3DA62 /* ViewController.swift */,
+				889F7F5626088F6300B3DA62 /* Assets.xcassets */,
+				889F7F5B26088F6300B3DA62 /* Info.plist */,
 			);
 			path = Koting;
+			sourceTree = "<group>";
+		};
+		889F7F7226088FAF00B3DA62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F91260894F800B3DA62 /* Intro */,
+				889F7F7726088FFC00B3DA62 /* MyInfo */,
+				889F7F7626088FF100B3DA62 /* MeetingList */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		889F7F7326088FB500B3DA62 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F90260894EC00B3DA62 /* Intro */,
+				889F7F792608900B00B3DA62 /* MeetingList */,
+				889F7F782608900300B3DA62 /* MyInfo */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		889F7F7426088FBF00B3DA62 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F8F260894DE00B3DA62 /* Intro */,
+				889F7F7B2608901900B3DA62 /* MyInfo */,
+				889F7F7A2608901400B3DA62 /* MeetingList */,
+				889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		889F7F7626088FF100B3DA62 /* MeetingList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MeetingList;
+			sourceTree = "<group>";
+		};
+		889F7F7726088FFC00B3DA62 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		889F7F782608900300B3DA62 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F85260890B200B3DA62 /* MyInfoVC.swift */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		889F7F792608900B00B3DA62 /* MeetingList */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */,
+			);
+			path = MeetingList;
+			sourceTree = "<group>";
+		};
+		889F7F7A2608901400B3DA62 /* MeetingList */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */,
+			);
+			path = MeetingList;
+			sourceTree = "<group>";
+		};
+		889F7F7B2608901900B3DA62 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		889F7F8F260894DE00B3DA62 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F5326088F6200B3DA62 /* Main.storyboard */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		889F7F90260894EC00B3DA62 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				887C403226089ABA00A641DA /* GettingStartedVC.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		889F7F91260894F800B3DA62 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F9C2608983800B3DA62 /* IntroModel.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		889F7F932608959900B3DA62 /* REST API */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F94260895DC00B3DA62 /* Intro */,
+				889F7F992608967700B3DA62 /* API.swift */,
+			);
+			path = "REST API";
+			sourceTree = "<group>";
+		};
+		889F7F94260895DC00B3DA62 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F952608966600B3DA62 /* MailAuthCheck.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
+		D57D0938C7778A38906F085D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6ADA15F079F682A7912D7A20 /* Pods-Koting.debug.xcconfig */,
+				992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D59106D977A59FB30DD39E62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		88D6614925F6833000550B96 /* Koting */ = {
+		889F7F4926088F6100B3DA62 /* Koting */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88D6615E25F6833200550B96 /* Build configuration list for PBXNativeTarget "Koting" */;
+			buildConfigurationList = 889F7F5E26088F6300B3DA62 /* Build configuration list for PBXNativeTarget "Koting" */;
 			buildPhases = (
-				88D6614625F6833000550B96 /* Sources */,
-				88D6614725F6833000550B96 /* Frameworks */,
-				88D6614825F6833000550B96 /* Resources */,
+				475470612AC31B67486D8BE6 /* [CP] Check Pods Manifest.lock */,
+				889F7F4626088F6100B3DA62 /* Sources */,
+				889F7F4726088F6100B3DA62 /* Frameworks */,
+				889F7F4826088F6100B3DA62 /* Resources */,
+				C33F4201B38D9BA88B6B003E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -95,24 +257,24 @@
 			);
 			name = Koting;
 			productName = Koting;
-			productReference = 88D6614A25F6833000550B96 /* Koting.app */;
+			productReference = 889F7F4A26088F6200B3DA62 /* Koting.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		88D6614225F6833000550B96 /* Project object */ = {
+		889F7F4226088F6100B3DA62 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					88D6614925F6833000550B96 = {
-						CreatedOnToolsVersion = 12.2;
+					889F7F4926088F6100B3DA62 = {
+						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = 88D6614525F6833000550B96 /* Build configuration list for PBXProject "Koting" */;
+			buildConfigurationList = 889F7F4526088F6100B3DA62 /* Build configuration list for PBXProject "Koting" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -120,56 +282,106 @@
 				en,
 				Base,
 			);
-			mainGroup = 88D6614125F6833000550B96;
-			productRefGroup = 88D6614B25F6833000550B96 /* Products */;
+			mainGroup = 889F7F4126088F6100B3DA62;
+			productRefGroup = 889F7F4B26088F6200B3DA62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				88D6614925F6833000550B96 /* Koting */,
+				889F7F4926088F6100B3DA62 /* Koting */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		88D6614825F6833000550B96 /* Resources */ = {
+		889F7F4826088F6100B3DA62 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D6615A25F6833200550B96 /* LaunchScreen.storyboard in Resources */,
-				88D6615725F6833200550B96 /* Assets.xcassets in Resources */,
-				883FFF6C25F763670092E125 /* SignUp.storyboard in Resources */,
-				88D6615525F6833000550B96 /* Main.storyboard in Resources */,
+				889F7F5A26088F6300B3DA62 /* LaunchScreen.storyboard in Resources */,
+				889F7F7D2608907300B3DA62 /* MyInfoStoryboard.storyboard in Resources */,
+				889F7F5726088F6300B3DA62 /* Assets.xcassets in Resources */,
+				889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */,
+				889F7F5526088F6200B3DA62 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		475470612AC31B67486D8BE6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Koting-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C33F4201B38D9BA88B6B003E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Koting/Pods-Koting-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Koting/Pods-Koting-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Koting/Pods-Koting-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		88D6614625F6833000550B96 /* Sources */ = {
+		889F7F4626088F6100B3DA62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D6615225F6833000550B96 /* ViewController.swift in Sources */,
-				88D6614E25F6833000550B96 /* AppDelegate.swift in Sources */,
-				88D6615025F6833000550B96 /* SceneDelegate.swift in Sources */,
+				889F7F83260890A200B3DA62 /* MeetingLIstVC.swift in Sources */,
+				889F7F962608966600B3DA62 /* MailAuthCheck.swift in Sources */,
+				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
+				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
+				889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */,
+				889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */,
+				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
+				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
+				889F7F9A2608967700B3DA62 /* API.swift in Sources */,
+				887C40482608B57500A641DA /* ViewTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		88D6615325F6833000550B96 /* Main.storyboard */ = {
+		889F7F5326088F6200B3DA62 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				88D6615425F6833000550B96 /* Base */,
+				889F7F5426088F6200B3DA62 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		88D6615825F6833200550B96 /* LaunchScreen.storyboard */ = {
+		889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				88D6615925F6833200550B96 /* Base */,
+				889F7F5926088F6300B3DA62 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -177,7 +389,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		88D6615C25F6833200550B96 /* Debug */ = {
+		889F7F5C26088F6300B3DA62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -228,7 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -238,7 +450,7 @@
 			};
 			name = Debug;
 		};
-		88D6615D25F6833200550B96 /* Release */ = {
+		889F7F5D26088F6300B3DA62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -283,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -293,9 +505,11 @@
 			};
 			name = Release;
 		};
-		88D6615F25F6833200550B96 /* Debug */ = {
+		889F7F5F26088F6300B3DA62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ADA15F079F682A7912D7A20 /* Pods-Koting.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -311,9 +525,11 @@
 			};
 			name = Debug;
 		};
-		88D6616025F6833200550B96 /* Release */ = {
+		889F7F6026088F6300B3DA62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -332,25 +548,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		88D6614525F6833000550B96 /* Build configuration list for PBXProject "Koting" */ = {
+		889F7F4526088F6100B3DA62 /* Build configuration list for PBXProject "Koting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				88D6615C25F6833200550B96 /* Debug */,
-				88D6615D25F6833200550B96 /* Release */,
+				889F7F5C26088F6300B3DA62 /* Debug */,
+				889F7F5D26088F6300B3DA62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88D6615E25F6833200550B96 /* Build configuration list for PBXNativeTarget "Koting" */ = {
+		889F7F5E26088F6300B3DA62 /* Build configuration list for PBXNativeTarget "Koting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				88D6615F25F6833200550B96 /* Debug */,
-				88D6616025F6833200550B96 /* Release */,
+				889F7F5F26088F6300B3DA62 /* Debug */,
+				889F7F6026088F6300B3DA62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 88D6614225F6833000550B96 /* Project object */;
+	rootObject = 889F7F4226088F6100B3DA62 /* Project object */;
 }
