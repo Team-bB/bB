@@ -1,9 +1,10 @@
 package com.teambB.koting.controller;
 
+import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.Meeting;
-import com.teambB.koting.service.MeetingService;
-import java.util.List;
 import com.teambB.koting.domain.Member;
+import com.teambB.koting.service.ApplyService;
+import com.teambB.koting.service.MeetingService;
 import com.teambB.koting.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
@@ -14,26 +15,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class MeetController {
+public class ApplyController {
 
-  @Autowired private final MemberService memberService;
   @Autowired private final MeetingService meetingService;
+  @Autowired private final MemberService memberService;
+  @Autowired private final ApplyService applyService;
 
-  @PostMapping("/createMeeting")
-  public JSONObject createMeeting(@RequestBody JSONObject object) {
+  @PostMapping("/applyMeeting")
+  public JSONObject applyMeeting(@RequestBody JSONObject object) {
 
     JSONObject retObject = new JSONObject();
     String accountId = object.get("account_id").toString();
-    String players = object.get("players").toString();
     Member member = memberService.findOneByAccountId(accountId);
-    if (member.getMyMeeting() != null) {
-      retObject.put("result", "createFail");
-    }
-    else {
-      Meeting meeting = Meeting.createMeeting(member, Integer.parseInt(players));
-      meetingService.join(meeting);
-      retObject.put("result", "createSuccess");
-    }
+
+    Long meetingId = Long.parseLong(object.get("meeting_id").toString());
+    Meeting meeting = meetingService.findOne(meetingId);
+
+    Apply apply = Apply.createApply(member, meeting);
+    applyService.join(apply);
+    retObject.put("result", "applyMeetingSuccess");
+
     return retObject;
   }
 }

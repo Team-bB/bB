@@ -72,10 +72,9 @@ public class MemberController {
     String code = object.get("code").toString();
     if (dic.get(phoneNumber).toString().equals(code)) {
       dic.remove(phoneNumber);
-      List<Member> member = memberService.findOneByNumber(phoneNumber);
-      if (!member.isEmpty()) { // 가입되어 있으면
-        retObject.put("result", member.get(0).getAccount_id());
-        retObject.put("mailAuth", member.get(0).getAuthStatus());
+      Member member = memberService.findOneByNumber(phoneNumber);
+      if (member != null) { // 가입되어 있으면
+        retObject.put("result", member.getAccount_id());
       }
       else { // 가입되어 있지 않으면
         // 로그인페이지로 이동
@@ -96,7 +95,6 @@ public class MemberController {
     memberService.join(member);
     sendMail(member.getEmail(), member.getAuthKey()); // 비동기처리
     retObejct.put("result", member.getAccount_id());
-    retObejct.put("mailAuth", member.getAuthStatus());
     return retObejct;
   }
 
@@ -110,6 +108,16 @@ public class MemberController {
       return "동국대학교 학생인증이 완료되었습니다. 지금부터 정상적으로 서비스 이용이 가능합니다.";
     }
     return "인증에 실패하였습니다.";
+  }
+
+  @PostMapping("/checkStatus")
+  public JSONObject checkStatus(@RequestBody JSONObject object) {
+
+    JSONObject retObject = new JSONObject();
+    String accountId = object.get("account_id").toString();
+    Member member = memberService.findOneByAccountId(accountId);
+    retObject.put("result", member.getAuthStatus());
+    return retObject;
   }
 
   public void sendMail(String email, String authKey) throws MessagingException, UnsupportedEncodingException {
@@ -136,4 +144,3 @@ public class MemberController {
     javaMailSender.send(message);
   }
 }
-
