@@ -19,6 +19,12 @@
 		889F7F6A26088F7C00B3DA62 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 889F7F6926088F7C00B3DA62 /* RxCocoa */; };
 		889F7F6C26088F7C00B3DA62 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 889F7F6B26088F7C00B3DA62 /* RxBlocking */; };
 		889F7F7026088F9400B3DA62 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 889F7F6F26088F9400B3DA62 /* Alamofire */; };
+		889F7F7D2608907300B3DA62 /* MyInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */; };
+		889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */; };
+		889F7F83260890A200B3DA62 /* MeetingLIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */; };
+		889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F85260890B200B3DA62 /* MyInfoVC.swift */; };
+		889F7F8A2608917000B3DA62 /* empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F892608917000B3DA62 /* empty.swift */; };
+		889F7F8D2608917E00B3DA62 /* empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F8C2608917E00B3DA62 /* empty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		889F7F5626088F6300B3DA62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		889F7F5926088F6300B3DA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889F7F5B26088F6300B3DA62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoStoryboard.storyboard; sourceTree = "<group>"; };
+		889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeetingListStoryboard.storyboard; sourceTree = "<group>"; };
+		889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingLIstVC.swift; sourceTree = "<group>"; };
+		889F7F85260890B200B3DA62 /* MyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoVC.swift; sourceTree = "<group>"; };
+		889F7F892608917000B3DA62 /* empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empty.swift; sourceTree = "<group>"; };
+		889F7F8C2608917E00B3DA62 /* empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,15 +80,93 @@
 		889F7F4C26088F6200B3DA62 /* Koting */ = {
 			isa = PBXGroup;
 			children = (
+				889F7F7426088FBF00B3DA62 /* Storyboard */,
+				889F7F7326088FB500B3DA62 /* VC */,
+				889F7F7226088FAF00B3DA62 /* Model */,
 				889F7F4D26088F6200B3DA62 /* AppDelegate.swift */,
 				889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */,
 				889F7F5126088F6200B3DA62 /* ViewController.swift */,
-				889F7F5326088F6200B3DA62 /* Main.storyboard */,
 				889F7F5626088F6300B3DA62 /* Assets.xcassets */,
-				889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */,
 				889F7F5B26088F6300B3DA62 /* Info.plist */,
 			);
 			path = Koting;
+			sourceTree = "<group>";
+		};
+		889F7F7226088FAF00B3DA62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F7726088FFC00B3DA62 /* MyInfo */,
+				889F7F7626088FF100B3DA62 /* MeetingList */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		889F7F7326088FB500B3DA62 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F792608900B00B3DA62 /* MeetingList */,
+				889F7F782608900300B3DA62 /* MyInfo */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		889F7F7426088FBF00B3DA62 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F7B2608901900B3DA62 /* MyInfo */,
+				889F7F7A2608901400B3DA62 /* MeetingList */,
+				889F7F5326088F6200B3DA62 /* Main.storyboard */,
+				889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		889F7F7626088FF100B3DA62 /* MeetingList */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F8C2608917E00B3DA62 /* empty.swift */,
+			);
+			path = MeetingList;
+			sourceTree = "<group>";
+		};
+		889F7F7726088FFC00B3DA62 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F892608917000B3DA62 /* empty.swift */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		889F7F782608900300B3DA62 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F85260890B200B3DA62 /* MyInfoVC.swift */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		889F7F792608900B00B3DA62 /* MeetingList */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */,
+			);
+			path = MeetingList;
+			sourceTree = "<group>";
+		};
+		889F7F7A2608901400B3DA62 /* MeetingList */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */,
+			);
+			path = MeetingList;
+			sourceTree = "<group>";
+		};
+		889F7F7B2608901900B3DA62 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */,
+			);
+			path = MyInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +239,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				889F7F5A26088F6300B3DA62 /* LaunchScreen.storyboard in Resources */,
+				889F7F7D2608907300B3DA62 /* MyInfoStoryboard.storyboard in Resources */,
 				889F7F5726088F6300B3DA62 /* Assets.xcassets in Resources */,
+				889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */,
 				889F7F5526088F6200B3DA62 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,9 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889F7F83260890A200B3DA62 /* MeetingLIstVC.swift in Sources */,
+				889F7F8D2608917E00B3DA62 /* empty.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
+				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
 				889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
+				889F7F8A2608917000B3DA62 /* empty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
