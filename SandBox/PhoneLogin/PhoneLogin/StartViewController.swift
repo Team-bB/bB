@@ -56,7 +56,7 @@ class StartViewController: UIViewController {
             // 유저 디폴트 O 메일 인증 X ->  alert
             } else { return }
         }
-        
+
     }
     
     func Output_Alert(title : String, message : String, text : String) {
