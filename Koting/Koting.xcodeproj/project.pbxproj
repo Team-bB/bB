@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8822CF5F26088CB3004AD656 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8822CF5E26088CB3004AD656 /* RxSwift */; };
+		8822CF6126088CB3004AD656 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 8822CF6026088CB3004AD656 /* RxTest */; };
+		8822CF6326088CB3004AD656 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 8822CF6226088CB3004AD656 /* RxRelay */; };
+		8822CF6526088CB3004AD656 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8822CF6426088CB3004AD656 /* RxCocoa */; };
+		8822CF6726088CB3004AD656 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 8822CF6626088CB3004AD656 /* RxBlocking */; };
 		88244BCD2607871C0013D9C9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 88244BCC2607871C0013D9C9 /* Alamofire */; };
 		883FFF6C25F763670092E125 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883FFF6B25F763670092E125 /* SignUp.storyboard */; };
 		88D6614E25F6833000550B96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6614D25F6833000550B96 /* AppDelegate.swift */; };
@@ -34,6 +39,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8822CF5F26088CB3004AD656 /* RxSwift in Frameworks */,
+				8822CF6726088CB3004AD656 /* RxBlocking in Frameworks */,
+				8822CF6126088CB3004AD656 /* RxTest in Frameworks */,
+				8822CF6526088CB3004AD656 /* RxCocoa in Frameworks */,
+				8822CF6326088CB3004AD656 /* RxRelay in Frameworks */,
 				88244BCD2607871C0013D9C9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +108,11 @@
 			name = Koting;
 			packageProductDependencies = (
 				88244BCC2607871C0013D9C9 /* Alamofire */,
+				8822CF5E26088CB3004AD656 /* RxSwift */,
+				8822CF6026088CB3004AD656 /* RxTest */,
+				8822CF6226088CB3004AD656 /* RxRelay */,
+				8822CF6426088CB3004AD656 /* RxCocoa */,
+				8822CF6626088CB3004AD656 /* RxBlocking */,
 			);
 			productName = Koting;
 			productReference = 88D6614A25F6833000550B96 /* Koting.app */;
@@ -128,6 +143,7 @@
 			mainGroup = 88D6614125F6833000550B96;
 			packageReferences = (
 				88244BCB2607871C0013D9C9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8822CF5D26088CB3004AD656 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 88D6614B25F6833000550B96 /* Products */;
 			projectDirPath = "";
@@ -361,6 +377,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8822CF5D26088CB3004AD656 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
 		88244BCB2607871C0013D9C9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -372,6 +396,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8822CF5E26088CB3004AD656 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8822CF5D26088CB3004AD656 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		8822CF6026088CB3004AD656 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8822CF5D26088CB3004AD656 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		8822CF6226088CB3004AD656 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8822CF5D26088CB3004AD656 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		8822CF6426088CB3004AD656 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8822CF5D26088CB3004AD656 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		8822CF6626088CB3004AD656 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8822CF5D26088CB3004AD656 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
 		88244BCC2607871C0013D9C9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 88244BCB2607871C0013D9C9 /* XCRemoteSwiftPackageReference "Alamofire" */;
