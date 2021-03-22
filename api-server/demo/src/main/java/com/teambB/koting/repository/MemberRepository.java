@@ -1,16 +1,13 @@
 package com.teambB.koting.repository;
 
-import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
 import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @RequiredArgsConstructor
-@Transactional
 public class MemberRepository {
 
   private final EntityManager em;
@@ -33,15 +30,10 @@ public class MemberRepository {
         .getSingleResult();
   }
 
-  public List<Member> findByNumber(String number) {
+  public Member findByNumber(String number) {
     return em.createQuery("select m from Member m where m.number = :number", Member.class)
         .setParameter("number", number)
-        .getResultList();
-  }
-
-  public List<Member> findAll() {
-    return em.createQuery("select m from Member m", Member.class)
-        .getResultList();
+        .getSingleResult();
   }
 
   public List<Member> findByNumberList(String number) {
@@ -50,9 +42,9 @@ public class MemberRepository {
         .getResultList();
   }
 
-  public List<Member> findByAccountId(String accountId) {
+  public Member findByAccountId(String accountId) {
     return em.createQuery("select m from Member m where m.account_id = :accountId", Member.class)
         .setParameter("accountId", accountId)
-        .getResultList();
+        .getSingleResult();
   }
 }
