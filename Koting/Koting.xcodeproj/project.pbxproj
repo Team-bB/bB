@@ -31,6 +31,7 @@
 		889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F85260890B200B3DA62 /* MyInfoVC.swift */; };
 		889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F9C2608983800B3DA62 /* IntroModel.swift */; };
 		88BAFD4D2609DDCE00A2DE3C /* meetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BAFD4C2609DDCE00A2DE3C /* meetingModel.swift */; };
+		D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		889F7F9C2608983800B3DA62 /* IntroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroModel.swift; sourceTree = "<group>"; };
 		88BAFD4C2609DDCE00A2DE3C /* meetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = meetingModel.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
+		D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 			children = (
 				88556CAE2609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift */,
 				88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */,
+				D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */,
 				88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */,
 				88BAFD4C2609DDCE00A2DE3C /* meetingModel.swift */,
 			);
@@ -371,6 +374,7 @@
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
 				88556CB92609D96A00CF7CAC /* API.swift in Sources */,
+				D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
