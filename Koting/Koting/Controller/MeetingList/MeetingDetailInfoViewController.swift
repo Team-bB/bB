@@ -1,13 +1,13 @@
 //
-//  InputPhoneNumberVC.swift
+//  MeetingDetailInfoViewController.swift
 //  Koting
 //
-//  Created by 임정우 on 2021/03/22.
+//  Created by 홍화형 on 2021/03/23.
 //
 
 import UIKit
 
-class InputPhoneNumberVC: UIViewController {
+class MeetingDetailInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

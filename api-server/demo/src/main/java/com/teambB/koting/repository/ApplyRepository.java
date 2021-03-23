@@ -1,8 +1,6 @@
 package com.teambB.koting.repository;
 
 import com.teambB.koting.domain.Apply;
-import com.teambB.koting.domain.Meeting;
-import com.teambB.koting.domain.Member;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
