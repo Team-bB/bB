@@ -35,8 +35,8 @@ public class MemberService {
     return memberRepository.findByEmail(email);
   }
 
-  public Member findOneByNumber(String number) {
-    return memberRepository.findByNumber(number);
+  public List<Member> findOneByNumber(String number) {
+    return memberRepository.findByNumberList(number);
   }
 
   public Member findOneByAccountId(String accountId) {
