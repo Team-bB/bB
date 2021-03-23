@@ -61,7 +61,7 @@
         <!--View Controller-->
         <scene sceneID="D6u-qW-Weo">
             <objects>
-                <viewController storyboardIdentifier="PhoneAuth" modalPresentationStyle="fullScreen" id="Xof-cP-A9j" customClass="ViewController" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoneAuth" modalPresentationStyle="fullScreen" id="Xof-cP-A9j" customClass="ViewController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lao-zM-Qfn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,7 +122,7 @@
         <!--Auth View Controller-->
         <scene sceneID="8Wd-nY-Nmu">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="2r8-5M-CvO" customClass="AuthViewController" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="2r8-5M-CvO" customClass="AuthViewController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oRZ-it-J7A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,7 +183,7 @@
         <!--Sign UpVC-->
         <scene sceneID="KhB-6Z-wra">
             <objects>
-                <viewController storyboardIdentifier="Register" modalPresentationStyle="fullScreen" id="BX9-UJ-yV5" customClass="SignUpVC" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" modalPresentationStyle="fullScreen" id="BX9-UJ-yV5" customClass="SignUpVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M16-55-J64">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
