@@ -41,7 +41,7 @@ class AuthNumberCheckVC: UIViewController {
                 } else if message.result == register {
                     self.asyncPresentView(identifier: "Register")
                 } else {
-                    UserDefaults.standard.set(message, forKey: "accountId")
+                    UserDefaults.standard.set(message.result, forKey: "accountId")
                     
                     MailAuthCheckAPI.shared.post() { [weak self] result in
                         

@@ -214,7 +214,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="signUpButtonTapped:" destination="BX9-UJ-yV5" eventType="touchUpInside" id="0Gh-XU-AoJ"/>
+                                    <action selector="signUpButtonTapped:" destination="BX9-UJ-yV5" eventType="touchUpInside" id="New-yc-IkC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="웹 메일 인증 완료후 서비스 이용이 가능합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOx-5K-u7s">
@@ -293,14 +293,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="gBi-8W-DIA"/>
                     <connections>
-                        <outlet property="MBTI" destination="dCZ-FG-sCL" id="T04-UE-Pj2"/>
-                        <outlet property="age" destination="RdN-KA-maC" id="TLB-XM-w31"/>
-                        <outlet property="college" destination="WDk-3O-XKa" id="XPO-fa-PCE"/>
-                        <outlet property="height" destination="bGk-Xd-I7P" id="MBF-nr-QX7"/>
-                        <outlet property="mail" destination="bSK-t8-0NF" id="5Zp-vK-Gtg"/>
-                        <outlet property="major" destination="sbX-ig-pzT" id="iLK-dM-sAV"/>
-                        <outlet property="sex" destination="ZcS-2d-DPz" id="BiD-sI-cQY"/>
-                        <outlet property="signUpButton" destination="o1d-Ca-Sav" id="gqT-hS-57a"/>
+                        <outlet property="MBTI" destination="dCZ-FG-sCL" id="FuF-HK-LDA"/>
+                        <outlet property="age" destination="RdN-KA-maC" id="2VR-lK-CD9"/>
+                        <outlet property="college" destination="WDk-3O-XKa" id="lom-ZL-GiC"/>
+                        <outlet property="height" destination="bGk-Xd-I7P" id="z7K-Zz-Us6"/>
+                        <outlet property="mail" destination="bSK-t8-0NF" id="2OR-I7-o5W"/>
+                        <outlet property="major" destination="sbX-ig-pzT" id="42M-tX-Vpt"/>
+                        <outlet property="sex" destination="ZcS-2d-DPz" id="6OU-Uf-Kg7"/>
+                        <outlet property="signUpButton" destination="o1d-Ca-Sav" id="Nud-HI-ad7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3T-Of-cic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
