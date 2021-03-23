@@ -61,7 +61,7 @@
         <!--Input Phone NumberVC-->
         <scene sceneID="D6u-qW-Weo">
             <objects>
-                <viewController storyboardIdentifier="PhoneAuth" modalPresentationStyle="fullScreen" id="Xof-cP-A9j" customClass="InputPhoneNumberVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoneAuth" modalPresentationStyle="fullScreen" id="Xof-cP-A9j" customClass="ViewController" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lao-zM-Qfn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,7 @@
         <!--Auth Number CheckVC-->
         <scene sceneID="8Wd-nY-Nmu">
             <objects>
-                <viewController storyboardIdentifier="AuthNumberCheck" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="2r8-5M-CvO" customClass="AuthNumberCheckVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="2r8-5M-CvO" customClass="AuthViewController" customModule="PhoneLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oRZ-it-J7A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
