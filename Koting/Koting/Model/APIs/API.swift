@@ -24,6 +24,6 @@ class UserAPI {
     var mailCheck: Bool = false
     var accountIdCheck: Bool = false
     var phoneNumber: String?
-    
+    var phoneAuthResult: String?
     private init() {}
 }
