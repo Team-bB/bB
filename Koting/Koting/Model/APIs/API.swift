@@ -11,10 +11,11 @@ class API {
     
     static let shared = API()
 
-    let BASE_URL = "http://15.165.143.51"
+    let BASE_URL = "https://koting.kr"
     
     
     private init() {}
+    
 }
 
 class UserAPI {
