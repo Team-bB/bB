@@ -8,14 +8,14 @@
 import Foundation
 import Alamofire
 
-class RequestPhoneAuth {
+class RequestAuthNumberAPI {
     
-    static let shared = RequestPhoneAuth()
+    static let shared = RequestAuthNumberAPI()
 
     
     private init() {}
     
-    func post() {
+    func post(completion: @escaping (Result<String, Error>) -> (Void)) {
         let url = API.shared.BASE_URL + "/auth"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -34,11 +34,14 @@ class RequestPhoneAuth {
         
         AF.request(request).responseString { (response) in
             switch response.result {
-            case .success:
-                print("\n\nPOST SUCCESS")
-                debugPrint(response)
+            case .success(let result):
+                print(result)           // 결과 콘솔에 출력
+                debugPrint(response)    // 디버그 프린트
+                completion(.success(result))
+                
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                completion(.failure(error))
             }
         }
     }
