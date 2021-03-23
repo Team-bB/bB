@@ -8,12 +8,19 @@
 import Foundation
 import UIKit
 
+func dismissView(`self`: UIViewController) {
+    DispatchQueue.main.async {
+        
+        `self`.dismiss(animated: true)
+        
+    }
+}
+
 func goToView(withIdentifier: String, VC `self`: UIViewController, style: UIModalPresentationStyle? = .fullScreen, animation: Bool? = true) {
     
     DispatchQueue.main.async {
         
         guard let VC = `self`.storyboard?.instantiateViewController(identifier: withIdentifier) else { return }
-        
         
         VC.modalPresentationStyle = style!
         
