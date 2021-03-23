@@ -70,15 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		887C40462608B32F00A641DA /* APIs */ = {
+		887C40462608B32F00A641DA /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				889F7F932608959900B3DA62 /* REST */,
 				889F7F992608967700B3DA62 /* API.swift */,
 				887C40472608B57500A641DA /* ViewTransition.swift */,
 				887C40522608C65400A641DA /* ButtonSetting.swift */,
 			);
-			path = APIs;
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		889F7F4126088F6100B3DA62 = {
@@ -117,7 +116,8 @@
 		889F7F7226088FAF00B3DA62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				887C40462608B32F00A641DA /* APIs */,
+				887C40462608B32F00A641DA /* Interface */,
+				889F7F932608959900B3DA62 /* REST API */,
 				889F7F91260894F800B3DA62 /* Intro */,
 				889F7F7726088FFC00B3DA62 /* MyInfo */,
 				889F7F7626088FF100B3DA62 /* MeetingList */,
@@ -218,20 +218,20 @@
 			path = Intro;
 			sourceTree = "<group>";
 		};
-		889F7F932608959900B3DA62 /* REST */ = {
+		889F7F932608959900B3DA62 /* REST API */ = {
 			isa = PBXGroup;
 			children = (
-				889F7F952608966600B3DA62 /* MailAuthCheck.swift */,
-				887C404E2608C4CE00A641DA /* RequestPhoneAuth.swift */,
-				887C40592608CF3F00A641DA /* AuthNumberCheck.swift */,
 				889F7F94260895DC00B3DA62 /* Intro */,
 			);
-			path = REST;
+			path = "REST API";
 			sourceTree = "<group>";
 		};
 		889F7F94260895DC00B3DA62 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
+				889F7F952608966600B3DA62 /* MailAuthCheck.swift */,
+				887C404E2608C4CE00A641DA /* RequestPhoneAuth.swift */,
+				887C40592608CF3F00A641DA /* AuthNumberCheck.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
