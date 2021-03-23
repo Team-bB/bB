@@ -23,16 +23,11 @@
 		889F7F5A26088F6300B3DA62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */; };
 		889F7F7D2608907300B3DA62 /* MyInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */; };
 		889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */; };
-		889F7F83260890A200B3DA62 /* MeetingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F82260890A200B3DA62 /* MeetingListVC.swift */; };
+		889F7F83260890A200B3DA62 /* MeetingLIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */; };
 		889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F85260890B200B3DA62 /* MyInfoVC.swift */; };
 		889F7F962608966600B3DA62 /* MailAuthCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F952608966600B3DA62 /* MailAuthCheck.swift */; };
 		889F7F9A2608967700B3DA62 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F992608967700B3DA62 /* API.swift */; };
 		889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F9C2608983800B3DA62 /* IntroModel.swift */; };
-		D3BC8CC52608CDDF000625DF /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CC42608CDDF000625DF /* MeetingListTableViewCell.swift */; };
-		D3BC8CC82608D3B6000625DF /* meetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CC72608D3B6000625DF /* meetingModel.swift */; };
-		D3BC8CCB260976B6000625DF /* MyMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CCA260976B6000625DF /* MyMeetingViewController.swift */; };
-		D3BC8CD1260976EA000625DF /* MeetingDetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CD0260976EA000625DF /* MeetingDetailInfoViewController.swift */; };
-		D3BC8CD826098DBB000625DF /* MyMeetingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3BC8CD726098DBB000625DF /* MyMeetingStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,17 +50,12 @@
 		889F7F5B26088F6300B3DA62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoStoryboard.storyboard; sourceTree = "<group>"; };
 		889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeetingListStoryboard.storyboard; sourceTree = "<group>"; };
-		889F7F82260890A200B3DA62 /* MeetingListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListVC.swift; sourceTree = "<group>"; };
+		889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingLIstVC.swift; sourceTree = "<group>"; };
 		889F7F85260890B200B3DA62 /* MyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoVC.swift; sourceTree = "<group>"; };
 		889F7F952608966600B3DA62 /* MailAuthCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailAuthCheck.swift; sourceTree = "<group>"; };
 		889F7F992608967700B3DA62 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		889F7F9C2608983800B3DA62 /* IntroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroModel.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
-		D3BC8CC42608CDDF000625DF /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
-		D3BC8CC72608D3B6000625DF /* meetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = meetingModel.swift; path = Koting/VC/MeetingList/meetingModel.swift; sourceTree = SOURCE_ROOT; };
-		D3BC8CCA260976B6000625DF /* MyMeetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingViewController.swift; sourceTree = "<group>"; };
-		D3BC8CD0260976EA000625DF /* MeetingDetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingDetailInfoViewController.swift; sourceTree = "<group>"; };
-		D3BC8CD726098DBB000625DF /* MyMeetingStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyMeetingStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +149,6 @@
 		889F7F7626088FF100B3DA62 /* MeetingList */ = {
 			isa = PBXGroup;
 			children = (
-				D3BC8CC72608D3B6000625DF /* meetingModel.swift */,
 			);
 			path = MeetingList;
 			sourceTree = "<group>";
@@ -182,10 +171,7 @@
 		889F7F792608900B00B3DA62 /* MeetingList */ = {
 			isa = PBXGroup;
 			children = (
-				889F7F82260890A200B3DA62 /* MeetingListVC.swift */,
-				D3BC8CC42608CDDF000625DF /* MeetingListTableViewCell.swift */,
-				D3BC8CCA260976B6000625DF /* MyMeetingViewController.swift */,
-				D3BC8CD0260976EA000625DF /* MeetingDetailInfoViewController.swift */,
+				889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */,
 			);
 			path = MeetingList;
 			sourceTree = "<group>";
@@ -194,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */,
-				D3BC8CD726098DBB000625DF /* MyMeetingStoryboard.storyboard */,
 			);
 			path = MeetingList;
 			sourceTree = "<group>";
@@ -328,7 +313,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				889F7F5A26088F6300B3DA62 /* LaunchScreen.storyboard in Resources */,
-				D3BC8CD826098DBB000625DF /* MyMeetingStoryboard.storyboard in Resources */,
 				889F7F7D2608907300B3DA62 /* MyInfoStoryboard.storyboard in Resources */,
 				889F7F5726088F6300B3DA62 /* Assets.xcassets in Resources */,
 				889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */,
@@ -385,24 +369,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				889F7F83260890A200B3DA62 /* MeetingListVC.swift in Sources */,
+				889F7F83260890A200B3DA62 /* MeetingLIstVC.swift in Sources */,
 				889F7F962608966600B3DA62 /* MailAuthCheck.swift in Sources */,
 				887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
-				D3BC8CC52608CDDF000625DF /* MeetingListTableViewCell.swift in Sources */,
 				889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */,
 				889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
-				D3BC8CD1260976EA000625DF /* MeetingDetailInfoViewController.swift in Sources */,
-				D3BC8CCB260976B6000625DF /* MyMeetingViewController.swift in Sources */,
 				889F7F9A2608967700B3DA62 /* API.swift in Sources */,
 				887C404F2608C4CE00A641DA /* RequestPhoneAuth.swift in Sources */,
 				887C405A2608CF3F00A641DA /* AuthNumberCheck.swift in Sources */,
 				887C40482608B57500A641DA /* ViewTransition.swift in Sources */,
-				D3BC8CC82608D3B6000625DF /* meetingModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +459,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -534,7 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

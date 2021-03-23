@@ -9,9 +9,6 @@ import UIKit
 
 class MeetingListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var animalShapeImage: UIImageView!
-    @IBOutlet weak var collegeName: UILabel!
-    @IBOutlet weak var progressCondition: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
