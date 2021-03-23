@@ -59,7 +59,6 @@ public class MemberController {
       System.out.println(e.getCode());
       return "false";
     }
-
     return "true";
   }
 
@@ -122,9 +121,9 @@ public class MemberController {
   public void sendMail(String email, String authKey) throws MessagingException, UnsupportedEncodingException {
 
     String to = email;
-    String from = "admin@koting.kr";
+    String from = "noreply@koting.kr";
     String subject = "[코팅] 회원가입 인증메일입니다. ";
-    String url = "http://koting.kr/signUpEmail?email=" + email + "&authKey=" + authKey;
+    String url = "https://koting.kr/signUpEmail?email=" + email + "&authKey=" + authKey;
 
     StringBuilder body = new StringBuilder();
     body.append("<html> <body>");
@@ -136,7 +135,7 @@ public class MemberController {
     MimeMessage message = javaMailSender.createMimeMessage();
     MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
-    mimeMessageHelper.setFrom(from,"admin@koting.kr");
+    mimeMessageHelper.setFrom(from,"noreply@koting.kr");
     mimeMessageHelper.setTo(to);
     mimeMessageHelper.setSubject(subject);
     mimeMessageHelper.setText(body.toString(), true);
