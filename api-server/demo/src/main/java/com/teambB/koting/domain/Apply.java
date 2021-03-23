@@ -37,7 +37,6 @@ public class Apply {
     meeting.getParticipants().add(this);
   }
 
-  // 생성 메서드
   public static Apply createApply(Member member, Meeting meeting) {
     Apply apply = new Apply();
     apply.setMeeting(meeting);
