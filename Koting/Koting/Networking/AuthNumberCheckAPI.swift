@@ -1,5 +1,5 @@
 //
-//  AuthNumberCheck.swift
+//  AuthNumberCheckAPI.swift
 //  Koting
 //
 //  Created by 임정우 on 2021/03/22.
@@ -8,14 +8,13 @@
 import Foundation
 import Alamofire
 
-class AuthNumberCheck {
+class AuthNumberCheckAPI {
     
-    static let shared = AuthNumberCheck()
+    static let shared = AuthNumberCheckAPI()
 
-    
     private init() {}
     
-    func post(code: String) {
+    func post(code: String, completion: @escaping (Result<PhoneAuth, Error>) -> (Void)) {
         let url = API.shared.BASE_URL + "/auth/number"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -23,7 +22,9 @@ class AuthNumberCheck {
         request.timeoutInterval = 10
         
         // POST 로 보낼 정보
-        let params = ["phoneNumber" : UserAPI.shared.phoneNumber!, //!뺌
+        guard let phoneNumber = UserAPI.shared.phoneNumber else { return }
+        
+        let params = ["phoneNumber" : phoneNumber, //!뺌
                       "code": code] as Dictionary
         
         // httpBody 에 parameters 추가
@@ -33,26 +34,22 @@ class AuthNumberCheck {
             print("http Body Error")
         }
         
-        AF.request(request).responseString { (response) in
+        AF.request(request).responseData { response in
             switch response.result {
-            case .success:
+            case .success(let result):
                 print("\n\nPOST SUCCESS")
                 
-                guard let _ = response.value else { return }
-                
                 let decoder = JSONDecoder()
-                
                 do {
-                    let product = try decoder.decode(PhoneAuth.self, from: response.data!)
-                    let result = product.result
-                    
-                    UserAPI.shared.phoneAuthResult = result
-                    
+                    let product = try decoder.decode(PhoneAuth.self, from: result)
+                    completion(.success(product))
                 } catch {
                     print(error)
+                    completion(.failure(error))
                 }
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                completion(.failure(error))
             }
         }
     }

@@ -11,7 +11,8 @@ class InputPhoneNumberVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDisable(button: sendButton)
+        sendButton.setDefault()
+        sendButton.setDisable()
         
         phoneNumberTextField.delegate = self
         
@@ -25,18 +26,26 @@ class InputPhoneNumberVC: UIViewController {
     
     @IBAction func buttonTapped(_ sender: Any) {
         
-        if phoneNumberTextField.text != "" {
-            let phoneNumber = phoneNumberTextField.text!
-            let isValid = isValidPhoneNumber(phoneNumber)
-            
-            if isValid {
-                UserAPI.shared.phoneNumber = phoneNumber
-                RequestPhoneAuth.shared.post()
-                goToView(withIdentifier: "AuthNumberCheck", VC: self)
-            } else {
-                makeAlertBox(title: "실패", message: "번호를 다시 확인하세요.", text: "확인", VC: self)
+            if self.phoneNumberTextField.text != "" {
+                let phoneNumber = self.phoneNumberTextField.text!
+                let isValid = self.isValidPhoneNumber(phoneNumber)
+                
+                if isValid {
+                    UserAPI.shared.phoneNumber = phoneNumber
+                    RequestAuthNumberAPI.shared.post(phoneNumber: phoneNumber) { result in
+                        switch result {
+                        case .success(let message):
+                            print(message)
+                        case .failure(let error):
+                            print(error)
+                        }
+                        self.asyncPresentView(identifier: "AuthNumberCheck")
+                    }
+                    
+                } else {
+                    self.makeAlertBox(title: "실패", message: "올바른 전화번호를 입력하세요.", text: "확인")
+                }
             }
-        }
     }
     // MARK:- 전화번호 유효성 검사
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
@@ -67,9 +76,9 @@ extension InputPhoneNumberVC: UITextFieldDelegate {
             if let text = textField.text {
                 if text.count == maxLength {
                     textField.resignFirstResponder()
-                    setEnable(button: sendButton)
+                    sendButton.setEnable()
                 } else {
-                    setDisable(button: sendButton)
+                    sendButton.setDisable()
                 }
             }
         }

@@ -1,5 +1,5 @@
 //
-//  RequestPhoneAuth.swift
+//  RequestAuthNumberAPI.swift
 //  Koting
 //
 //  Created by 임정우 on 2021/03/22.
@@ -12,10 +12,9 @@ class RequestAuthNumberAPI {
     
     static let shared = RequestAuthNumberAPI()
 
-    
     private init() {}
     
-    func post(completion: @escaping (Result<String, Error>) -> (Void)) {
+    func post(phoneNumber: String, completion: @escaping (Result<String, Error>) -> (Void)) {
         let url = API.shared.BASE_URL + "/auth"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -23,7 +22,7 @@ class RequestAuthNumberAPI {
         request.timeoutInterval = 10
         
         //POST로 보낼 정보
-        let params = ["phoneNumber" : UserAPI.shared.phoneNumber!] as Dictionary
+        let params = ["phoneNumber" : phoneNumber] as Dictionary
         
         // httpBody에 parameters 추가
         do {
@@ -32,7 +31,7 @@ class RequestAuthNumberAPI {
             print("http Body Error")
         }
         
-        AF.request(request).responseString { (response) in
+        AF.request(request).responseString { response in
             switch response.result {
             case .success(let result):
                 print(result)           // 결과 콘솔에 출력

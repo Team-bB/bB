@@ -1,5 +1,5 @@
 //
-//  ViewTransition.swift
+//  UIViewController++.swift
 //  Koting
 //
 //  Created by 임정우 on 2021/03/22.
@@ -12,7 +12,7 @@ extension UIViewController {
     // Dismiss CurrentView
     func asyncDismissView() {
         DispatchQueue.main.async {
-        
+            
             self.dismiss(animated: true)
             
         }
