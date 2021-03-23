@@ -1,14 +1,14 @@
 package com.teambB.koting.repository;
 
 import com.teambB.koting.domain.Apply;
-import com.teambB.koting.domain.Meeting;
-import com.teambB.koting.domain.Member;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @RequiredArgsConstructor
+@Transactional
 public class ApplyRepository {
 
   private final EntityManager em;

@@ -1,5 +1,5 @@
 //
-//  MailAuthCheck.swift
+//  MailAuthCheckAPI.swift
 //  Koting
 //
 //  Created by 임정우 on 2021/03/22.
@@ -8,14 +8,13 @@
 import Foundation
 import Alamofire
 
-class MailAuthCheck {
+class MailAuthCheckAPI {
     
-    static let shared = MailAuthCheck()
+    static let shared = MailAuthCheckAPI()
 
-    
     private init() {}
     
-    func post() {
+    func post(completion: @escaping (Result<MailAuth, Error>) -> (Void)) {
         let url = API.shared.BASE_URL + "/checkStatus"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -23,7 +22,8 @@ class MailAuthCheck {
         request.timeoutInterval = 10
         
         //POST로 보낼 정보
-        guard let accountId = UserDefaults.standard.string(forKey: "account_id") else { return }
+        guard let accountId = UserDefaults.standard.string(forKey: "accountId") else { return }
+        
         let params = ["account_id" : accountId] as Dictionary
         
         // httpBody에 parameters 추가
@@ -33,27 +33,25 @@ class MailAuthCheck {
             print("http Body Error")
         }
         
-        AF.request(request).responseString { (response) in
+        AF.request(request).responseData { response in
             switch response.result {
-            case .success:
+            case .success(let result):
                 print("\n\nPOST SUCCESS")
-                if let _ = response.value {
-                    let decoder = JSONDecoder()
-                    do {
-                        let product = try decoder.decode(MailAuth.self, from: response.data!)
-                        
-                        print(product.result)
-                        
-                        UserAPI.shared.mailCheck = product.result
-                        
-                        // 메일 인증 true면 보낸디
-                    } catch {
-                        print(error)
-                    }
+      
+                let decoder = JSONDecoder()
+                do {
+                    let product = try decoder.decode(MailAuth.self, from: result)
+                    completion(.success(product))
+                
+                } catch {
+                    print(error)
+                    completion(.failure(error))
                 }
+                
                 
             case .failure(let error):
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                completion(.failure(error))
             }
         }
     }

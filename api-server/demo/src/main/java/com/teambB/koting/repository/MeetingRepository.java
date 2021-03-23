@@ -5,9 +5,11 @@ import com.teambB.koting.domain.Meeting;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @RequiredArgsConstructor
+@Transactional
 public class MeetingRepository {
 
   private final EntityManager em;

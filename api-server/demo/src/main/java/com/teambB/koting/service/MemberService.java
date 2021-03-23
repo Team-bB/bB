@@ -3,7 +3,6 @@ package com.teambB.koting.service;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +35,8 @@ public class MemberService {
     return memberRepository.findByEmail(email);
   }
 
-  public Member findOneByNumber(String number) {
-    return memberRepository.findByNumber(number);
+  public List<Member> findOneByNumber(String number) {
+    return memberRepository.findByNumberList(number);
   }
 
   public Member findOneByAccountId(String accountId) {

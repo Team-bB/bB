@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 import java.util.HashMap;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -59,7 +60,6 @@ public class MemberController {
       System.out.println(e.getCode());
       return "false";
     }
-
     return "true";
   }
 
@@ -71,9 +71,9 @@ public class MemberController {
     String code = object.get("code").toString();
     if (dic.get(phoneNumber).toString().equals(code)) {
       dic.remove(phoneNumber);
-      Member member = memberService.findOneByNumber(phoneNumber);
-      if (member != null) { // 가입되어 있으면
-        retObject.put("result", member.getAccount_id());
+      List<Member> member = memberService.findOneByNumber(phoneNumber);
+      if (!member.isEmpty()) { // 가입되어 있으면
+        retObject.put("result", member.get(0).getAccount_id());
       }
       else { // 가입되어 있지 않으면
         // 로그인페이지로 이동
@@ -122,9 +122,9 @@ public class MemberController {
   public void sendMail(String email, String authKey) throws MessagingException, UnsupportedEncodingException {
 
     String to = email;
-    String from = "admin@koting.kr";
+    String from = "noreply@koting.kr";
     String subject = "[코팅] 회원가입 인증메일입니다. ";
-    String url = "http://koting.kr/signUpEmail?email=" + email + "&authKey=" + authKey;
+    String url = "https://koting.kr/signUpEmail?email=" + email + "&authKey=" + authKey;
 
     StringBuilder body = new StringBuilder();
     body.append("<html> <body>");
@@ -136,7 +136,7 @@ public class MemberController {
     MimeMessage message = javaMailSender.createMimeMessage();
     MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
-    mimeMessageHelper.setFrom(from,"admin@koting.kr");
+    mimeMessageHelper.setFrom(from,"noreply@koting.kr");
     mimeMessageHelper.setTo(to);
     mimeMessageHelper.setSubject(subject);
     mimeMessageHelper.setText(body.toString(), true);

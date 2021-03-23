@@ -11,7 +11,9 @@ class AuthNumberCheckVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDisable(button: sendButton)
+        sendButton.setDefault()
+        sendButton.setDisable()
+        
         authNumberTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: authNumberTextField)
       
@@ -24,30 +26,51 @@ class AuthNumberCheckVC: UIViewController {
 
     @IBAction func buttonTapped(_ sender: Any) {
         
-        AuthNumberCheck.shared.post(code: authNumberTextField.text!)
-        
-        if UserAPI.shared.phoneAuthResult == "phoneAuthFailed" {
-            dismissView(self: self)
-        } else if UserAPI.shared.phoneAuthResult == "moveRegister" {
-            goToView(withIdentifier: "Register", VC: self)
-        } else {
-            // UserAPI.shared.phoneAuthResult 가 accountId일때 처리하기
-            MailAuthCheck.shared.post()
+        AuthNumberCheckAPI.shared.post(code: authNumberTextField.text!) { [weak self] result in
             
-            if UserAPI.shared.mailCheck {
-                goToView(withIdentifier: "MeetingList", VC: self)
-            } else {
-                goToView(withIdentifier: "Intro", VC: self)
-                DispatchQueue.main.async {
-//                    makeAlertBox(title: "알림", message: "메일 인증을 완료하세요.", text: "학인", VC: self)
+            guard let self = self else { return }
+            
+            let failed = "phoneAuthFaild"
+            let register = "moveRegister"
+            
+            switch result {
+            case .success(let message):
+                if message.result == failed {
+                    // MARK:- 여기서 알러트 띄우고 하던가 진동을 울리게 해야함.
+                    self.asyncDismissView()
+                } else if message.result == register {
+                    self.asyncPresentView(identifier: "Register")
+                } else {
+                    UserDefaults.standard.set(message, forKey: "accountId")
+                    
+                    MailAuthCheckAPI.shared.post() { [weak self] result in
+                        
+                        guard let self = self else { return }
+                        
+                        switch result {
+                        case .success(let mailAuth):
+                            
+                            let authCheck = mailAuth.result
+                            if authCheck {
+                                self.asyncPresentView(identifier: "MeetingList")
+                            } else {
+                                // MARK:- 여기서 알러트 띄우고 이동하는게 좋음.
+                                self.asyncPresentView(identifier: "GettingStarted")
+                            }
+                            
+                        case .failure(let error):
+                            print("\(error)\n 이러면 codable 에러임")
+                        }
+                    }
                 }
+            case .failure(let error):
+                print(error)
             }
         }
-        
     }
 }
 
-// MARK:- TextFieldDelegate
+// MARK:- UITextFieldDelegate 메소드
 extension AuthNumberCheckVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
@@ -64,9 +87,9 @@ extension AuthNumberCheckVC: UITextFieldDelegate {
             if let text = textField.text {
                 if text.count == maxLength {
                     textField.resignFirstResponder()
-                    setEnable(button: sendButton)
+                    sendButton.setEnable()
                 } else {
-                    setDisable(button: sendButton)
+                    sendButton.setDisable()
                 }
             }
         }

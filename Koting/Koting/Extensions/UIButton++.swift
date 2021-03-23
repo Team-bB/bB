@@ -1,5 +1,5 @@
 //
-//  ButtonSetting.swift
+//  UIButton++.swift
 //  Koting
 //
 //  Created by 임정우 on 2021/03/22.
@@ -14,9 +14,13 @@ extension UIButton {
         self.backgroundColor = backgroundColor
     }
 
-    func setDisable(enable: Bool? = false, backgroundColor: UIColor? = .opaqueSeparator) {
+    func setDisable(enable: Bool? = false, `backgroundColor`: UIColor? = .opaqueSeparator) {
         self.isEnabled = enable!
-        self.backgroundColor = backgroundColor
+        self.backgroundColor = `backgroundColor`
     }
     
+    func setDefault(value: CGFloat? = 8, bool: Bool? = true) {
+        self.layer.cornerRadius = value!
+        self.layer.masksToBounds = bool!
+    }
 }
