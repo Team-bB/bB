@@ -70,7 +70,7 @@ class AuthNumberCheckVC: UIViewController {
     }
 }
 
-// MARK:- TextFieldDelegate
+// MARK:- UITextFieldDelegate 메소드
 extension AuthNumberCheckVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }

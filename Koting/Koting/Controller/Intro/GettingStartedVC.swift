@@ -8,15 +8,14 @@
 import UIKit
 
 class GettingStartedVC: UIViewController {
-
+    
+    // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         autoLogin()
     }
     
-    private var handler: ((Result<Any, Error>) -> Void)!
-    
-    // MARK:- @IBAction
+    // MARK:- @IBAction func
     @IBAction func startButtonTapped(_ sender: Any) {
         
         if UserAPI.shared.accountIdCheck == false {
@@ -44,7 +43,9 @@ class GettingStartedVC: UIViewController {
         }
     }
     
-    // MARK:- 구현 함수
+    // MARK:- 구현한 함수
+    
+    // 자동 로그인 함수
     private func autoLogin() {
         
         DispatchQueue.global().async {
@@ -73,6 +74,7 @@ class GettingStartedVC: UIViewController {
 
     }
     
+    // UserDefaults에 accountId 유무를 check하는 함수
     private func checkAccountId() -> Bool {
         
         guard let _ = UserDefaults.standard.string(forKey: "accountId") else { return false }

@@ -8,7 +8,11 @@
 import UIKit
 
 class InputPhoneNumberVC: UIViewController {
-
+    
+    // MARK:- 변수
+    let maxLength = 11
+    
+    // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         sendButton.setDefault()
@@ -19,11 +23,12 @@ class InputPhoneNumberVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: phoneNumberTextField)
     }
     
-    let maxLength = 11
-    
+    // MARK:- @IBOulet
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
+    
+    // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
         
             if self.phoneNumberTextField.text != "" {
@@ -47,7 +52,10 @@ class InputPhoneNumberVC: UIViewController {
                 }
             }
     }
-    // MARK:- 전화번호 유효성 검사
+    
+    // MARK:- 구현한 함수
+    
+    // 전화번호 유효성 검사
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
         let firstIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 0)
         let forthIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 3)
@@ -61,6 +69,7 @@ class InputPhoneNumberVC: UIViewController {
     }
 }
 
+// MARK:- UITextFieldDelegate 메소드
 extension InputPhoneNumberVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
