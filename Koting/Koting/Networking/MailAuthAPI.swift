@@ -13,9 +13,7 @@ class MailAuthCheck {
     static let shared = MailAuthCheck()
 
     
-    private init() {
-        
-    }
+    private init() {}
     
     func post() {
         let url = API.shared.BASE_URL + "/checkStatus"

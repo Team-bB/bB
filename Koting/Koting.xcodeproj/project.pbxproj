@@ -8,8 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		5BAA480BD1741B8300EE6800 /* Pods_Koting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */; };
+		88556CA32609D8B500CF7CAC /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA12609D8B500CF7CAC /* UIViewController+.swift */; };
+		88556CA42609D8B500CF7CAC /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA22609D8B500CF7CAC /* UIButton+.swift */; };
+		88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */; };
+		88556CAA2609D8D300CF7CAC /* AuthNumberCheckAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA72609D8D300CF7CAC /* AuthNumberCheckAPI.swift */; };
+		88556CAB2609D8D300CF7CAC /* RequestAuthNumberAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA82609D8D300CF7CAC /* RequestAuthNumberAPI.swift */; };
+		88556CB22609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CAE2609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift */; };
+		88556CB32609D8FC00CF7CAC /* MeetingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CAF2609D8FC00CF7CAC /* MeetingListVC.swift */; };
+		88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */; };
+		88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */; };
+		88556CB92609D96A00CF7CAC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CB82609D96A00CF7CAC /* API.swift */; };
 		887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C403226089ABA00A641DA /* GettingStartedVC.swift */; };
-		887C40482608B57500A641DA /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C40472608B57500A641DA /* ViewTransition.swift */; };
+		887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */; };
+		887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */; };
 		889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4D26088F6200B3DA62 /* AppDelegate.swift */; };
 		889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */; };
 		889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F5126088F6200B3DA62 /* ViewController.swift */; };
@@ -18,18 +29,27 @@
 		889F7F5A26088F6300B3DA62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */; };
 		889F7F7D2608907300B3DA62 /* MyInfoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */; };
 		889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */; };
-		889F7F83260890A200B3DA62 /* MeetingLIstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */; };
 		889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F85260890B200B3DA62 /* MyInfoVC.swift */; };
-		889F7F962608966600B3DA62 /* MailAuthCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F952608966600B3DA62 /* MailAuthCheck.swift */; };
-		889F7F9A2608967700B3DA62 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F992608967700B3DA62 /* API.swift */; };
 		889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F9C2608983800B3DA62 /* IntroModel.swift */; };
+		88BAFD4D2609DDCE00A2DE3C /* meetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BAFD4C2609DDCE00A2DE3C /* meetingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6ADA15F079F682A7912D7A20 /* Pods-Koting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.debug.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.debug.xcconfig"; sourceTree = "<group>"; };
 		7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88556CA12609D8B500CF7CAC /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		88556CA22609D8B500CF7CAC /* UIButton+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAuthAPI.swift; sourceTree = "<group>"; };
+		88556CA72609D8D300CF7CAC /* AuthNumberCheckAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNumberCheckAPI.swift; sourceTree = "<group>"; };
+		88556CA82609D8D300CF7CAC /* RequestAuthNumberAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAuthNumberAPI.swift; sourceTree = "<group>"; };
+		88556CAE2609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingDetailInfoViewController.swift; sourceTree = "<group>"; };
+		88556CAF2609D8FC00CF7CAC /* MeetingListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListVC.swift; sourceTree = "<group>"; };
+		88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
+		88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMeetingViewController.swift; sourceTree = "<group>"; };
+		88556CB82609D96A00CF7CAC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		887C403226089ABA00A641DA /* GettingStartedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedVC.swift; sourceTree = "<group>"; };
-		887C40472608B57500A641DA /* ViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransition.swift; sourceTree = "<group>"; };
+		887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberVC.swift; sourceTree = "<group>"; };
+		887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNumberCheckVC.swift; sourceTree = "<group>"; };
 		889F7F4A26088F6200B3DA62 /* Koting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		889F7F4D26088F6200B3DA62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,11 +60,9 @@
 		889F7F5B26088F6300B3DA62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyInfoStoryboard.storyboard; sourceTree = "<group>"; };
 		889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeetingListStoryboard.storyboard; sourceTree = "<group>"; };
-		889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingLIstVC.swift; sourceTree = "<group>"; };
 		889F7F85260890B200B3DA62 /* MyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoVC.swift; sourceTree = "<group>"; };
-		889F7F952608966600B3DA62 /* MailAuthCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailAuthCheck.swift; sourceTree = "<group>"; };
-		889F7F992608967700B3DA62 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		889F7F9C2608983800B3DA62 /* IntroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroModel.swift; sourceTree = "<group>"; };
+		88BAFD4C2609DDCE00A2DE3C /* meetingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = meetingModel.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,12 +78,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		887C40462608B32F00A641DA /* Interface */ = {
+		88556C9F2609D88E00CF7CAC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				887C40472608B57500A641DA /* ViewTransition.swift */,
+				88556CA72609D8D300CF7CAC /* AuthNumberCheckAPI.swift */,
+				88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */,
+				88556CA82609D8D300CF7CAC /* RequestAuthNumberAPI.swift */,
 			);
-			path = Interface;
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		88556CA02609D89500CF7CAC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88556CA22609D8B500CF7CAC /* UIButton+.swift */,
+				88556CA12609D8B500CF7CAC /* UIViewController+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		88556CB72609D95800CF7CAC /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				88556CB82609D96A00CF7CAC /* API.swift */,
+			);
+			path = APIs;
 			sourceTree = "<group>";
 		};
 		889F7F4126088F6100B3DA62 = {
@@ -89,10 +126,10 @@
 		889F7F4C26088F6200B3DA62 /* Koting */ = {
 			isa = PBXGroup;
 			children = (
-				887C40462608B32F00A641DA /* Interface */,
-				889F7F932608959900B3DA62 /* REST API */,
-				889F7F7426088FBF00B3DA62 /* Storyboard */,
-				889F7F7326088FB500B3DA62 /* VC */,
+				88556CA02609D89500CF7CAC /* Extensions */,
+				88556C9F2609D88E00CF7CAC /* Networking */,
+				889F7F7426088FBF00B3DA62 /* View */,
+				889F7F7326088FB500B3DA62 /* Controller */,
 				889F7F7226088FAF00B3DA62 /* Model */,
 				889F7F4D26088F6200B3DA62 /* AppDelegate.swift */,
 				889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */,
@@ -106,6 +143,7 @@
 		889F7F7226088FAF00B3DA62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88556CB72609D95800CF7CAC /* APIs */,
 				889F7F91260894F800B3DA62 /* Intro */,
 				889F7F7726088FFC00B3DA62 /* MyInfo */,
 				889F7F7626088FF100B3DA62 /* MeetingList */,
@@ -113,25 +151,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		889F7F7326088FB500B3DA62 /* VC */ = {
+		889F7F7326088FB500B3DA62 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				889F7F90260894EC00B3DA62 /* Intro */,
 				889F7F792608900B00B3DA62 /* MeetingList */,
 				889F7F782608900300B3DA62 /* MyInfo */,
 			);
-			path = VC;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		889F7F7426088FBF00B3DA62 /* Storyboard */ = {
+		889F7F7426088FBF00B3DA62 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				889F7F8F260894DE00B3DA62 /* Intro */,
-				889F7F7B2608901900B3DA62 /* MyInfo */,
-				889F7F7A2608901400B3DA62 /* MeetingList */,
+				889F7F5326088F6200B3DA62 /* Main.storyboard */,
+				889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */,
+				889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */,
 				889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */,
 			);
-			path = Storyboard;
+			path = View;
 			sourceTree = "<group>";
 		};
 		889F7F7626088FF100B3DA62 /* MeetingList */ = {
@@ -159,39 +197,21 @@
 		889F7F792608900B00B3DA62 /* MeetingList */ = {
 			isa = PBXGroup;
 			children = (
-				889F7F82260890A200B3DA62 /* MeetingLIstVC.swift */,
+				88556CAE2609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift */,
+				88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */,
+				88556CAF2609D8FC00CF7CAC /* MeetingListVC.swift */,
+				88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */,
+				88BAFD4C2609DDCE00A2DE3C /* meetingModel.swift */,
 			);
 			path = MeetingList;
-			sourceTree = "<group>";
-		};
-		889F7F7A2608901400B3DA62 /* MeetingList */ = {
-			isa = PBXGroup;
-			children = (
-				889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */,
-			);
-			path = MeetingList;
-			sourceTree = "<group>";
-		};
-		889F7F7B2608901900B3DA62 /* MyInfo */ = {
-			isa = PBXGroup;
-			children = (
-				889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */,
-			);
-			path = MyInfo;
-			sourceTree = "<group>";
-		};
-		889F7F8F260894DE00B3DA62 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-				889F7F5326088F6200B3DA62 /* Main.storyboard */,
-			);
-			path = Intro;
 			sourceTree = "<group>";
 		};
 		889F7F90260894EC00B3DA62 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
 				887C403226089ABA00A641DA /* GettingStartedVC.swift */,
+				887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */,
+				887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -200,23 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				889F7F9C2608983800B3DA62 /* IntroModel.swift */,
-			);
-			path = Intro;
-			sourceTree = "<group>";
-		};
-		889F7F932608959900B3DA62 /* REST API */ = {
-			isa = PBXGroup;
-			children = (
-				889F7F94260895DC00B3DA62 /* Intro */,
-				889F7F992608967700B3DA62 /* API.swift */,
-			);
-			path = "REST API";
-			sourceTree = "<group>";
-		};
-		889F7F94260895DC00B3DA62 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-				889F7F952608966600B3DA62 /* MailAuthCheck.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -354,16 +357,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				889F7F83260890A200B3DA62 /* MeetingLIstVC.swift in Sources */,
-				889F7F962608966600B3DA62 /* MailAuthCheck.swift in Sources */,
+				887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */,
+				88BAFD4D2609DDCE00A2DE3C /* meetingModel.swift in Sources */,
+				88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */,
+				88556CA32609D8B500CF7CAC /* UIViewController+.swift in Sources */,
+				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
+				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
 				889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */,
+				88556CAB2609D8D300CF7CAC /* RequestAuthNumberAPI.swift in Sources */,
+				88556CAA2609D8D300CF7CAC /* AuthNumberCheckAPI.swift in Sources */,
+				88556CB32609D8FC00CF7CAC /* MeetingListVC.swift in Sources */,
 				889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */,
+				88556CB22609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift in Sources */,
+				88556CA42609D8B500CF7CAC /* UIButton+.swift in Sources */,
+				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
+				88556CB92609D96A00CF7CAC /* API.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
-				889F7F9A2608967700B3DA62 /* API.swift in Sources */,
-				887C40482608B57500A641DA /* ViewTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
