@@ -78,7 +78,8 @@ class GettingStartedVC: UIViewController {
                             DispatchQueue.main.async {
                                 self.setVisibleWithAnimation(self.activityIndicator, false)
                             }
-                            self.asyncPresentView(identifier: "MeetingList")
+                            //self.asyncPresentView(identifier: "MeetingList")
+                            self.performSegue(withIdentifier: "MeetingList", sender: nil)
                         } else {
                             DispatchQueue.main.async {
                                 self.setVisibleWithAnimation(self.activityIndicator, false)

@@ -60,11 +60,22 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="pMB-WU-oix" id="5hM-rL-9PR"/>
+                        <segue destination="dgF-sK-ccm" kind="presentation" identifier="MeetingList" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="BRj-FX-Gx7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-214" y="89"/>
+        </scene>
+        <!--MeetingList-->
+        <scene sceneID="dr4-NI-oWo">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HXi-BC-Wut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="MeetingListStoryboard" referencedIdentifier="MeetingList" id="dgF-sK-ccm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3cX-ek-pNb"/>
+                </viewControllerPlaceholder>
+            </objects>
+            <point key="canvasLocation" x="-216" y="755"/>
         </scene>
         <!--Input Phone NumberVC-->
         <scene sceneID="D6u-qW-Weo">

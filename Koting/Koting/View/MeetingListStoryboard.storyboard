@@ -148,6 +148,21 @@
             </objects>
             <point key="canvasLocation" x="3098.4000000000001" y="-383.65817091454278"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="cYg-aU-Q1l">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4a-pw-ZOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="MeetingList" id="tCT-Cc-YZc" customClass="ViewController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WIJ-Ot-SBg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Rui-5Y-F4M"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3002" y="406"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GaH-Eu-Wvo">
             <objects>
@@ -171,6 +186,9 @@
         <image name="folder" catalog="system" width="128" height="97"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -39,6 +39,20 @@ class SignUpVC: UIViewController {
         height.delegate = self
         mail.delegate = self
         
+        sexPickerView.delegate = self
+        collegePickerView.delegate = self
+        majorPickerView.delegate = self
+        mbtiPikcerView.delegate = self
+        agePickerView.delegate = self
+        heightPickerView.delegate = self
+        
+        sexPickerView.dataSource = self
+        collegePickerView.dataSource = self
+        majorPickerView.dataSource = self
+        mbtiPikcerView.dataSource = self
+        agePickerView.dataSource = self
+        heightPickerView.dataSource = self
+        
         sexPickerView.tag = 1
         collegePickerView.tag = 2
         majorPickerView.tag = 3
