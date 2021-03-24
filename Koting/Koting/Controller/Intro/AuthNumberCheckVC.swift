@@ -68,8 +68,8 @@ class AuthNumberCheckVC: UIViewController {
                             if authCheck {
                                 DispatchQueue.main.async {
                                     self.setVisibleWithAnimation(self.activityIndicator, false)
+                                    self.performSegue(withIdentifier: "MeetingList", sender: nil)
                                 }
-                                self.asyncPresentView(identifier: "MeetingList")
                             } else {
                                 // MARK:- 여기서 알러트 띄우고 이동하는게 좋음.
                                 DispatchQueue.main.async {

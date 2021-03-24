@@ -39,8 +39,10 @@ class GettingStartedVC: UIViewController {
                     if authCheck {
                         DispatchQueue.main.async {
                             self.setVisibleWithAnimation(self.activityIndicator, false)
+                            self.performSegue(withIdentifier: "MeetingList", sender: nil)
                         }
-                        self.asyncPresentView(identifier: "MeetingList")
+//                        self.asyncPresentView(identifier: "MeetingList")
+                        
                     } else {
                         DispatchQueue.main.async {
                             self.setVisibleWithAnimation(self.activityIndicator, false)
@@ -77,9 +79,8 @@ class GettingStartedVC: UIViewController {
                         if authCheck {
                             DispatchQueue.main.async {
                                 self.setVisibleWithAnimation(self.activityIndicator, false)
+                                self.performSegue(withIdentifier: "MeetingList", sender: nil)
                             }
-                            //self.asyncPresentView(identifier: "MeetingList")
-                            self.performSegue(withIdentifier: "MeetingList", sender: nil)
                         } else {
                             DispatchQueue.main.async {
                                 self.setVisibleWithAnimation(self.activityIndicator, false)
