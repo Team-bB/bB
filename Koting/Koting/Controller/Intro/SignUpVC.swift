@@ -45,6 +45,8 @@ class SignUpVC: UIViewController {
         mbtiPikcerView.tag = 4
         agePickerView.tag = 5
         heightPickerView.tag = 6
+        
+        createToolBar()
     }
     
     
@@ -65,15 +67,32 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var MBTI: UITextField!
     @IBOutlet weak var mail: UITextField!
     
+    @IBOutlet var infoArray: Array<UITextField>!
+    
     @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK:- @IBAction func
     @IBAction func signUpButtonTapped(_ sender: Any) {
         guard  let email = mail.text else { return }
         
         if (isValidEmail(email + domain)) {
-            print("ValidEmail !!")
-            // post
+            
+            self.setVisibleWithAnimation(self.activityIndicator, true)
+            
+            SignUpAPI.shared.post(paramArray: infoArray) { result in
+                switch result {
+                case .success(let message):
+                    UserDefaults.standard.set(message.result, forKey: "accountId")
+                    DispatchQueue.main.async {
+                        self.setVisibleWithAnimation(self.activityIndicator, false)
+                    }
+                    self.asyncPresentView(identifier: "GettingStarted")
+                case .failure(let error):
+                    print(error)
+                }
+            }
         } else {
             print("Not Valid !!!!!!!!!")
         }

@@ -8,7 +8,10 @@
 import UIKit
 
 class AuthNumberCheckVC: UIViewController {
-
+    // MARK:- 변수
+    let maxLength = 4
+    
+    // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         sendButton.setDefault()
@@ -19,13 +22,18 @@ class AuthNumberCheckVC: UIViewController {
       
     }
     
-    let maxLength = 4
 
+    
+    // MARK:- @IBOulet
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var authNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
-
+    
+    // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
         
+        self.setVisibleWithAnimation(self.activityIndicator, true)
+
         AuthNumberCheckAPI.shared.post(code: authNumberTextField.text!) { [weak self] result in
             
             guard let self = self else { return }
@@ -37,8 +45,14 @@ class AuthNumberCheckVC: UIViewController {
             case .success(let message):
                 if message.result == failed {
                     // MARK:- 여기서 알러트 띄우고 하던가 진동을 울리게 해야함.
+                    DispatchQueue.main.async {
+                        self.setVisibleWithAnimation(self.activityIndicator, false)
+                    }
                     self.asyncDismissView()
                 } else if message.result == register {
+                    DispatchQueue.main.async {
+                        self.setVisibleWithAnimation(self.activityIndicator, false)
+                    }
                     self.asyncPresentView(identifier: "Register")
                 } else {
                     UserDefaults.standard.set(message.result, forKey: "accountId")
@@ -52,9 +66,15 @@ class AuthNumberCheckVC: UIViewController {
                             
                             let authCheck = mailAuth.result
                             if authCheck {
+                                DispatchQueue.main.async {
+                                    self.setVisibleWithAnimation(self.activityIndicator, false)
+                                }
                                 self.asyncPresentView(identifier: "MeetingList")
                             } else {
                                 // MARK:- 여기서 알러트 띄우고 이동하는게 좋음.
+                                DispatchQueue.main.async {
+                                    self.setVisibleWithAnimation(self.activityIndicator, false)
+                                }
                                 self.asyncPresentView(identifier: "GettingStarted")
                             }
                             
@@ -65,6 +85,9 @@ class AuthNumberCheckVC: UIViewController {
                 }
             case .failure(let error):
                 print(error)
+                DispatchQueue.main.async {
+                    self.makeAlertBox(title: "실패", message: "잠시후 다시시도 하세요.", text: "확인")
+                }
             }
         }
     }

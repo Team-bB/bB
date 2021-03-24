@@ -24,6 +24,7 @@ class InputPhoneNumberVC: UIViewController {
     }
     
     // MARK:- @IBOulet
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
@@ -35,21 +36,30 @@ class InputPhoneNumberVC: UIViewController {
                 let phoneNumber = self.phoneNumberTextField.text!
                 let isValid = self.isValidPhoneNumber(phoneNumber)
                 
-                if isValid {
-                    UserAPI.shared.phoneNumber = phoneNumber
-                    RequestAuthNumberAPI.shared.post(phoneNumber: phoneNumber) { result in
-                        switch result {
-                        case .success(let message):
-                            print(message)
-                        case .failure(let error):
-                            print(error)
-                        }
+                
+                DispatchQueue.global().async {
+                    if isValid {
                         self.asyncPresentView(identifier: "AuthNumberCheck")
+                        
+                        UserAPI.shared.phoneNumber = phoneNumber
+                        RequestAuthNumberAPI.shared.post(phoneNumber: phoneNumber) { result in
+                            switch result {
+                            case .success(let message):
+                                print(message)
+                                self.asyncPresentView(identifier: "AuthNumberCheck")
+                                
+                            case .failure(let error):
+                                print(error)
+//                                DispatchQueue.main.async {
+//                                    self.makeAlertBox(title: "실패", message: "잠시후 다시시도 하세요.", text: "확인")
+//                                }
+                            }
+                        }
+                    } else {
+                        self.makeAlertBox(title: "실패", message: "올바른 전화번호를 입력하세요.", text: "확인")
                     }
-                    
-                } else {
-                    self.makeAlertBox(title: "실패", message: "올바른 전화번호를 입력하세요.", text: "확인")
                 }
+
             }
     }
     

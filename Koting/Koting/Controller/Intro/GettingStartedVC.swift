@@ -15,6 +15,9 @@ class GettingStartedVC: UIViewController {
         autoLogin()
     }
     
+    // MARK:- @IBOulet
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // MARK:- @IBAction func
     @IBAction func startButtonTapped(_ sender: Any) {
         
@@ -23,6 +26,8 @@ class GettingStartedVC: UIViewController {
             self.asyncPresentView(identifier: "PhoneAuth")
             
         } else {
+            self.setVisibleWithAnimation(self.activityIndicator, true)
+            
             MailAuthCheckAPI.shared.post() { [weak self] result in
                 
                 guard let self = self else { return }
@@ -32,9 +37,15 @@ class GettingStartedVC: UIViewController {
                     
                     let authCheck = mailAuth.result
                     if authCheck {
+                        DispatchQueue.main.async {
+                            self.setVisibleWithAnimation(self.activityIndicator, false)
+                        }
                         self.asyncPresentView(identifier: "MeetingList")
                     } else {
-                        self.makeAlertBox(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
+                        DispatchQueue.main.async {
+                            self.setVisibleWithAnimation(self.activityIndicator, false)
+                            self.makeAlertBox(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
+                        }
                     }
                 case .failure(let error):
                     print("\(error)\n 이러면 codable 에러임")
@@ -53,6 +64,8 @@ class GettingStartedVC: UIViewController {
             // 유저 디폴트 O 메일 인증 O -> 미팅리스트
             if self.checkAccountId() {
                 
+                self.setVisibleWithAnimation(self.activityIndicator, true)
+
                 MailAuthCheckAPI.shared.post() { [weak self] result in
                     
                     guard let self = self else { return }
@@ -62,7 +75,14 @@ class GettingStartedVC: UIViewController {
                         
                         let authCheck = mailAuth.result
                         if authCheck {
+                            DispatchQueue.main.async {
+                                self.setVisibleWithAnimation(self.activityIndicator, false)
+                            }
                             self.asyncPresentView(identifier: "MeetingList")
+                        } else {
+                            DispatchQueue.main.async {
+                                self.setVisibleWithAnimation(self.activityIndicator, false)
+                            }
                         }
                         
                     case .failure(let error):
