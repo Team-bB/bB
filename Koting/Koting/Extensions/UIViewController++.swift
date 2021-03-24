@@ -41,7 +41,9 @@ extension UIViewController {
     func setVisibleWithAnimation(_ v: UIView?, _ s: Bool) {
         guard let v = v else { return }
         UIView.animate(withDuration: 0.3, animations: { [weak v] in
-            v?.isHidden = !s
+            DispatchQueue.main.async {
+                v?.isHidden = !s
+            }
         }, completion: { [weak self] _ in
             self?.view.layoutIfNeeded()
         })
