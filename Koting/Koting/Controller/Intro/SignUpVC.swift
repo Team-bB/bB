@@ -92,17 +92,20 @@ class SignUpVC: UIViewController {
         guard  let email = mail.text else { return }
         
         if (isValidEmail(email + domain)) {
-            
-            self.setVisibleWithAnimation(self.activityIndicator, true)
+           
+            DispatchQueue.main.async {
+                self.asyncPresentView(identifier: "GettingStarted")
+            }
+//            self.setVisibleWithAnimation(self.activityIndicator, true)
             
             SignUpAPI.shared.post(paramArray: infoArray) { result in
                 switch result {
                 case .success(let message):
                     UserDefaults.standard.set(message.result, forKey: "accountId")
-                    DispatchQueue.main.async {
-                        self.setVisibleWithAnimation(self.activityIndicator, false)
-                    }
-                    self.asyncPresentView(identifier: "GettingStarted")
+//                    DispatchQueue.main.async {
+//                        self.setVisibleWithAnimation(self.activityIndicator, false)
+//                    }
+                    
                 case .failure(let error):
                     print(error)
                 }
