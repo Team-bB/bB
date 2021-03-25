@@ -19,7 +19,6 @@ struct Info: Codable {
 }
 
 struct Meeting: Codable {
-    var college: String
     var numberOfParticipants: String
     var progressCondition: String
     var userInfo: Info
@@ -27,5 +26,9 @@ struct Meeting: Codable {
 
 struct APIResponse:Codable {
     var myInfo: Info
+    var meetingList: [Meeting]
+}
+
+struct CreateMeetingRoomAPIResponse: Codable {
     var meetingList: [Meeting]
 }

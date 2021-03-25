@@ -36,6 +36,8 @@
 		D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */; };
 		D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF1260B1835000625DF /* MeetingModel.swift */; };
 		D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */; };
+		D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */; };
+		D3BC8D31260CB73E000625DF /* CreateMeetingRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListVC.swift; sourceTree = "<group>"; };
 		D3BC8CF1260B1835000625DF /* MeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingModel.swift; sourceTree = "<group>"; };
 		D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListAndMyInfoAPI.swift; sourceTree = "<group>"; };
+		D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMeetingRoomVC.swift; sourceTree = "<group>"; };
+		D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMeetingRoomAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 				88556CA82609D8D300CF7CAC /* RequestAuthNumberAPI.swift */,
 				886D82DE260AF5A300EE411C /* SignUpAPI.swift */,
 				D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */,
+				D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */,
 				D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */,
 				88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */,
+				D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */,
 			);
 			path = MeetingList;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3BC8D31260CB73E000625DF /* CreateMeetingRoomAPI.swift in Sources */,
 				887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */,
 				886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */,
 				88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */,
@@ -376,6 +383,7 @@
 				88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */,
 				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
+				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
