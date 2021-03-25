@@ -70,12 +70,22 @@
         <!--MeetingList-->
         <scene sceneID="dr4-NI-oWo">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HXi-BC-Wut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="MeetingListStoryboard" referencedIdentifier="MeetingList" id="dgF-sK-ccm" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="3cX-ek-pNb"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HXi-BC-Wut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-216" y="755"/>
+        </scene>
+        <!--MeetingList-->
+        <scene sceneID="u1k-ce-pla">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MeetingListStoryboard" referencedIdentifier="MeetingList" id="2VM-Rw-vID" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Kls-2W-CmN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nsh-aF-22g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2184" y="88"/>
         </scene>
         <!--Input Phone NumberVC-->
         <scene sceneID="D6u-qW-Weo">
@@ -209,6 +219,7 @@
                         <outlet property="activityIndicator" destination="zsr-0s-9hC" id="WX6-O8-IHC"/>
                         <outlet property="authNumberTextField" destination="PEw-zk-d1c" id="yUV-4z-oZb"/>
                         <outlet property="sendButton" destination="88e-KR-YA7" id="vCe-Zx-sfc"/>
+                        <segue destination="2VM-Rw-vID" kind="presentation" identifier="MeetingList" animates="NO" modalPresentationStyle="fullScreen" id="ffA-Xr-eiq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f05-3Q-fOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
