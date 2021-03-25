@@ -8,4 +8,6 @@ target 'Koting' do
   # Pods for Koting
 pod 'RxSwift'
 pod 'Alamofire'
+pod 'MaterialComponents/Buttons'
+pod 'PanModal'
 end

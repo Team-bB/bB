@@ -11,7 +11,7 @@
         <!--Meeting ListVC-->
         <scene sceneID="fLH-aS-7ti">
             <objects>
-                <viewController id="UvI-Gg-ac9" customClass="MeetingListVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MeetingList" id="UvI-Gg-ac9" customClass="MeetingListVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISF-Gr-kDq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,8 +151,7 @@
         <!--View Controller-->
         <scene sceneID="cYg-aU-Q1l">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w4a-pw-ZOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="MeetingList" id="tCT-Cc-YZc" customClass="ViewController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tCT-Cc-YZc" customClass="ViewController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WIJ-Ot-SBg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,6 +159,7 @@
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4a-pw-ZOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3002" y="406"/>
         </scene>
