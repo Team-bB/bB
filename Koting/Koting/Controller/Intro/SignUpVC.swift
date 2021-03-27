@@ -93,18 +93,26 @@ class SignUpVC: UIViewController {
         
         if (isValidEmail(email + domain)) {
            
-            DispatchQueue.main.async {
-                self.asyncPresentView(identifier: "GettingStarted")
-            }
-//            self.setVisibleWithAnimation(self.activityIndicator, true)
+            self.setVisibleWithAnimation(self.activityIndicator, true)
             
             SignUpAPI.shared.post(paramArray: infoArray) { result in
                 switch result {
                 case .success(let message):
                     UserDefaults.standard.set(message.result, forKey: "accountId")
-//                    DispatchQueue.main.async {
-//                        self.setVisibleWithAnimation(self.activityIndicator, false)
-//                    }
+                    DispatchQueue.main.async {
+                        
+                        self.setVisibleWithAnimation(self.activityIndicator, false)
+                        let alertController = UIAlertController(title: "가입완료", message: "메일 인증후 이용가능합니다.", preferredStyle: UIAlertController.Style.alert)
+                        let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel) { action in
+                            
+                            self.asyncPresentView(identifier: "GettingStarted")
+                            
+                        }
+                        
+                        alertController.addAction(okButton)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                     
                 case .failure(let error):
                     print(error)
