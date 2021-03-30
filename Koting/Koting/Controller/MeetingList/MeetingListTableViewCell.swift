@@ -12,6 +12,7 @@ class MeetingListTableViewCell: UITableViewCell {
     @IBOutlet weak var collegeName: UILabel!
     @IBOutlet weak var numberOfParticipants: UILabel!
     @IBOutlet weak var animalShapeImage: UIImageView!
+    @IBOutlet weak var tableViewCellLayer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

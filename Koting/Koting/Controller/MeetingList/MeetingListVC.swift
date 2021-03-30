@@ -23,16 +23,19 @@ class MeetingListVC: UIViewController {
     var testData2: Meeting = Meeting(numberOfParticipants: "2", progressCondition: "매칭완료", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "사회과학대학", major: "정치외교학과", age: "25", height: "180", mbti: "ESTP", email: "kkkniga@dgu.ac.kr"))
     var testData3: Meeting = Meeting(numberOfParticipants: "1", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "불교대학", major: "불교학부", age: "25", height: "179", mbti: "ESTP", email: "norply@dgu.ac.kr"))
     var testData4: Meeting = Meeting(numberOfParticipants: "4", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
+    var testData5: Meeting = Meeting(numberOfParticipants: "1", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
+    var testData6: Meeting = Meeting(numberOfParticipants: "3", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        meetingList = [testData1,testData2,testData3,testData4]
+        meetingList = [testData1,testData2,testData3,testData4,testData5,testData6]
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none //테이블 뷰 셀 나누는 줄 없애는 코드
         //getMeetingListAndMyInfo()
         setFloatingButton()
         
@@ -90,8 +93,15 @@ extension MeetingListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingListTableViewCell", for: indexPath) as! MeetingListTableViewCell
+        cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        cell.tableViewCellLayer.layer.cornerRadius = 20
+        cell.tableViewCellLayer.layer.borderWidth = 2
         cell.collegeName.text = meetingList[indexPath.row].userInfo.college
         cell.numberOfParticipants.text = meetingList[indexPath.row].numberOfParticipants
+        cell.animalShapeImage.image = UIImage(named: "image")
+        cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2 //102~104 이미지 동그랗게 만드는코드 약간애매
+        cell.animalShapeImage.layer.masksToBounds = true
+        cell.animalShapeImage.layer.borderWidth = 0
         
         return cell
     }
@@ -99,7 +109,9 @@ extension MeetingListVC: UITableViewDataSource {
 }
 
 extension MeetingListVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "MeetingDetailInfo", sender: meetingList[indexPath.row])
+    }
 }
 
 
