@@ -32,3 +32,6 @@ struct APIResponse:Codable {
 struct CreateMeetingRoomAPIResponse: Codable {
     var meetingList: [Meeting]
 }
+
+var meetingList: [Meeting] = []
+var myInfo: Info?

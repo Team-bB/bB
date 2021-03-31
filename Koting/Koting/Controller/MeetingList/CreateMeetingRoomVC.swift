@@ -22,8 +22,9 @@ class CreateMeetingRoomVC: UIViewController {
     
     
     @IBAction func createMeetingRoomBtnTapped(_ sender: Any) {
+//        meetingList.append(Meeting(numberOfParticipants: participantsNumber.text ?? "", progressCondition: "진행중", userInfo: Info(sex: "여", phoneNumber: "01012345678", college: "예술대학", major: "연극영화학과", age: "21", height: "163", mbti: "INTP", email: "kkkk@dgu.ac.kr")))
         self.dismiss(animated: true, completion: nil)
-        postMeetingRoomAndGetMeetingList()
+        //postMeetingRoomAndGetMeetingList() POST보내는 코드 잠시 주석...
     }
     func postMeetingRoomAndGetMeetingList() {
         CreateMeetingRoomAPI.shared.post(paramArray: MeetingRoomInfo) {

@@ -15,9 +15,6 @@ class MeetingListVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var meetingList: [Meeting] = []
-    var myInfo: Info?
-    
     //MARK: 더미데이터
     var testData1: Meeting = Meeting(numberOfParticipants: "3", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "공과대학", major: "정보통신공학과", age: "25", height: "188", mbti: "ESTP", email: "ghdghkgud@dgu.ac.kr"))
     var testData2: Meeting = Meeting(numberOfParticipants: "2", progressCondition: "매칭완료", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "사회과학대학", major: "정치외교학과", age: "25", height: "180", mbti: "ESTP", email: "kkkniga@dgu.ac.kr"))
@@ -36,6 +33,7 @@ class MeetingListVC: UIViewController {
         self.tableView.dataSource = self
         
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none //테이블 뷰 셀 나누는 줄 없애는 코드
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissNotification(_:)), name: NSNotification.Name(rawValue: "DidDismissViewController"), object: nil)
         //getMeetingListAndMyInfo()
         setFloatingButton()
         
