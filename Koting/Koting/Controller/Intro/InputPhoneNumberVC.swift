@@ -24,7 +24,7 @@ class InputPhoneNumberVC: UIViewController {
     }
     
     // MARK:- @IBOulet
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     

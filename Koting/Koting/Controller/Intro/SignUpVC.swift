@@ -6,12 +6,25 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class SignUpVC: UIViewController {
-
+    
+    var indicator: NVActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.indicator = NVActivityIndicatorView(
+                    frame: CGRect(
+                        origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
+                        size: CGSize(width: 100, height: 100)
+                    ),
+                    type: .ballBeat,
+                    color: UIColor.orange,
+                    padding: 0
+                )
+        self.view.addSubview(self.indicator)
+                
         signUpButton.setDefault()
         signUpButton.setDisable()
         
@@ -85,7 +98,7 @@ class SignUpVC: UIViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK:- @IBAction func
     @IBAction func signUpButtonTapped(_ sender: Any) {
@@ -93,15 +106,16 @@ class SignUpVC: UIViewController {
         
         if (isValidEmail(email + domain)) {
            
-            self.setVisibleWithAnimation(self.activityIndicator, true)
-            
+//            self.setVisibleWithAnimation(self.activityIndicator, true)
+            self.indicator.startAnimating()
             SignUpAPI.shared.post(paramArray: infoArray) { result in
                 switch result {
                 case .success(let message):
                     UserDefaults.standard.set(message.result, forKey: "accountId")
                     DispatchQueue.main.async {
                         
-                        self.setVisibleWithAnimation(self.activityIndicator, false)
+//                        self.setVisibleWithAnimation(self.activityIndicator, false)
+                        self.indicator.stopAnimating()
                         let alertController = UIAlertController(title: "가입완료", message: "메일 인증후 이용가능합니다.", preferredStyle: UIAlertController.Style.alert)
                         let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel) { action in
                             
