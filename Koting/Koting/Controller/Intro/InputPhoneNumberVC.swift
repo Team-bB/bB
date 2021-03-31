@@ -24,10 +24,8 @@ class InputPhoneNumberVC: UIViewController {
     }
     
     // MARK:- @IBOulet
-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
-    
     
     // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {

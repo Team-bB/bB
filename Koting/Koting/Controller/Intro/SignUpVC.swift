@@ -14,6 +14,7 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.indicator = NVActivityIndicatorView(
                     frame: CGRect(
                         origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
@@ -98,36 +99,32 @@ class SignUpVC: UIViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
     
-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     
     // MARK:- @IBAction func
     @IBAction func signUpButtonTapped(_ sender: Any) {
         guard  let email = mail.text else { return }
         
         if (isValidEmail(email + domain)) {
-           
-//            self.setVisibleWithAnimation(self.activityIndicator, true)
             self.indicator.startAnimating()
+            
             SignUpAPI.shared.post(paramArray: infoArray) { result in
                 switch result {
                 case .success(let message):
                     UserDefaults.standard.set(message.result, forKey: "accountId")
+                    UserDefaults.standard.set(false, forKey: "mailAuthChecked")
+                    
                     DispatchQueue.main.async {
-                        
-//                        self.setVisibleWithAnimation(self.activityIndicator, false)
                         self.indicator.stopAnimating()
                         let alertController = UIAlertController(title: "가입완료", message: "메일 인증후 이용가능합니다.", preferredStyle: UIAlertController.Style.alert)
                         let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel) { action in
-                            
                             self.asyncPresentView(identifier: "GettingStarted")
-                            
                         }
                         
                         alertController.addAction(okButton)
                         
                         self.present(alertController, animated: true, completion: nil)
                     }
-                    
                 case .failure(let error):
                     print(error)
                 }
@@ -147,7 +144,6 @@ extension SignUpVC {
         let doneBtn = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(buttonAction))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        
         toolBar.sizeToFit()
         toolBar.setItems([flexibleSpace,doneBtn], animated: true)
         toolBar.isUserInteractionEnabled = true
@@ -158,7 +154,7 @@ extension SignUpVC {
         MBTI.inputAccessoryView = toolBar
         age.inputAccessoryView = toolBar
         height.inputAccessoryView = toolBar
-//        mail.inputAccessoryView = toolBar
+
     }
     
     @objc func buttonAction() {
@@ -168,7 +164,6 @@ extension SignUpVC {
         MBTI.resignFirstResponder()
         age.resignFirstResponder()
         height.resignFirstResponder()
-//        mail.resignFirstResponder()
     }
     
     func isNotEmptyTextFiled() -> Bool {
@@ -177,8 +172,8 @@ extension SignUpVC {
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
         return emailPred.evaluate(with: email)
     }
 }
@@ -193,7 +188,6 @@ extension SignUpVC: UITextFieldDelegate {
         if let _ = notification.object as? UITextField {
             if isNotEmptyTextFiled() {
                 signUpButton.setEnable()
-
             } else {
                 // Disable Button
                 signUpButton.setDisable()

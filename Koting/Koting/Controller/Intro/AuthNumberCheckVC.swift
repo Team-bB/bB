@@ -12,6 +12,7 @@ class AuthNumberCheckVC: UIViewController {
     // MARK:- 변수
     let maxLength = 4
     var indicator: NVActivityIndicatorView!
+    
     // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +35,13 @@ class AuthNumberCheckVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: authNumberTextField)
       
     }
-    
 
-    
     // MARK:- @IBOulet
-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var authNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
     // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
-        
-//        self.setVisibleWithAnimation(self.activityIndicator, true)
         self.indicator.startAnimating()
         AuthNumberCheckAPI.shared.post(code: authNumberTextField.text!) { [weak self] result in
             
@@ -59,13 +55,11 @@ class AuthNumberCheckVC: UIViewController {
                 if message.result == failed {
                     // MARK:- 여기서 알러트 띄우고 하던가 진동을 울리게 해야함.
                     DispatchQueue.main.async {
-//                        self.setVisibleWithAnimation(self.activityIndicator, false)
                         self.indicator.stopAnimating()
                     }
                     self.asyncDismissView()
                 } else if message.result == register {
                     DispatchQueue.main.async {
-//                        self.setVisibleWithAnimation(self.activityIndicator, false)
                         self.indicator.stopAnimating()
                     }
                     self.asyncPresentView(identifier: "Register")
@@ -80,16 +74,17 @@ class AuthNumberCheckVC: UIViewController {
                         case .success(let mailAuth):
                             
                             let authCheck = mailAuth.result
+                            
+                            UserDefaults.standard.set(authCheck, forKey: "mailAuthChecked")
+                            
                             if authCheck {
                                 DispatchQueue.main.async {
-//                                    self.setVisibleWithAnimation(self.activityIndicator, false)
                                     self.indicator.stopAnimating()
                                     self.performSegue(withIdentifier: "MeetingList", sender: nil)
                                 }
                             } else {
                                 // MARK:- 여기서 알러트 띄우고 이동하는게 좋음.
                                 DispatchQueue.main.async {
-//                                    self.setVisibleWithAnimation(self.activityIndicator, false)
                                     self.indicator.stopAnimating()
                                 }
                                 self.asyncPresentView(identifier: "GettingStarted")
