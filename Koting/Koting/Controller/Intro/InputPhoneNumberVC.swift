@@ -8,7 +8,11 @@
 import UIKit
 
 class InputPhoneNumberVC: UIViewController {
-
+    
+    // MARK:- 변수
+    let maxLength = 11
+    
+    // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         sendButton.setDefault()
@@ -19,35 +23,47 @@ class InputPhoneNumberVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: phoneNumberTextField)
     }
     
-    let maxLength = 11
-    
+    // MARK:- @IBOulet
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
+    // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
         
             if self.phoneNumberTextField.text != "" {
                 let phoneNumber = self.phoneNumberTextField.text!
                 let isValid = self.isValidPhoneNumber(phoneNumber)
                 
-                if isValid {
-                    UserAPI.shared.phoneNumber = phoneNumber
-                    RequestAuthNumberAPI.shared.post(phoneNumber: phoneNumber) { result in
-                        switch result {
-                        case .success(let message):
-                            print(message)
-                        case .failure(let error):
-                            print(error)
-                        }
+                
+                DispatchQueue.global().async {
+                    if isValid {
                         self.asyncPresentView(identifier: "AuthNumberCheck")
+                        
+                        UserAPI.shared.phoneNumber = phoneNumber
+                        RequestAuthNumberAPI.shared.post(phoneNumber: phoneNumber) { result in
+                            switch result {
+                            case .success(let message):
+                                print(message)
+                                self.asyncPresentView(identifier: "AuthNumberCheck")
+                                
+                            case .failure(let error):
+                                print(error)
+//                                DispatchQueue.main.async {
+//                                    self.makeAlertBox(title: "실패", message: "잠시후 다시시도 하세요.", text: "확인")
+//                                }
+                            }
+                        }
+                    } else {
+                        self.makeAlertBox(title: "실패", message: "올바른 전화번호를 입력하세요.", text: "확인")
                     }
-                    
-                } else {
-                    self.makeAlertBox(title: "실패", message: "올바른 전화번호를 입력하세요.", text: "확인")
                 }
+
             }
     }
-    // MARK:- 전화번호 유효성 검사
+    
+    // MARK:- 구현한 함수
+    
+    // 전화번호 유효성 검사
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
         let firstIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 0)
         let forthIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 3)
@@ -61,6 +77,7 @@ class InputPhoneNumberVC: UIViewController {
     }
 }
 
+// MARK:- UITextFieldDelegate 메소드
 extension InputPhoneNumberVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }

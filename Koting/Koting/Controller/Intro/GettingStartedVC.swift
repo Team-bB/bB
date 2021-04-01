@@ -6,24 +6,38 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class GettingStartedVC: UIViewController {
-
+    
+    var indicator: NVActivityIndicatorView!
+    
+    // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        autoLogin()
+        self.indicator = NVActivityIndicatorView(
+                    frame: CGRect(
+                        origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
+                        size: CGSize(width: 100, height: 100)
+                    ),
+                    type: .ballBeat,
+                    color: UIColor.orange,
+                    padding: 0
+                )
+        self.view.addSubview(self.indicator)
+        
     }
-    
-    private var handler: ((Result<Any, Error>) -> Void)!
-    
-    // MARK:- @IBAction
+
+    // MARK:- @IBAction func
     @IBAction func startButtonTapped(_ sender: Any) {
         
-        if UserAPI.shared.accountIdCheck == false {
+        
+        if checkAccountId() == false {
             
             self.asyncPresentView(identifier: "PhoneAuth")
             
         } else {
+            self.indicator.startAnimating()
             MailAuthCheckAPI.shared.post() { [weak self] result in
                 
                 guard let self = self else { return }
@@ -32,10 +46,19 @@ class GettingStartedVC: UIViewController {
                 case .success(let mailAuth):
                     
                     let authCheck = mailAuth.result
+                    
+                    UserDefaults.standard.set(authCheck, forKey: "mailAuthChecked")
+                    
                     if authCheck {
-                        self.asyncPresentView(identifier: "MeetingList")
+                        DispatchQueue.main.async {
+                            self.indicator.stopAnimating()
+                            self.performSegue(withIdentifier: "MeetingList", sender: nil)
+                        }
                     } else {
-                        self.makeAlertBox(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
+                        DispatchQueue.main.async {
+                            self.indicator.stopAnimating()
+                            self.makeAlertBox(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
+                        }
                     }
                 case .failure(let error):
                     print("\(error)\n 이러면 codable 에러임")
@@ -44,41 +67,10 @@ class GettingStartedVC: UIViewController {
         }
     }
     
-    // MARK:- 구현 함수
-    private func autoLogin() {
-        
-        DispatchQueue.global().async {
-            
-            // 유저 디폴트 O 메일 인증 O -> 미팅리스트
-            if self.checkAccountId() {
-                
-                MailAuthCheckAPI.shared.post() { [weak self] result in
-                    
-                    guard let self = self else { return }
-                    
-                    switch result {
-                    case .success(let mailAuth):
-                        
-                        let authCheck = mailAuth.result
-                        if authCheck {
-                            self.asyncPresentView(identifier: "MeetingList")
-                        }
-                        
-                    case .failure(let error):
-                        print("\(error)\n 이러면 codable 에러임")
-                    }
-                }
-            }
-        }
-
-    }
-    
+    // MARK:- 구현한 함수
+    // UserDefaults에 accountId 유무를 check하는 함수
     private func checkAccountId() -> Bool {
-        
         guard let _ = UserDefaults.standard.string(forKey: "accountId") else { return false }
-        
-        UserAPI.shared.accountIdCheck = true
-        
         return true
     }
 }

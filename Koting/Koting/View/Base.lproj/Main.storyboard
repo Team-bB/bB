@@ -53,10 +53,33 @@
                             <constraint firstItem="LNe-jZ-qmj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="130" id="mLC-Aj-vbj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="dgF-sK-ccm" kind="presentation" identifier="MeetingList" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="BRj-FX-Gx7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-214" y="89"/>
+        </scene>
+        <!--MeetingList-->
+        <scene sceneID="dr4-NI-oWo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MeetingListStoryboard" referencedIdentifier="MeetingList" id="dgF-sK-ccm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3cX-ek-pNb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HXi-BC-Wut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-216" y="755"/>
+        </scene>
+        <!--MeetingList-->
+        <scene sceneID="u1k-ce-pla">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MeetingListStoryboard" referencedIdentifier="MeetingList" id="2VM-Rw-vID" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Kls-2W-CmN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nsh-aF-22g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2184" y="88"/>
         </scene>
         <!--Input Phone NumberVC-->
         <scene sceneID="D6u-qW-Weo">
@@ -178,6 +201,7 @@
                     <connections>
                         <outlet property="authNumberTextField" destination="PEw-zk-d1c" id="yUV-4z-oZb"/>
                         <outlet property="sendButton" destination="88e-KR-YA7" id="vCe-Zx-sfc"/>
+                        <segue destination="2VM-Rw-vID" kind="presentation" identifier="MeetingList" animates="NO" modalPresentationStyle="fullScreen" id="ffA-Xr-eiq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f05-3Q-fOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -214,7 +238,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="signUpButtonTapped:" destination="BX9-UJ-yV5" eventType="touchUpInside" id="0Gh-XU-AoJ"/>
+                                    <action selector="signUpButtonTapped:" destination="BX9-UJ-yV5" eventType="touchUpInside" id="New-yc-IkC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="웹 메일 인증 완료후 서비스 이용이 가능합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOx-5K-u7s">
@@ -293,14 +317,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="gBi-8W-DIA"/>
                     <connections>
-                        <outlet property="MBTI" destination="dCZ-FG-sCL" id="T04-UE-Pj2"/>
-                        <outlet property="age" destination="RdN-KA-maC" id="TLB-XM-w31"/>
-                        <outlet property="college" destination="WDk-3O-XKa" id="XPO-fa-PCE"/>
-                        <outlet property="height" destination="bGk-Xd-I7P" id="MBF-nr-QX7"/>
-                        <outlet property="mail" destination="bSK-t8-0NF" id="5Zp-vK-Gtg"/>
-                        <outlet property="major" destination="sbX-ig-pzT" id="iLK-dM-sAV"/>
-                        <outlet property="sex" destination="ZcS-2d-DPz" id="BiD-sI-cQY"/>
-                        <outlet property="signUpButton" destination="o1d-Ca-Sav" id="gqT-hS-57a"/>
+                        <outlet property="MBTI" destination="dCZ-FG-sCL" id="FuF-HK-LDA"/>
+                        <outlet property="age" destination="RdN-KA-maC" id="2VR-lK-CD9"/>
+                        <outlet property="college" destination="WDk-3O-XKa" id="lom-ZL-GiC"/>
+                        <outlet property="height" destination="bGk-Xd-I7P" id="z7K-Zz-Us6"/>
+                        <outlet property="mail" destination="bSK-t8-0NF" id="2OR-I7-o5W"/>
+                        <outlet property="major" destination="sbX-ig-pzT" id="42M-tX-Vpt"/>
+                        <outlet property="sex" destination="ZcS-2d-DPz" id="6OU-Uf-Kg7"/>
+                        <outlet property="signUpButton" destination="o1d-Ca-Sav" id="Nud-HI-ad7"/>
+                        <outletCollection property="infoArray" destination="ZcS-2d-DPz" collectionClass="NSMutableArray" id="noj-Pc-5PA"/>
+                        <outletCollection property="infoArray" destination="WDk-3O-XKa" collectionClass="NSMutableArray" id="8sd-CF-AgB"/>
+                        <outletCollection property="infoArray" destination="sbX-ig-pzT" collectionClass="NSMutableArray" id="nAf-S9-Gso"/>
+                        <outletCollection property="infoArray" destination="RdN-KA-maC" collectionClass="NSMutableArray" id="UtT-VY-ScL"/>
+                        <outletCollection property="infoArray" destination="bGk-Xd-I7P" collectionClass="NSMutableArray" id="Cce-K4-ijB"/>
+                        <outletCollection property="infoArray" destination="dCZ-FG-sCL" collectionClass="NSMutableArray" id="Pu3-Ag-j5o"/>
+                        <outletCollection property="infoArray" destination="bSK-t8-0NF" collectionClass="NSMutableArray" id="8MB-Fd-hkX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3T-Of-cic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

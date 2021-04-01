@@ -1,20 +1,84 @@
 PODS:
   - Alamofire (5.4.1)
+  - MaterialComponents/AnimationTiming (124.1.1)
+  - MaterialComponents/Availability (124.1.1)
+  - MaterialComponents/Buttons (124.1.1):
+    - MaterialComponents/Elevation
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/Elevation (124.1.1):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/Ink (124.1.1):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Application (124.1.1)
+  - MaterialComponents/private/Color (124.1.1):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Math (124.1.1)
+  - MaterialComponents/Ripple (124.1.1):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (124.1.1)
+  - MaterialComponents/ShadowLayer (124.1.1):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/ShapeLibrary (124.1.1):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (124.1.1):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Typography (124.1.1):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+    - MDFTextAccessibility
+  - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.1)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
+  - PanModal (1.2.7)
   - RxSwift (6.1.0)
 
 DEPENDENCIES:
   - Alamofire
+  - MaterialComponents/Buttons
+  - NVActivityIndicatorView
+  - PanModal
   - RxSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
+    - NVActivityIndicatorView
+    - PanModal
     - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  MaterialComponents: b9f58f24bf74588a83b2dce05802a11aaed5257d
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: 9d0aef5af90bf29d277ec67b8dc8d1f0d3c19679
+PODFILE CHECKSUM: 8ccbd1b7d6e7f009c22b3d34c966f23bbe20a96b
 
 COCOAPODS: 1.10.1
