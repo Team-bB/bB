@@ -30,14 +30,25 @@ public class MemberController {
   @Autowired private final MemberRepository memberRepository;
   @Autowired private JavaMailSender javaMailSender;
   @Autowired EntityManager em;
+
   private HashMap<String, String> dic = new HashMap<String, String>();
+  private final String api_key = "NCSRF0PYIQASDVPU";
+  private final String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
 
-  @PostMapping("/auth")
-  public String sendCode(@RequestBody JSONObject object) {
+  @PostMapping("/member")
+  public JSONObject signUp(@RequestBody JSONObject object) throws UnsupportedEncodingException, MessagingException {
 
-    String phoneNumber = object.get("phoneNumber").toString();
-    String api_key = "NCSRF0PYIQASDVPU";
-    String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
+    JSONObject retObejct = new JSONObject();
+    Member member = Member.createMember(object);
+    memberService.join(member);
+    sendMail(member.getEmail(), member.getAuthKey()); // 비동기처리
+    retObejct.put("result", member.getAccount_id());
+    return retObejct;
+  }
+
+  @GetMapping("/auth/number")
+  public String sendCode(@RequestParam("phoneNumber") String phoneNumber) {
+
     Message coolsms = new Message(api_key, api_secret);
     String code = Member.makeRandomNumber(4);
     String message = "[코팅] 인증번호[" + code + "]를 입력해주세요.";
@@ -51,7 +62,6 @@ public class MemberController {
     params.put("type", "SMS");
     params.put("text", message);
     params.put("app_version", "test app 1.2");
-
     try {
       JSONObject obj = (JSONObject) coolsms.send(params);
       System.out.println(obj.toString());
@@ -63,12 +73,11 @@ public class MemberController {
     return "true";
   }
 
-  @PostMapping("/auth/number")
-  public JSONObject checkCode(@RequestBody JSONObject object) {
+  @GetMapping("/auth/code")
+  public JSONObject checkCode(@RequestParam("phoneNumber") String phoneNumber,
+                              @RequestParam("code") String code) {
 
     JSONObject retObject = new JSONObject();
-    String phoneNumber = object.get("phoneNumber").toString();
-    String code = object.get("code").toString();
     if (dic.get(phoneNumber).toString().equals(code)) {
       dic.remove(phoneNumber);
       List<Member> member = memberService.findOneByNumber(phoneNumber);
@@ -86,18 +95,7 @@ public class MemberController {
     return retObject;
   }
 
-  @PostMapping("/signUp")
-  public JSONObject signUp(@RequestBody JSONObject object) throws UnsupportedEncodingException, MessagingException {
-
-    JSONObject retObejct = new JSONObject();
-    Member member = Member.createMember(object);
-    memberService.join(member);
-    sendMail(member.getEmail(), member.getAuthKey()); // 비동기처리
-    retObejct.put("result", member.getAccount_id());
-    return retObejct;
-  }
-
-  @GetMapping("/signUpEmail")
+  @GetMapping("/auth/email")
   public String authEmail(@RequestParam("email") String email, @RequestParam("authKey") String authKey) {
 
     Member findMember = memberService.findOneByEmail(email);

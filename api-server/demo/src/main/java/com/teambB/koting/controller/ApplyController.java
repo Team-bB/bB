@@ -21,7 +21,7 @@ public class ApplyController {
   @Autowired private final MemberService memberService;
   @Autowired private final ApplyService applyService;
 
-  @PostMapping("/applyMeeting")
+  @PostMapping("/apply")
   public JSONObject applyMeeting(@RequestBody JSONObject object) {
 
     JSONObject retObject = new JSONObject();
