@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -24,12 +25,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return picker
     }()
     
+    func requestPHPhotoLibraryAuthorization(completion: @escaping () -> Void) {
+        if #available(iOS 14, *) {
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { authorizationStatus in
+                switch authorizationStatus {
+                    case .limited:
+                        completion()
+                        print("limited authorization granted")
+                    case .authorized:
+                        completion()
+                        print("authorization granted")
+                    default:
+                        DispatchQueue.main.async {
+                            let alertController = UIAlertController(title: nil, message: "설정에서 사진 권한을 \'허용\' 해주세요.", preferredStyle: UIAlertController.Style.alert)
+                            let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel, handler: nil)
+                            alertController.addAction(okButton)
+                            
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        print("Unimplemented")
+                }
+            }
+        }
+    }
+
+    
     
     // 이미지 뷰를 탭 했을 떄
     // MARK: - didTappedImgView
     @objc func didTappedImgView(_ sender: UIImageView) {
-        let alert =  UIAlertController(title: "사진 접급권한허가", message: "사진 접근권한을 허용하시겠습니까? 사진은 닮은 동물상 찾기에만 이용되며 별도로 저장되지 않습니다.", preferredStyle: .actionSheet)
-        let library =  UIAlertAction(title: "권한허용", style: .default) { (action) in self.openLibrary()
+        let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let library =  UIAlertAction(title: "앨범에서 사진 가져오기", style: .default) { (action) in self.openLibrary()
 
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -43,9 +69,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func openLibrary(){
-
-          picker.sourceType = .photoLibrary
-          present(picker, animated: false, completion: nil)
+        self.requestPHPhotoLibraryAuthorization() {
+            DispatchQueue.main.async {
+                self.picker.sourceType = .photoLibrary
+                self.picker.modalPresentationStyle = .fullScreen
+                self.picker.allowsEditing = true
+                self.present(self.picker, animated: true, completion: nil)
+            }
+            
+        }
+        
 
     }
     
