@@ -35,7 +35,7 @@ public class MemberController {
   private final String api_key = "NCSRF0PYIQASDVPU";
   private final String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
 
-  @PostMapping("/member")
+  @PostMapping("/members")
   public JSONObject signUp(@RequestBody JSONObject object) throws UnsupportedEncodingException, MessagingException {
 
     JSONObject retObejct = new JSONObject();

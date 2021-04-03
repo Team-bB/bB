@@ -18,7 +18,7 @@ public class MeetController {
   @Autowired private final MemberService memberService;
   @Autowired private final MeetingService meetingService;
 
-  @PostMapping("/meeting")
+  @PostMapping("/meetings")
   public JSONObject createMeeting(@RequestBody JSONObject object) {
 
     JSONObject retObject = new JSONObject();
