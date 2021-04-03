@@ -28,11 +28,12 @@ public class Member {
   private String sex;
   private String college;
   private String major;
-  private String height;
-  private String age;
+  private int height;
+  private int age;
   private String mbti;
   private String email;
   private String number;
+  private int animalIdx;
   private String authKey;
   private Boolean authStatus;
 
@@ -50,11 +51,12 @@ public class Member {
     member.setSex(object.get("sex").toString());
     member.setCollege(object.get("college").toString());
     member.setMajor(object.get("major").toString());
-    member.setHeight(object.get("height").toString());
-    member.setAge(object.get("age").toString());
+    member.setHeight(Integer.parseInt(object.get("height").toString()));
+    member.setAge(Integer.parseInt(object.get("age").toString()));
     member.setMbti(object.get("mbti").toString());
     member.setEmail(object.get("email").toString());
     member.setNumber(object.get("phoneNumber").toString());
+    member.setAnimalIdx(Integer.parseInt(object.get("animalIdx").toString()));
     member.setAuthKey(makeRandomString(8));
     member.setAuthStatus(false);
     return member;
