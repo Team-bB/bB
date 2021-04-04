@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5BAA480BD1741B8300EE6800 /* Pods_Koting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */; };
+		884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */; };
+		884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */; };
 		88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA12609D8B500CF7CAC /* UIViewController++.swift */; };
 		88556CA42609D8B500CF7CAC /* UIButton++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA22609D8B500CF7CAC /* UIButton++.swift */; };
 		88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		6ADA15F079F682A7912D7A20 /* Pods-Koting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.debug.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.debug.xcconfig"; sourceTree = "<group>"; };
 		7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetUserPhoto.storyboard; sourceTree = "<group>"; };
+		884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC.swift; sourceTree = "<group>"; };
 		88556CA12609D8B500CF7CAC /* UIViewController++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController++.swift"; sourceTree = "<group>"; };
 		88556CA22609D8B500CF7CAC /* UIButton++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton++.swift"; sourceTree = "<group>"; };
 		88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailAuthAPI.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */,
 				889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */,
 				889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */,
+				884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 				887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */,
 				887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */,
 				886D82D0260A514C00EE411C /* SignUpVC.swift */,
+				884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				889F7F5A26088F6300B3DA62 /* LaunchScreen.storyboard in Resources */,
 				889F7F7D2608907300B3DA62 /* MyInfoStoryboard.storyboard in Resources */,
 				889F7F5726088F6300B3DA62 /* Assets.xcassets in Resources */,
+				884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */,
 				889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */,
 				889F7F5526088F6200B3DA62 /* Main.storyboard in Resources */,
 			);
@@ -384,6 +391,7 @@
 				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
 				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
+				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Get User PhotoVC-->
+        <scene sceneID="MQo-cd-uSF">
+            <objects>
+                <viewController storyboardIdentifier="GetUserPhoto" id="QcF-gc-Cgo" customClass="GetUserPhotoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HBR-aj-3Ev">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPS-AG-ihb">
+                                <rect key="frame" x="56" y="120" width="263" height="254"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="254" id="TAi-CS-Uvl"/>
+                                    <constraint firstAttribute="width" constant="263" id="xNN-Fi-RYO"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자신의 사진을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4A-6p-T9p">
+                                <rect key="frame" x="0.0" y="60" width="375" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mOg-ki-joo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="V4A-6p-T9p" firstAttribute="top" secondItem="mOg-ki-joo" secondAttribute="top" constant="60" id="1gY-ep-Arg"/>
+                            <constraint firstItem="V4A-6p-T9p" firstAttribute="leading" secondItem="mOg-ki-joo" secondAttribute="leading" id="Fa0-qB-y4f"/>
+                            <constraint firstItem="mOg-ki-joo" firstAttribute="trailing" secondItem="NPS-AG-ihb" secondAttribute="trailing" constant="56" id="R5H-qq-ORI"/>
+                            <constraint firstItem="mOg-ki-joo" firstAttribute="trailing" secondItem="V4A-6p-T9p" secondAttribute="trailing" id="eSw-fU-KzX"/>
+                            <constraint firstItem="NPS-AG-ihb" firstAttribute="top" secondItem="V4A-6p-T9p" secondAttribute="bottom" constant="30" id="ggg-PW-cRH"/>
+                            <constraint firstItem="NPS-AG-ihb" firstAttribute="leading" secondItem="mOg-ki-joo" secondAttribute="leading" constant="56" id="r0C-6r-PgP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="NPS-AG-ihb" id="ual-qs-Ffu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9w-kY-3Lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="184.80000000000001" y="101.19940029985008"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
