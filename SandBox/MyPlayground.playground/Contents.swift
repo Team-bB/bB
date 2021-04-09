@@ -1,25 +1,34 @@
 import UIKit
-
-//class StudentInfo {
-//    static let shared = StudentInfo()
-//
-//    var name: String?
-//    var major: String?
-//    var age: Int?
-//
-//    private init() { }
-//}
-//
-//// 처음 선언하는 순간 static 프로퍼티가 생성되어 메모리에 올라간다.
-//let student = StudentInfo.shared
-//
-//// 그 이후 접근하면 처음에 생성된 인스턴스의 참조값을 전달한다.
-//let student2 = StudentInfo.shared
-
-let asd: String? = nil
-
-if let la = asd {
-    print(la)
-} else {
-    print("널임")
+class Person {
+    var name: String = ""
+    func breath() {
+        print("숨을 쉽니다.")
+    }
 }
+
+class Student: Person {
+    var school: String = ""
+    func goToSchool() {
+        print("등교를 합니다.")
+    }
+}
+
+class UniversityStudent: Student {
+    var major: String = ""
+    func goToLib() {
+        print("도서관을 갑니다..")
+    }
+}
+
+// 인스턴스 생성
+var james: Person = Person()
+var hana: Student = Student()
+var joe: UniversityStudent = UniversityStudent()
+
+
+var optionalCasted: Student?
+
+print(type(of: james))
+optionalCasted = hana as? UniversityStudent
+print(optionalCasted)
+
