@@ -16,29 +16,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPS-AG-ihb">
-                                <rect key="frame" x="56" y="120" width="263" height="254"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Rtc-lf-3Ci">
+                                <rect key="frame" x="37" y="20" width="301.5" height="352.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자신의 사진을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4A-6p-T9p">
+                                        <rect key="frame" x="15.5" y="0.0" width="270.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPS-AG-ihb">
+                                        <rect key="frame" x="19" y="54" width="263" height="254"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="254" id="TAi-CS-Uvl"/>
+                                            <constraint firstAttribute="width" constant="263" id="xNN-Fi-RYO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7i-9N-FZN">
+                                        <rect key="frame" x="0.0" y="332" width="301.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="254" id="TAi-CS-Uvl"/>
-                                    <constraint firstAttribute="width" constant="263" id="xNN-Fi-RYO"/>
+                                    <constraint firstItem="o7i-9N-FZN" firstAttribute="leading" secondItem="Rtc-lf-3Ci" secondAttribute="leading" id="A4g-B0-zqY"/>
+                                    <constraint firstItem="o7i-9N-FZN" firstAttribute="top" secondItem="NPS-AG-ihb" secondAttribute="bottom" constant="24" id="cjB-Uf-lxh"/>
+                                    <constraint firstAttribute="trailing" secondItem="o7i-9N-FZN" secondAttribute="trailing" id="rJ2-hy-uc1"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자신의 사진을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4A-6p-T9p">
-                                <rect key="frame" x="0.0" y="60" width="375" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mOg-ki-joo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="V4A-6p-T9p" firstAttribute="top" secondItem="mOg-ki-joo" secondAttribute="top" constant="60" id="1gY-ep-Arg"/>
-                            <constraint firstItem="V4A-6p-T9p" firstAttribute="leading" secondItem="mOg-ki-joo" secondAttribute="leading" id="Fa0-qB-y4f"/>
-                            <constraint firstItem="mOg-ki-joo" firstAttribute="trailing" secondItem="NPS-AG-ihb" secondAttribute="trailing" constant="56" id="R5H-qq-ORI"/>
-                            <constraint firstItem="mOg-ki-joo" firstAttribute="trailing" secondItem="V4A-6p-T9p" secondAttribute="trailing" id="eSw-fU-KzX"/>
-                            <constraint firstItem="NPS-AG-ihb" firstAttribute="top" secondItem="V4A-6p-T9p" secondAttribute="bottom" constant="30" id="ggg-PW-cRH"/>
-                            <constraint firstItem="NPS-AG-ihb" firstAttribute="leading" secondItem="mOg-ki-joo" secondAttribute="leading" constant="56" id="r0C-6r-PgP"/>
+                            <constraint firstItem="Rtc-lf-3Ci" firstAttribute="centerX" secondItem="HBR-aj-3Ev" secondAttribute="centerX" id="0Wz-GQ-f7c"/>
+                            <constraint firstItem="Rtc-lf-3Ci" firstAttribute="centerY" secondItem="HBR-aj-3Ev" secondAttribute="centerY" constant="-137.25" id="waA-qt-oCP"/>
                         </constraints>
                     </view>
                     <connections>

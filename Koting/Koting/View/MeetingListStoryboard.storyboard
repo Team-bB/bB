@@ -212,10 +212,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="pV4-dQ-GB3">
-                                <rect key="frame" x="66" y="38" width="242" height="238"/>
+                                <rect key="frame" x="36" y="20" width="300" height="238"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="GbN-1e-1jl">
-                                        <rect key="frame" x="0.0" y="0.0" width="242" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인  원" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0J-sb-jLU">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="60"/>
@@ -228,7 +228,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="5WF-zp-7Uz">
-                                                <rect key="frame" x="100" y="13" width="142" height="34"/>
+                                                <rect key="frame" x="100" y="13" width="200" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="6Sp-Ix-OwY"/>
                                                 </constraints>
@@ -238,7 +238,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Xe0-Ud-wd9">
-                                        <rect key="frame" x="0.0" y="89" width="242" height="60"/>
+                                        <rect key="frame" x="0.0" y="89" width="300" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오픈카톡링크" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4L-0K-W54">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="60"/>
@@ -251,7 +251,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="xI8-EA-Fmv">
-                                                <rect key="frame" x="100" y="13" width="142" height="34"/>
+                                                <rect key="frame" x="100" y="13" width="200" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="o7G-9r-3f7"/>
                                                 </constraints>
@@ -261,11 +261,11 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZE-Nr-cfm">
-                                        <rect key="frame" x="0.0" y="178" width="242" height="60"/>
+                                        <rect key="frame" x="0.0" y="178" width="300" height="60"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="TEM-KY-Cb2"/>
-                                            <constraint firstAttribute="width" constant="242" id="dYG-Vu-b0m"/>
+                                            <constraint firstAttribute="width" constant="300" id="dYG-Vu-b0m"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="개설하기">
@@ -276,13 +276,18 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="238" id="5lw-w3-hmI"/>
+                                    <constraint firstAttribute="width" constant="300" id="9Ds-uE-xkq"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rui-5Y-F4M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pV4-dQ-GB3" firstAttribute="leading" secondItem="Rui-5Y-F4M" secondAttribute="leading" constant="66" id="Hl6-1h-kBV"/>
-                            <constraint firstItem="pV4-dQ-GB3" firstAttribute="top" secondItem="Rui-5Y-F4M" secondAttribute="top" constant="38" id="gcg-Ch-bjJ"/>
+                            <constraint firstItem="pV4-dQ-GB3" firstAttribute="top" secondItem="Rui-5Y-F4M" secondAttribute="top" constant="20" id="Its-y8-sOO"/>
+                            <constraint firstItem="pV4-dQ-GB3" firstAttribute="leading" secondItem="Rui-5Y-F4M" secondAttribute="leading" constant="36" id="bbD-Qe-G4q"/>
+                            <constraint firstItem="Rui-5Y-F4M" firstAttribute="trailing" secondItem="pV4-dQ-GB3" secondAttribute="trailing" constant="36" id="bl0-EO-bhV"/>
                         </constraints>
                     </view>
                     <connections>

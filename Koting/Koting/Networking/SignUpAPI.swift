@@ -15,7 +15,7 @@ class SignUpAPI {
     private init() {}
     
     func post(paramArray: Array<UITextField>, completion: @escaping (Result<SignUp, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/signUp"
+        let url = API.shared.BASE_URL + "/member"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -30,7 +30,7 @@ class SignUpAPI {
                         "age": paramArray[3].text!,
                         "height": paramArray[4].text!,
                         "mbti": paramArray[5].text!,
-                        "email": paramArray[6].text! + domain
+                        "email": paramArray[6].text! + "@dgu.ac.kr"
                     ] as Dictionary
         
         // httpBody에 parameters 추가
@@ -43,7 +43,7 @@ class SignUpAPI {
         AF.request(request).responseData { response in
             switch response.result {
             case .success(let result):
-                print("\n\nPOST SUCCESS")
+                print("\n\n회원가입 POST 성공")
       
                 let decoder = JSONDecoder()
                 do {

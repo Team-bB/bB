@@ -16,23 +16,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        var storyboard: UIStoryboard!
-        var initVC: UIViewController!
+//        var storyboard: UIStoryboard!
+//        var initVC: UIViewController!
+//        
+//        if let _ = UserDefaults.standard.string(forKey: "accountId") {
+//            if UserDefaults.standard.bool(forKey: "mailAuthChecked") {
+//                storyboard = UIStoryboard(name: "MeetingListStoryboard", bundle: nil)
+//                initVC = storyboard.instantiateViewController(withIdentifier: "MeetingList")
+//                
+//            } else {
+//                storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                initVC = storyboard.instantiateViewController(withIdentifier: "GettingStarted")
+//            }
+//        } else {
+//            storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            initVC = storyboard.instantiateViewController(withIdentifier: "GettingStarted")
+//        }
+//        self.window?.rootViewController = initVC
+//        self.window?.makeKeyAndVisible()
         
-        if let _ = UserDefaults.standard.string(forKey: "accountId") {
-            if UserDefaults.standard.bool(forKey: "mailAuthChecked") {
-                storyboard = UIStoryboard(name: "MeetingListStoryboard", bundle: nil)
-                initVC = storyboard.instantiateViewController(withIdentifier: "MeetingList")
-                
-            } else {
-                storyboard = UIStoryboard(name: "Main", bundle: nil)
-                initVC = storyboard.instantiateViewController(withIdentifier: "GettingStarted")
-            }
-        } else {
-            storyboard = UIStoryboard(name: "Main", bundle: nil)
-            initVC = storyboard.instantiateViewController(withIdentifier: "GettingStarted")
-        }
-        self.window?.rootViewController = initVC
+        self.window?.rootViewController = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MeetingList")
         self.window?.makeKeyAndVisible()
     }
 

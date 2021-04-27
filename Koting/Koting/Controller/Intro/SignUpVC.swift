@@ -10,6 +10,8 @@ import NVActivityIndicatorView
 
 class SignUpVC: UIViewController {
     
+    let form: SignUpForm = SignUpForm()
+    
     var indicator: NVActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -105,7 +107,7 @@ class SignUpVC: UIViewController {
     @IBAction func signUpButtonTapped(_ sender: Any) {
         guard  let email = mail.text else { return }
         
-        if (isValidEmail(email + domain)) {
+        if (isValidEmail(email + form.mailDomain)) {
             self.indicator.startAnimating()
             
             SignUpAPI.shared.post(paramArray: infoArray) { result in
@@ -126,6 +128,13 @@ class SignUpVC: UIViewController {
                         self.present(alertController, animated: true, completion: nil)
                     }
                 case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.indicator.stopAnimating()
+                        let alertController = UIAlertController(title: "에러", message: "CodableError", preferredStyle: UIAlertController.Style.alert)
+                        let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel)
+                        alertController.addAction(okButton)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                     print(error)
                 }
             }
@@ -195,51 +204,59 @@ extension SignUpVC: UITextFieldDelegate {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == mail {
+            mail.resignFirstResponder()
+            sex.becomeFirstResponder()
+        }
+        return true
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch textField {
             case sex:
-                sex.text = sexArray[sexPickerView.selectedRow(inComponent: 0)]
+                sex.text = form.sexArray[sexPickerView.selectedRow(inComponent: 0)]
             case college:
-                college.text = collegeArray[collegePickerView.selectedRow(inComponent: 0)]
+                college.text = form.collegeArray[collegePickerView.selectedRow(inComponent: 0)]
             case major:
                 guard let college = college.text else { return false }
                 
                 switch college {
                     case "불교대학":
-                        major.text = majorDict["불교대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["불교대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "문과대학":
-                        major.text = majorDict["문과대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["문과대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "이과대학":
-                        major.text = majorDict["이과대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["이과대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "법과대학":
-                        major.text = majorDict["법과대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["법과대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "경영대학":
-                        major.text = majorDict["경영대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["경영대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "공과대학":
-                        major.text = majorDict["공과대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["공과대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "사범대학":
-                        major.text = majorDict["사범대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["사범대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "예술대학":
-                        major.text = majorDict["예술대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["예술대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "약학대학":
-                        major.text = majorDict["약학대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["약학대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "사회과학대학":
-                        major.text = majorDict["사회과학대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["사회과학대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "경찰사법대학":
-                        major.text = majorDict["경찰사법대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["경찰사법대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "미래융합대학":
-                        major.text = majorDict["미래융합대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["미래융합대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     case "바이오시스템대학":
-                        major.text = majorDict["바이오시스템대학"]![majorPickerView.selectedRow(inComponent: 0)]
+                        major.text = form.majorDict["바이오시스템대학"]![majorPickerView.selectedRow(inComponent: 0)]
                     
                     default: return false
                 }
             case age:
-                age.text = ageArray[agePickerView.selectedRow(inComponent: 0)]
+                age.text = form.ageArray[agePickerView.selectedRow(inComponent: 0)]
             case height:
-                height.text = heightArray[heightPickerView.selectedRow(inComponent: 0)]
+                height.text = form.heightArray[heightPickerView.selectedRow(inComponent: 0)]
             case MBTI:
-                MBTI.text = mbtiArray[mbtiPikcerView.selectedRow(inComponent: 0)]
+                MBTI.text = form.mbtiArray[mbtiPikcerView.selectedRow(inComponent: 0)]
 
             default:
                 return true
@@ -258,36 +275,36 @@ extension SignUpVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.tag {
         case 1:
-            return sexArray.count
+            return form.sexArray.count
         case 2:
-            return collegeArray.count
+            return form.collegeArray.count
         case 3:
             guard let college = college.text else { return 0 }
             
             switch college {
-            case "불교대학": return majorDict["불교대학"]!.count
-            case "문과대학": return majorDict["문과대학"]!.count
-            case "이과대학": return majorDict["이과대학"]!.count
-            case "법과대학": return majorDict["법과대학"]!.count
-            case "경영대학": return majorDict["경영대학"]!.count
-            case "공과대학": return majorDict["공과대학"]!.count
-            case "사범대학": return majorDict["사범대학"]!.count
-            case "예술대학": return majorDict["예술대학"]!.count
-            case "약학대학": return majorDict["약학대학"]!.count
-            case "사회과학대학": return majorDict["사회과학대학"]!.count
-            case "경찰사법대학": return majorDict["경찰사법대학"]!.count
-            case "미래융합대학": return majorDict["미래융합대학"]!.count
-            case "바이오시스템대학": return majorDict["바이오시스템대학"]!.count
+            case "불교대학": return form.majorDict["불교대학"]!.count
+            case "문과대학": return form.majorDict["문과대학"]!.count
+            case "이과대학": return form.majorDict["이과대학"]!.count
+            case "법과대학": return form.majorDict["법과대학"]!.count
+            case "경영대학": return form.majorDict["경영대학"]!.count
+            case "공과대학": return form.majorDict["공과대학"]!.count
+            case "사범대학": return form.majorDict["사범대학"]!.count
+            case "예술대학": return form.majorDict["예술대학"]!.count
+            case "약학대학": return form.majorDict["약학대학"]!.count
+            case "사회과학대학": return form.majorDict["사회과학대학"]!.count
+            case "경찰사법대학": return form.majorDict["경찰사법대학"]!.count
+            case "미래융합대학": return form.majorDict["미래융합대학"]!.count
+            case "바이오시스템대학": return form.majorDict["바이오시스템대학"]!.count
             
                 
             default: return 0
             }
         case 4:
-            return mbtiArray.count
+            return form.mbtiArray.count
         case 5:
-            return ageArray.count
+            return form.ageArray.count
         case 6:
-            return heightArray.count
+            return form.heightArray.count
             
         default:
             return 0
@@ -297,36 +314,36 @@ extension SignUpVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
         case 1:
-            return sexArray[row]
+            return form.sexArray[row]
         case 2:
-            return collegeArray[row]
+            return form.collegeArray[row]
         case 3:
             guard let college = college.text else { return ""}
             
             switch college {
-            case "불교대학": return majorDict["불교대학"]![row]
-            case "문과대학": return majorDict["문과대학"]![row]
-            case "이과대학": return majorDict["이과대학"]![row]
-            case "법과대학": return majorDict["법과대학"]![row]
-            case "경영대학": return majorDict["경영대학"]![row]
-            case "공과대학": return majorDict["공과대학"]![row]
-            case "사범대학": return majorDict["사범대학"]![row]
-            case "예술대학": return majorDict["예술대학"]![row]
-            case "약학대학": return majorDict["약학대학"]![row]
-            case "사회과학대학": return majorDict["사회과학대학"]![row]
-            case "경찰사법대학": return majorDict["경찰사법대학"]![row]
-            case "미래융합대학": return majorDict["미래융합대학"]![row]
-            case "바이오시스템대학": return majorDict["바이오시스템대학"]![row]
+            case "불교대학": return form.majorDict["불교대학"]![row]
+            case "문과대학": return form.majorDict["문과대학"]![row]
+            case "이과대학": return form.majorDict["이과대학"]![row]
+            case "법과대학": return form.majorDict["법과대학"]![row]
+            case "경영대학": return form.majorDict["경영대학"]![row]
+            case "공과대학": return form.majorDict["공과대학"]![row]
+            case "사범대학": return form.majorDict["사범대학"]![row]
+            case "예술대학": return form.majorDict["예술대학"]![row]
+            case "약학대학": return form.majorDict["약학대학"]![row]
+            case "사회과학대학": return form.majorDict["사회과학대학"]![row]
+            case "경찰사법대학": return form.majorDict["경찰사법대학"]![row]
+            case "미래융합대학": return form.majorDict["미래융합대학"]![row]
+            case "바이오시스템대학": return form.majorDict["바이오시스템대학"]![row]
             
                 
             default: return ""
             }
         case 4:
-            return mbtiArray[row]
+            return form.mbtiArray[row]
         case 5:
-            return ageArray[row]
+            return form.ageArray[row]
         case 6:
-            return heightArray[row]
+            return form.heightArray[row]
         default:
             return ""
         }
@@ -336,38 +353,38 @@ extension SignUpVC: UIPickerViewDelegate, UIPickerViewDataSource {
         
         switch pickerView.tag {
         case 1:
-            sex.text = sexArray[row]
+            sex.text = form.sexArray[row]
         case 2:
-            college.text = collegeArray[row]
+            college.text = form.collegeArray[row]
             major.text = ""
         case 3:
             guard let college = college.text else { return }
             
             switch college {
             case "불교대학":
-                major.text =  majorDict["불교대학"]![row]
+                major.text =  form.majorDict["불교대학"]![row]
                 major.resignFirstResponder()
-            case "문과대학": major.text = majorDict["문과대학"]![row]
-            case "이과대학": major.text = majorDict["이과대학"]![row]
-            case "법과대학": major.text = majorDict["법과대학"]![row]
-            case "경영대학": major.text = majorDict["경영대학"]![row]
-            case "공과대학": major.text = majorDict["공과대학"]![row]
-            case "사범대학": major.text = majorDict["사범대학"]![row]
-            case "예술대학": major.text = majorDict["예술대학"]![row]
-            case "약학대학": major.text = majorDict["약학대학"]![row]
-            case "사회과학대학": major.text = majorDict["사회과학대학"]![row]
-            case "경찰사법대학": major.text = majorDict["경찰사법대학"]![row]
-            case "미래융합대학": major.text = majorDict["미래융합대학"]![row]
-            case "바이오시스템대학": major.text = majorDict["바이오시스템대학"]![row]
+            case "문과대학": major.text = form.majorDict["문과대학"]![row]
+            case "이과대학": major.text = form.majorDict["이과대학"]![row]
+            case "법과대학": major.text = form.majorDict["법과대학"]![row]
+            case "경영대학": major.text = form.majorDict["경영대학"]![row]
+            case "공과대학": major.text = form.majorDict["공과대학"]![row]
+            case "사범대학": major.text = form.majorDict["사범대학"]![row]
+            case "예술대학": major.text = form.majorDict["예술대학"]![row]
+            case "약학대학": major.text = form.majorDict["약학대학"]![row]
+            case "사회과학대학": major.text = form.majorDict["사회과학대학"]![row]
+            case "경찰사법대학": major.text = form.majorDict["경찰사법대학"]![row]
+            case "미래융합대학": major.text = form.majorDict["미래융합대학"]![row]
+            case "바이오시스템대학": major.text = form.majorDict["바이오시스템대학"]![row]
             
             default: return
             }
         case 4:
-            MBTI.text = mbtiArray[row]
+            MBTI.text = form.mbtiArray[row]
         case 5:
-            age.text = ageArray[row]
+            age.text = form.ageArray[row]
         case 6:
-            height.text = heightArray[row]
+            height.text = form.heightArray[row]
         default:
             return
         }

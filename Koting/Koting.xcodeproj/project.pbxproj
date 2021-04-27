@@ -25,6 +25,7 @@
 		887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C403226089ABA00A641DA /* GettingStartedVC.swift */; };
 		887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */; };
 		887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */; };
+		889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ACAEB26372B95006DCF93 /* LoadingHUD.swift */; };
 		889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4D26088F6200B3DA62 /* AppDelegate.swift */; };
 		889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */; };
 		889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F5126088F6200B3DA62 /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 		887C403226089ABA00A641DA /* GettingStartedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedVC.swift; sourceTree = "<group>"; };
 		887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberVC.swift; sourceTree = "<group>"; };
 		887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNumberCheckVC.swift; sourceTree = "<group>"; };
+		889ACAEB26372B95006DCF93 /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
 		889F7F4A26088F6200B3DA62 /* Koting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		889F7F4D26088F6200B3DA62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,10 +99,10 @@
 		88556C9F2609D88E00CF7CAC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				88556CA72609D8D300CF7CAC /* AuthNumberCheckAPI.swift */,
-				88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */,
 				88556CA82609D8D300CF7CAC /* RequestAuthNumberAPI.swift */,
+				88556CA72609D8D300CF7CAC /* AuthNumberCheckAPI.swift */,
 				886D82DE260AF5A300EE411C /* SignUpAPI.swift */,
+				88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */,
 				D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */,
 				D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */,
 			);
@@ -166,6 +168,7 @@
 				889F7F91260894F800B3DA62 /* Intro */,
 				889F7F7726088FFC00B3DA62 /* MyInfo */,
 				889F7F7626088FF100B3DA62 /* MeetingList */,
+				889ACAEB26372B95006DCF93 /* LoadingHUD.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
 				88556CB92609D96A00CF7CAC /* API.swift in Sources */,
 				D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */,
+				889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

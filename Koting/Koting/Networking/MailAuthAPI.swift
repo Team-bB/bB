@@ -36,7 +36,7 @@ class MailAuthCheckAPI {
         AF.request(request).responseData { response in
             switch response.result {
             case .success(let result):
-                print("\n\nPOST SUCCESS")
+                print("\n\n메일 인증 POST 성공")
       
                 let decoder = JSONDecoder()
                 do {
