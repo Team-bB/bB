@@ -35,7 +35,11 @@ class AuthNumberCheckVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: authNumberTextField)
       
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        authNumberTextField.becomeFirstResponder()
+    }
+    
     // MARK:- @IBOulet
     @IBOutlet weak var authNumberTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -43,11 +47,11 @@ class AuthNumberCheckVC: UIViewController {
     // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
         self.indicator.startAnimating()
-        AuthNumberCheckAPI.shared.post(code: authNumberTextField.text!) { [weak self] result in
+        AuthNumberCheckAPI.shared.get(code: authNumberTextField.text!) { [weak self] result in
             
             guard let self = self else { return }
             
-            let failed = "phoneAuthFaild"
+            let failed = "phoneAuthFailed"
             let register = "moveRegister"
             
             switch result {
@@ -91,6 +95,9 @@ class AuthNumberCheckVC: UIViewController {
                             }
                             
                         case .failure(let error):
+                            DispatchQueue.main.async {
+                                self.indicator.stopAnimating()
+                            }
                             print("\(error)\n 이러면 codable 에러임")
                         }
                     }

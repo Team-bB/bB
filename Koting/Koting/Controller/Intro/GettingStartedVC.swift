@@ -61,6 +61,7 @@ class GettingStartedVC: UIViewController {
                         }
                     }
                 case .failure(let error):
+                    self.indicator.stopAnimating()
                     print("\(error)\n 이러면 codable 에러임")
                 }
             }

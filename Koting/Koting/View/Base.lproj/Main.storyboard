@@ -249,11 +249,18 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동국대 웹 메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-t8-0NF">
                                 <rect key="frame" x="82" y="95" width="108.5" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="pop-vN-cj4"/>
+                                    <constraint firstAttribute="width" constant="108.5" id="wic-8o-ZHG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text=" @dgu.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-BA-B2z">
                                 <rect key="frame" x="210.5" y="103" width="86" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="51q-W9-70Z"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

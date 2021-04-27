@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Get User PhotoVC-->
+        <scene sceneID="MQo-cd-uSF">
+            <objects>
+                <viewController storyboardIdentifier="GetUserPhoto" id="QcF-gc-Cgo" customClass="GetUserPhotoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HBR-aj-3Ev">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Rtc-lf-3Ci">
+                                <rect key="frame" x="37" y="20" width="301.5" height="352.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자신의 사진을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4A-6p-T9p">
+                                        <rect key="frame" x="15.5" y="0.0" width="270.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPS-AG-ihb">
+                                        <rect key="frame" x="19" y="54" width="263" height="254"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="254" id="TAi-CS-Uvl"/>
+                                            <constraint firstAttribute="width" constant="263" id="xNN-Fi-RYO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7i-9N-FZN">
+                                        <rect key="frame" x="0.0" y="332" width="301.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="o7i-9N-FZN" firstAttribute="leading" secondItem="Rtc-lf-3Ci" secondAttribute="leading" id="A4g-B0-zqY"/>
+                                    <constraint firstItem="o7i-9N-FZN" firstAttribute="top" secondItem="NPS-AG-ihb" secondAttribute="bottom" constant="24" id="cjB-Uf-lxh"/>
+                                    <constraint firstAttribute="trailing" secondItem="o7i-9N-FZN" secondAttribute="trailing" id="rJ2-hy-uc1"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mOg-ki-joo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Rtc-lf-3Ci" firstAttribute="centerX" secondItem="HBR-aj-3Ev" secondAttribute="centerX" id="0Wz-GQ-f7c"/>
+                            <constraint firstItem="Rtc-lf-3Ci" firstAttribute="centerY" secondItem="HBR-aj-3Ev" secondAttribute="centerY" constant="-137.25" id="waA-qt-oCP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="NPS-AG-ihb" id="ual-qs-Ffu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9w-kY-3Lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="184.80000000000001" y="101.19940029985008"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
