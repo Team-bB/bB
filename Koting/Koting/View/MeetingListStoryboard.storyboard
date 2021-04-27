@@ -203,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="3098.4000000000001" y="-383.65817091454278"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Meeting RoomVC-->
         <scene sceneID="cYg-aU-Q1l">
             <objects>
-                <viewController storyboardIdentifier="CreateMeetingRoomVC" id="tCT-Cc-YZc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateMeetingRoomVC" id="tCT-Cc-YZc" customClass="CreateMeetingRoomVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WIJ-Ot-SBg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
