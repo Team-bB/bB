@@ -14,30 +14,20 @@ class AuthNumberCheckAPI {
 
     private init() {}
     
-    func post(code: String, completion: @escaping (Result<PhoneAuth, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/auth/number"
-        var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 10
+    func get(code: String, completion: @escaping (Result<PhoneAuth, Error>) -> (Void)) {
         
-        // POST 로 보낼 정보
         guard let phoneNumber = UserAPI.shared.phoneNumber else { return }
         
-        let params = ["phoneNumber" : phoneNumber, //!뺌
-                      "code": code] as Dictionary
-        
-        // httpBody 에 parameters 추가
-        do {
-            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-        } catch {
-            print("http Body Error")
-        }
+        let url = API.shared.BASE_URL + "/auth/code?phoneNumber=\(phoneNumber)&code=\(code)"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
         
         AF.request(request).responseData { response in
             switch response.result {
             case .success(let result):
-                print("\n\nPOST SUCCESS")
+                print("\n\nAuthNumberChecked Success")
                 
                 let decoder = JSONDecoder()
                 do {

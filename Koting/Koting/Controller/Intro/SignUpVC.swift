@@ -126,6 +126,13 @@ class SignUpVC: UIViewController {
                         self.present(alertController, animated: true, completion: nil)
                     }
                 case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.indicator.stopAnimating()
+                        let alertController = UIAlertController(title: "에러", message: "CodableError", preferredStyle: UIAlertController.Style.alert)
+                        let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel)
+                        alertController.addAction(okButton)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                     print(error)
                 }
             }
@@ -193,6 +200,14 @@ extension SignUpVC: UITextFieldDelegate {
                 signUpButton.setDisable()
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == mail {
+            mail.resignFirstResponder()
+            sex.becomeFirstResponder()
+        }
+        return true
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

@@ -14,22 +14,12 @@ class RequestAuthNumberAPI {
 
     private init() {}
     
-    func post(phoneNumber: String, completion: @escaping (Result<String, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/auth"
+    func get(phoneNumber: String, completion: @escaping (Result<String, Error>) -> (Void)) {
+        let url = API.shared.BASE_URL + "/auth/number?phoneNumber=\(phoneNumber)"
         var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
+        request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
-        
-        //POST로 보낼 정보
-        let params = ["phoneNumber" : phoneNumber] as Dictionary
-        
-        // httpBody에 parameters 추가
-        do {
-            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-        } catch {
-            print("http Body Error")
-        }
         
         AF.request(request).responseString { response in
             switch response.result {
