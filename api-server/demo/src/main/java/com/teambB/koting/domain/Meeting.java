@@ -23,8 +23,8 @@ public class Meeting {
   @Column(name = "meeting_id")
   private Long id;
 
-  private int player;
   private LocalDateTime createDate;
+  private String player;
   private String link;
 
   @Enumerated(EnumType.STRING)
@@ -36,7 +36,7 @@ public class Meeting {
   @OneToMany(mappedBy = "meeting")
   private List<Apply> participants = new ArrayList<>();
 
-  public static Meeting createMeeting(Member member, int player, String link) {
+  public static Meeting createMeeting(Member member, String player, String link) {
 
     Meeting meeting = new Meeting();
     meeting.setOwner(member);

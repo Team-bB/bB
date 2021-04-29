@@ -62,7 +62,7 @@ public class MeetController {
       retObject.put("result", "createFail");
     }
     else {
-      Meeting meeting = Meeting.createMeeting(member, Integer.parseInt(players), link);
+      Meeting meeting = Meeting.createMeeting(member, players, link);
       meetingService.join(meeting);
       retObject.put("result", "createSuccess");
     }
