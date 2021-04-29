@@ -122,7 +122,7 @@ public class MemberController {
     String to = email;
     String from = "noreply@koting.kr";
     String subject = "[코팅] 회원가입 인증메일입니다. ";
-    String url = "https://koting.kr/signUpEmail?email=" + email + "&authKey=" + authKey;
+    String url = "https://koting.kr/auth/email?email=" + email + "&authKey=" + authKey;
 
     StringBuilder body = new StringBuilder();
     body.append("<html> <body>");
