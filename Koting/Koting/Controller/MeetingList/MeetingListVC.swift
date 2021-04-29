@@ -11,7 +11,7 @@ import MaterialComponents.MaterialButtons
 import PanModal
 
 class MeetingListVC: UIViewController {
-
+    var meetings = [Meeting]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,26 +37,45 @@ class MeetingListVC: UIViewController {
         //getMeetingListAndMyInfo()
         setFloatingButton()
         
+        /*
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        FetchMeetings()
+ */
+        
     }
-    // MARK: get data
-//    func getMeetingListAndMyInfo() {
-//        MeetingListAndMyInfoAPI.shared.post() { [weak self] result in
-//
-//            guard let self = self else {return}
-//
-//            switch result {
-//            case .success(let APIResponse):
-//                self.meetingList = APIResponse.meetingList
-//                self.myInfo = APIResponse.myInfo
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//
-//            case .failure(let error):
-//                print("\(error)\n 미팅리스트와 내 정보를 불러오는중 발생한 에러")
-//            }
-//        }
-//    }
+    
+    @objc private func didPullToRefresh() {
+        print("Start Refresh")
+        FetchMeetings()
+    }
+    // MARK: FetchMeetings
+    func FetchMeetings() {
+        
+        if tableView.refreshControl?.isRefreshing == true {
+            print("-----Refreshing Meetings-----\n")
+        } else {
+            print("-----Fetching Meetings-----\n")
+        }
+        FetchMeetingRoomsAPI.shared.get { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let response):
+                print(response.result)
+                strongSelf.meetings = response.meetingList
+                
+                DispatchQueue.main.async {
+                    strongSelf.tableView.refreshControl?.endRefreshing()
+                    strongSelf.tableView.reloadData()
+                }
+                
+                
+            case .failure(let error):
+                print("\n--------- FetchMeetings Codable Error ------------\n")
+                print(error)
+            }
+        }
+    }
     
     // MARK: Create Floating Button
     func setFloatingButton() {

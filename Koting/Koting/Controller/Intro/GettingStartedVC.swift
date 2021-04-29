@@ -20,7 +20,7 @@ class GettingStartedVC: UIViewController {
                         origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
                         size: CGSize(width: 100, height: 100)
                     ),
-                    type: .ballBeat,
+                    type: .circleStrokeSpin,
                     color: UIColor.orange,
                     padding: 0
                 )
@@ -40,7 +40,7 @@ class GettingStartedVC: UIViewController {
             self.indicator.startAnimating()
             MailAuthCheckAPI.shared.post() { [weak self] result in
                 
-                guard let self = self else { return }
+                guard let strongSelf = self else { return }
                 
                 switch result {
                 case .success(let mailAuth):
@@ -51,17 +51,19 @@ class GettingStartedVC: UIViewController {
                     
                     if authCheck {
                         DispatchQueue.main.async {
-                            self.indicator.stopAnimating()
-                            self.performSegue(withIdentifier: "MeetingList", sender: nil)
+                            strongSelf.indicator.stopAnimating()
+                            strongSelf.performSegue(withIdentifier: "MeetingList", sender: nil)
                         }
                     } else {
                         DispatchQueue.main.async {
-                            self.indicator.stopAnimating()
-                            self.makeAlertBox(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
+                            strongSelf.indicator.stopAnimating()
+                            strongSelf.makeAlertBox(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
                         }
                     }
                 case .failure(let error):
-                    self.indicator.stopAnimating()
+                    DispatchQueue.main.async {
+                        strongSelf.indicator.stopAnimating()
+                    }
                     print("\(error)\n 이러면 codable 에러임")
                 }
             }

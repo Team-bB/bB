@@ -33,5 +33,11 @@ struct CreateMeetingRoomAPIResponse: Codable {
     var meetingList: [Meeting]
 }
 
+// 미팅리스트 받아오기
+struct FetchMeetingRoomsAPIResponse: Codable {
+    var result : String
+    var meetingList: [Meeting]
+}
+
 var meetingList: [Meeting] = []
 var myInfo: Info?
