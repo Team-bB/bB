@@ -25,6 +25,7 @@ public class Meeting {
 
   private int player;
   private LocalDateTime createDate;
+  private String link;
 
   @Enumerated(EnumType.STRING)
   private MeetingStatus meetingStatus;
@@ -35,12 +36,13 @@ public class Meeting {
   @OneToMany(mappedBy = "meeting")
   private List<Apply> participants = new ArrayList<>();
 
-  public static Meeting createMeeting(Member member, int player) {
+  public static Meeting createMeeting(Member member, int player, String link) {
 
     Meeting meeting = new Meeting();
     meeting.setOwner(member);
     meeting.setPlayer(player);
     meeting.setCreateDate(LocalDateTime.now());
+    meeting.setLink(link);
     meeting.setMember(member);
     meeting.setMeetingStatus(MeetingStatus.READY);
     return meeting;
