@@ -31,9 +31,18 @@ public class MeetController {
     for (int i = 0; i < meetingList.size(); i++)
     {
       JSONObject sObject = new JSONObject();
+      JSONObject owner = new JSONObject();
+      owner.put("age", meetingList.get(i).getOwner().getAge());
+      owner.put("animal_idx", meetingList.get(i).getOwner().getAnimalIdx());
+      owner.put("college", meetingList.get(i).getOwner().getCollege());
+      owner.put("height", meetingList.get(i).getOwner().getHeight());
+      owner.put("major", meetingList.get(i).getOwner().getMajor());
+      owner.put("sex", meetingList.get(i).getOwner().getSex());
+      owner.put("mbti", meetingList.get(i).getOwner().getMbti());
+      sObject.put("owner", owner);
+      sObject.put("meeting_id", meetingList.get(i).getId());
       sObject.put("player", meetingList.get(i).getPlayer());
       sObject.put("link", meetingList.get(i).getLink());
-      sObject.put("age", meetingList.get(i).getOwner().getAge());
       jArray.add(sObject);
     }
     retObject.put("meeting", jArray);//배열을 넣음
