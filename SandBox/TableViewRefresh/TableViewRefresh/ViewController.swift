@@ -22,6 +22,7 @@ struct APIResponseResults: Codable {
     let astronomical_twilight_end: String
 }
 
+
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {

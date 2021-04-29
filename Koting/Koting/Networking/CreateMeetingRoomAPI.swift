@@ -27,8 +27,8 @@ class CreateMeetingRoomAPI {
         
         //POST로 보낼 정보
         let params = ["account_id" : token,
-                      "participants" : participants,
-                      "openkakaotalk" : link] as Dictionary
+                      "players" : participants,
+                      "link" : link] as Dictionary
 
         // httpBody에 parameters 추가
         do {

@@ -15,7 +15,7 @@ class SignUpAPI {
     private init() {}
     
     func post(paramArray: Array<UITextField>, completion: @escaping (Result<SignUp, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/member"
+        let url = API.shared.BASE_URL + "/members"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -30,7 +30,8 @@ class SignUpAPI {
                         "age": paramArray[3].text!,
                         "height": paramArray[4].text!,
                         "mbti": paramArray[5].text!,
-                        "email": paramArray[6].text! + "@dgu.ac.kr"
+                        "email": paramArray[6].text! + "@dgu.ac.kr",
+                        "animalIdx":"1"
                     ] as Dictionary
         
         // httpBody에 parameters 추가
