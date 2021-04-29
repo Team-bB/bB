@@ -13,9 +13,7 @@ class API {
 
     let BASE_URL = "https://koting.kr"
     
-    
     private init() {}
-    
 }
 
 class UserAPI {

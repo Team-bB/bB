@@ -8,35 +8,41 @@
 import Foundation
 
 struct Info: Codable {
-    var sex: String
-    var phoneNumber: String
-    var college: String
-    var major: String
-    var age: String
-    var height: String
-    var mbti: String
-    var email: String
+    let sex: String
+    let phoneNumber: String
+    let college: String
+    let major: String
+    let age: String
+    let height: String
+    let mbti: String
+    let email: String
+}
+
+struct Owner: Codable {
+    let college: String
+    let major: String
+    let sex: String
+    let mbti: String
+    
+    let animal_idx: Int
+    let age: Int
+    let height: Int
 }
 
 struct Meeting: Codable {
-    var numberOfParticipants: String
-    var progressCondition: String
-    var userInfo: Info
-}
-
-struct APIResponse:Codable {
-    var myInfo: Info
-    var meetingList: [Meeting]
+    let owner: Owner
+    let meeting_id: Int
+    let link: String
+    let player: String
 }
 
 struct CreateMeetingRoomAPIResponse: Codable {
-    var meetingList: [Meeting]
+    let result: String
 }
 
 // 미팅리스트 받아오기
 struct FetchMeetingRoomsAPIResponse: Codable {
-    var result : String
-    var meetingList: [Meeting]
+    let meeting: [Meeting]
 }
 
 var meetingList: [Meeting] = []

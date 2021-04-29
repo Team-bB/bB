@@ -102,6 +102,7 @@ class AuthNumberCheckVC: UIViewController {
             case .failure(let error):
                 print(error)
                 DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
                     self.makeAlertBox(title: "실패", message: "잠시후 다시시도 하세요.", text: "확인")
                 }
             }

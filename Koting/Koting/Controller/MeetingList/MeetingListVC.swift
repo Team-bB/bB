@@ -16,18 +16,20 @@ class MeetingListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: 더미데이터
+    /*
     var testData1: Meeting = Meeting(numberOfParticipants: "3", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "공과대학", major: "정보통신공학과", age: "25", height: "188", mbti: "ESTP", email: "ghdghkgud@dgu.ac.kr"))
     var testData2: Meeting = Meeting(numberOfParticipants: "2", progressCondition: "매칭완료", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "사회과학대학", major: "정치외교학과", age: "25", height: "180", mbti: "ESTP", email: "kkkniga@dgu.ac.kr"))
     var testData3: Meeting = Meeting(numberOfParticipants: "1", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "불교대학", major: "불교학부", age: "25", height: "179", mbti: "ESTP", email: "norply@dgu.ac.kr"))
     var testData4: Meeting = Meeting(numberOfParticipants: "4", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
     var testData5: Meeting = Meeting(numberOfParticipants: "1", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
     var testData6: Meeting = Meeting(numberOfParticipants: "3", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
+ */
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        meetingList = [testData1,testData2,testData3,testData4,testData5,testData6]
+//        meetingList = [testData1,testData2,testData3,testData4,testData5,testData6]
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -37,11 +39,11 @@ class MeetingListVC: UIViewController {
         //getMeetingListAndMyInfo()
         setFloatingButton()
         
-        /*
+        
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         FetchMeetings()
- */
+ 
         
     }
     
@@ -60,17 +62,19 @@ class MeetingListVC: UIViewController {
         FetchMeetingRoomsAPI.shared.get { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
-            case .success(let response):
-                print(response.result)
-                strongSelf.meetings = response.meetingList
+            case .success(let finalResult):
+                print("-------Fetching Success-------\n")
+                strongSelf.meetings = finalResult.meeting
                 
                 DispatchQueue.main.async {
                     strongSelf.tableView.refreshControl?.endRefreshing()
                     strongSelf.tableView.reloadData()
                 }
                 
-                
             case .failure(let error):
+                DispatchQueue.main.async {
+                    strongSelf.tableView.refreshControl?.endRefreshing()
+                }
                 print("\n--------- FetchMeetings Codable Error ------------\n")
                 print(error)
             }
@@ -105,7 +109,7 @@ class MeetingListVC: UIViewController {
 //MARK: EXTENSION TABLEVIEW DELEGATE AND DATA SOURCE
 extension MeetingListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meetingList.count
+        return meetings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,8 +117,8 @@ extension MeetingListVC: UITableViewDataSource {
         cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
         cell.tableViewCellLayer.layer.cornerRadius = 20
         cell.tableViewCellLayer.layer.borderWidth = 2
-        cell.collegeName.text = meetingList[indexPath.row].userInfo.college
-        cell.numberOfParticipants.text = meetingList[indexPath.row].numberOfParticipants
+        cell.collegeName.text = meetings[indexPath.row].owner.college
+        cell.numberOfParticipants.text = meetings[indexPath.row].player
         cell.animalShapeImage.image = UIImage(named: "image")
         cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2 //102~104 이미지 동그랗게 만드는코드 약간애매
         cell.animalShapeImage.layer.masksToBounds = true
@@ -130,71 +134,3 @@ extension MeetingListVC: UITableViewDelegate {
         performSegue(withIdentifier: "MeetingDetailInfo", sender: meetingList[indexPath.row])
     }
 }
-
-
-
-//    private func fetchData() {
-//        let url = API.shared.BASE_URL + ""
-//        let request = URLRequest(url: URL(string: url)!)
-//
-//        AF.request(request).responseJSON { (response) in
-//            switch response.result {
-//            case .success(let res):
-//                do {
-//                    let jsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
-//                    let json = try JSONDecoder().decode(APIResponse.self, from: jsonData)
-//                    self.meetingList = json.MeetingList
-//                    DispatchQueue.main.async {
-//                        self.tableView.reloadData()
-//                    }
-//                } catch(let error) {
-//                    print(error.localizedDescription)
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    private func post() {
-//        let url = API.shared.BASE_URL + "/checkStatus"
-//        var request = URLRequest(url: URL(string: url)!)
-//        request.httpMethod = "POST"
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.timeoutInterval = 10
-//
-//        //POST로 보낼 정보
-//        guard let accountId = UserDefaults.standard.string(forKey: "account_id") else { return }
-//        let params = ["account_id" : accountId] as Dictionary
-//
-//        // httpBody에 parameters 추가
-//        do {
-//            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-//        } catch {
-//            print("http Body Error")
-//        }
-//
-//        AF.request(request).responseJSON { (response) in
-//            switch response.result {
-//            case .success:
-//                print("\n\nPOST SUCCESS")
-//                if let _ = response.value {
-//                    let decoder = JSONDecoder()
-//                    do {
-//                        let product = try decoder.decode(APIResponse.self, from: response.data!)
-//
-//                        print("받아와짐")
-//                        self.meetingList = product.MeetingList
-//                        DispatchQueue.main.async {
-//                            self.tableView.reloadData()
-//                        }
-//
-//                        // 메일 인증 true면 보낸디
-//                    } catch {
-//                        print(error)
-//                    }
-//                }
-//
-//            case .failure(let error):
-//                print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
-//            }
-//        }
-//    }

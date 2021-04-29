@@ -14,7 +14,7 @@ class FetchMeetingRoomsAPI {
     private init() {}
     
     func get(completion: @escaping (Result<FetchMeetingRoomsAPIResponse, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + ""
+        let url = API.shared.BASE_URL + "/meetings"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
