@@ -22,7 +22,7 @@ class SignUpVC: UIViewController {
                         origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
                         size: CGSize(width: 100, height: 100)
                     ),
-                    type: .ballBeat,
+                    type: .circleStrokeSpin,
                     color: UIColor.orange,
                     padding: 0
                 )

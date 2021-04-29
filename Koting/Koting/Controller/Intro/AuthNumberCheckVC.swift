@@ -22,7 +22,7 @@ class AuthNumberCheckVC: UIViewController {
                         origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
                         size: CGSize(width: 100, height: 100)
                     ),
-                    type: .ballBeat,
+                    type: .circleStrokeSpin,
                     color: UIColor.orange,
                     padding: 0
                 )
@@ -31,13 +31,10 @@ class AuthNumberCheckVC: UIViewController {
         sendButton.setDefault()
         sendButton.setDisable()
         
+        authNumberTextField.becomeFirstResponder()
         authNumberTextField.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: authNumberTextField)
       
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        authNumberTextField.becomeFirstResponder()
     }
     
     // MARK:- @IBOulet
@@ -72,7 +69,7 @@ class AuthNumberCheckVC: UIViewController {
                     
                     MailAuthCheckAPI.shared.post() { [weak self] result in
                         
-                        guard let self = self else { return }
+                        guard let strongSelf = self else { return }
                         
                         switch result {
                         case .success(let mailAuth):
@@ -83,20 +80,20 @@ class AuthNumberCheckVC: UIViewController {
                             
                             if authCheck {
                                 DispatchQueue.main.async {
-                                    self.indicator.stopAnimating()
-                                    self.performSegue(withIdentifier: "MeetingList", sender: nil)
+                                    strongSelf.indicator.stopAnimating()
+                                    strongSelf.performSegue(withIdentifier: "MeetingList", sender: nil)
                                 }
                             } else {
                                 // MARK:- 여기서 알러트 띄우고 이동하는게 좋음.
                                 DispatchQueue.main.async {
-                                    self.indicator.stopAnimating()
+                                    strongSelf.indicator.stopAnimating()
                                 }
-                                self.asyncPresentView(identifier: "GettingStarted")
+                                strongSelf.asyncPresentView(identifier: "GettingStarted")
                             }
                             
                         case .failure(let error):
                             DispatchQueue.main.async {
-                                self.indicator.stopAnimating()
+                                strongSelf.indicator.stopAnimating()
                             }
                             print("\(error)\n 이러면 codable 에러임")
                         }

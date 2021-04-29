@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5BAA480BD1741B8300EE6800 /* Pods_Koting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */; };
+		881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */; };
 		884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */; };
 		884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */; };
 		88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA12609D8B500CF7CAC /* UIViewController++.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		6ADA15F079F682A7912D7A20 /* Pods-Koting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.debug.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.debug.xcconfig"; sourceTree = "<group>"; };
 		7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeetingRoomsAPI.swift; sourceTree = "<group>"; };
 		884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetUserPhoto.storyboard; sourceTree = "<group>"; };
 		884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC.swift; sourceTree = "<group>"; };
 		88556CA12609D8B500CF7CAC /* UIViewController++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController++.swift"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */,
 				D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */,
 				D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */,
+				881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */,
 				88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */,
 				D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */,
+				881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */,
 				88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */,
 				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,

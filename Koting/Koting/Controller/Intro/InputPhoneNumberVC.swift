@@ -18,14 +18,12 @@ class InputPhoneNumberVC: UIViewController {
         sendButton.setDefault()
         sendButton.setDisable()
         
+        phoneNumberTextField.becomeFirstResponder()
         phoneNumberTextField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: phoneNumberTextField)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        phoneNumberTextField.becomeFirstResponder()
-    }
     
     // MARK:- @IBOulet
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -44,11 +42,12 @@ class InputPhoneNumberVC: UIViewController {
                         self.asyncPresentView(identifier: "AuthNumberCheck")
                         
                         UserAPI.shared.phoneNumber = phoneNumber
-                        RequestAuthNumberAPI.shared.get(phoneNumber: phoneNumber) { result in
+                        RequestAuthNumberAPI.shared.get(phoneNumber: phoneNumber) { [weak self]result in
+                            guard let strongSelf = self else { return }
                             switch result {
                             case .success(let message):
                                 print(message)
-                                self.asyncPresentView(identifier: "AuthNumberCheck")
+                                strongSelf.asyncPresentView(identifier: "AuthNumberCheck")
                                 
                             case .failure(let error):
                                 print(error)
