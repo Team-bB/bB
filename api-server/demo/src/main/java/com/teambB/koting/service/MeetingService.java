@@ -2,6 +2,7 @@ package com.teambB.koting.service;
 
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.repository.MeetingRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,5 +21,9 @@ public class MeetingService {
 
   public Meeting findOne(Long id) {
     return meetingRepository.findById(id);
+  }
+
+  public List<Meeting> findAll() {
+    return meetingRepository.findAll();
   }
 }
