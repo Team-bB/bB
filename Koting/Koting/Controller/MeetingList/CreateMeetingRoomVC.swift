@@ -45,17 +45,33 @@ class CreateMeetingRoomVC: UIViewController {
         
         // 여기서 나의 진행중인 미팅에 넘겨줘야함
         
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     func createMeeting() {
-        CreateMeetingRoomAPI.shared.post(paramArray: MeetingRoomInfo) {
-            result in
+        CreateMeetingRoomAPI.shared.post(paramArray: MeetingRoomInfo) { [weak self] result in
+            
+            guard let strongSelf = self else { return }
+            
             switch result {
-            case .success(let message):
+            case .success(let finalResult):
                 print("\n---------- CreateMeetingRoom Response SUCCESS ----------\n")
-                debugPrint(message)
+                let result = finalResult.result
+                
+                if result == "createFail" {
+                    DispatchQueue.main.async {
+                        strongSelf.makeAlertBox(title: "알림", message: "이미 개설된 미팅이 존재합니다.", text: "확인") { (action) in
+                            strongSelf.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        strongSelf.makeAlertBox(title: "알림", message: "미팅을 개설했습니다.", text: "확인") { (action) in
+                            strongSelf.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }
+               
+                
                 
             case .failure:
                 print("\n---------- CreateMeetingRoom Response Failed ----------\n")

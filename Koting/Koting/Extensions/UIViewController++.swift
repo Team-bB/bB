@@ -30,9 +30,9 @@ extension UIViewController {
         }
     }
     
-    func makeAlertBox(title: String, message: String, text: String) {
+    func makeAlertBox(title: String, message: String, text: String, handler: ((UIAlertAction) -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okButton = UIAlertAction(title: text, style: UIAlertAction.Style.cancel, handler: nil)
+        let okButton = UIAlertAction(title: text, style: UIAlertAction.Style.cancel, handler: handler)
         alertController.addAction(okButton)
         
         self.present(alertController, animated: true, completion: nil)

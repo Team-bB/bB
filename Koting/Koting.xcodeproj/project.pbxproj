@@ -27,6 +27,7 @@
 		887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */; };
 		887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */; };
 		889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ACAEB26372B95006DCF93 /* LoadingHUD.swift */; };
+		889DB25B263D520300E8B1BE /* ApplyMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */; };
 		889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4D26088F6200B3DA62 /* AppDelegate.swift */; };
 		889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */; };
 		889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F5126088F6200B3DA62 /* ViewController.swift */; };
@@ -66,6 +67,7 @@
 		887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberVC.swift; sourceTree = "<group>"; };
 		887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNumberCheckVC.swift; sourceTree = "<group>"; };
 		889ACAEB26372B95006DCF93 /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
+		889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyMeetingAPI.swift; sourceTree = "<group>"; };
 		889F7F4A26088F6200B3DA62 /* Koting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		889F7F4D26088F6200B3DA62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */,
 				D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */,
 				881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */,
+				889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -210,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = MyInfo;
+			name = MyInfo;
 			sourceTree = "<group>";
 		};
 		889F7F782608900300B3DA62 /* MyInfo */ = {
@@ -225,10 +228,10 @@
 			isa = PBXGroup;
 			children = (
 				88556CAE2609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift */,
-				88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */,
 				D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */,
 				88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */,
 				D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */,
+				88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */,
 			);
 			path = MeetingList;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
 				88556CB92609D96A00CF7CAC /* API.swift in Sources */,
+				889DB25B263D520300E8B1BE /* ApplyMeetingAPI.swift in Sources */,
 				D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */,
 				889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,

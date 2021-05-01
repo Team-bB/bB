@@ -1,34 +1,31 @@
 //
-//  CreateMeetingRoomAPI.swift
+//  ApplyMeetingAPI.swift
 //  Koting
 //
-//  Created by 홍화형 on 2021/03/25.
+//  Created by 임정우 on 2021/05/01.
 //
 
 import Foundation
 import Alamofire
 
-class CreateMeetingRoomAPI {
-    
-    static let shared = CreateMeetingRoomAPI()
+class ApplyMeetingAPI {
+    static let shared = ApplyMeetingAPI()
     
     private init() {}
     
-    func post(paramArray: Array<UITextField>, completion: @escaping (Result<CreateMeetingRoomAPIResponse, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/meetings"
+    func post(meetingId: Int?, completion: @escaping (Result<ApplyMeetingAPIResponse, Error>) -> (Void)) {
+        let url = API.shared.BASE_URL + "/applies"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
         guard let token = UserDefaults.standard.string(forKey: "accountId"),
-              let participants = paramArray[0].text,
-              let link = paramArray[1].text else { return }
-        
+              let meetingId = meetingId else { return }
+        print(token)
         //POST로 보낼 정보
         let params = ["account_id" : token,
-                      "players" : participants,
-                      "link" : link] as Dictionary
+                      "meeting_id" : meetingId] as Dictionary
 
         // httpBody에 parameters 추가
         do {
@@ -42,7 +39,7 @@ class CreateMeetingRoomAPI {
             case .success(let result):
                 let decoder = JSONDecoder()
                 do {
-                    let finalResult = try decoder.decode(CreateMeetingRoomAPIResponse.self, from: result)
+                    let finalResult = try decoder.decode(ApplyMeetingAPIResponse.self, from: result)
                     completion(.success(finalResult))
                 
                 } catch {
