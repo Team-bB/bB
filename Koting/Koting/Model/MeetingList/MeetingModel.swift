@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum animalFace {
-    case dog, cat, rabbit, bear, dino, deer, fox
-}
-
 struct Info: Codable {
     let sex: String
     let phoneNumber: String
@@ -40,15 +36,24 @@ struct Meeting: Codable {
     let player: String
 }
 
+struct MyMeeting: Codable {
+    let meeting: Meeting
+    let who: [Owner]
+}
 struct CreateMeetingRoomAPIResponse: Codable {
     let result: String
 }
 
-// 미팅리스트 받아오기
 struct FetchMeetingRoomsAPIResponse: Codable {
     let meeting: [Meeting]
 }
 
 struct ApplyMeetingAPIResponse: Codable {
     let result: String
+}
+
+struct MyMeetingListAPIResponse: Codable {
+    let myMeeting: MyMeeting
+    let applyList: [Meeting]
+    
 }

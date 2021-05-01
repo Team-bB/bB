@@ -28,6 +28,7 @@
 		887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */; };
 		889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ACAEB26372B95006DCF93 /* LoadingHUD.swift */; };
 		889DB25B263D520300E8B1BE /* ApplyMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */; };
+		889DB262263D824400E8B1BE /* MyMeetingListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889DB261263D824400E8B1BE /* MyMeetingListAPI.swift */; };
 		889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4D26088F6200B3DA62 /* AppDelegate.swift */; };
 		889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */; };
 		889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F5126088F6200B3DA62 /* ViewController.swift */; };
@@ -68,6 +69,7 @@
 		887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNumberCheckVC.swift; sourceTree = "<group>"; };
 		889ACAEB26372B95006DCF93 /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
 		889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyMeetingAPI.swift; sourceTree = "<group>"; };
+		889DB261263D824400E8B1BE /* MyMeetingListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingListAPI.swift; sourceTree = "<group>"; };
 		889F7F4A26088F6200B3DA62 /* Koting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		889F7F4D26088F6200B3DA62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */,
 				881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */,
 				889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */,
+				889DB261263D824400E8B1BE /* MyMeetingListAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			files = (
 				D3BC8D31260CB73E000625DF /* CreateMeetingRoomAPI.swift in Sources */,
 				887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */,
+				889DB262263D824400E8B1BE /* MyMeetingListAPI.swift in Sources */,
 				886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */,
 				88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */,
 				D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */,

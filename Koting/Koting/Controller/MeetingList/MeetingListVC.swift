@@ -18,7 +18,7 @@ class MeetingListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -107,14 +107,10 @@ extension MeetingListVC: UITableViewDataSource {
         cell.tableViewCellLayer.layer.borderWidth = 2
         cell.tableViewCellLayer.layer.masksToBounds = true
         
-        cell.tableViewCellLayer.layer.shadowRadius = 5
-        cell.tableViewCellLayer.layer.shadowOpacity = 0.5
-        cell.tableViewCellLayer.layer.shadowOffset = CGSize(width: 3, height: 3)
-        cell.tableViewCellLayer.layer.shadowColor =  #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
         cell.collegeName.text = meetings[indexPath.row].owner?.college ?? "단과대학"
         cell.numberOfParticipants.text = meetings[indexPath.row].player
-        cell.animalShapeImage.image = UIImage(named: "image")
+        cell.animalShapeImage.image = UIImage(named: transImage(index: meetings[indexPath.row].owner?.animal_idx ?? 0))
         cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2 //102~104 이미지 동그랗게 만드는코드 약간애매
         cell.animalShapeImage.layer.masksToBounds = true
         cell.animalShapeImage.layer.borderWidth = 0
@@ -122,6 +118,17 @@ extension MeetingListVC: UITableViewDataSource {
         return cell
     }
     
+    func transImage(index: Int) -> String {
+        switch index {
+        case 1: return "dog"
+        case 2: return "cat"
+        case 3: return "rabbit"
+        case 4: return "fox"
+        case 5: return "bear"
+        case 6: return "dino"
+        default: return "nil"
+        }
+    }
 }
 
 extension MeetingListVC: UITableViewDelegate {

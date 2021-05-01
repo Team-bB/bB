@@ -29,7 +29,7 @@ class CreateMeetingRoomVC: UIViewController {
         participantsNumber.delegate = self
         openKakaoTalkLink.delegate = self
         participantsNumber.becomeFirstResponder()
-        createMeetingRoomBtn.setDefault()
+        
         createPicker()
     }
     

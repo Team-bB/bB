@@ -21,7 +21,7 @@ class GettingStartedVC: UIViewController {
                         size: CGSize(width: 100, height: 100)
                     ),
                     type: .circleStrokeSpin,
-                    color: UIColor.orange,
+                    color: UIColor.gray,
                     padding: 0
                 )
         self.view.addSubview(self.indicator)
