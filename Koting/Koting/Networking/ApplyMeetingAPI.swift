@@ -40,9 +40,11 @@ class ApplyMeetingAPI {
                 let decoder = JSONDecoder()
                 do {
                     let finalResult = try decoder.decode(ApplyMeetingAPIResponse.self, from: result)
+                    print("✅ ApplyMeetingAPIResponse Codable Success ✅")
                     completion(.success(finalResult))
                 
                 } catch {
+                    print("❗️ ApplyMeetingAPIResponse Codable Error")
                     print(error)
                     completion(.failure(error))
                 }

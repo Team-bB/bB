@@ -49,9 +49,11 @@ class SignUpAPI {
                 let decoder = JSONDecoder()
                 do {
                     let product = try decoder.decode(SignUp.self, from: result)
+                    print("✅ SignUp Codable Success ✅")
                     completion(.success(product))
                 
                 } catch {
+                    print("❗️ SignUp Codable Error")
                     print(error)
                     completion(.failure(error))
                 }

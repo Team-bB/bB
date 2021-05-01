@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import Alamofire
 
 class MyMeetingListAPI {
-    static let shared = ApplyMeetingAPI()
+    static let shared = MyMeetingListAPI()
     
     private init() {}
     
-    func get(completion: @escaping (Result<FetchMeetingRoomsAPIResponse, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/meetings"
+    func get(completion: @escaping (Result<MyMeetingListAPIResponse, Error>) -> (Void)) {
+        let url = API.shared.BASE_URL + "/applies?account_id="
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -24,10 +25,12 @@ class MyMeetingListAPI {
             case .success(let result):
                 let decoder = JSONDecoder()
                 do {
-                    let finalResult = try decoder.decode(FetchMeetingRoomsAPIResponse.self, from: result)
+                    let finalResult = try decoder.decode(MyMeetingListAPIResponse.self, from: result)
+                    print("✅ MyMeetingListAPIResponse Codable Success ✅")
                     completion(.success(finalResult))
 
                 } catch {
+                    print("❗️ MyMeetingListAPI Codable Error ❗️")
                     print(error)
                     completion(.failure(error))
                 }

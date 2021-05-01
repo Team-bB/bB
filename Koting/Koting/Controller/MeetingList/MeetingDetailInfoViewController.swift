@@ -27,7 +27,7 @@ class MeetingDetailInfoViewController: UIViewController {
         self.meetingInfoView.layer.cornerRadius = 20
         self.meetingInfoView.layer.borderWidth = 2
 
-        self.imageView.image = UIImage(named: "image")
+        
         self.imageView.layer.cornerRadius = imageView.frame.width / 2
         self.imageView.layer.borderWidth = 1
         self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
@@ -35,7 +35,6 @@ class MeetingDetailInfoViewController: UIViewController {
         self.imageView.clipsToBounds = true
         
         updateUI()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func applyButtonTapped(_ sender: Any) {
@@ -60,14 +59,14 @@ class MeetingDetailInfoViewController: UIViewController {
                         }
                     }
                 }
-            case .failure(let error):
-                print("에러")
+            case .failure:
                 break
             }
         }
     }
     
     private func updateUI() {
+        
         guard let meeting = meeting, let owner = meeting.owner else { return }
         
         if let college = owner.college,
@@ -84,7 +83,7 @@ class MeetingDetailInfoViewController: UIViewController {
         }
     }
     
-    func transAnimal(index: Int, isImage: Bool) -> String {
+    private func transAnimal(index: Int, isImage: Bool) -> String {
         if isImage {
             switch index {
             case 1: return "dog"

@@ -18,7 +18,7 @@
                         <viewLayoutGuide key="safeArea" id="yFa-sp-QRR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info" selectedImage="person" catalog="system" id="zkZ-j2-K9d"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="person" catalog="system" selectedImage="person.fill" id="zkZ-j2-K9d"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1p-yG-fmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -28,6 +28,7 @@
     </scenes>
     <resources>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

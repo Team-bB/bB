@@ -43,9 +43,11 @@ class CreateMeetingRoomAPI {
                 let decoder = JSONDecoder()
                 do {
                     let finalResult = try decoder.decode(CreateMeetingRoomAPIResponse.self, from: result)
+                    print("✅ CreateMeetingRoomAPIResponse Codable Success ✅")
                     completion(.success(finalResult))
                 
                 } catch {
+                    print("❗️ CreateMeetingRoomAPIResponse Codable Error")
                     print(error)
                     completion(.failure(error))
                 }

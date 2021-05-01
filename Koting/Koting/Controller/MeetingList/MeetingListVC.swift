@@ -51,7 +51,6 @@ class MeetingListVC: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let finalResult):
-                print("-------Fetching Success-------\n")
                 strongSelf.meetings = finalResult.meeting
                 
                 DispatchQueue.main.async {
@@ -59,12 +58,11 @@ class MeetingListVC: UIViewController {
                     strongSelf.tableView.reloadData()
                 }
                 
-            case .failure(let error):
+            case .failure:
                 DispatchQueue.main.async {
                     strongSelf.tableView.refreshControl?.endRefreshing()
                 }
-                print("\n--------- FetchMeetings Codable Error ------------\n")
-                print(error)
+                break
             }
         }
     }
@@ -73,10 +71,10 @@ class MeetingListVC: UIViewController {
     func setFloatingButton() {
         let floatingButton = MDCFloatingButton()
         floatingButton.mode = .expanded
-        let image = UIImage(systemName: "pencil")
+        let image = UIImage(systemName: "plus")
         floatingButton.sizeToFit()
         floatingButton.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 관련 이걸 true로 하면 자동으로 위치 바뀌나??
-        floatingButton.setTitle("방 개설", for: .normal)
+        floatingButton.setTitle("미팅 개설", for: .normal)
         floatingButton.setTitleColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
         floatingButton.setImage(image, for: .normal)
         floatingButton.setImageTintColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)

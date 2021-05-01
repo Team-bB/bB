@@ -41,9 +41,11 @@ class MailAuthCheckAPI {
                 let decoder = JSONDecoder()
                 do {
                     let product = try decoder.decode(MailAuth.self, from: result)
+                    print("✅ MailAuth Codable Success ✅")
                     completion(.success(product))
                 
                 } catch {
+                    print("❗️ MailAuth Codable Error")
                     print(error)
                     completion(.failure(error))
                 }

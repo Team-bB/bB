@@ -12,7 +12,7 @@ extension UIButton {
     func setEnable(enable: Bool? = true, backgroundColor: UIColor? = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)) {
         self.isEnabled = enable!
         self.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        self.backgroundColor = nil
+        self.backgroundColor = backgroundColor
     }
 
     func setDisable(enable: Bool? = false, `backgroundColor`: UIColor? = .opaqueSeparator) {
@@ -45,15 +45,12 @@ class CustomButton: UIButton {
         clipsToBounds = true
         layer.masksToBounds = true
         
-        layer.shadowRadius = 1
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize.zero
-        layer.shadowColor =  #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         
-        let gradient = CAGradientLayer()
-        gradient.frame = bounds
-        gradient.colors = [#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).cgColor, #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor, ]
-        layer.addSublayer(gradient)
+        
+//        let gradient = CAGradientLayer()
+//        gradient.frame = bounds
+//        gradient.colors = [#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).cgColor, #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor, ]
+//        layer.addSublayer(gradient)
         
     }
 }

@@ -230,11 +230,11 @@
 		889F7F792608900B00B3DA62 /* MeetingList */ = {
 			isa = PBXGroup;
 			children = (
-				88556CAE2609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift */,
 				D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */,
-				88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */,
-				D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */,
 				88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */,
+				D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */,
+				88556CAE2609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift */,
+				88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */,
 			);
 			path = MeetingList;
 			sourceTree = "<group>";

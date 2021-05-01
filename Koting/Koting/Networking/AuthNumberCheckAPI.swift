@@ -32,8 +32,10 @@ class AuthNumberCheckAPI {
                 let decoder = JSONDecoder()
                 do {
                     let product = try decoder.decode(PhoneAuth.self, from: result)
+                    print("✅ PhoneAuth Codable Success ✅")
                     completion(.success(product))
                 } catch {
+                    print("❗️ PhoneAuth Codable Error")
                     print(error)
                     completion(.failure(error))
                 }

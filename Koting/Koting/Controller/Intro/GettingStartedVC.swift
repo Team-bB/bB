@@ -64,7 +64,6 @@ class GettingStartedVC: UIViewController {
                     DispatchQueue.main.async {
                         strongSelf.indicator.stopAnimating()
                     }
-                    print("\(error)\n 이러면 codable 에러임")
                 }
             }
         }
