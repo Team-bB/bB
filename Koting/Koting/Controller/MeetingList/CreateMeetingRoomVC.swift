@@ -29,7 +29,7 @@ class CreateMeetingRoomVC: UIViewController {
         participantsNumber.delegate = self
         openKakaoTalkLink.delegate = self
         participantsNumber.becomeFirstResponder()
-        createMeetingRoomBtn.setDefault()
+        
         createPicker()
     }
     
@@ -54,7 +54,6 @@ class CreateMeetingRoomVC: UIViewController {
             
             switch result {
             case .success(let finalResult):
-                print("\n---------- CreateMeetingRoom Response SUCCESS ----------\n")
                 let result = finalResult.result
                 
                 if result == "createFail" {
@@ -74,7 +73,6 @@ class CreateMeetingRoomVC: UIViewController {
                 
                 
             case .failure:
-                print("\n---------- CreateMeetingRoom Response Failed ----------\n")
                 break
             }
         }

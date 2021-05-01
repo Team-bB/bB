@@ -24,7 +24,7 @@ class RequestAuthNumberAPI {
         AF.request(request).responseString { response in
             switch response.result {
             case .success(let result):
-                print(result)           // 결과 콘솔에 출력
+                print("✅ RequestAuthNumberAPI Success ✅")
                 debugPrint(response)    // 디버그 프린트
                 completion(.success(result))
                 

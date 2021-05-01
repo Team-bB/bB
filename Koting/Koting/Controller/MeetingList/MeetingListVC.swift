@@ -18,7 +18,7 @@ class MeetingListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -51,7 +51,6 @@ class MeetingListVC: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let finalResult):
-                print("-------Fetching Success-------\n")
                 strongSelf.meetings = finalResult.meeting
                 
                 DispatchQueue.main.async {
@@ -59,12 +58,11 @@ class MeetingListVC: UIViewController {
                     strongSelf.tableView.reloadData()
                 }
                 
-            case .failure(let error):
+            case .failure:
                 DispatchQueue.main.async {
                     strongSelf.tableView.refreshControl?.endRefreshing()
                 }
-                print("\n--------- FetchMeetings Codable Error ------------\n")
-                print(error)
+                break
             }
         }
     }
@@ -73,10 +71,10 @@ class MeetingListVC: UIViewController {
     func setFloatingButton() {
         let floatingButton = MDCFloatingButton()
         floatingButton.mode = .expanded
-        let image = UIImage(systemName: "pencil")
+        let image = UIImage(systemName: "plus")
         floatingButton.sizeToFit()
         floatingButton.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 관련 이걸 true로 하면 자동으로 위치 바뀌나??
-        floatingButton.setTitle("방 개설", for: .normal)
+        floatingButton.setTitle("미팅 개설", for: .normal)
         floatingButton.setTitleColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
         floatingButton.setImage(image, for: .normal)
         floatingButton.setImageTintColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
@@ -107,14 +105,10 @@ extension MeetingListVC: UITableViewDataSource {
         cell.tableViewCellLayer.layer.borderWidth = 2
         cell.tableViewCellLayer.layer.masksToBounds = true
         
-        cell.tableViewCellLayer.layer.shadowRadius = 5
-        cell.tableViewCellLayer.layer.shadowOpacity = 0.5
-        cell.tableViewCellLayer.layer.shadowOffset = CGSize(width: 3, height: 3)
-        cell.tableViewCellLayer.layer.shadowColor =  #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
         cell.collegeName.text = meetings[indexPath.row].owner?.college ?? "단과대학"
         cell.numberOfParticipants.text = meetings[indexPath.row].player
-        cell.animalShapeImage.image = UIImage(named: "image")
+        cell.animalShapeImage.image = UIImage(named: transImage(index: meetings[indexPath.row].owner?.animal_idx ?? 0))
         cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2 //102~104 이미지 동그랗게 만드는코드 약간애매
         cell.animalShapeImage.layer.masksToBounds = true
         cell.animalShapeImage.layer.borderWidth = 0
@@ -122,6 +116,17 @@ extension MeetingListVC: UITableViewDataSource {
         return cell
     }
     
+    func transImage(index: Int) -> String {
+        switch index {
+        case 1: return "dog"
+        case 2: return "cat"
+        case 3: return "rabbit"
+        case 4: return "fox"
+        case 5: return "bear"
+        case 6: return "dino"
+        default: return "nil"
+        }
+    }
 }
 
 extension MeetingListVC: UITableViewDelegate {

@@ -14,6 +14,7 @@ class MeetingDetailInfoViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var applyBtnTapped: UIButton!
     
+    @IBOutlet weak var animalLabel: UILabel!
     @IBOutlet weak var collegeLabel: UILabel!
     @IBOutlet weak var mbtiLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
@@ -26,7 +27,7 @@ class MeetingDetailInfoViewController: UIViewController {
         self.meetingInfoView.layer.cornerRadius = 20
         self.meetingInfoView.layer.borderWidth = 2
 
-        self.imageView.image = UIImage(named: "image")
+        
         self.imageView.layer.cornerRadius = imageView.frame.width / 2
         self.imageView.layer.borderWidth = 1
         self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
@@ -34,7 +35,6 @@ class MeetingDetailInfoViewController: UIViewController {
         self.imageView.clipsToBounds = true
         
         updateUI()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func applyButtonTapped(_ sender: Any) {
@@ -59,14 +59,14 @@ class MeetingDetailInfoViewController: UIViewController {
                         }
                     }
                 }
-            case .failure(let error):
-                print("에러")
+            case .failure:
                 break
             }
         }
     }
     
     private func updateUI() {
+        
         guard let meeting = meeting, let owner = meeting.owner else { return }
         
         if let college = owner.college,
@@ -78,6 +78,34 @@ class MeetingDetailInfoViewController: UIViewController {
             mbtiLabel.text = mbti
             ageLabel.text = "\(age)살"
             heightLabel.text = "\(height)cm"
+            imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
+            animalLabel.text = transAnimal(index: animal, isImage: false) + "상"
         }
     }
+    
+    private func transAnimal(index: Int, isImage: Bool) -> String {
+        if isImage {
+            switch index {
+            case 1: return "dog"
+            case 2: return "cat"
+            case 3: return "rabbit"
+            case 4: return "fox"
+            case 5: return "bear"
+            case 6: return "dino"
+            default: return "nil"
+            }
+        } else {
+            switch index {
+            case 1: return "강아지"
+            case 2: return "고양이"
+            case 3: return "토끼"
+            case 4: return "여우"
+            case 5: return "곰돌이"
+            case 6: return "공룡"
+            default: return "동물"
+            }
+        }
+    }
+    
+    
 }

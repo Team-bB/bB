@@ -21,7 +21,7 @@ class GettingStartedVC: UIViewController {
                         size: CGSize(width: 100, height: 100)
                     ),
                     type: .circleStrokeSpin,
-                    color: UIColor.orange,
+                    color: UIColor.gray,
                     padding: 0
                 )
         self.view.addSubview(self.indicator)
@@ -64,7 +64,6 @@ class GettingStartedVC: UIViewController {
                     DispatchQueue.main.async {
                         strongSelf.indicator.stopAnimating()
                     }
-                    print("\(error)\n 이러면 codable 에러임")
                 }
             }
         }
