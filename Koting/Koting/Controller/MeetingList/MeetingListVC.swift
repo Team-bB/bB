@@ -15,28 +15,15 @@ class MeetingListVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    //MARK: 더미데이터
-    /*
-    var testData1: Meeting = Meeting(numberOfParticipants: "3", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "공과대학", major: "정보통신공학과", age: "25", height: "188", mbti: "ESTP", email: "ghdghkgud@dgu.ac.kr"))
-    var testData2: Meeting = Meeting(numberOfParticipants: "2", progressCondition: "매칭완료", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "사회과학대학", major: "정치외교학과", age: "25", height: "180", mbti: "ESTP", email: "kkkniga@dgu.ac.kr"))
-    var testData3: Meeting = Meeting(numberOfParticipants: "1", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "불교대학", major: "불교학부", age: "25", height: "179", mbti: "ESTP", email: "norply@dgu.ac.kr"))
-    var testData4: Meeting = Meeting(numberOfParticipants: "4", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
-    var testData5: Meeting = Meeting(numberOfParticipants: "1", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
-    var testData6: Meeting = Meeting(numberOfParticipants: "3", progressCondition: "진행중", userInfo: Info(sex: "male", phoneNumber: "01041728922", college: "문과대학", major: "사학과", age: "25", height: "179", mbti: "ESTP", email: "chlwodnjs97@dgu.ac.kr"))
- */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-//        meetingList = [testData1,testData2,testData3,testData4,testData5,testData6]
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none //테이블 뷰 셀 나누는 줄 없애는 코드
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissNotification(_:)), name: NSNotification.Name(rawValue: "DidDismissViewController"), object: nil)
-        //getMeetingListAndMyInfo()
         setFloatingButton()
         
         
@@ -46,6 +33,7 @@ class MeetingListVC: UIViewController {
  
         
     }
+    
     
     @objc private func didPullToRefresh() {
         print("Start Refresh")
@@ -89,9 +77,9 @@ class MeetingListVC: UIViewController {
         floatingButton.sizeToFit()
         floatingButton.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 관련 이걸 true로 하면 자동으로 위치 바뀌나??
         floatingButton.setTitle("방 개설", for: .normal)
-        floatingButton.setTitleColor(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), for: .normal)
+        floatingButton.setTitleColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
         floatingButton.setImage(image, for: .normal)
-        floatingButton.setImageTintColor(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), for: .normal)
+        floatingButton.setImageTintColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
         floatingButton.backgroundColor = .white
         floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
         view.addSubview(floatingButton)
@@ -114,10 +102,17 @@ extension MeetingListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingListTableViewCell", for: indexPath) as! MeetingListTableViewCell
-        cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         cell.tableViewCellLayer.layer.cornerRadius = 20
         cell.tableViewCellLayer.layer.borderWidth = 2
-        cell.collegeName.text = meetings[indexPath.row].owner.college
+        cell.tableViewCellLayer.layer.masksToBounds = true
+        
+        cell.tableViewCellLayer.layer.shadowRadius = 5
+        cell.tableViewCellLayer.layer.shadowOpacity = 0.5
+        cell.tableViewCellLayer.layer.shadowOffset = CGSize(width: 3, height: 3)
+        cell.tableViewCellLayer.layer.shadowColor =  #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
+        cell.collegeName.text = meetings[indexPath.row].owner?.college ?? "단과대학"
         cell.numberOfParticipants.text = meetings[indexPath.row].player
         cell.animalShapeImage.image = UIImage(named: "image")
         cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2 //102~104 이미지 동그랗게 만드는코드 약간애매
@@ -131,6 +126,15 @@ extension MeetingListVC: UITableViewDataSource {
 
 extension MeetingListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "MeetingDetailInfo", sender: meetingList[indexPath.row])
+        performSegue(withIdentifier: "MeetingDetailInfo", sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MeetingDetailInfo" {
+            let vc = segue.destination as? MeetingDetailInfoViewController
+            if let index = sender as? Int {
+                vc?.meeting = meetings[index]
+            }
+        }
     }
 }

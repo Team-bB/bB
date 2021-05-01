@@ -8,37 +8,76 @@
 import UIKit
 
 class MeetingDetailInfoViewController: UIViewController {
-
+    
+    var meeting: Meeting?
     @IBOutlet weak var meetingInfoView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var applyBtnTapped: UIButton!
+    
+    @IBOutlet weak var collegeLabel: UILabel!
+    @IBOutlet weak var mbtiLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.meetingInfoView.layer.borderColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        self.meetingInfoView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.meetingInfoView.layer.cornerRadius = 20
         self.meetingInfoView.layer.borderWidth = 2
-        self.applyBtnTapped.layer.borderColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
-        self.applyBtnTapped.layer.cornerRadius = 10
-        self.applyBtnTapped.layer.borderWidth = 1
+
         self.imageView.image = UIImage(named: "image")
-        self.imageView.layer.cornerRadius = imageView.frame.width/2
+        self.imageView.layer.cornerRadius = imageView.frame.width / 2
         self.imageView.layer.borderWidth = 1
         self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
-        self.imageView.layer.borderColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        self.imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.imageView.clipsToBounds = true
+        
+        updateUI()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func applyButtonTapped(_ sender: Any) {
+        
+        ApplyMeetingAPI.shared.post(meetingId: meeting?.meeting_id) { [weak self] result in
+            
+            guard let strongSelf = self else { return }
+            
+            switch result {
+            case .success(let finalResult):
+                
+                if finalResult.result == "applyMeetingSuccess" {
+                    DispatchQueue.main.async {
+                        strongSelf.makeAlertBox(title: "성공", message: "미팅을 신청했습니다.", text: "확인") { (action) in
+                            strongSelf.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        strongSelf.makeAlertBox(title: "실패", message: "신청이 마감되었습니다.", text: "확인") { (action) in
+                            strongSelf.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("에러")
+                break
+            }
+        }
     }
-    */
-
+    
+    private func updateUI() {
+        guard let meeting = meeting, let owner = meeting.owner else { return }
+        
+        if let college = owner.college,
+           let mbti = owner.mbti,
+           let age = owner.age,
+           let height = owner.height,
+           let animal = owner.animal_idx {
+            collegeLabel.text = college
+            mbtiLabel.text = mbti
+            ageLabel.text = "\(age)살"
+            heightLabel.text = "\(height)cm"
+        }
+    }
 }

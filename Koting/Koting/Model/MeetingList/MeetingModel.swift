@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum animalFace {
+    case dog, cat, rabbit, bear, dino, deer, fox
+}
+
 struct Info: Codable {
     let sex: String
     let phoneNumber: String
@@ -19,18 +23,18 @@ struct Info: Codable {
 }
 
 struct Owner: Codable {
-    let college: String
-    let major: String
-    let sex: String
-    let mbti: String
+    let college: String?
+    let major: String?
+    let sex: String?
+    let mbti: String?
     
-    let animal_idx: Int
-    let age: Int
-    let height: Int
+    let animal_idx: Int?
+    let age: Int?
+    let height: Int?
 }
 
 struct Meeting: Codable {
-    let owner: Owner
+    let owner: Owner?
     let meeting_id: Int
     let link: String
     let player: String
@@ -45,5 +49,6 @@ struct FetchMeetingRoomsAPIResponse: Codable {
     let meeting: [Meeting]
 }
 
-var meetingList: [Meeting] = []
-var myInfo: Info?
+struct ApplyMeetingAPIResponse: Codable {
+    let result: String
+}

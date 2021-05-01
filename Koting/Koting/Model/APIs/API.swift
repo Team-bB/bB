@@ -24,3 +24,9 @@ class UserAPI {
     var phoneAuthResult: String?
     private init() {}
 }
+
+
+struct User: Codable {
+    
+}
+
