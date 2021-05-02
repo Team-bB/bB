@@ -45,11 +45,8 @@ public class ApplyController {
         ownerInfo.put("age", member.getAge());
         ownerInfo.put("height", member.getHeight());
         myMeetingInfo.put("owner", ownerInfo);
-
         myMeetingInfo.put("meeting_id", member.getMyMeeting().getId());
-
         myMeetingInfo.put("link", member.getMyMeeting().getLink());
-
         myMeetingInfo.put("player", member.getMyMeeting().getPlayer());
 
         List<Apply> participants = myMeeting.getParticipants();
@@ -71,18 +68,28 @@ public class ApplyController {
     }
 
     JSONArray jArray2 = new JSONArray();
+
     if (member.getApplies() != null) {
       List<Apply> applies = member.getApplies();
+
       for (int i = 0; i < applies.size(); i++) {
-        JSONObject myApplies = new JSONObject();
-        myApplies.put("age", applies.get(i).getMeeting().getOwner().getAge());
-        myApplies.put("animal_idx", applies.get(i).getMeeting().getOwner().getAnimalIdx());
-        myApplies.put("height", applies.get(i).getMeeting().getOwner().getHeight());
-        myApplies.put("college", applies.get(i).getMeeting().getOwner().getCollege());
-        myApplies.put("major", applies.get(i).getMeeting().getOwner().getMajor());
-        myApplies.put("sex", applies.get(i).getMeeting().getOwner().getSex());
-        jArray2.add(myApplies);
+        JSONObject meetingOwner = new JSONObject();
+        meetingOwner.put("age", applies.get(i).getMeeting().getOwner().getAge());
+        meetingOwner.put("animal_idx", applies.get(i).getMeeting().getOwner().getAnimalIdx());
+        meetingOwner.put("height", applies.get(i).getMeeting().getOwner().getHeight());
+        meetingOwner.put("college", applies.get(i).getMeeting().getOwner().getCollege());
+        meetingOwner.put("major", applies.get(i).getMeeting().getOwner().getMajor());
+        meetingOwner.put("sex", applies.get(i).getMeeting().getOwner().getSex());
+        meetingOwner.put("mbti", applies.get(i).getMeeting().getOwner().getMbti());
+
+        JSONObject meetingInfo = new JSONObject();
+        meetingInfo.put("owner", meetingOwner);
+        meetingInfo.put("meeting_id", applies.get(i).getMeeting().getId());
+        meetingInfo.put("link", applies.get(i).getMeeting().getLink());
+        meetingInfo.put("player", applies.get(i).getMeeting().getPlayer());
+        jArray2.add(meetingInfo);
       }
+
       retObject.put("myApplies", jArray2);
     }
     return retObject;
