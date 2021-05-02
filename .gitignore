@@ -87,3 +87,5 @@ DerivedData/
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode,cocoapods,carthage
 
 api-server/local.sh
+api-server/demo-0.0.1-SNAPSHOT.jar
+api-server/nohup.out
