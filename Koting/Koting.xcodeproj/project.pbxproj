@@ -44,6 +44,8 @@
 		D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */; };
 		D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */; };
 		D3BC8D31260CB73E000625DF /* CreateMeetingRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */; };
+		D3C6C3E6263ECFE90019712E /* MyMeetingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6C3E5263ECFE90019712E /* MyMeetingTableViewCell.swift */; };
+		D3C6C3E9263ED0BC0019712E /* ApplyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6C3E8263ED0BC0019712E /* ApplyListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListAndMyInfoAPI.swift; sourceTree = "<group>"; };
 		D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMeetingRoomVC.swift; sourceTree = "<group>"; };
 		D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMeetingRoomAPI.swift; sourceTree = "<group>"; };
+		D3C6C3E5263ECFE90019712E /* MyMeetingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingTableViewCell.swift; sourceTree = "<group>"; };
+		D3C6C3E8263ED0BC0019712E /* ApplyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,8 @@
 				D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */,
 				88556CAE2609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift */,
 				88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */,
+				D3C6C3E5263ECFE90019712E /* MyMeetingTableViewCell.swift */,
+				D3C6C3E8263ED0BC0019712E /* ApplyListTableViewCell.swift */,
 			);
 			path = MeetingList;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				88556CAB2609D8D300CF7CAC /* RequestAuthNumberAPI.swift in Sources */,
 				88556CAA2609D8D300CF7CAC /* AuthNumberCheckAPI.swift in Sources */,
 				889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */,
+				D3C6C3E6263ECFE90019712E /* MyMeetingTableViewCell.swift in Sources */,
 				88556CB22609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift in Sources */,
 				88556CA42609D8B500CF7CAC /* UIButton++.swift in Sources */,
 				886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */,
@@ -421,6 +428,7 @@
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
 				88556CB92609D96A00CF7CAC /* API.swift in Sources */,
 				889DB25B263D520300E8B1BE /* ApplyMeetingAPI.swift in Sources */,
+				D3C6C3E9263ED0BC0019712E /* ApplyListTableViewCell.swift in Sources */,
 				D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */,
 				889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
@@ -573,9 +581,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NJ49S5QG3H;
+				DEVELOPMENT_TEAM = S633W4FQZA;
 				INFOPLIST_FILE = Koting/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -597,7 +605,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NJ49S5QG3H;
 				INFOPLIST_FILE = Koting/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
