@@ -28,36 +28,59 @@ public class ApplyController {
   @GetMapping("/applies")
   public JSONObject getMyMeetingInfo(@RequestParam("account_id") String accountId) {
     JSONObject retObject = new JSONObject();
-    JSONArray jArray = new JSONArray();
 
     Member member = memberService.findOneByAccountId(accountId);
     Meeting myMeeting = member.getMyMeeting();
+
+
     if (myMeeting != null) {
-      List<Apply> participants = myMeeting.getParticipants();
-      JSONObject myInfo = new JSONObject();
-      for (int i = 0; i < participants.size(); i++) {
-        myInfo.put("age", participants.get(i).getMember().getAge());
-        myInfo.put("animal_idx", participants.get(i).getMember().getAnimalIdx());
-        myInfo.put("height", participants.get(i).getMember().getHeight());
-        myInfo.put("college", participants.get(i).getMember().getCollege());
-        myInfo.put("major", participants.get(i).getMember().getMajor());
-        myInfo.put("sex", participants.get(i).getMember().getSex());
-        jArray.add(myInfo);
-      }
-      retObject.put("myMeeting", jArray);
+        JSONObject myMeetingInfo = new JSONObject();
+
+        JSONObject ownerInfo = new JSONObject();
+        ownerInfo.put("college", member.getCollege());
+        ownerInfo.put("major", member.getMajor());
+        ownerInfo.put("sex", member.getSex());
+        ownerInfo.put("mbti", member.getMbti());
+        ownerInfo.put("animal_idx", member.getAnimalIdx());
+        ownerInfo.put("age", member.getAge());
+        ownerInfo.put("height", member.getHeight());
+        myMeetingInfo.put("owner", ownerInfo);
+
+        myMeetingInfo.put("meeting_id", member.getMyMeeting().getId());
+
+        myMeetingInfo.put("link", member.getMyMeeting().getLink());
+
+        myMeetingInfo.put("player", member.getMyMeeting().getPlayer());
+
+        List<Apply> participants = myMeeting.getParticipants();
+        JSONArray jArray = new JSONArray();
+        for (int i = 0; i < participants.size(); i++) {
+          JSONObject myInfo = new JSONObject();
+          myInfo.put("age", participants.get(i).getMember().getAge());
+          myInfo.put("animal_idx", participants.get(i).getMember().getAnimalIdx());
+          myInfo.put("height", participants.get(i).getMember().getHeight());
+          myInfo.put("college", participants.get(i).getMember().getCollege());
+          myInfo.put("major", participants.get(i).getMember().getMajor());
+          myInfo.put("sex", participants.get(i).getMember().getSex());
+          myInfo.put("mbti", participants.get(i).getMember().getMbti());
+          jArray.add(myInfo);
+        }
+        myMeetingInfo.put("participant", jArray);
+
+        retObject.put("myMeeting", myMeetingInfo);
     }
 
     JSONArray jArray2 = new JSONArray();
     if (member.getApplies() != null) {
       List<Apply> applies = member.getApplies();
-      JSONObject myApplies = new JSONObject();
       for (int i = 0; i < applies.size(); i++) {
-        myApplies.put("age", applies.get(i).getMember().getAge());
-        myApplies.put("animal_idx", applies.get(i).getMember().getAnimalIdx());
-        myApplies.put("height", applies.get(i).getMember().getHeight());
-        myApplies.put("college", applies.get(i).getMember().getCollege());
-        myApplies.put("major", applies.get(i).getMember().getMajor());
-        myApplies.put("sex", applies.get(i).getMember().getSex());
+        JSONObject myApplies = new JSONObject();
+        myApplies.put("age", applies.get(i).getMeeting().getOwner().getAge());
+        myApplies.put("animal_idx", applies.get(i).getMeeting().getOwner().getAnimalIdx());
+        myApplies.put("height", applies.get(i).getMeeting().getOwner().getHeight());
+        myApplies.put("college", applies.get(i).getMeeting().getOwner().getCollege());
+        myApplies.put("major", applies.get(i).getMeeting().getOwner().getMajor());
+        myApplies.put("sex", applies.get(i).getMeeting().getOwner().getSex());
         jArray2.add(myApplies);
       }
       retObject.put("myApplies", jArray2);
