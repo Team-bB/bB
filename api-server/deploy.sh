@@ -42,4 +42,8 @@ JAR_NAME=$(ls -tr $REPOSITORY/ | grep *.jar | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 
+echo "> nohup 삭제"
+
+rm -rf nohup.out
+
 nohup java -jar $REPOSITORY/$JAR_NAME 2>&1 &E
