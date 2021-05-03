@@ -32,11 +32,11 @@ public class ApplyController {
     Member member = memberService.findOneByAccountId(accountId);
     Meeting myMeeting = member.getMyMeeting();
 
-
     if (myMeeting != null) {
         JSONObject myMeetingInfo = new JSONObject();
-
         JSONObject ownerInfo = new JSONObject();
+        JSONObject myCreation = new JSONObject();
+
         ownerInfo.put("college", member.getCollege());
         ownerInfo.put("major", member.getMajor());
         ownerInfo.put("sex", member.getSex());
@@ -44,10 +44,13 @@ public class ApplyController {
         ownerInfo.put("animal_idx", member.getAnimalIdx());
         ownerInfo.put("age", member.getAge());
         ownerInfo.put("height", member.getHeight());
+
         myMeetingInfo.put("owner", ownerInfo);
         myMeetingInfo.put("meeting_id", member.getMyMeeting().getId());
         myMeetingInfo.put("link", member.getMyMeeting().getLink());
         myMeetingInfo.put("player", member.getMyMeeting().getPlayer());
+
+        myCreation.put("myMeeting", myMeetingInfo);
 
         List<Apply> participants = myMeeting.getParticipants();
         JSONArray jArray = new JSONArray();
@@ -62,9 +65,11 @@ public class ApplyController {
           myInfo.put("mbti", participants.get(i).getMember().getMbti());
           jArray.add(myInfo);
         }
-        myMeetingInfo.put("participant", jArray);
 
-        retObject.put("myMeeting", myMeetingInfo);
+        myCreation.put("participant", jArray);
+
+        retObject.put("myCreation", myCreation);
+
     }
 
     JSONArray jArray2 = new JSONArray();
