@@ -43,8 +43,9 @@ class MyMeetingViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let finalResult):
-                strongSelf.myMeeting = finalResult.myMeeting
-                strongSelf.applyList = finalResult.applyList
+                strongSelf.myMeeting = finalResult.myCreatetion
+                strongSelf.applyList = finalResult.myApplies
+                
                 
                 DispatchQueue.main.async {
                     strongSelf.tableView.refreshControl?.endRefreshing()
@@ -72,7 +73,7 @@ extension MyMeetingViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return myMeeting?.who.count ?? 0
+            return myMeeting?.participant.count ?? 0
         }else if section == 1{
             return applyList.count
         }else {
@@ -88,9 +89,9 @@ extension MyMeetingViewController: UITableViewDataSource, UITableViewDelegate {
             cell.stackViewCellLayer.layer.borderWidth = 2
             cell.stackViewCellLayer.layer.masksToBounds = true
             
-            cell.collegeName.text = myMeeting?.who[indexPath.row].college
-            cell.numberOfParticipants.text = myMeeting?.meeting.player
-            cell.animalShapeImage.image = UIImage(named: transImage(index: myMeeting?.meeting.owner?.animal_idx ?? 0))
+            cell.collegeName.text = myMeeting?.myMeeting.owner?.college
+            cell.numberOfParticipants.text = myMeeting?.myMeeting.player
+            cell.animalShapeImage.image = UIImage(named: transImage(index: myMeeting?.myMeeting.owner?.animal_idx ?? 0))
             cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0

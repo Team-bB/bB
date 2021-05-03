@@ -26,6 +26,7 @@ class CreateMeetingRoomAPI {
               let link = paramArray[1].text else { return }
         
         //POST로 보낼 정보
+        print(token)
         let params = ["account_id" : token,
                       "players" : participants,
                       "link" : link] as Dictionary
