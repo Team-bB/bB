@@ -9,7 +9,7 @@ import UIKit
 
 class MyMeetingTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var stackViewCellLayer: UIStackView!
+    @IBOutlet weak var tableViewCellLayer: UIView!
     @IBOutlet weak var collegeName: UILabel!
     @IBOutlet weak var numberOfParticipants: UILabel!
     @IBOutlet weak var animalShapeImage: UIImageView!

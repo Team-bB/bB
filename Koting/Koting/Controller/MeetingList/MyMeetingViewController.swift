@@ -73,7 +73,7 @@ extension MyMeetingViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return myMeeting?.participant.count ?? 0
+            return 1
         }else if section == 1{
             return applyList.count
         }else {
@@ -84,10 +84,10 @@ extension MyMeetingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingCell", for: indexPath) as! MyMeetingTableViewCell
-            cell.stackViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-            cell.stackViewCellLayer.layer.cornerRadius = 20
-            cell.stackViewCellLayer.layer.borderWidth = 2
-            cell.stackViewCellLayer.layer.masksToBounds = true
+            cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            cell.tableViewCellLayer.layer.cornerRadius = 20
+            cell.tableViewCellLayer.layer.borderWidth = 2
+            cell.tableViewCellLayer.layer.masksToBounds = true
             
             cell.collegeName.text = myMeeting?.myMeeting.owner?.college
             cell.numberOfParticipants.text = myMeeting?.myMeeting.player
@@ -99,10 +99,10 @@ extension MyMeetingViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ApplyListCell", for: indexPath) as! ApplyListTableViewCell
-            cell.stackViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-            cell.stackViewCellLayer.layer.cornerRadius = 20
-            cell.stackViewCellLayer.layer.borderWidth = 2
-            cell.stackViewCellLayer.layer.masksToBounds = true
+            cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            cell.tableViewCellLayer.layer.cornerRadius = 20
+            cell.tableViewCellLayer.layer.borderWidth = 2
+            cell.tableViewCellLayer.layer.masksToBounds = true
             
             cell.collegeName.text = applyList[indexPath.row].owner?.college
             cell.numberOfParticipants.text = applyList[indexPath.row].player
