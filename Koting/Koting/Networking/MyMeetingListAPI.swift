@@ -14,7 +14,8 @@ class MyMeetingListAPI {
     private init() {}
     
     func get(completion: @escaping (Result<MyMeetingListAPIResponse, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/applies?account_id="
+        guard let token = UserDefaults.standard.string(forKey: "accountId") else { return }
+        let url = API.shared.BASE_URL + "/applies?account_id=" + token
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

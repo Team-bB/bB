@@ -43,7 +43,7 @@ class MyMeetingViewController: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let finalResult):
-                strongSelf.myMeeting = finalResult.myCreatetion
+                strongSelf.myMeeting = finalResult.myCreation
                 strongSelf.applyList = finalResult.myApplies
                 
                 

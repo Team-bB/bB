@@ -53,7 +53,7 @@ struct ApplyMeetingAPIResponse: Codable {
 }
 
 struct MyMeetingListAPIResponse: Codable {
-    let myCreatetion: MyMeeting
+    let myCreation: MyMeeting
     let myApplies: [Meeting]
     
 }
