@@ -37,8 +37,8 @@ struct Meeting: Codable {
 }
 
 struct MyMeeting: Codable {
-    let meeting: Meeting
-    let who: [Owner]
+    let myMeeting: Meeting
+    let participant: [Owner]
 }
 struct CreateMeetingRoomAPIResponse: Codable {
     let result: String
@@ -53,7 +53,7 @@ struct ApplyMeetingAPIResponse: Codable {
 }
 
 struct MyMeetingListAPIResponse: Codable {
-    let myMeeting: MyMeeting
-    let applyList: [Meeting]
+    let myCreatetion: MyMeeting
+    let myApplies: [Meeting]
     
 }
