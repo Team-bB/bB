@@ -49,13 +49,13 @@ class MeetingDetailInfoViewController: UIViewController {
                 if finalResult.result == "applyMeetingSuccess" {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "성공", message: "미팅을 신청했습니다.", text: "확인") { (action) in
-                            strongSelf.dismiss(animated: true, completion: nil)
+                            strongSelf.navigationController?.popViewController(animated: true)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "실패", message: "신청이 마감되었습니다.", text: "확인") { (action) in
-                            strongSelf.dismiss(animated: true, completion: nil)
+                            strongSelf.navigationController?.popViewController(animated: true)
                         }
                     }
                 }
