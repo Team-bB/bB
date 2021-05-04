@@ -27,7 +27,7 @@ class MyMeetingViewController: UIViewController {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none //테이블 뷰 셀 줄 없애기
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        
+        FetchMeetings()
     }
  
     @objc private func didPullToRefresh() {
@@ -75,10 +75,10 @@ extension MyMeetingViewController: ExpyTableViewDataSource, ExpyTableViewDelegat
     func tableView(_ tableView: ExpyTableView, expandableCellForSection section: Int) -> UITableViewCell {
         if section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingCell") as! MyMeetingTableViewCell
-            cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+//            cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
             cell.tableViewCellLayer.layer.cornerRadius = 20
-            cell.tableViewCellLayer.layer.borderWidth = 2
-            cell.tableViewCellLayer.layer.masksToBounds = true
+//            cell.tableViewCellLayer.layer.borderWidth = 2
+//            cell.tableViewCellLayer.layer.masksToBounds = true
             
             cell.collegeName.text = myMeeting?.myMeeting.owner?.college
             cell.numberOfParticipants.text = myMeeting?.myMeeting.player
@@ -86,6 +86,15 @@ extension MyMeetingViewController: ExpyTableViewDataSource, ExpyTableViewDelegat
             cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
+            
+            cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor
+            cell.tableViewCellLayer.layer.shadowOpacity = 1.0
+            cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
+            cell.tableViewCellLayer.layer.shadowRadius = 6
+            
+            let bgView = UIView()
+            bgView.backgroundColor = .white
+            cell.selectedBackgroundView = bgView
             
             return cell
         } else { return UITableViewCell() }
@@ -137,7 +146,11 @@ extension MyMeetingViewController: ExpyTableViewDataSource, ExpyTableViewDelegat
             cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
-
+            
+            let bgView = UIView()
+            bgView.backgroundColor = .white
+            cell.selectedBackgroundView = bgView
+           
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ApplyListCell", for: indexPath) as! ApplyListTableViewCell
@@ -153,10 +166,15 @@ extension MyMeetingViewController: ExpyTableViewDataSource, ExpyTableViewDelegat
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
             
+            let bgView = UIView()
+            bgView.backgroundColor = .white
+            cell.selectedBackgroundView = bgView
+            
             return cell
         }else {
             return UITableViewCell()
         }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
