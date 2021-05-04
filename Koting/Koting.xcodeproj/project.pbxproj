@@ -46,6 +46,7 @@
 		D3BC8D31260CB73E000625DF /* CreateMeetingRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */; };
 		D3C6C3E6263ECFE90019712E /* MyMeetingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6C3E5263ECFE90019712E /* MyMeetingTableViewCell.swift */; };
 		D3C6C3E9263ED0BC0019712E /* ApplyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6C3E8263ED0BC0019712E /* ApplyListTableViewCell.swift */; };
+		D3C6C4292641820C0019712E /* MeetingParticipantsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C6C4282641820C0019712E /* MeetingParticipantsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMeetingRoomAPI.swift; sourceTree = "<group>"; };
 		D3C6C3E5263ECFE90019712E /* MyMeetingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingTableViewCell.swift; sourceTree = "<group>"; };
 		D3C6C3E8263ED0BC0019712E /* ApplyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyListTableViewCell.swift; sourceTree = "<group>"; };
+		D3C6C4282641820C0019712E /* MeetingParticipantsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingParticipantsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */,
 				D3C6C3E5263ECFE90019712E /* MyMeetingTableViewCell.swift */,
 				D3C6C3E8263ED0BC0019712E /* ApplyListTableViewCell.swift */,
+				D3C6C4282641820C0019712E /* MeetingParticipantsCell.swift */,
 			);
 			path = MeetingList;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
 				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
+				D3C6C4292641820C0019712E /* MeetingParticipantsCell.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,

@@ -7,15 +7,17 @@
 
 import UIKit
 import Alamofire
+import ExpyTableView
 
 class MyMeetingViewController: UIViewController {
     
     private var myMeeting: MyMeeting?
     private var applyList = [Meeting]()
     
-    private let sections: [String] = ["MyMeeting","Applies"]
+    //private let sections: [String] = ["MyMeeting","Applies"]
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: ExpyTableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,28 +64,17 @@ class MyMeetingViewController: UIViewController {
     }
 }
 
-extension MyMeetingViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MyMeetingViewController: ExpyTableViewDataSource, ExpyTableViewDelegate {
+    //MARK: - ExpyTableView
+    func tableView(_ tableView: ExpyTableView, canExpandSection section: Int) -> Bool {
         if section == 0 {
-            return 1
-        }else if section == 1{
-            return applyList.count
-        }else {
-            return 0
-        }
+            return true
+        } else { return false } // 내 미팅 지원자 목록(section 0)만 expandable하게 만듬.
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingCell", for: indexPath) as! MyMeetingTableViewCell
+    func tableView(_ tableView: ExpyTableView, expandableCellForSection section: Int) -> UITableViewCell {
+        if section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingCell") as! MyMeetingTableViewCell
             cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
             cell.tableViewCellLayer.layer.cornerRadius = 20
             cell.tableViewCellLayer.layer.borderWidth = 2
@@ -96,6 +87,57 @@ extension MyMeetingViewController: UITableViewDataSource, UITableViewDelegate {
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
             
+            return cell
+        } else { return UITableViewCell() }
+    }
+    
+    func tableView(_ tableView: ExpyTableView, expyState state: ExpyState, changeForSection section: Int) {
+        switch state {
+        case .willExpand:
+            print("펼쳐질 꺼다/ .willExpand")
+        case .willCollapse:
+            print("닫힐 꺼다/ .willCollapse")
+        case .didExpand:
+            print("펼쳐짐/ .didExpand")
+        case .didCollapse:
+            print("닫힘/ .didCollapse")
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 { return "내 여친 후보들!"}
+        else { return "내가 지원한 미팅"}
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return myMeeting?.participant.count ?? 0 + 1
+        }else if section == 1{
+            return applyList.count
+        }else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingParticipantsCell", for: indexPath) as! MeetingParticipantsCell
+            cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            cell.tableViewCellLayer.layer.cornerRadius = 20
+            cell.tableViewCellLayer.layer.borderWidth = 2
+            cell.tableViewCellLayer.layer.masksToBounds = true
+
+            cell.collegeName.text = myMeeting?.participant[indexPath.row].college
+            cell.mbtiText.text = myMeeting?.participant[indexPath.row].mbti
+            cell.animalShapeImage.image = UIImage(named: transImage(index: myMeeting?.participant[indexPath.row].animal_idx ?? 0))
+            cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2
+            cell.animalShapeImage.layer.masksToBounds = true
+            cell.animalShapeImage.layer.borderWidth = 0
+
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ApplyListCell", for: indexPath) as! ApplyListTableViewCell
