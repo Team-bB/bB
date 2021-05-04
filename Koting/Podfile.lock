@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.3)
+  - ExpyTableView (1.2.1)
   - MaterialComponents/AnimationTiming (124.2.0)
   - MaterialComponents/Availability (124.2.0)
   - MaterialComponents/BottomAppBar (124.2.0):
@@ -74,6 +75,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - ExpyTableView
   - MaterialComponents/BottomAppBar
   - MaterialComponents/Buttons
   - NVActivityIndicatorView
@@ -83,6 +85,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - ExpyTableView
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
@@ -92,6 +95,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  ExpyTableView: 19cf224c2ff04b1ec215ec52bc4ba6f81fa809ed
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
@@ -99,6 +103,6 @@ SPEC CHECKSUMS:
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: b18520326fae3c90211efd58a9d0887190834382
+PODFILE CHECKSUM: 528be6e34045a584f320f8b4a53b01f2504b24b1
 
 COCOAPODS: 1.10.1

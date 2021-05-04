@@ -12,4 +12,5 @@ pod 'MaterialComponents/Buttons'
 pod 'PanModal'
 pod 'NVActivityIndicatorView'
 pod 'MaterialComponents/BottomAppBar'
+pod 'ExpyTableView'
 end
