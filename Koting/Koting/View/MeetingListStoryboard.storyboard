@@ -346,11 +346,11 @@
         <scene sceneID="Crq-gh-ayu">
             <objects>
                 <viewController id="KP4-dU-TG8" customClass="MeetingDetailInfoViewController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="bLL-zb-XDf">
+                    <view key="view" contentMode="scaleToFill" id="bLL-zb-XDf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NW-UG-3rt" customClass="CustomButton" customModule="Koting" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NW-UG-3rt" customClass="CustomButton" customModule="Koting" customModuleProvider="target">
                                 <rect key="frame" x="70" y="552" width="180" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ZhE-vc-MtX"/>
@@ -385,7 +385,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vxF-n5-DDY">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxF-n5-DDY">
                                 <rect key="frame" x="5" y="202" width="310" height="310"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VL8-g7-wP0">
@@ -606,7 +606,6 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZE-Nr-cfm" customClass="CustomButton" customModule="Koting" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="197" width="248" height="41"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="개설하기">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

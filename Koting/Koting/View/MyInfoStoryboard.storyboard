@@ -8,27 +8,53 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Info-->
+        <!--My Page-->
         <scene sceneID="iSq-sa-X0y">
             <objects>
-                <viewController storyboardIdentifier="MyInfo" id="abU-Th-2Wl" customClass="MyInfoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="abU-Th-2Wl" customClass="MyInfoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ikd-ZY-iHV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="yFa-sp-QRR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info" image="person" catalog="system" selectedImage="person.fill" id="zkZ-j2-K9d"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="person.crop.circle" catalog="system" selectedImage="person.crop.circle" id="zkZ-j2-K9d"/>
+                    <navigationItem key="navigationItem" title="My Page" id="fZJ-oE-Yv8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1p-yG-fmW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="-1670"/>
+            <point key="canvasLocation" x="2788" y="-1670.0149925037483"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="feb-Mv-P7A">
+            <objects>
+                <navigationController storyboardIdentifier="MyInfo" automaticallyAdjustsScrollViewInsets="NO" id="acQ-EH-Cud" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Info" image="person.crop.circle" catalog="system" selectedImage="person.crop.circle" id="y47-FN-WCP"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="uS4-gx-0iX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="abU-Th-2Wl" kind="relationship" relationship="rootViewController" id="xxf-PG-uQJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oxe-FQ-uwy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1848.8" y="-1670.0149925037483"/>
         </scene>
     </scenes>
     <resources>
-        <image name="person" catalog="system" width="128" height="117"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
