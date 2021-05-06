@@ -18,7 +18,7 @@ class StrechyHeaderController: UICollectionViewController, UICollectionViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+//        collectionView.collectionViewLayout = StrechyHeaderLayout()
         settupCollectionViewLayout()
         setupCollectionView()
     }
@@ -36,10 +36,11 @@ class StrechyHeaderController: UICollectionViewController, UICollectionViewDeleg
     
     fileprivate func settupCollectionViewLayout() {
         //custom layout
+        
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             
             layout.sectionInset = .init(top: padding, left: padding, bottom: padding, right: padding)
-            layout.minimumLineSpacing = 40
+//            layout.minimumLineSpacing = 40
             
         }
     }
@@ -62,7 +63,7 @@ class StrechyHeaderController: UICollectionViewController, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: 200)
+        return .init(width: view.frame.width, height: 250)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

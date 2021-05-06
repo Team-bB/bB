@@ -24,11 +24,11 @@ class HeaderView: UICollectionReusableView {
     func addMyInfoHearder(headerView: UICollectionReusableView) {
         let myInfo = MyInfoHeaderVC(nibName: "MyInfoHeaderVC", bundle: nil)
         myInfo.view.frame = headerView.bounds
-        headerView.addSubview(myInfo
-                                .view)
-        headerView.addSubview(myInfo.view)
         
+        headerView.addSubview(myInfo.view)
+        myInfo.view.fillSuperview()
+//        myInfo.view
 //        myInfo.view.clipsToBounds = true
-        headerView.clipsToBounds = true // 이걸해야 버튼이 눌림..
+//        headerView.clipsToBounds = true // 이걸해야 버튼이 눌림..
     }
 }

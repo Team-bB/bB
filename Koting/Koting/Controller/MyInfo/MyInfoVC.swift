@@ -7,26 +7,77 @@
 
 import UIKit
 
+fileprivate let reuseIdentifier = "cell"
+
 class MyInfoVC: UIViewController {
+    fileprivate let list = MyInfo().list
     
-    @IBOutlet weak var tableView: UITableView!
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
+        return tableView
+    }()
+    
+    private var headerViewHeight = NSLayoutConstraint()
+    private var headerViewBottom = NSLayoutConstraint()
+    private var tableHeaderViewHeight = NSLayoutConstraint()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        setTableView()
         addMyInfoHearder(vc: self)
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
+    fileprivate func setTableView() {
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.frame = view.bounds
+        
+                tableView.contentInsetAdjustmentBehavior = .never
+    }
+    
+   
     func addMyInfoHearder(vc: UIViewController) {
         let myInfoHearder = MyInfoHeaderVC(nibName: "MyInfoHeaderVC", bundle: nil)
-        tableView.tableHeaderView = myInfoHearder.view
-//        myInfoHearder.view.frame = view.bounds
-//        vc.view.addSubview(myInfoHearder.view)
-//        vc.addChild(myInfoHearder)
-//        view.clipsToBounds = true // 이걸해야 버튼이 눌림..
-    }
+        if let header = myInfoHearder.view {
 
+            tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
+            tableView.tableHeaderView = header
+            header.fillSuperview()
+//            tableView.clipsToBounds = true
+            tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 200)
+
+
+        }
+       
+    }
+    
+//    func setViewConstraints() {
+//        NSLayoutConstraint.activate([view.width])
+//    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        )
+//    }
+
+}
+
+extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        
+        cell.textLabel?.text = list[indexPath.row]
+        return cell
+    }
 }

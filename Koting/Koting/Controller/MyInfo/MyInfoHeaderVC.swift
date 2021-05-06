@@ -11,9 +11,9 @@ class MyInfoHeaderVC: UIViewController {
 
     @IBOutlet weak var matchPercentLabel: UILabel!
     @IBOutlet weak var myAnimalFaceLabel: UILabel!
-    @IBOutlet weak var measureButton: UIButton!
     @IBOutlet weak var myAnimalFaceImage: UIImageView!
     @IBOutlet weak var subHeader: UIView!
+    @IBOutlet weak var nickName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +21,7 @@ class MyInfoHeaderVC: UIViewController {
         setUI()
     }
 
-    @IBAction func measureButtonTapped(_ sender: Any) {
-        print("🟨 MeasureButtonTapped 🟨")
-    }
+    
     
     fileprivate func setUI() {
         
@@ -42,11 +40,8 @@ class MyInfoHeaderVC: UIViewController {
 
         
         myAnimalFaceImage.image = UIImage(named: "dino")
-        
-        measureButton.layer.cornerRadius = 5
-        measureButton.setEnable(enable: true, backgroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
-        measureButton.setTitleColor(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1), for: .normal)
-        
+        nickName.text = "닉네임 들어감"
+        nickName.textColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         myAnimalFaceLabel.textColor = .gray
 
     }
