@@ -10,25 +10,38 @@ import UIKit
 class HeaderView: UICollectionReusableView {
     
     @IBOutlet weak var header: UIView!
+    var animator: UIViewPropertyAnimator!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
+        
+        backgroundColor = .white
         addMyInfoHearder(headerView: self)
+//        setupVisualEffectBlur()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addMyInfoHearder(headerView: UICollectionReusableView) {
+    fileprivate func addMyInfoHearder(headerView: UICollectionReusableView) {
         let myInfo = MyInfoHeaderVC(nibName: "MyInfoHeaderVC", bundle: nil)
         myInfo.view.frame = headerView.bounds
         
         headerView.addSubview(myInfo.view)
         myInfo.view.fillSuperview()
-//        myInfo.view
-//        myInfo.view.clipsToBounds = true
-//        headerView.clipsToBounds = true // 이걸해야 버튼이 눌림..
+        
+    }
+    
+    fileprivate func setupVisualEffectBlur() {
+        animator = UIViewPropertyAnimator(duration: 3.0, curve: .easeInOut, animations: {
+            [weak self] in
+            
+            let blurEffect = UIBlurEffect(style: .regular)
+            let visualEffectView = UIVisualEffectView(effect: blurEffect)
+            
+            self?.addSubview(visualEffectView)
+            visualEffectView.fillSuperview()
+        })
     }
 }

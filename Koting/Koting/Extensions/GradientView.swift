@@ -16,7 +16,7 @@ class GradientView: UIView {
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
         let gradient = CAGradientLayer()
-        gradient.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
+        gradient.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 150)
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1)
         gradient.colors = [topColor, bottomColor]
