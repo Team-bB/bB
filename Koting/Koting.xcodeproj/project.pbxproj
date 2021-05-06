@@ -26,6 +26,15 @@
 		887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C403226089ABA00A641DA /* GettingStartedVC.swift */; };
 		887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */; };
 		887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */; };
+		88849D502642BDB500E2B1AF /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88849D4F2642BDB500E2B1AF /* GradientView.swift */; };
+		88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88849D5426440EE500E2B1AF /* StrechyHeaderController.swift */; };
+		88849D5C2644116600E2B1AF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88849D5B2644116600E2B1AF /* HeaderView.swift */; };
+		88849D612644367000E2B1AF /* StrechyHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88849D602644367000E2B1AF /* StrechyHeaderLayout.swift */; };
+		88869F1926429C0C0078A74F /* MyInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */; };
+		88869F1A26429C0C0078A74F /* MyInfoHeaderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */; };
+		88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88984E56264444B200997ED2 /* MyInfoModel.swift */; };
+		88984E5A26444C9B00997ED2 /* StrechyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88984E5926444C9B00997ED2 /* StrechyHeader.swift */; };
+		88984E5D2644614400997ED2 /* UIView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88984E5C2644614400997ED2 /* UIView++.swift */; };
 		889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ACAEB26372B95006DCF93 /* LoadingHUD.swift */; };
 		889DB25B263D520300E8B1BE /* ApplyMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */; };
 		889DB262263D824400E8B1BE /* MyMeetingListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889DB261263D824400E8B1BE /* MyMeetingListAPI.swift */; };
@@ -70,6 +79,15 @@
 		887C403226089ABA00A641DA /* GettingStartedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedVC.swift; sourceTree = "<group>"; };
 		887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberVC.swift; sourceTree = "<group>"; };
 		887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNumberCheckVC.swift; sourceTree = "<group>"; };
+		88849D4F2642BDB500E2B1AF /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		88849D5426440EE500E2B1AF /* StrechyHeaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrechyHeaderController.swift; sourceTree = "<group>"; };
+		88849D5B2644116600E2B1AF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		88849D602644367000E2B1AF /* StrechyHeaderLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrechyHeaderLayout.swift; sourceTree = "<group>"; };
+		88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoHeaderVC.swift; sourceTree = "<group>"; };
+		88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoHeaderVC.xib; sourceTree = "<group>"; };
+		88984E56264444B200997ED2 /* MyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
+		88984E5926444C9B00997ED2 /* StrechyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrechyHeader.swift; sourceTree = "<group>"; };
+		88984E5C2644614400997ED2 /* UIView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++.swift"; sourceTree = "<group>"; };
 		889ACAEB26372B95006DCF93 /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
 		889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyMeetingAPI.swift; sourceTree = "<group>"; };
 		889DB261263D824400E8B1BE /* MyMeetingListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingListAPI.swift; sourceTree = "<group>"; };
@@ -129,6 +147,8 @@
 			children = (
 				88556CA22609D8B500CF7CAC /* UIButton++.swift */,
 				88556CA12609D8B500CF7CAC /* UIViewController++.swift */,
+				88849D4F2642BDB500E2B1AF /* GradientView.swift */,
+				88984E5C2644614400997ED2 /* UIView++.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -139,6 +159,16 @@
 				88556CB82609D96A00CF7CAC /* API.swift */,
 			);
 			path = APIs;
+			sourceTree = "<group>";
+		};
+		88849D5F2644364600E2B1AF /* ColletionView */ = {
+			isa = PBXGroup;
+			children = (
+				88849D602644367000E2B1AF /* StrechyHeaderLayout.swift */,
+				88849D5426440EE500E2B1AF /* StrechyHeaderController.swift */,
+				88849D5B2644116600E2B1AF /* HeaderView.swift */,
+			);
+			path = ColletionView;
 			sourceTree = "<group>";
 		};
 		889F7F4126088F6100B3DA62 = {
@@ -221,6 +251,7 @@
 		889F7F7726088FFC00B3DA62 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				88984E56264444B200997ED2 /* MyInfoModel.swift */,
 			);
 			name = MyInfo;
 			sourceTree = "<group>";
@@ -228,7 +259,11 @@
 		889F7F782608900300B3DA62 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				88849D5F2644364600E2B1AF /* ColletionView */,
 				889F7F85260890B200B3DA62 /* MyInfoVC.swift */,
+				88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */,
+				88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */,
+				88984E5926444C9B00997ED2 /* StrechyHeader.swift */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -351,6 +386,7 @@
 				884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */,
 				889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */,
 				889F7F5526088F6200B3DA62 /* Main.storyboard in Resources */,
+				88869F1A26429C0C0078A74F /* MyInfoHeaderVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,32 +444,40 @@
 				889DB262263D824400E8B1BE /* MyMeetingListAPI.swift in Sources */,
 				886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */,
 				88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */,
+				88849D5C2644116600E2B1AF /* HeaderView.swift in Sources */,
 				D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */,
 				881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */,
 				88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */,
 				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
 				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
+				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
+				88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */,
 				D3C6C4292641820C0019712E /* MeetingParticipantsCell.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
+				88869F1926429C0C0078A74F /* MyInfoHeaderVC.swift in Sources */,
 				886D82D1260A514C00EE411C /* SignUpVC.swift in Sources */,
 				889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */,
 				88556CAB2609D8D300CF7CAC /* RequestAuthNumberAPI.swift in Sources */,
 				88556CAA2609D8D300CF7CAC /* AuthNumberCheckAPI.swift in Sources */,
+				88984E5D2644614400997ED2 /* UIView++.swift in Sources */,
 				889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */,
 				D3C6C3E6263ECFE90019712E /* MyMeetingTableViewCell.swift in Sources */,
 				88556CB22609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift in Sources */,
 				88556CA42609D8B500CF7CAC /* UIButton++.swift in Sources */,
+				88849D612644367000E2B1AF /* StrechyHeaderLayout.swift in Sources */,
 				886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
 				88556CB92609D96A00CF7CAC /* API.swift in Sources */,
+				88984E5A26444C9B00997ED2 /* StrechyHeader.swift in Sources */,
 				889DB25B263D520300E8B1BE /* ApplyMeetingAPI.swift in Sources */,
 				D3C6C3E9263ED0BC0019712E /* ApplyListTableViewCell.swift in Sources */,
 				D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */,
+				88849D502642BDB500E2B1AF /* GradientView.swift in Sources */,
 				889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
 			);

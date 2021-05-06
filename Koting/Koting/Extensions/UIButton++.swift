@@ -9,7 +9,7 @@ import UIKit
 
 extension UIButton {
     
-    func setEnable(enable: Bool? = true, backgroundColor: UIColor? = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)) {
+    func setEnable(enable: Bool? = true, backgroundColor: UIColor? = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)) {
         self.isEnabled = enable!
         self.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         self.backgroundColor = backgroundColor
@@ -45,12 +45,11 @@ class CustomButton: UIButton {
         clipsToBounds = true
         layer.masksToBounds = true
         
-        
-        
 //        let gradient = CAGradientLayer()
 //        gradient.frame = bounds
-//        gradient.colors = [#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).cgColor, #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor, ]
+//        gradient.startPoint = CGPoint(x: 0, y: 0)
+//        gradient.endPoint = CGPoint(x: 1, y: 1)
+//        gradient.colors = [#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).cgColor, #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor]
 //        layer.addSublayer(gradient)
-        
     }
 }
