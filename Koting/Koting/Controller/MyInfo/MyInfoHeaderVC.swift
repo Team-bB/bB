@@ -22,6 +22,7 @@ class MyInfoHeaderVC: UIViewController {
     }
 
     @IBAction func measureButtonTapped(_ sender: Any) {
+        print("🟨 MeasureButtonTapped 🟨")
     }
     
     fileprivate func setUI() {
@@ -34,7 +35,7 @@ class MyInfoHeaderVC: UIViewController {
         
         myAnimalFaceImage.layer.cornerRadius = myAnimalFaceImage.frame.size.height / 2
         myAnimalFaceImage.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
-        myAnimalFaceImage.layer.shadowOpacity = 1.0
+        myAnimalFaceImage.layer.shadowOpacity = 0.5
         myAnimalFaceImage.layer.shadowOffset = CGSize.zero
         myAnimalFaceImage.layer.shadowRadius = 4
         

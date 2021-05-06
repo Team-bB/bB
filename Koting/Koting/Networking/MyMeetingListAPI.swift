@@ -27,10 +27,12 @@ class MyMeetingListAPI {
                 let decoder = JSONDecoder()
                 do {
                     let finalResult = try decoder.decode(MyMeetingListAPIResponse.self, from: result)
+                    debugPrint(response)
                     print("✅ MyMeetingListAPIResponse Codable Success ✅")
                     completion(.success(finalResult))
 
                 } catch {
+                    debugPrint(response)
                     print("❗️ MyMeetingListAPI Codable Error ❗️")
                     print(error)
                     completion(.failure(error))

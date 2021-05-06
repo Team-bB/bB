@@ -26,10 +26,12 @@ class FetchMeetingRoomsAPI {
                 let decoder = JSONDecoder()
                 do {
                     let finalResult = try decoder.decode(FetchMeetingRoomsAPIResponse.self, from: result)
+                    debugPrint(response)
                     print("✅ FetchMeetingRoomsAPIResponse Codable Success ✅")
                     completion(.success(finalResult))
 
                 } catch {
+                    debugPrint(response)
                     print("❗️ FetchMeetingRoomsAPIResponse Codable Error")
                     print(error)
                     completion(.failure(error))

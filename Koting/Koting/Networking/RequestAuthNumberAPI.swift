@@ -24,11 +24,12 @@ class RequestAuthNumberAPI {
         AF.request(request).responseString { response in
             switch response.result {
             case .success(let result):
+                debugPrint(response)
                 print("✅ RequestAuthNumberAPI Success ✅")
-                debugPrint(response)    // 디버그 프린트
                 completion(.success(result))
                 
             case .failure(let error):
+                debugPrint(response)
                 print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
                 completion(.failure(error))
             }

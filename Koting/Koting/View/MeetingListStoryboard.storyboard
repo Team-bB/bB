@@ -640,10 +640,10 @@
             </objects>
             <point key="canvasLocation" x="4038" y="373"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab BarVC-->
         <scene sceneID="GaH-Eu-Wvo">
             <objects>
-                <tabBarController storyboardIdentifier="MeetingList" automaticallyAdjustsScrollViewInsets="NO" id="eqk-6C-2Rd" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MeetingList" automaticallyAdjustsScrollViewInsets="NO" id="eqk-6C-2Rd" customClass="TabBarVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9HO-Vp-hlp">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -652,6 +652,7 @@
                         <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBar" destination="9HO-Vp-hlp" id="WVL-S3-qSa"/>
                         <segue destination="hG1-CI-edF" kind="relationship" relationship="viewControllers" id="cwL-6A-w14"/>
                         <segue destination="TIx-4i-B5J" kind="relationship" relationship="viewControllers" id="t1o-2o-As6"/>
                     </connections>

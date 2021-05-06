@@ -27,6 +27,8 @@
 		887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */; };
 		887C40562608CC9800A641DA /* AuthNumberCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */; };
 		88849D502642BDB500E2B1AF /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88849D4F2642BDB500E2B1AF /* GradientView.swift */; };
+		88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88849D5426440EE500E2B1AF /* StrechyHeaderController.swift */; };
+		88849D5C2644116600E2B1AF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88849D5B2644116600E2B1AF /* HeaderView.swift */; };
 		88869F1926429C0C0078A74F /* MyInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */; };
 		88869F1A26429C0C0078A74F /* MyInfoHeaderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */; };
 		889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889ACAEB26372B95006DCF93 /* LoadingHUD.swift */; };
@@ -74,6 +76,8 @@
 		887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberVC.swift; sourceTree = "<group>"; };
 		887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNumberCheckVC.swift; sourceTree = "<group>"; };
 		88849D4F2642BDB500E2B1AF /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		88849D5426440EE500E2B1AF /* StrechyHeaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrechyHeaderController.swift; sourceTree = "<group>"; };
+		88849D5B2644116600E2B1AF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoHeaderVC.swift; sourceTree = "<group>"; };
 		88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoHeaderVC.xib; sourceTree = "<group>"; };
 		889ACAEB26372B95006DCF93 /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				889F7F85260890B200B3DA62 /* MyInfoVC.swift */,
 				88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */,
 				88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */,
+				88849D5426440EE500E2B1AF /* StrechyHeaderController.swift */,
+				88849D5B2644116600E2B1AF /* HeaderView.swift */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -418,12 +424,14 @@
 				889DB262263D824400E8B1BE /* MyMeetingListAPI.swift in Sources */,
 				886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */,
 				88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */,
+				88849D5C2644116600E2B1AF /* HeaderView.swift in Sources */,
 				D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */,
 				881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */,
 				88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */,
 				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
 				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
+				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
 				D3C6C4292641820C0019712E /* MeetingParticipantsCell.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
