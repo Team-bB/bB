@@ -20,6 +20,8 @@
 		88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */; };
 		88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */; };
 		88556CB92609D96A00CF7CAC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CB82609D96A00CF7CAC /* API.swift */; };
+		88610C59264572ED001724CB /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88610C58264572ED001724CB /* InfoCell.swift */; };
+		88610C5C26457306001724CB /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88610C5B26457306001724CB /* ServiceCell.swift */; };
 		886D82D1260A514C00EE411C /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82D0260A514C00EE411C /* SignUpVC.swift */; };
 		886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82D3260A551E00EE411C /* SignUpModel.swift */; };
 		886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82DE260AF5A300EE411C /* SignUpAPI.swift */; };
@@ -73,6 +75,8 @@
 		88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListTableViewCell.swift; sourceTree = "<group>"; };
 		88556CB12609D8FC00CF7CAC /* MyMeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMeetingViewController.swift; sourceTree = "<group>"; };
 		88556CB82609D96A00CF7CAC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		88610C58264572ED001724CB /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		88610C5B26457306001724CB /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		886D82D0260A514C00EE411C /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		886D82D3260A551E00EE411C /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		886D82DE260AF5A300EE411C /* SignUpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 				88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */,
 				88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */,
 				88984E5926444C9B00997ED2 /* StrechyHeader.swift */,
+				88610C58264572ED001724CB /* InfoCell.swift */,
+				88610C5B26457306001724CB /* ServiceCell.swift */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 				881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */,
 				88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */,
 				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
+				88610C5C26457306001724CB /* ServiceCell.swift in Sources */,
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
 				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
 				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
@@ -480,6 +487,7 @@
 				88849D502642BDB500E2B1AF /* GradientView.swift in Sources */,
 				889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
+				88610C59264572ED001724CB /* InfoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

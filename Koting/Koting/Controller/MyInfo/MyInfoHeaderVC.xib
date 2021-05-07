@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXB-dl-3y6">
-                    <rect key="frame" x="16" y="90" width="343" height="130"/>
+                    <rect key="frame" x="16" y="135" width="343" height="130"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Iba-D8-XA1">
                             <rect key="frame" x="243" y="20" width="80" height="80"/>
@@ -84,7 +84,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyInfo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRe-RU-mK1">
-                    <rect key="frame" x="16" y="44" width="343" height="40"/>
+                    <rect key="frame" x="16" y="74" width="343" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Diw-5j-4yH"/>
                     </constraints>
@@ -103,9 +103,9 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CRe-RU-mK1" secondAttribute="trailing" constant="16" id="E68-Tl-4oQ"/>
                 <constraint firstItem="CRe-RU-mK1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JVV-ya-Lp2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aXB-dl-3y6" secondAttribute="trailing" constant="16" id="SHo-vS-wt2"/>
-                <constraint firstItem="CRe-RU-mK1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="VZE-X3-1vz"/>
+                <constraint firstItem="CRe-RU-mK1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="VZE-X3-1vz"/>
                 <constraint firstItem="aXB-dl-3y6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="XdQ-aQ-GfG"/>
-                <constraint firstItem="aXB-dl-3y6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="uw1-Pf-6jq"/>
+                <constraint firstItem="aXB-dl-3y6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="135" id="uw1-Pf-6jq"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="106" y="-329"/>
