@@ -12,7 +12,7 @@
         <!--MyInfo-->
         <scene sceneID="gOQ-bz-jjb">
             <objects>
-                <collectionViewController storyboardIdentifier="MyInfo" id="o6z-sB-RGY" customClass="StrechyHeaderController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="o6z-sB-RGY" customClass="StrechyHeaderController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Lll-Xw-L4r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
         <!--Info-->
         <scene sceneID="DGi-LN-SgD">
             <objects>
-                <viewController id="HMd-6q-fG5" customClass="MyInfoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyInfo" id="HMd-6q-fG5" customClass="MyInfoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f28-OP-LzB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

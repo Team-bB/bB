@@ -9,12 +9,13 @@ import Foundation
 
 struct MyInfo {
     
-    let list: [String] = [
-        "개인정보 수정",
-        "공지사항",
-        "문의하기",
-        "로그아웃",
-        "회원탈퇴"
+    let sections: [String] = [
+        "이용안내",
+        "계정"
     ]
     
+    let list: [Int : [String]] = [
+        0 : ["공지사항", "앱 정보", "문의하기"],
+        1 : ["동물상 재측정", "내 정보 수정", "로그아웃", "회원탈퇴"]
+    ]
 }
