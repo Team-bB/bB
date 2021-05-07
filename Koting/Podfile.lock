@@ -70,6 +70,7 @@ PODS:
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
+  - PagingKit (1.15.0)
   - PanModal (1.2.7)
   - RxSwift (6.1.0)
 
@@ -79,6 +80,7 @@ DEPENDENCIES:
   - MaterialComponents/BottomAppBar
   - MaterialComponents/Buttons
   - NVActivityIndicatorView
+  - PagingKit
   - PanModal
   - RxSwift
 
@@ -90,6 +92,7 @@ SPEC REPOS:
     - MDFInternationalization
     - MDFTextAccessibility
     - NVActivityIndicatorView
+    - PagingKit
     - PanModal
     - RxSwift
 
@@ -100,9 +103,10 @@ SPEC CHECKSUMS:
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  PagingKit: 4bd58b65d71a82ab98486b6927e870c7fbc6c6eb
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: 528be6e34045a584f320f8b4a53b01f2504b24b1
+PODFILE CHECKSUM: 0c06bb22526c3250c6f33d2e7e42e5a2af2816b5
 
 COCOAPODS: 1.10.1

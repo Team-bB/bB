@@ -6,11 +6,10 @@ target 'Koting' do
   use_frameworks!
 
   # Pods for Koting
-pod 'RxSwift'
 pod 'Alamofire'
 pod 'MaterialComponents/Buttons'
 pod 'PanModal'
 pod 'NVActivityIndicatorView'
 pod 'MaterialComponents/BottomAppBar'
-pod 'ExpyTableView'
+pod 'PagingKit'
 end
