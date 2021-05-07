@@ -66,7 +66,7 @@ class StrechyHeaderController: UICollectionViewController, UICollectionViewDeleg
         
         let label = UILabel(frame: CGRect(x: 20, y: 30, width: 100, height: 20))
         cell.addSubview(label)
-        label.text = list[indexPath.row]
+//        label.text = list[indexPath.row]
         
         return cell
     }
