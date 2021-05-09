@@ -21,9 +21,10 @@ public class MemberService {
   }
 
   private void validateMember(Member member) {
-    List<Member> findNumbers = memberRepository.findByNumberList(member.getNumber());
-    if (!findNumbers.isEmpty()) {
-      throw new IllegalStateException("이미 존재하는 회원입니다.");
+    List<Member> findByNumber = memberRepository.findByNumberList(member.getNumber());
+    List<Member> findByEmail = memberRepository.findByEmailList(member.getEmail());
+    if (!findByNumber.isEmpty() || !findByEmail.isEmpty()) {
+        throw new IllegalStateException("이미 존재하는 회원입니다.");
     }
   }
 
