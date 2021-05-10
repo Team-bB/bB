@@ -77,6 +77,7 @@ class GetUserPhotoVC: UIViewController {
         }
     }
     
+   
     func openLibrary() {
         self.requestPHPhotoLibraryAuthorization {
             DispatchQueue.main.async {
@@ -99,28 +100,72 @@ class GetUserPhotoVC: UIViewController {
         
         present(alert, animated: true, completion: nil)
         self.present(self.picker, animated: true, completion: nil)
+        count+=1
+        
     }
     
     // MARK: -Connect ML
-    @IBOutlet weak var label : UILabel!
+    @IBOutlet weak var predictLabel : UILabel!
+    @IBOutlet weak var recheckButton: UIButton!
+    
+    var count = 0
+    
+    @IBAction func tappedRecheck(_ sender: Any) {
+        if count > 0 {
+            let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            let library = UIAlertAction(title: "다시 측정할 사진 가져오기", style: .default) { action in
+                self.openLibrary()
+            }
+            
+            alert.addAction(library)
+            alert.addAction(cancel)
+            
+            present(alert, animated: true, completion: nil)
+            self.present(self.picker, animated: true, completion: nil)
+        }
+        else{
+            print("error")
+        }
+        
+    }
     
     func predict(image: CIImage){
         guard let model = try? VNCoreMLModel(for: ML_draft(configuration: MLModelConfiguration.init()).model) else {
-            fatalError("can't load model for CoreML")
+            fatalError("load error")
             
         }
         let request = VNCoreMLRequest (model: model) { (req, error) in
             guard let results = req.results as? [VNClassificationObservation] else{
-                fatalError ("model fail to go ahead")
-                
+                fatalError ("ML fail")
             }
-            print ("predict result: ")
+            print ("예상결과: ")
             print (results)
             if let firstResult = results.first{
                 self.navigationItem.title = firstResult.identifier
                 print(firstResult)
-            
+                self.predictLabel.text = "\(round((firstResult.confidence)*1000)/10) %의 확률로 \(firstResult.identifier)상 이신거같아요"
+                
+                switch firstResult.identifier {
+                case "dog":
+                    self.imageView.image = #imageLiteral(resourceName: "dog")
+                case "cat":
+                    self.imageView.image = #imageLiteral(resourceName: "cat")
+                case "dino":
+                    self.imageView.image = #imageLiteral(resourceName: "dino")
+                case "rabbit":
+                    self.imageView.image = #imageLiteral(resourceName: "rabbit")
+                case "fox":
+                    self.imageView.image = #imageLiteral(resourceName: "fox")
+                case "bear":
+                    self.imageView.image = #imageLiteral(resourceName: "bear")
+                default:
+                    print("error")
+                }
+                
             }
+            
+            
         }
         let handler = VNImageRequestHandler(ciImage: image)
            
@@ -138,11 +183,9 @@ extension GetUserPhotoVC: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let originalImage: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
                 guard let ciimage = CIImage(image: originalImage) else{
-                    fatalError("can't cover image which picked to CIImage")
+                    fatalError("CIImage error")
         }
-            
         predict(image:ciimage)
-        imageView.image = originalImage
         }
         dismiss(animated: true, completion: nil)
     }
