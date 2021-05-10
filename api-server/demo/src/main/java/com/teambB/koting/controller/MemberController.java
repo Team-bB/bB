@@ -83,6 +83,17 @@ public class MemberController {
       List<Member> member = memberService.findOneByNumber(phoneNumber);
       if (!member.isEmpty()) { // 가입되어 있으면
         retObject.put("result", member.get(0).getAccount_id());
+
+        JSONObject ownerInfo = new JSONObject();
+        ownerInfo.put("college", member.get(0).getCollege());
+        ownerInfo.put("major", member.get(0).getMajor());
+        ownerInfo.put("sex", member.get(0).getSex());
+        ownerInfo.put("mbti", member.get(0).getMbti());
+        ownerInfo.put("animal_idx", member.get(0).getAnimalIdx());
+        ownerInfo.put("age", member.get(0).getAge());
+        ownerInfo.put("height", member.get(0).getHeight());
+
+        retObject.put("myInfo", ownerInfo);
       }
       else { // 가입되어 있지 않으면
         // 로그인페이지로 이동

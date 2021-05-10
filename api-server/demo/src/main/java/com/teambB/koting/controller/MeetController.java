@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -22,12 +23,12 @@ public class MeetController {
   @Autowired private final MeetingService meetingService;
 
   @GetMapping("/meetings")
-  public JSONObject getMeetingList() {
+  public JSONObject getMeetingList(@RequestParam("account_id") String account_id) {
     List<Meeting> meetingList = meetingService.findAll();
     JSONObject retObject = new JSONObject();
-
     JSONArray jArray = new JSONArray();
 
+//    for (Meeting meeting : meetingList)
     for (int i = 0; i < meetingList.size(); i++)
     {
       JSONObject sObject = new JSONObject();
@@ -46,6 +47,26 @@ public class MeetController {
       jArray.add(sObject);
     }
     retObject.put("meeting", jArray);//배열을 넣음
+
+    JSONObject myInfo = new JSONObject();
+
+    Member myMember = memberService.findOneByAccountId(account_id);
+    JSONObject owner = new JSONObject();
+    owner.put("age", myMember.getAge());
+    owner.put("animal_idx", myMember.getAnimalIdx());
+    owner.put("college", myMember.getCollege());
+    owner.put("height", myMember.getHeight());
+    owner.put("major", myMember.getMajor());
+    owner.put("sex", myMember.getSex());
+    owner.put("mbti", myMember.getMbti());
+
+    Meeting myMeeting = myMember.getMyMeeting();
+
+    myInfo.put("owner", owner);
+    myInfo.put("player", myMeeting.getPlayer());
+    myInfo.put("link", myMeeting.getLink());
+
+    retObject.put("myMeeting", myInfo);
 
     return retObject;
   }
