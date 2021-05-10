@@ -12,22 +12,12 @@ class SignUpVC: UIViewController {
     
     let form: SignUpForm = SignUpForm()
     
-    var indicator: NVActivityIndicatorView!
+    let indicator = CustomIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.indicator = NVActivityIndicatorView(
-                    frame: CGRect(
-                        origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
-                        size: CGSize(width: 100, height: 100)
-                    ),
-                    type: .circleStrokeSpin,
-                    color: UIColor.gray,
-                    padding: 0
-                )
-        self.view.addSubview(self.indicator)
-                
+
         signUpButton.setDefault()
         signUpButton.setDisable()
         
@@ -108,7 +98,7 @@ class SignUpVC: UIViewController {
         guard  let email = mail.text else { return }
         
         if (isValidEmail(email + form.mailDomain)) {
-            self.indicator.startAnimating()
+            indicator.startAnimating(superView: view)
             
             SignUpAPI.shared.post(paramArray: infoArray) { result in
                 switch result {

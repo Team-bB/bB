@@ -10,22 +10,12 @@ import NVActivityIndicatorView
 
 class GettingStartedVC: UIViewController {
     
-    var indicator: NVActivityIndicatorView!
+    let indicator = CustomIndicator()
     
     // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.indicator = NVActivityIndicatorView(
-                    frame: CGRect(
-                        origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
-                        size: CGSize(width: 100, height: 100)
-                    ),
-                    type: .circleStrokeSpin,
-                    color: UIColor.gray,
-                    padding: 0
-                )
-        self.view.addSubview(self.indicator)
-        
+
     }
 
     // MARK:- @IBAction func
@@ -37,7 +27,8 @@ class GettingStartedVC: UIViewController {
             self.asyncPresentView(identifier: "PhoneAuth")
             
         } else {
-            self.indicator.startAnimating()
+            
+            indicator.startAnimating(superView: view)
             MailAuthCheckAPI.shared.post() { [weak self] result in
                 
                 guard let strongSelf = self else { return }

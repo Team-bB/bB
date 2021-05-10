@@ -25,11 +25,14 @@ struct MyInfoPreview: PreviewProvider {
 }
 
 import UIKit
+import MessageUI
+import NVActivityIndicatorView
 
 fileprivate let reuseIdentifier = "cell"
 
-class MyInfoVC: UIViewController {
+class MyInfoVC: UIViewController, UINavigationControllerDelegate {
     fileprivate let infoList = MyInfo()
+    let indicator = CustomIndicator()
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -57,6 +60,7 @@ class MyInfoVC: UIViewController {
             print(infoData.major!)
         }
         
+//        indicator.startAnimating(superView: view)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -123,7 +127,6 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
 //                let height = attributes.frame.height - contentOffsectY
         // For Header
         tableView.frame = CGRect(x: 0, y: contentOffsectY, width: width, height: tableView.frame.height)
-        print(tableView.contentOffset.y)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -137,8 +140,10 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         case "공지사항":
             break
         case "앱 정보":
+            indicator.stopAnimating()
             break
         case "문의하기":
+            showMessageView(email: "imjeongwoo@kakao.com", subject: "[Koting] 문의사항", body: "Content")
             break
         case "동물상 재측정":
             break
@@ -167,4 +172,74 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
     
         print(" ✅ LogOut Success ✅")
     }
+    
+    func transImage(index: Int) -> String {
+        switch index {
+        case 1: return "dog"
+        case 2: return "cat"
+        case 3: return "rabbit"
+        case 4: return "fox"
+        case 5: return "bear"
+        case 6: return "dino"
+        default: return "nil"
+        }
+    }
+
+}
+
+extension MyInfoVC: MFMailComposeViewControllerDelegate {
+    
+    fileprivate func presentMailErrorAlert(email: String, subject: String, bodyText: String) {
+        self.makeAlertBox(title: "실패", message: "이메일 설정을 확인후 시도해주세요.", text: "확인") { action in
+            print("🔔 Ok button Tapped 🔔")
+            self.dismiss(animated: true) {
+                let coded = "mailto:\(email)?subject=\(subject)&body=\(bodyText)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                if let url = URL(string: coded!) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .sent:
+            print("🔔 메일을 보냈습니다.🔔")
+            self.makeAlertBox(title: "전송실패", message: "메일 전송을 실패했습니다.", text: "확인", handler: nil)
+            
+        case .failed:
+            print("🔔 메일 전송실패 🔔")
+            self.makeAlertBox(title: "전송실패", message: "메일 전송을 실패했습니다.", text: "확인", handler: nil)
+            
+        case .cancelled:
+            print("🔔 닫기 🔔")
+                
+        case .saved:
+            break
+            
+        @unknown default:
+            fatalError()
+            
+        }
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func showMessageView(email: String, subject: String, body: String) {
+        
+        if MFMailComposeViewController.canSendMail() {
+            
+            let mailComposeVC = MFMailComposeViewController()
+            mailComposeVC.mailComposeDelegate = self
+            
+            mailComposeVC.setToRecipients([email])
+            mailComposeVC.setSubject(subject)
+            mailComposeVC.setMessageBody(body, isHTML: false)
+            
+            self.present(mailComposeVC, animated: true, completion: nil)
+            
+        } else {
+            presentMailErrorAlert(email: email, subject: subject, bodyText: body)
+        }
+    }
+    
 }

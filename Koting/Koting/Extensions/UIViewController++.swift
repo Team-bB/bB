@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 extension UIViewController {
     
@@ -31,8 +32,8 @@ extension UIViewController {
     }
     
     func makeAlertBox(title: String, message: String, text: String, handler: ((UIAlertAction) -> Void)? = nil) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okButton = UIAlertAction(title: text, style: UIAlertAction.Style.cancel, handler: handler)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: text, style: .default, handler: handler)
         alertController.addAction(okButton)
         
         self.present(alertController, animated: true, completion: nil)
