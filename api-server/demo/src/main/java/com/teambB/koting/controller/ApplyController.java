@@ -63,11 +63,11 @@ public class ApplyController {
           myInfo.put("major", participants.get(i).getMember().getMajor());
           myInfo.put("sex", participants.get(i).getMember().getSex());
           myInfo.put("mbti", participants.get(i).getMember().getMbti());
+          myInfo.put("account_id", participants.get(i).getMember().getAccount_id());
           jArray.add(myInfo);
         }
 
         myCreation.put("participant", jArray);
-
         retObject.put("myCreation", myCreation);
 
     }
