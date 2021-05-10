@@ -116,4 +116,19 @@ public class ApplyController {
 
     return retObject;
   }
+
+  @PostMapping("/applies/accept")
+  public Boolean acceptApply(@RequestBody JSONObject object) {
+
+    String myAccountId = object.get("my_account_id").toString();
+    String yourAccountId = object.get("your_account_id").toString();
+
+    Member me = memberService.findOneByAccountId(myAccountId);
+    Member you = memberService.findOneByAccountId(yourAccountId);
+
+    Meeting myMeeting = me.getMyMeeting();
+    me.getSuccessMeeting().add(myMeeting);
+    you.getSuccessMeeting().add(myMeeting);
+    return true;
+  }
 }

@@ -42,6 +42,9 @@ public class Member {
   private Meeting myMeeting;
 
   @OneToMany(mappedBy = "member")
+  private List<Meeting> successMeeting = new ArrayList<>();
+
+  @OneToMany(mappedBy = "member")
   private List<Apply> applies = new ArrayList<>();
 
   public static Member createMember(JSONObject object) {
