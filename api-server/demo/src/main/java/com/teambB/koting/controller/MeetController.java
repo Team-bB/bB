@@ -89,4 +89,33 @@ public class MeetController {
     }
     return retObject;
   }
+
+  @GetMapping("/meetings/matched")
+  public JSONObject getMatchedMeeting(@RequestParam("account_id") String account_id) {
+    Member accountID = memberService.findOneByAccountId(account_id);
+    List<Meeting> successMeeting = accountID.getSuccessMeeting();
+    JSONObject retObject = new JSONObject();
+    JSONArray jArray = new JSONArray();
+    if (!successMeeting.isEmpty()) {
+      for (int i = 0; i < successMeeting.size(); i++)
+      {
+        JSONObject sObject = new JSONObject();
+        JSONObject owner = new JSONObject();
+        owner.put("age", successMeeting.get(i).getOwner().getAge());
+        owner.put("animal_idx", successMeeting.get(i).getOwner().getAnimalIdx());
+        owner.put("college", successMeeting.get(i).getOwner().getCollege());
+        owner.put("height", successMeeting.get(i).getOwner().getHeight());
+        owner.put("major", successMeeting.get(i).getOwner().getMajor());
+        owner.put("sex", successMeeting.get(i).getOwner().getSex());
+        owner.put("mbti", successMeeting.get(i).getOwner().getMbti());
+//        sObject.put("owner", owner);
+//        sObject.put("meeting_id", successMeeting.get(i).getId());
+//        sObject.put("player", successMeeting.get(i).getPlayer());
+//        sObject.put("link", successMeeting.get(i).getLink());
+        jArray.add(sObject);
+      }
+      retObject.put("meeting", jArray);//배열을 넣음
+    }
+    return retObject;
+  }
 }
