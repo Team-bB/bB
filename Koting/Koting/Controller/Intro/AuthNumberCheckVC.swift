@@ -11,23 +11,12 @@ import NVActivityIndicatorView
 class AuthNumberCheckVC: UIViewController {
     // MARK:- 변수
     let maxLength = 4
-    var indicator: NVActivityIndicatorView!
+    let indicator = CustomIndicator()
     var myInfo: Owner?
     
     // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.indicator = NVActivityIndicatorView(
-                    frame: CGRect(
-                        origin: CGPoint(x: view.center.x - 50, y: view.center.y - 50),
-                        size: CGSize(width: 100, height: 100)
-                    ),
-                    type: .circleStrokeSpin,
-                    color: UIColor.gray,
-                    padding: 0
-                )
-        self.view.addSubview(self.indicator)
         
         sendButton.setDefault()
         sendButton.setDisable()
@@ -44,7 +33,8 @@ class AuthNumberCheckVC: UIViewController {
     
     // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
-        self.indicator.startAnimating()
+        
+        indicator.startAnimating(superView: view)
         AuthNumberCheckAPI.shared.get(code: authNumberTextField.text!) { [weak self] result in
             
             guard let self = self else { return }

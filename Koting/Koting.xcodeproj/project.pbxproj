@@ -48,6 +48,7 @@
 		889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */; };
 		889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F85260890B200B3DA62 /* MyInfoVC.swift */; };
 		889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F9C2608983800B3DA62 /* IntroModel.swift */; };
+		88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B51DC426496ADD00E460FA /* CustomIndicator.swift */; };
 		D392E1282644CDAB00938E85 /* MyMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1272644CDAB00938E85 /* MyMeetingCell.swift */; };
 		D392E12B2644D29E00938E85 /* MyMeetingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */; };
 		D392E12F26455DF000938E85 /* MyMeetingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D392E12E26455DF000938E85 /* MyMeetingList.storyboard */; };
@@ -117,6 +118,7 @@
 		889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeetingListStoryboard.storyboard; sourceTree = "<group>"; };
 		889F7F85260890B200B3DA62 /* MyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoVC.swift; sourceTree = "<group>"; };
 		889F7F9C2608983800B3DA62 /* IntroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroModel.swift; sourceTree = "<group>"; };
+		88B51DC426496ADD00E460FA /* CustomIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
 		D392E1272644CDAB00938E85 /* MyMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingCell.swift; sourceTree = "<group>"; };
 		D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingInfoViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				88556CA12609D8B500CF7CAC /* UIViewController++.swift */,
 				88849D4F2642BDB500E2B1AF /* GradientView.swift */,
 				88984E5C2644614400997ED2 /* UIView++.swift */,
+				88B51DC426496ADD00E460FA /* CustomIndicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				88556CA42609D8B500CF7CAC /* UIButton++.swift in Sources */,
 				88849D612644367000E2B1AF /* StrechyHeaderLayout.swift in Sources */,
 				886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */,
+				88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
 				D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */,
 				D392E151264574B500938E85 /* MyMeetingApplicantCell.swift in Sources */,
@@ -717,14 +721,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S633W4FQZA;
+				DEVELOPMENT_TEAM = NJ49S5QG3H;
 				INFOPLIST_FILE = Koting/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTestddd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -741,12 +745,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NJ49S5QG3H;
 				INFOPLIST_FILE = Koting/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTestddd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
