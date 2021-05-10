@@ -129,6 +129,8 @@ public class ApplyController {
     Meeting myMeeting = me.getMyMeeting();
     me.getSuccessMeeting().add(myMeeting);
     you.getSuccessMeeting().add(myMeeting);
+    memberService.join(me);
+    memberService.join(you);
     return true;
   }
 }
