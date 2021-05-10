@@ -15,7 +15,9 @@ public class MemberService {
   private final MemberRepository memberRepository;
 
   public Long join(Member member) {
-    validateMember(member);
+    if (member.getId() == null) {
+      validateMember(member);
+    }
     memberRepository.save(member);
     return member.getId();
   }

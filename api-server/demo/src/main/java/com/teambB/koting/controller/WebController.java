@@ -10,4 +10,9 @@ public class WebController {
   public String introPage() {
     return "index";
   }
+
+  @GetMapping("/notice")
+  public String getNotice() {
+    return "1";
+  }
 }
