@@ -108,10 +108,10 @@ public class MeetController {
         owner.put("major", successMeeting.get(i).getOwner().getMajor());
         owner.put("sex", successMeeting.get(i).getOwner().getSex());
         owner.put("mbti", successMeeting.get(i).getOwner().getMbti());
-//        sObject.put("owner", owner);
-//        sObject.put("meeting_id", successMeeting.get(i).getId());
-//        sObject.put("player", successMeeting.get(i).getPlayer());
-//        sObject.put("link", successMeeting.get(i).getLink());
+        sObject.put("owner", owner);
+        sObject.put("meeting_id", successMeeting.get(i).getId());
+        sObject.put("player", successMeeting.get(i).getPlayer());
+        sObject.put("link", successMeeting.get(i).getLink());
         jArray.add(sObject);
       }
       retObject.put("meeting", jArray);//배열을 넣음
