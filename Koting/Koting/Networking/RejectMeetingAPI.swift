@@ -13,19 +13,19 @@ class RejectMeetingAPI {
     
     private init() {}
     
-    func post(meetingId: Int?, completion: @escaping (Result<RejectMeetingApplicantAPIResponse, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/applies" // 바꿔야함
+    func post(accountID: String?, completion: @escaping (Result<RejectMeetingApplicantAPIResponse, Error>) -> (Void)) {
+        let url = API.shared.BASE_URL + "/applies/reject" // 바꿔야함
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
         guard let token = UserDefaults.standard.string(forKey: "accountId"),
-              let meetingId = meetingId else { return }
+              let accountID = accountID else { return }
         print(token)
         //POST로 보낼 정보
-        let params = ["account_id" : token,
-                      "meeting_id" : meetingId] as Dictionary // 유저 고유번호 만들어야할듯..???
+        let params = ["my_account_id" : token,
+                      "your_meeting_id" : accountID] as Dictionary // 유저 고유번호 만들어야할듯..???
 
         // httpBody에 parameters 추가
         do {

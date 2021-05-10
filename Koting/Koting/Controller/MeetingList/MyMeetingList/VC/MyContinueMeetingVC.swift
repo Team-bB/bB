@@ -97,21 +97,13 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             cell.collectionView.tag = indexPath.row
             cell.myMeeting = myMeeting
             cell.setColleciontionViewWith()
-            cell.acceptButtonPressed = { [unowned self] in
-                let alert = UIAlertController(title: "신청되었습니다!", message: "상대방에게 신청 완료되었습니다.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-                alert.addAction(okAction)
-                self.present(alert, animated: true, completion: nil)
+            cell.parentVC = self
+            cell.acceptButtonReloadData = { [unowned self] in
+                FetchMeetings()
             }
-//            cell.rejectButtonPressed = { [unowned self] in
-//                let height = self.myMeeting.participant[indexPath.row].height
-//                let alert = UIAlertController(title: "거절되었습니다!", message: "상대방 신청을 거절했습니다.", preferredStyle: .alert)
-//                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-//                alert.addAction(okAction)
-//                self.present(alert, animated: true, completion: nil)
-//                print(height ?? "0")
-//
-//            }
+            cell.rejectButtonReloadData = { [unowned self] in
+                FetchMeetings()
+            }
             
             let bgView = UIView()
             bgView.backgroundColor = .white
@@ -144,5 +136,10 @@ extension MyContinueMeetingVC: UITableViewDataSource{
 }
 
 extension MyContinueMeetingVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexPath.section == 1{
+//            print(myApplies[indexPath.row].meeting_id)
+//        }
+    }
     
 }

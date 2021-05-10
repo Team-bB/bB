@@ -21,10 +21,35 @@ class MyMeetingInfoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.imageView.layer.cornerRadius = imageView.frame.width / 2
+        self.imageView.layer.borderWidth = 1
+        self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
+        self.imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        self.imageView.clipsToBounds = true
+        
+        updateUI()
     }
     
+    private func updateUI() {
+        
+        guard let meeting = meeting, let owner = meeting.owner else { return }
+        
+        if let college = owner.college,
+           let mbti = owner.mbti,
+           let age = owner.age,
+           let height = owner.height,
+           let animal = owner.animal_idx {
+            collegeLabel.text = college
+            mbtiLabel.text = mbti
+            ageLabel.text = "\(age)살"
+            heightLabel.text = "\(height)cm"
+            imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
+            animalLabel.text = transAnimal(index: animal, isImage: false) + "상"
+        }
+    }
     
     @IBAction func deleteBtnTapped(_ sender: Any) {
+        
     }
     
     func deleteMeeting() {

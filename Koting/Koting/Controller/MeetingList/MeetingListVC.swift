@@ -132,10 +132,7 @@ extension MeetingListVC: UITableViewDataSource {
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingListTableViewCell", for: indexPath) as! MeetingListTableViewCell
-    //        cell.tableViewCellLayer.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
             cell.tableViewCellLayer.layer.cornerRadius = 20
-    //        cell.tableViewCellLayer.layer.borderWidth = 2
-    //        cell.tableViewCellLayer.layer.masksToBounds = true
             
             
             cell.collegeName.text = meetings[indexPath.row].owner?.college ?? "단과대학"

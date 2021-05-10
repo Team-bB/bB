@@ -35,13 +35,14 @@ class MyDoneMeetingVC: UIViewController {
         }else {
             print("-----Fetching MyMeetings-----\n")
         }
-        DoneMeetingListAPI.shared.get { [weak self] result in
+        DoneMeetingListAPI.shared.get(accountID: UserDefaults.standard.string(forKey: "accountId")) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let finalResult):
                 strongSelf.doneMeeting = finalResult.doneMeeting
 
                 DispatchQueue.main.async {
+                    print(self?.doneMeeting)
                     strongSelf.tableView.refreshControl?.endRefreshing()
                     strongSelf.tableView.reloadData()
                 }
@@ -71,19 +72,18 @@ class MyDoneMeetingVC: UIViewController {
 
 extension MyDoneMeetingVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return doneMeeting.count
-        return 5
+        return doneMeeting.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoneMeetingCell", for: indexPath) as! DoneMeetingCell
-        cell.animalShapeImage.image = UIImage(named: transImage(index: 2))
+        cell.animalShapeImage.image = UIImage(named: transImage(index: doneMeeting[indexPath.row].owner?.animal_idx ?? 0))
         cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2
         cell.animalShapeImage.layer.masksToBounds = true
         cell.animalShapeImage.layer.borderWidth = 0
-        cell.collegeLabel.text = "문과대학"
-        cell.mbtiLabel.text = "INFP"
-        cell.numberOfParticipants.text = "2:2"
+        cell.collegeLabel.text = doneMeeting[indexPath.row].owner?.college
+        cell.mbtiLabel.text = doneMeeting[indexPath.row].owner?.mbti
+        cell.numberOfParticipants.text = doneMeeting[indexPath.row].player
         return cell
     }
     

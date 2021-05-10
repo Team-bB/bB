@@ -16,6 +16,8 @@ class MyMeetingApplicantCell: UITableViewCell {
     }
     var currentPage:Int = 0
     
+    var parentVC: UIViewController!
+    
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var acceptBtn: UIButton!
@@ -41,18 +43,18 @@ class MyMeetingApplicantCell: UITableViewCell {
 //        pageControl.hidesForSinglePage = true
     }
 
-    var acceptButtonPressed: (() -> ())?
+    var acceptButtonReloadData: (() -> ())?
     var acceptButtonTapped: (() -> ())?
-    var rejectButtonPressed: (() -> ())?
+    var rejectButtonReloadData: (() -> ())?
     var rejectButtonTapped: (() -> ())?
     
     @IBAction func acceptBtnTapped(_ sender: Any) {
-        acceptButtonPressed?()
+        acceptButtonReloadData?()
         acceptButtonTapped?()
     }
 
     @IBAction func rejectBtnTapped(_ sender: Any) {
-        rejectButtonPressed?()
+        rejectButtonReloadData?()
         rejectButtonTapped?()
     }
     
@@ -110,54 +112,53 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         self.acceptButtonTapped = { [unowned self] in
             let age = myMeeting?.participant[indexPath.row].age
             print(age ?? "0")
-            AcceptMeetingAPI.shared.post(meetingId: myMeeting?.participant[indexPath.row].height) { [weak self] result in
+            AcceptMeetingAPI.shared.post(accountID: myMeeting?.participant[indexPath.row].account_id) { [weak self] result in
                 
                 guard let strongSelf = self else { return }
-                
+            
                 switch result {
                 case .success(let finalResult):
-                    let result = finalResult.result
-                    
-                    if result == "acceptFail" {
+                    if finalResult.result == "true" {
                         DispatchQueue.main.async {
-                            print("Fail")
-                        }
+                            parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인")
+                            }
                     } else {
                         DispatchQueue.main.async {
-                            print("Success")
+                            parentVC.makeAlertBox(title: "알림", message: "수락 실패", text: "확인")
+                            }
                         }
-                    }
                 case .failure:
-                    break
+                    parentVC.makeAlertBox(title: "알림", message: "젠장 실패", text: "확인")
                 }
             }
         }
         self.rejectButtonTapped = { [unowned self] in
-            RejectMeetingAPI.shared.post(meetingId: myMeeting?.participant[indexPath.row].height) { [weak self] result in
+            RejectMeetingAPI.shared.post(accountID: myMeeting?.participant[indexPath.row].account_id) { [weak self] result in
                 
                 guard let strongSelf = self else { return }
                 
                 switch result {
                 case .success(let finalResult):
-                    let result = finalResult.result
-                    
-                    if result == "rejectFail" {
+                    if finalResult.result == "true" {
                         DispatchQueue.main.async {
-                            print("Fail")
-                        }
+                            let alert = UIAlertController(title: "알림", message: "신청 완료", preferredStyle: UIAlertController.Style.alert)
+                            let okAction = UIAlertAction(title: "확인", style: .default){ (action) in }
+                            alert.addAction(okAction)
+                            parentVC.present(alert, animated: true, completion: nil)
+                            }
                     } else {
                         DispatchQueue.main.async {
-                            print("Success")
+                            let alert = UIAlertController(title: "알림", message: "신청 실패", preferredStyle: UIAlertController.Style.alert)
+                            let okAction = UIAlertAction(title: "확인", style: .default){ (action) in }
+                            alert.addAction(okAction)
+                            parentVC.present(alert, animated: true, completion: nil)
+                            }
                         }
-                    }
                 case .failure:
                     break
                 }
             }
         }
-        
-        //self.pageControl.numberOfPages = myMeeting?.participant.count ?? 0
-        
         return cell
     }
     
