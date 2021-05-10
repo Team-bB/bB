@@ -118,7 +118,7 @@ public class ApplyController {
   }
 
   @PostMapping("/applies/accept")
-  public Boolean acceptApply(@RequestBody JSONObject object) {
+  public JSONObject acceptApply(@RequestBody JSONObject object) {
 
     String myAccountId = object.get("my_account_id").toString();
     String yourAccountId = object.get("your_account_id").toString();
@@ -131,6 +131,8 @@ public class ApplyController {
     you.getSuccessMeeting().add(myMeeting);
     memberService.join(me);
     memberService.join(you);
-    return true;
+    JSONObject retObject = new JSONObject();
+    retObject.put("result", "true");
+    return retObject;
   }
 }
