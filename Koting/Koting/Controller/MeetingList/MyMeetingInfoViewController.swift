@@ -26,6 +26,38 @@ class MyMeetingInfoViewController: UIViewController {
     
     @IBAction func deleteBtnTapped(_ sender: Any) {
     }
+    
+    func deleteMeeting() {
+        DeleteMeetingRoomAPI.shared.post() { [weak self] result in
+            
+            guard let strongSelf = self else { return }
+            
+            switch result {
+            case .success(let finalResult):
+                let result = finalResult.result
+                
+                if result == "deleteFail" {
+                    DispatchQueue.main.async {
+                        strongSelf.makeAlertBox(title: "알림", message: "삭제에 실패했습니다..", text: "확인") { (action) in
+                            strongSelf.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        strongSelf.makeAlertBox(title: "알림", message: "미팅을 삭제했습니다.", text: "확인") { (action) in
+                            strongSelf.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }
+               
+                
+                
+            case .failure:
+                break
+            }
+        }
+    }
+    
     private func transAnimal(index: Int, isImage: Bool) -> String {
         if isImage {
             switch index {

@@ -12,6 +12,7 @@ class AuthNumberCheckVC: UIViewController {
     // MARK:- 변수
     let maxLength = 4
     var indicator: NVActivityIndicatorView!
+    var myInfo: Owner?
     
     // MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -65,7 +66,11 @@ class AuthNumberCheckVC: UIViewController {
                     }
                     self.asyncPresentView(identifier: "Register")
                 } else {
+                    
+                    guard let myInfo = message.myInfo else { return }
+
                     UserDefaults.standard.set(message.result, forKey: "accountId")
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(myInfo), forKey:"myInfo")
                     
                     MailAuthCheckAPI.shared.post() { [weak self] result in
                         

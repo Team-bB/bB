@@ -60,9 +60,16 @@
                                     <constraint firstItem="dMo-Dv-z8X" firstAttribute="leading" secondItem="Gn3-wG-KXe" secondAttribute="leading" id="YI4-b2-icr"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="동물상" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhf-1G-N7B">
-                                <rect key="frame" x="186" y="660" width="45" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGP-6o-NC0">
+                                <rect key="frame" x="188" y="757" width="39" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="재측정"/>
+                                <connections>
+                                    <action selector="tappedRecheck:" destination="JFy-nF-hG3" eventType="touchUpInside" id="icX-DB-gpf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="동물상" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhf-1G-N7B">
+                                <rect key="frame" x="0.0" y="592" width="414" height="89"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -71,18 +78,23 @@
                         <viewLayoutGuide key="safeArea" id="5Py-FR-dxZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5Py-FR-dxZ" firstAttribute="trailing" secondItem="Hhf-1G-N7B" secondAttribute="trailing" id="6DD-kG-Iwr"/>
+                            <constraint firstItem="Hhf-1G-N7B" firstAttribute="top" secondItem="Gn3-wG-KXe" secondAttribute="bottom" constant="173" id="En5-dL-hfW"/>
                             <constraint firstItem="Gn3-wG-KXe" firstAttribute="centerY" secondItem="0iF-9o-CK3" secondAttribute="centerY" constant="-137.25" id="FLU-zH-2ci"/>
+                            <constraint firstItem="Hhf-1G-N7B" firstAttribute="leading" secondItem="5Py-FR-dxZ" secondAttribute="leading" id="Lqw-PI-rZk"/>
                             <constraint firstItem="Gn3-wG-KXe" firstAttribute="centerX" secondItem="0iF-9o-CK3" secondAttribute="centerX" id="MSh-Co-o06"/>
+                            <constraint firstItem="5Py-FR-dxZ" firstAttribute="bottom" secondItem="Hhf-1G-N7B" secondAttribute="bottom" constant="50" id="eqA-x3-wu7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="peN-kE-LzO" id="WDw-5E-2xJ"/>
-                        <outlet property="label" destination="Hhf-1G-N7B" id="J6e-bE-Vir"/>
+                        <outlet property="predictLabel" destination="Hhf-1G-N7B" id="MDr-jN-c0Z"/>
+                        <outlet property="recheckButton" destination="GGP-6o-NC0" id="EAc-jP-Ti7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycL-xA-l6L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="184.80000000000001" y="101.19940029985008"/>
+            <point key="canvasLocation" x="184.05797101449278" y="101.11607142857143"/>
         </scene>
     </scenes>
     <resources>

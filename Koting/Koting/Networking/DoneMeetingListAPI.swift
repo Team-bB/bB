@@ -1,40 +1,39 @@
 //
-//  FetchMeetingRooms.swift
+//  DoneMeetingListAPI.swift
 //  Koting
 //
-//  Created by 임정우 on 2021/04/28.
+//  Created by 홍화형 on 2021/05/09.
 //
 
 import Foundation
 import Alamofire
 
-class FetchMeetingRoomsAPI {
-    static let shared = FetchMeetingRoomsAPI()
+class DoneMeetingListAPI {
+    static let shared = DoneMeetingListAPI()
     
     private init() {}
     
-    func get(accountID:String?,completion: @escaping (Result<FetchMeetingRoomsAPIResponse, Error>) -> (Void)) {
-        guard let accountID = accountID else { return print("없어용") }
-        let url = API.shared.BASE_URL + "/meetings?account_id=\(accountID)"
+    func get(completion: @escaping (Result<DoneMeetingListAPIResponse, Error>) -> (Void)) {
+        guard let token = UserDefaults.standard.string(forKey: "accountId") else { return }
+        let url = API.shared.BASE_URL + "/applies?account_id=" + token
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
-        
         
         AF.request(request).responseData { response in
             switch response.result {
             case .success(let result):
                 let decoder = JSONDecoder()
                 do {
-                    let finalResult = try decoder.decode(FetchMeetingRoomsAPIResponse.self, from: result)
+                    let finalResult = try decoder.decode(DoneMeetingListAPIResponse.self, from: result)
                     debugPrint(response)
-                    print("✅ FetchMeetingRoomsAPIResponse Codable Success ✅")
+                    print("✅ DoneMeetingListAPIResponse Codable Success ✅")
                     completion(.success(finalResult))
 
                 } catch {
                     debugPrint(response)
-                    print("❗️ FetchMeetingRoomsAPIResponse Codable Error")
+                    print("❗️ DoneMeetingListAPI Codable Error ❗️")
                     print(error)
                     completion(.failure(error))
                 }

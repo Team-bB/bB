@@ -47,7 +47,16 @@ class MyInfoVC: UIViewController {
         super.viewDidLoad()
         
         setTableView()
-        addMyInfoHearder(vc: self)
+        if let data = UserDefaults.standard.value(forKey:"myInfo") as? Data {
+            let infoData = try! PropertyListDecoder().decode(Owner.self, from: data)
+            
+            print(infoData.age!)
+            print(infoData.sex!)
+            print(infoData.height!)
+            print(infoData.college!)
+            print(infoData.major!)
+        }
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -62,6 +71,8 @@ class MyInfoVC: UIViewController {
         tableView.frame = view.bounds
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.contentInsetAdjustmentBehavior = .never
+        
+        addMyInfoHearder(vc: self)
     }
     
    
@@ -87,14 +98,15 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return infoList
-            .list[section]?.count ?? 0
+            .list[section]!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
         cell.textLabel?.text = infoList.list[indexPath.section]?[indexPath.row]
-        cell.selectionStyle = .none
+        cell.selectionStyle = .none // 클릭효과 X
+        
         return cell
     }
     
@@ -116,5 +128,43 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let cellName: String = infoList.list[indexPath.section]![indexPath.row]
+        
+        print("\(cellName) Cell Tapped")
+        print("section : \(indexPath.section) row : \(indexPath.row)")
+        
+        switch cellName {
+        case "공지사항":
+            break
+        case "앱 정보":
+            break
+        case "문의하기":
+            break
+        case "동물상 재측정":
+            break
+        case "로그아웃":
+            logOut()
+            break
+        case "회원탈퇴":
+            break
+        default:
+            break
+        }
+    }
+    
+    fileprivate func logOut() {
+        guard let _ = UserDefaults.standard.string(forKey: "accountId")
+        else {
+            print("⚠️ Unknown Error ⚠️")
+            return }
+        UserDefaults.standard.removeObject(forKey: "accountId")
+ 
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "GettingStarted") as! GettingStartedVC
+        self.dismiss(animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
+        
+    
+        print(" ✅ LogOut Success ✅")
     }
 }

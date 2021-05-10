@@ -80,7 +80,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S1v-mQ-h6S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2837" y="-1529"/>
+            <point key="canvasLocation" x="-3108" y="-1550"/>
+        </scene>
+        <!--Edit My InfoVC-->
+        <scene sceneID="eIk-Uv-pEz">
+            <objects>
+                <viewController id="75C-2g-VZA" customClass="EditMyInfoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b4A-9g-uws">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tv9-Ks-ult"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zPD-FM-JN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2122" y="-1878"/>
+        </scene>
+        <!--MeetingList-->
+        <scene sceneID="y8s-RB-yBr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MeetingListStoryboard" referencedIdentifier="MeetingList" id="X52-RC-gFG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ANy-XH-y5m"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VLs-MI-UoT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3109" y="-1121"/>
         </scene>
     </scenes>
     <resources>
