@@ -44,6 +44,7 @@ class MyMeetingApplicantCell: UITableViewCell {
     var acceptButtonPressed: (() -> ())?
     var acceptButtonTapped: (() -> ())?
     var rejectButtonPressed: (() -> ())?
+    var rejectButtonTapped: (() -> ())?
     
     @IBAction func acceptBtnTapped(_ sender: Any) {
         acceptButtonPressed?()
@@ -52,10 +53,8 @@ class MyMeetingApplicantCell: UITableViewCell {
 
     @IBAction func rejectBtnTapped(_ sender: Any) {
         rejectButtonPressed?()
+        rejectButtonTapped?()
     }
-//    @objc func acceptTapped() {
-//        acceptButtonPressed?()
-//    }
     
     func transImage(index: Int) -> String {
         switch index {
@@ -111,6 +110,50 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         self.acceptButtonTapped = { [unowned self] in
             let age = myMeeting?.participant[indexPath.row].age
             print(age ?? "0")
+            AcceptMeetingAPI.shared.post(meetingId: myMeeting?.participant[indexPath.row].height) { [weak self] result in
+                
+                guard let strongSelf = self else { return }
+                
+                switch result {
+                case .success(let finalResult):
+                    let result = finalResult.result
+                    
+                    if result == "acceptFail" {
+                        DispatchQueue.main.async {
+                            print("Fail")
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            print("Success")
+                        }
+                    }
+                case .failure:
+                    break
+                }
+            }
+        }
+        self.rejectButtonTapped = { [unowned self] in
+            RejectMeetingAPI.shared.post(meetingId: myMeeting?.participant[indexPath.row].height) { [weak self] result in
+                
+                guard let strongSelf = self else { return }
+                
+                switch result {
+                case .success(let finalResult):
+                    let result = finalResult.result
+                    
+                    if result == "rejectFail" {
+                        DispatchQueue.main.async {
+                            print("Fail")
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            print("Success")
+                        }
+                    }
+                case .failure:
+                    break
+                }
+            }
         }
         
         //self.pageControl.numberOfPages = myMeeting?.participant.count ?? 0

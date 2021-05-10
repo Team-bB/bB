@@ -62,6 +62,11 @@
 		D392E1542645750C00938E85 /* MyApplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1532645750C00938E85 /* MyApplyCell.swift */; };
 		D392E15726457D1300938E85 /* DoneMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E15626457D1300938E85 /* DoneMeetingCell.swift */; };
 		D392E15A26459F5300938E85 /* ApplicantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E15926459F5300938E85 /* ApplicantCollectionViewCell.swift */; };
+		D392E16026481B6800938E85 /* DeleteMyMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E15F26481B6800938E85 /* DeleteMyMeetingAPI.swift */; };
+		D392E1632648265600938E85 /* DoneMeetingListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1622648265600938E85 /* DoneMeetingListAPI.swift */; };
+		D392E16626482A6700938E85 /* AcceptMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E16526482A6700938E85 /* AcceptMeetingAPI.swift */; };
+		D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E168264830B900938E85 /* RejectMeetingAPI.swift */; };
+		D392E16F264833E000938E85 /* DeleteCompleteMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */; };
 		D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */; };
 		D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF1260B1835000625DF /* MeetingModel.swift */; };
 		D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */; };
@@ -129,6 +134,11 @@
 		D392E1532645750C00938E85 /* MyApplyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApplyCell.swift; sourceTree = "<group>"; };
 		D392E15626457D1300938E85 /* DoneMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMeetingCell.swift; sourceTree = "<group>"; };
 		D392E15926459F5300938E85 /* ApplicantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantCollectionViewCell.swift; sourceTree = "<group>"; };
+		D392E15F26481B6800938E85 /* DeleteMyMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMyMeetingAPI.swift; sourceTree = "<group>"; };
+		D392E1622648265600938E85 /* DoneMeetingListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneMeetingListAPI.swift; sourceTree = "<group>"; };
+		D392E16526482A6700938E85 /* AcceptMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptMeetingAPI.swift; sourceTree = "<group>"; };
+		D392E168264830B900938E85 /* RejectMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectMeetingAPI.swift; sourceTree = "<group>"; };
+		D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCompleteMeetingAPI.swift; sourceTree = "<group>"; };
 		D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListVC.swift; sourceTree = "<group>"; };
 		D3BC8CF1260B1835000625DF /* MeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingModel.swift; sourceTree = "<group>"; };
 		D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListAndMyInfoAPI.swift; sourceTree = "<group>"; };
@@ -160,6 +170,11 @@
 				881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */,
 				889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */,
 				889DB261263D824400E8B1BE /* MyMeetingListAPI.swift */,
+				D392E15F26481B6800938E85 /* DeleteMyMeetingAPI.swift */,
+				D392E1622648265600938E85 /* DoneMeetingListAPI.swift */,
+				D392E16526482A6700938E85 /* AcceptMeetingAPI.swift */,
+				D392E168264830B900938E85 /* RejectMeetingAPI.swift */,
+				D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -514,6 +529,8 @@
 				886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */,
 				D392E12B2644D29E00938E85 /* MyMeetingInfoViewController.swift in Sources */,
 				88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */,
+				D392E16F264833E000938E85 /* DeleteCompleteMeetingAPI.swift in Sources */,
+				D392E16026481B6800938E85 /* DeleteMyMeetingAPI.swift in Sources */,
 				88849D5C2644116600E2B1AF /* HeaderView.swift in Sources */,
 				D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */,
 				881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */,
@@ -544,6 +561,7 @@
 				88849D612644367000E2B1AF /* StrechyHeaderLayout.swift in Sources */,
 				886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
+				D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */,
 				D392E151264574B500938E85 /* MyMeetingApplicantCell.swift in Sources */,
 				D392E13E264565A300938E85 /* MenuCell.swift in Sources */,
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
@@ -553,6 +571,8 @@
 				889DB25B263D520300E8B1BE /* ApplyMeetingAPI.swift in Sources */,
 				D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */,
 				88849D502642BDB500E2B1AF /* GradientView.swift in Sources */,
+				D392E1632648265600938E85 /* DoneMeetingListAPI.swift in Sources */,
+				D392E16626482A6700938E85 /* AcceptMeetingAPI.swift in Sources */,
 				889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
 				88610C59264572ED001724CB /* InfoCell.swift in Sources */,

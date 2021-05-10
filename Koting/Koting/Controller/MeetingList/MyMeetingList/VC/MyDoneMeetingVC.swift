@@ -10,6 +10,7 @@ import UIKit
 class MyDoneMeetingVC: UIViewController {
 
     var doneMeeting = [Meeting]()
+    var deleteButtonTapped: (() -> ())?
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -17,8 +18,41 @@ class MyDoneMeetingVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
-        // Do any additional setup after loading the view.
+        FetchMeetings()
+    }
+    
+    @objc private func didPullToRefresh() {
+        print("Start Refresh")
+        FetchMeetings()
+    }
+    func FetchMeetings() {
+        if tableView.refreshControl?.isRefreshing == true {
+            print("-----Refreshing MyMeetings-----\n")
+        }else {
+            print("-----Fetching MyMeetings-----\n")
+        }
+        DoneMeetingListAPI.shared.get { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let finalResult):
+                strongSelf.doneMeeting = finalResult.doneMeeting
+
+                DispatchQueue.main.async {
+                    strongSelf.tableView.refreshControl?.endRefreshing()
+                    strongSelf.tableView.reloadData()
+                }
+
+            case .failure:
+                DispatchQueue.main.async {
+                    strongSelf.tableView.refreshControl?.endRefreshing()
+                }
+                break
+            }
+        }
     }
     
     func transImage(index: Int) -> String {
@@ -56,5 +90,42 @@ extension MyDoneMeetingVC: UITableViewDataSource {
 }
 
 extension MyDoneMeetingVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "삭제") { (action, view, success) in
+            self.doneMeeting.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            success(true)
+        }
+        self.deleteButtonTapped = { [unowned self] in
+            DeleteCompleteMeetingAPI.shared.post(meetingId: doneMeeting[indexPath.row].meeting_id) { [weak self] result in
+                
+                guard let strongSelf = self else { return }
+                
+                switch result {
+                case .success(let finalResult):
+                    let result = finalResult.result
+                    
+                    if result == "deleteFail" {
+                        DispatchQueue.main.async {
+                            print("Fail")
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            print("Success")
+                        }
+                    }
+                case .failure:
+                    break
+                }
+            }
+        }
+        action.image = UIImage(named: "icons8-trash-can-50")
+        action.backgroundColor = .red
+        
+        return action
+    }
 }

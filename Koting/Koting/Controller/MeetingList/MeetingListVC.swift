@@ -12,6 +12,7 @@ import PanModal
 
 class MeetingListVC: UIViewController {
     var meetings = [Meeting]()
+    var myMeeting: Meeting?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -47,11 +48,13 @@ class MeetingListVC: UIViewController {
         } else {
             print("-----Fetching Meetings-----\n")
         }
-        FetchMeetingRoomsAPI.shared.get { [weak self] result in
+        
+        FetchMeetingRoomsAPI.shared.get(accountID: UserDefaults.standard.string(forKey: "accountId")) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let finalResult):
                 strongSelf.meetings = finalResult.meeting
+                strongSelf.myMeeting = finalResult.myMeeting
                 
                 DispatchQueue.main.async {
                     strongSelf.tableView.refreshControl?.endRefreshing()
@@ -114,9 +117,9 @@ extension MeetingListVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingCell", for: indexPath) as! MyMeetingCell
             cell.tableViewCellLayer.layer.cornerRadius = 20
             
-            cell.collegeName.text = "사회과학대학"
-            cell.numberOfParticipants.text = "3:3"
-            cell.animalShapeImage.image = UIImage(named: transImage(index: 2))
+            cell.collegeName.text = myMeeting?.owner?.college
+            cell.numberOfParticipants.text = myMeeting?.player
+            cell.animalShapeImage.image = UIImage(named: transImage(index: myMeeting?.owner?.animal_idx ?? 0))
             cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
@@ -182,9 +185,10 @@ extension MeetingListVC: UITableViewDelegate {
             }
         }else if segue.identifier == "MyMeetingInfo" {
             let vc = segue.destination as? MyMeetingInfoViewController
-            if let index = sender as? Int {
-                vc?.meeting = meetings[index]
-            }
+//            if let index = sender as? Int {
+//                vc?.meeting = myMeeting
+//            }
+            vc?.meeting = myMeeting
         }
     }
 }
