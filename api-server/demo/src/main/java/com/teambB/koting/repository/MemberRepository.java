@@ -22,10 +22,6 @@ public class MemberRepository {
     }
   }
 
-  public Member findById(Long id) {
-    return em.find(Member.class, id);
-  }
-
   public Member findByEmail(String email) {
     return em.createQuery("select m from Member m where m.email = :email", Member.class)
         .setParameter("email", email)
@@ -36,12 +32,6 @@ public class MemberRepository {
     return em.createQuery("select m from Member m where m.email = :email", Member.class)
         .setParameter("email", email)
         .getResultList();
-  }
-
-  public Member findByNumber(String number) {
-    return em.createQuery("select m from Member m where m.number = :number", Member.class)
-        .setParameter("number", number)
-        .getSingleResult();
   }
 
   public List<Member> findByNumberList(String number) {

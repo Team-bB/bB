@@ -30,10 +30,6 @@ public class MemberService {
     }
   }
 
-  public Member findOne(Long id) {
-    return memberRepository.findById(id);
-  }
-
   public Member findOneByEmail(String email) {
     return memberRepository.findByEmail(email);
   }
