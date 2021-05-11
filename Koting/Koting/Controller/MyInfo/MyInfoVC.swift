@@ -4,26 +4,6 @@
 //
 //  Created by 임정우 on 2021/03/22.
 //
-import SwiftUI
-
-struct MyInfoVCRepresentable: UIViewControllerRepresentable {
-    typealias UIViewControllerType = MyInfoVC
-
-    func makeUIViewController(context: Context) -> MyInfoVC {
-        return MyInfoVC()
-    }
-
-    func updateUIViewController(_ uiViewController: MyInfoVC, context: Context) {
-    }
-}
-
-@available(iOS 13.0.0, *)
-struct MyInfoPreview: PreviewProvider {
-    static var previews: some View {
-        MyInfoVCRepresentable()
-    }
-}
-
 import UIKit
 import MessageUI
 import NVActivityIndicatorView
@@ -74,6 +54,8 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
         tableView.backgroundColor = .white
         tableView.frame = view.bounds
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.separatorInset.left = 30
+        tableView.separatorInset.right = 30
         tableView.contentInsetAdjustmentBehavior = .never
         
         addMyInfoHearder(vc: self)
@@ -121,7 +103,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         if contentOffsectY > 0 {
             return
         }
-        
+
         let width = tableView.frame.width
         
 //                let height = attributes.frame.height - contentOffsectY
@@ -134,10 +116,10 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         let cellName: String = infoList.list[indexPath.section]![indexPath.row]
         
         print("\(cellName) Cell Tapped")
-        print("section : \(indexPath.section) row : \(indexPath.row)")
         
         switch cellName {
         case "공지사항":
+            self.asyncPresentView(identifier: "NoticeVC")
             break
         case "앱 정보":
             indicator.stopAnimating()
@@ -192,12 +174,7 @@ extension MyInfoVC: MFMailComposeViewControllerDelegate {
     fileprivate func presentMailErrorAlert(email: String, subject: String, bodyText: String) {
         self.makeAlertBox(title: "실패", message: "이메일 설정을 확인후 시도해주세요.", text: "확인") { action in
             print("🔔 Ok button Tapped 🔔")
-            self.dismiss(animated: true) {
-                let coded = "mailto:\(email)?subject=\(subject)&body=\(bodyText)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                if let url = URL(string: coded!) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
+            self.dismiss(animated: true, completion:  nil)
         }
     }
     
@@ -205,7 +182,7 @@ extension MyInfoVC: MFMailComposeViewControllerDelegate {
         switch result {
         case .sent:
             print("🔔 메일을 보냈습니다.🔔")
-            self.makeAlertBox(title: "전송실패", message: "메일 전송을 실패했습니다.", text: "확인", handler: nil)
+            self.makeAlertBox(title: "성공", message: "메일 전송했습니다.", text: "확인", handler: nil)
             
         case .failed:
             print("🔔 메일 전송실패 🔔")
