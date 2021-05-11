@@ -11,6 +11,7 @@
 		881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */; };
 		883B4196264A8B3E007EB33C /* NoticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4195264A8B3E007EB33C /* NoticeVC.swift */; };
 		883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4197264A8DDE007EB33C /* NoticeCell.swift */; };
+		883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4199264AC298007EB33C /* NoticeDetailVC.swift */; };
 		884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */; };
 		884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */; };
 		88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA12609D8B500CF7CAC /* UIViewController++.swift */; };
@@ -81,6 +82,7 @@
 		881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeetingRoomsAPI.swift; sourceTree = "<group>"; };
 		883B4195264A8B3E007EB33C /* NoticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeVC.swift; sourceTree = "<group>"; };
 		883B4197264A8DDE007EB33C /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
+		883B4199264AC298007EB33C /* NoticeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailVC.swift; sourceTree = "<group>"; };
 		884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetUserPhoto.storyboard; sourceTree = "<group>"; };
 		884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC.swift; sourceTree = "<group>"; };
 		88556CA12609D8B500CF7CAC /* UIViewController++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController++.swift"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				883B4195264A8B3E007EB33C /* NoticeVC.swift */,
 				883B4197264A8DDE007EB33C /* NoticeCell.swift */,
+				883B4199264AC298007EB33C /* NoticeDetailVC.swift */,
 			);
 			path = Notice;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */,
 				883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
+				883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				D392E15A26459F5300938E85 /* ApplicantCollectionViewCell.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
@@ -664,7 +668,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -719,7 +723,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -744,7 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTestddd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTestsadgdsa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -766,7 +770,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTestddd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTestsadgdsa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -54,6 +54,8 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
         tableView.backgroundColor = .white
         tableView.frame = view.bounds
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.separatorInset.left = 30
+        tableView.separatorInset.right = 30
         tableView.contentInsetAdjustmentBehavior = .never
         
         addMyInfoHearder(vc: self)
