@@ -1,8 +1,12 @@
 package com.teambB.koting.domain;
 
+import static com.teambB.koting.domain.ApplyStatus.*;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +22,9 @@ public class Apply {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "apply_id")
   private Long id;
+
+  @Enumerated(EnumType.STRING)
+  private ApplyStatus applyStatus;
 
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "meeting_id")
@@ -41,6 +48,15 @@ public class Apply {
     Apply apply = new Apply();
     apply.setMeeting(meeting);
     apply.setMember(member);
+    apply.setApplyStatus(WAIT);
     return apply;
+  }
+
+  public void applyAccept() {
+    this.applyStatus = ACCEPT;
+  }
+
+  public void rejectAccept() {
+    this.applyStatus = REJECT;
   }
 }

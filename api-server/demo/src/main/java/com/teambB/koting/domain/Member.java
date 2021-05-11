@@ -3,6 +3,7 @@ package com.teambB.koting.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,9 +41,6 @@ public class Member {
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "meeting_id")
   private Meeting myMeeting;
-
-  @OneToMany(mappedBy = "member")
-  private List<Meeting> successMeeting = new ArrayList<>();
 
   @OneToMany(mappedBy = "member")
   private List<Apply> applies = new ArrayList<>();
@@ -85,6 +83,5 @@ public class Member {
     for (int i = 0; i < length; i++) {
       numStr += Integer.toString(rand.nextInt(10));
     }
-    return numStr;
-  }
+    return numStr;  }
 }
