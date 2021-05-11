@@ -1,6 +1,9 @@
 package com.teambB.koting.repository;
 
 import com.teambB.koting.domain.Apply;
+import com.teambB.koting.domain.ApplyStatus;
+import com.teambB.koting.domain.Meeting;
+import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -23,5 +26,11 @@ public class ApplyRepository {
 
   public Apply findOne(Long id) {
     return em.find(Apply.class, id);
+  }
+
+  public List<Apply> findAll() {
+    return em.createQuery("select a from Apply a where a.applyStatus = :ACCEPT", Apply.class)
+        .setParameter("ACCEPT", ApplyStatus.ACCEPT)
+        .getResultList();
   }
 }

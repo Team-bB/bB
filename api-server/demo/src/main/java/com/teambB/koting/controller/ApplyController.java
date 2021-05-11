@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,22 +55,22 @@ public class ApplyController {
 
         List<Apply> participants = myMeeting.getParticipants();
         JSONArray jArray = new JSONArray();
-        for (int i = 0; i < participants.size(); i++) {
+        for (Apply apply : participants) {
           JSONObject myInfo = new JSONObject();
-          myInfo.put("age", participants.get(i).getMember().getAge());
-          myInfo.put("animal_idx", participants.get(i).getMember().getAnimalIdx());
-          myInfo.put("height", participants.get(i).getMember().getHeight());
-          myInfo.put("college", participants.get(i).getMember().getCollege());
-          myInfo.put("major", participants.get(i).getMember().getMajor());
-          myInfo.put("sex", participants.get(i).getMember().getSex());
-          myInfo.put("mbti", participants.get(i).getMember().getMbti());
-          myInfo.put("account_id", participants.get(i).getMember().getAccount_id());
+          myInfo.put("age", apply.getMember().getAge());
+          myInfo.put("animal_idx", apply.getMember().getAnimalIdx());
+          myInfo.put("height", apply.getMember().getHeight());
+          myInfo.put("college", apply.getMember().getCollege());
+          myInfo.put("major", apply.getMember().getMajor());
+          myInfo.put("sex", apply.getMember().getSex());
+          myInfo.put("mbti", apply.getMember().getMbti());
+          myInfo.put("account_id", apply.getMember().getAccount_id());
+          myInfo.put("apply_id", apply.getId());
           jArray.add(myInfo);
         }
 
         myCreation.put("participant", jArray);
         retObject.put("myCreation", myCreation);
-
     }
 
     JSONArray jArray2 = new JSONArray();
@@ -77,21 +78,21 @@ public class ApplyController {
     if (member.getApplies() != null) {
       List<Apply> applies = member.getApplies();
 
-      for (int i = 0; i < applies.size(); i++) {
+      for (Apply apply : applies) {
         JSONObject meetingOwner = new JSONObject();
-        meetingOwner.put("age", applies.get(i).getMeeting().getOwner().getAge());
-        meetingOwner.put("animal_idx", applies.get(i).getMeeting().getOwner().getAnimalIdx());
-        meetingOwner.put("height", applies.get(i).getMeeting().getOwner().getHeight());
-        meetingOwner.put("college", applies.get(i).getMeeting().getOwner().getCollege());
-        meetingOwner.put("major", applies.get(i).getMeeting().getOwner().getMajor());
-        meetingOwner.put("sex", applies.get(i).getMeeting().getOwner().getSex());
-        meetingOwner.put("mbti", applies.get(i).getMeeting().getOwner().getMbti());
+        meetingOwner.put("age", apply.getMeeting().getOwner().getAge());
+        meetingOwner.put("animal_idx", apply.getMeeting().getOwner().getAnimalIdx());
+        meetingOwner.put("height", apply.getMeeting().getOwner().getHeight());
+        meetingOwner.put("college", apply.getMeeting().getOwner().getCollege());
+        meetingOwner.put("major", apply.getMeeting().getOwner().getMajor());
+        meetingOwner.put("sex", apply.getMeeting().getOwner().getSex());
+        meetingOwner.put("mbti", apply.getMeeting().getOwner().getMbti());
 
         JSONObject meetingInfo = new JSONObject();
         meetingInfo.put("owner", meetingOwner);
-        meetingInfo.put("meeting_id", applies.get(i).getMeeting().getId());
-        meetingInfo.put("link", applies.get(i).getMeeting().getLink());
-        meetingInfo.put("player", applies.get(i).getMeeting().getPlayer());
+        meetingInfo.put("meeting_id", apply.getMeeting().getId());
+        meetingInfo.put("link", apply.getMeeting().getLink());
+        meetingInfo.put("player", apply.getMeeting().getPlayer());
         jArray2.add(meetingInfo);
       }
 
@@ -113,26 +114,58 @@ public class ApplyController {
     Apply apply = Apply.createApply(member, meeting);
     applyService.join(apply);
     retObject.put("result", "applyMeetingSuccess");
-
     return retObject;
   }
 
+  @Transactional
   @PostMapping("/applies/accept")
-  public JSONObject acceptApply(@RequestBody JSONObject object) {
+  public void acceptApply(@RequestBody JSONObject object) {
 
-    String myAccountId = object.get("my_account_id").toString();
-    String yourAccountId = object.get("your_account_id").toString();
+    Long applyId = Long.parseLong(object.get("apply_id").toString());
+    Apply apply = applyService.findOne(applyId);
+    apply.applyAccept();
+  }
 
-    Member me = memberService.findOneByAccountId(myAccountId);
-    Member you = memberService.findOneByAccountId(yourAccountId);
+  @Transactional
+  @PostMapping("/applies/reject")
+  public void rejectApply(@RequestBody JSONObject object) {
 
-    Meeting myMeeting = me.getMyMeeting();
-    me.getSuccessMeeting().add(myMeeting);
-    you.getSuccessMeeting().add(myMeeting);
-    memberService.join(me);
-    memberService.join(you);
+    Long applyId = Long.parseLong(object.get("apply_id").toString());
+    Apply apply = applyService.findOne(applyId);
+    apply.rejectAccept();
+  }
+
+  @GetMapping("/applies/success")
+  public JSONObject getSuccessApply(@RequestParam("account_id") String accountId) {
     JSONObject retObject = new JSONObject();
-    retObject.put("result", "true");
+
+    Member member = memberService.findOneByAccountId(accountId);
+    List<Apply> all = applyService.findAll();
+    JSONArray jArray2 = new JSONArray();
+    for (Apply apply : all) {
+
+      if ((apply.getMeeting().getOwner().getId() == member.getId())
+          || (apply.getMember().getId()) == member.getId()) {
+
+        JSONObject meetingOwner = new JSONObject();
+        meetingOwner.put("age", apply.getMeeting().getOwner().getAge());
+        meetingOwner.put("animal_idx", apply.getMeeting().getOwner().getAnimalIdx());
+        meetingOwner.put("height", apply.getMeeting().getOwner().getHeight());
+        meetingOwner.put("college", apply.getMeeting().getOwner().getCollege());
+        meetingOwner.put("major", apply.getMeeting().getOwner().getMajor());
+        meetingOwner.put("sex", apply.getMeeting().getOwner().getSex());
+        meetingOwner.put("mbti", apply.getMeeting().getOwner().getMbti());
+
+        JSONObject meetingInfo = new JSONObject();
+        meetingInfo.put("owner", meetingOwner);
+        meetingInfo.put("meeting_id", apply.getMeeting().getId());
+        meetingInfo.put("link", apply.getMeeting().getLink());
+        meetingInfo.put("player", apply.getMeeting().getPlayer());
+        jArray2.add(meetingInfo);
+      }
+
+      retObject.put("result", jArray2);
+    }
     return retObject;
   }
 }
