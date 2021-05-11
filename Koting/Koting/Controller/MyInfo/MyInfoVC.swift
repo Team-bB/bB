@@ -114,7 +114,6 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         let cellName: String = infoList.list[indexPath.section]![indexPath.row]
         
         print("\(cellName) Cell Tapped")
-        print("section : \(indexPath.section) row : \(indexPath.row)")
         
         switch cellName {
         case "공지사항":

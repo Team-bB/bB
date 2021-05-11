@@ -17,13 +17,20 @@ class NoticeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.reloadData()
+        setTableView()
     }
 
     @IBAction func closeButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func setTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = cellHeight
+        tableView.separatorInset.left = 20
+        tableView.separatorInset.right = 20
+//        tableView.reloadData()
     }
 }
 
@@ -64,4 +71,7 @@ extension NoticeVC: UITableViewDataSource, UITableViewDelegate {
         return cellHeight
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
