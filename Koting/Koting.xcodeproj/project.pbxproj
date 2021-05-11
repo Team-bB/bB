@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5BAA480BD1741B8300EE6800 /* Pods_Koting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */; };
 		881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */; };
+		883B4196264A8B3E007EB33C /* NoticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4195264A8B3E007EB33C /* NoticeVC.swift */; };
+		883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4197264A8DDE007EB33C /* NoticeCell.swift */; };
 		884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */; };
 		884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */; };
 		88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA12609D8B500CF7CAC /* UIViewController++.swift */; };
@@ -77,6 +79,8 @@
 		6ADA15F079F682A7912D7A20 /* Pods-Koting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.debug.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.debug.xcconfig"; sourceTree = "<group>"; };
 		7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeetingRoomsAPI.swift; sourceTree = "<group>"; };
+		883B4195264A8B3E007EB33C /* NoticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeVC.swift; sourceTree = "<group>"; };
+		883B4197264A8DDE007EB33C /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 		884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetUserPhoto.storyboard; sourceTree = "<group>"; };
 		884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC.swift; sourceTree = "<group>"; };
 		88556CA12609D8B500CF7CAC /* UIViewController++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController++.swift"; sourceTree = "<group>"; };
@@ -156,6 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		883B4194264A8B29007EB33C /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				883B4195264A8B3E007EB33C /* NoticeVC.swift */,
+				883B4197264A8DDE007EB33C /* NoticeCell.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
 		88556C9F2609D88E00CF7CAC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,11 +309,12 @@
 		889F7F782608900300B3DA62 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				883B4194264A8B29007EB33C /* Notice */,
 				88849D5F2644364600E2B1AF /* ColletionView */,
 				889F7F85260890B200B3DA62 /* MyInfoVC.swift */,
+				88984E5926444C9B00997ED2 /* StrechyHeader.swift */,
 				88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */,
 				88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */,
-				88984E5926444C9B00997ED2 /* StrechyHeader.swift */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -538,6 +552,7 @@
 				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
 				88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */,
+				883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */,
 				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				D392E15A26459F5300938E85 /* ApplicantCollectionViewCell.swift in Sources */,
@@ -561,6 +576,7 @@
 				D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */,
 				D392E151264574B500938E85 /* MyMeetingApplicantCell.swift in Sources */,
 				D392E13E264565A300938E85 /* MenuCell.swift in Sources */,
+				883B4196264A8B3E007EB33C /* NoticeVC.swift in Sources */,
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
 				D392E1542645750C00938E85 /* MyApplyCell.swift in Sources */,
 				88556CB92609D96A00CF7CAC /* API.swift in Sources */,

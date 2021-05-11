@@ -118,6 +118,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         
         switch cellName {
         case "공지사항":
+            self.asyncPresentView(identifier: "NoticeVC")
             break
         case "앱 정보":
             indicator.stopAnimating()
