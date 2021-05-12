@@ -138,7 +138,7 @@ public class ApplyController {
       Apply one = applyService.findOne(apply_.getId());
       one.rejectAccept();
     }
-    apply.getMeeting().getOwner().getApplies().clear();
+    apply.getMeeting().getParticipants().clear();
 
     retObject.put("result", "true");
     return retObject;
