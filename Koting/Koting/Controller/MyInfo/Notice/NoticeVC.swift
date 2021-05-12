@@ -11,21 +11,17 @@ fileprivate let reuseIdentifier = "cell"
 
 class NoticeVC: UIViewController {
     
-    let noticeList: [Notice] = [
-        Notice(title: "[공지] 지금까지 코팅을 사랑해주셔서 감사합니다.", content: "이것은 내용입니다. 이것은 내용입니다. ", date: "2021/05/12"),
-        Notice(title: "[공지] 안드로이드 개발자를 구합니다.", content: "이것은 내용입니다. 이것은 내용입니다. ", date: "2021/05/12"),
-        Notice(title: "[공지] 지금까지 코팅을 사랑해주셔서 감사합니다.", content: "이것은 내용입니다. 이것은 내용입니다. ", date: "2021/05/12"),
-        Notice(title: "[공지] 안녕하세요. 코팅입니다.", content: "이것은 내용입니다. 이것은 내용입니다. ", date: "2021/05/12"),
-        Notice(title: "[공지] 코팅을 왜 만들었나요?", content: "이것은 내용입니다. 이것은 내용입니다. ", date: "2021/05/12"),
-        Notice(title: "[공지] 코팅 서비스 출시 !", content: "이것은 내용입니다. 이것은 내용입니다. ", date: "2021/05/12"),
-    ]
+    let indicator = CustomIndicator()
     let cellHeight: CGFloat = 80
+    var noticeList: [Notice] = []
+   
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setTableView()
+        FetchNotices()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -49,7 +45,47 @@ class NoticeVC: UIViewController {
         tableView.separatorInset.left = 20
         tableView.separatorInset.right = 20
         tableView.tableFooterView = UIView()
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 //        tableView.reloadData()
+    }
+    
+    
+    @objc private func didPullToRefresh() {
+        print("Start Refresh")
+        FetchNotices()
+    }
+    // MARK: FetchMeetings
+    func FetchNotices() {
+        
+        if tableView.refreshControl?.isRefreshing == true {
+            print("-----Refreshing Meetings-----\n")
+        } else {
+            indicator.startAnimating(superView: view)
+            print("-----Fetching Meetings-----\n")
+        }
+        
+        GetNoticeAPI.shared.get { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let finalResult):
+                strongSelf.noticeList = finalResult.notice
+                
+                DispatchQueue.main.async {
+                    strongSelf.indicator.stopAnimating()
+                    strongSelf.tableView.refreshControl?.endRefreshing()
+                    strongSelf.tableView.reloadData()
+                }
+                
+            case .failure:
+                DispatchQueue.main.async {
+                    strongSelf.indicator.stopAnimating()
+                    strongSelf.tableView.refreshControl?.endRefreshing()
+                }
+                break
+            }
+        }
     }
 }
 
