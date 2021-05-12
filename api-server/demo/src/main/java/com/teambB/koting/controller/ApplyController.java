@@ -79,6 +79,7 @@ public class ApplyController {
       List<Apply> applies = member.getApplies();
 
       for (Apply apply : applies) {
+        // 대기, 완료, 거절
         JSONObject meetingOwner = new JSONObject();
         meetingOwner.put("age", apply.getMeeting().getOwner().getAge());
         meetingOwner.put("animal_idx", apply.getMeeting().getOwner().getAnimalIdx());
@@ -93,6 +94,7 @@ public class ApplyController {
         meetingInfo.put("meeting_id", apply.getMeeting().getId());
         meetingInfo.put("link", apply.getMeeting().getLink());
         meetingInfo.put("player", apply.getMeeting().getPlayer());
+        meetingInfo.put("apply_status", apply.getApplyStatus().toString());
         jArray2.add(meetingInfo);
       }
 
@@ -124,6 +126,7 @@ public class ApplyController {
     Long applyId = Long.parseLong(object.get("apply_id").toString());
     Apply apply = applyService.findOne(applyId);
     apply.applyAccept();
+    // 본인 신청들 전부 삭제
   }
 
   @Transactional
