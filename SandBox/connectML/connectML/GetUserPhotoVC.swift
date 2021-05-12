@@ -20,7 +20,7 @@ class GetUserPhotoVC: UIViewController {
         
         imageView.backgroundColor = .lightGray
         imageView.contentMode = . scaleAspectFill
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -46,7 +46,7 @@ class GetUserPhotoVC: UIViewController {
         
         aView.layer.shadowOffset = CGSize(width: 5, height: 5)
         aView.layer.shadowOpacity = 0.7
-        aView.layer.shadowRadius = 5
+        aView.layer.shadowRadius = 10
         aView.layer.shadowColor = UIColor.gray.cgColor
         aView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -144,7 +144,7 @@ class GetUserPhotoVC: UIViewController {
             if let firstResult = results.first{
                 self.navigationItem.title = firstResult.identifier
                 print(firstResult)
-                self.predictLabel.text = "\(round((firstResult.confidence)*1000)/10) %의 확률로 \(firstResult.identifier)상 이신거같아요"
+                self.predictLabel.text = "\(round((firstResult.confidence)*1000)/10) %의 확률로 \(firstResult.identifier)상 이시네 >____<"
                 
                 switch firstResult.identifier {
                 case "dog":
