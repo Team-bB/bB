@@ -121,22 +121,103 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         case "공지사항":
             self.asyncPresentView(identifier: "NoticeVC")
             break
+            
         case "앱 정보":
-            indicator.stopAnimating()
             break
+            
         case "문의하기":
-            showMessageView(email: "imjeongwoo@kakao.com", subject: "[Koting] 문의사항", body: "Content")
+            showMessageView(email: "ghdghkgud@naver.com", subject: "[Koting] 문의사항", body: "Content")
             break
+            
         case "동물상 재측정":
             break
+            
         case "로그아웃":
-            logOut()
+            makeLogOutAlert()
             break
+            
         case "회원탈퇴":
+            makeWithdrawalAlert()
             break
+            
         default:
             break
         }
+    }
+    
+    fileprivate func makeLogOutAlert() {
+        let alertController = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠습니까?", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .default) { [weak self] action in
+            
+            guard let strongSelf = self else { return }
+            strongSelf.logOut()
+        }
+        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+        
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    fileprivate func makeWithdrawalAlert() {
+        let alertController = UIAlertController(title: "회원탈퇴", message: "탈퇴 하시겠습니까?", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .default) { [weak self] action in
+            
+            guard let self = self else { return }
+            
+            self.indicator.startAnimating(superView: self.view)
+            
+            WithdrawalAPI.shared.delete { result in
+                switch result {
+                case .success(let finalResult):
+                    let isTrue = finalResult.result
+                    
+                    if isTrue == "true" {
+                        
+                        DispatchQueue.main.async {
+                            
+                            self.indicator.stopAnimating()
+                            self.makeAlertBox(title: "탈퇴완료", message: "메인으로 돌아갑니다.", text: "확인") { action in
+                                
+                                self.logOut()
+                            }
+                            
+                        }
+                        
+                    } else {
+                        
+                        DispatchQueue.main.async {
+                            
+                            self.indicator.stopAnimating()
+                            self.makeAlertBox(title: "오류", message: "에러가 발생했습니다.\n다시시도 해주세요.", text: "확인")
+                        }
+
+                    }
+                case .failure(let error):
+                    
+                    print(error)
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.indicator.stopAnimating()
+                        self.makeAlertBox(title: "실패", message: "회원탈퇴를 실패했습니다.", text: "확인")
+                        
+                    }
+                }
+                
+            }
+            
+            
+        }
+        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+        
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     fileprivate func logOut() {
@@ -144,14 +225,14 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         else {
             print("⚠️ Unknown Error ⚠️")
             return }
-        UserDefaults.standard.removeObject(forKey: "accountId")
- 
+        
+        deleteUserDefaults()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "GettingStarted") as! GettingStartedVC
-        self.dismiss(animated: true, completion: nil)
-        self.present(vc, animated: true, completion: nil)
         
-    
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(vc, animated: true)
+        
         print(" ✅ LogOut Success ✅")
     }
     
@@ -166,7 +247,14 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         default: return "nil"
         }
     }
-
+    
+    fileprivate func deleteUserDefaults() {
+        
+        UserDefaults.standard.removeObject(forKey: "accountId")
+        UserDefaults.standard.removeObject(forKey: "myInfo")
+        UserDefaults.standard.removeObject(forKey: "mailAuthChecked")
+        
+    }
 }
 
 extension MyInfoVC: MFMailComposeViewControllerDelegate {
