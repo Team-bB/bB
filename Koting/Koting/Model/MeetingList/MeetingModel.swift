@@ -34,6 +34,7 @@ struct Meeting: Codable {
     let meeting_id: Int?
     let link: String
     let player: String
+    let apply_status: String?
 }
 struct Applicant: Codable {
     let college: String?
@@ -45,6 +46,7 @@ struct Applicant: Codable {
     let age: Int?
     let height: Int?
     let account_id: String
+    let apply_id: String
 }
 
 struct MyMeeting: Codable {
@@ -79,7 +81,7 @@ struct MyMeetingListAPIResponse: Codable {
 }
 
 struct DoneMeetingListAPIResponse: Codable {
-    let doneMeeting: [Meeting]
+    let result: [Meeting]
 }
 
 struct AcceptMeetingApplicantAPIResponse: Codable {

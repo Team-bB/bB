@@ -119,8 +119,10 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             cell.collegeLabel.text = myApplies[indexPath.row].owner?.college
             cell.mbtiLabel.text = myApplies[indexPath.row].owner?.mbti
             cell.numberOfParticipants.text = myApplies[indexPath.row].player
-            cell.progressLabel.text = "거절됨"
-            cell.progressLabel.textColor = #colorLiteral(red: 1, green: 0.1289727639, blue: 0.1503030388, alpha: 1)
+            cell.progressLabel.text = myApplies[indexPath.row].apply_status
+            if myApplies[indexPath.row].apply_status == "WAIT" {
+                cell.progressLabel.textColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            } else { cell.progressLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)}
 
             let bgView = UIView()
             bgView.backgroundColor = .white

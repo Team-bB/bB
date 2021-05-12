@@ -39,7 +39,7 @@ class MyDoneMeetingVC: UIViewController {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let finalResult):
-                strongSelf.doneMeeting = finalResult.doneMeeting
+                strongSelf.doneMeeting = finalResult.result
 
                 DispatchQueue.main.async {
                     print(self?.doneMeeting)

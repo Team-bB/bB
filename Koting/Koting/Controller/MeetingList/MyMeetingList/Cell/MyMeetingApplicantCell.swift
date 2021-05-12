@@ -112,7 +112,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         self.acceptButtonTapped = { [unowned self] in
             let age = myMeeting?.participant[indexPath.row].age
             print(age ?? "0")
-            AcceptMeetingAPI.shared.post(accountID: myMeeting?.participant[indexPath.row].account_id) { [weak self] result in
+            AcceptMeetingAPI.shared.post(applyID: myMeeting?.participant[indexPath.row].apply_id) { [weak self] result in
                 
                 guard let strongSelf = self else { return }
             
@@ -133,7 +133,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
             }
         }
         self.rejectButtonTapped = { [unowned self] in
-            RejectMeetingAPI.shared.post(accountID: myMeeting?.participant[indexPath.row].account_id) { [weak self] result in
+            RejectMeetingAPI.shared.post(accountID: myMeeting?.participant[indexPath.row].apply_id) { [weak self] result in
                 
                 guard let strongSelf = self else { return }
                 

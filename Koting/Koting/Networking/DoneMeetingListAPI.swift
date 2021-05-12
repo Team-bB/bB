@@ -15,7 +15,7 @@ class DoneMeetingListAPI {
     
     func get(accountID:String?,completion: @escaping (Result<DoneMeetingListAPIResponse, Error>) -> (Void)) {
         guard let accountID = accountID else { return }
-        let url = API.shared.BASE_URL + "/meetings/matched?account_id=\(accountID)"
+        let url = API.shared.BASE_URL + "/applies/success?account_id=\(accountID)"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
