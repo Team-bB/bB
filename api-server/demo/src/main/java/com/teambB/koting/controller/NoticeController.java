@@ -22,12 +22,12 @@ public class NoticeController {
     JSONArray array = new JSONArray();
 
     List<Notice> all = noticeService.findAll();
-    for (Notice notice : all) {
+    for (int i = all.size() - 1; i >= 0; i--) {
       JSONObject temp = new JSONObject();
-      temp.put("id", notice.getId());
-      temp.put("title", notice.getTitle());
-      temp.put("content", notice.getContent());
-      temp.put("date", notice.getDate());
+      temp.put("id", all.get(i).getId());
+      temp.put("title", all.get(i).getTitle());
+      temp.put("content", all.get(i).getContent());
+      temp.put("date", all.get(i).getDate());
       array.add(temp);
     }
     retObect.put("notice", array);

@@ -65,7 +65,7 @@ public class ApplyController {
           myInfo.put("sex", apply.getMember().getSex());
           myInfo.put("mbti", apply.getMember().getMbti());
           myInfo.put("account_id", apply.getMember().getAccount_id());
-          myInfo.put("apply_id", apply.getId());
+          myInfo.put("apply_id", apply.getId().toString());
           jArray.add(myInfo);
         }
 
