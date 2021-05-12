@@ -1,6 +1,7 @@
 package com.teambB.koting.controller;
 
 import com.teambB.koting.domain.Apply;
+import com.teambB.koting.domain.ApplyStatus;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.service.ApplyService;
@@ -79,7 +80,9 @@ public class ApplyController {
       List<Apply> applies = member.getApplies();
 
       for (Apply apply : applies) {
-        // 대기, 완료, 거절
+        // 대기 거절만 리턴
+        if (apply.getApplyStatus() == ApplyStatus.ACCEPT)
+          continue ;
         JSONObject meetingOwner = new JSONObject();
         meetingOwner.put("age", apply.getMeeting().getOwner().getAge());
         meetingOwner.put("animal_idx", apply.getMeeting().getOwner().getAnimalIdx());
