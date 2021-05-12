@@ -124,21 +124,53 @@ public class ApplyController {
 
   @Transactional
   @PostMapping("/applies/accept")
-  public void acceptApply(@RequestBody JSONObject object) {
+  public JSONObject acceptApply(@RequestBody JSONObject object) {
+    JSONObject retObject = new JSONObject();
 
     Long applyId = Long.parseLong(object.get("apply_id").toString());
     Apply apply = applyService.findOne(applyId);
     apply.applyAccept();
-    // 본인 신청들 전부 삭제
+
+    List<Apply> applies = apply.getMeeting().getParticipants();
+    for (Apply apply_ : applies) {
+      if (apply.getId() == apply_.getId())
+        continue ;
+      Apply one = applyService.findOne(apply_.getId());
+      one.rejectAccept();
+    }
+    apply.getMeeting().getOwner().getApplies().clear();
+
+    retObject.put("result", "true");
+    return retObject;
   }
 
   @Transactional
   @PostMapping("/applies/reject")
-  public void rejectApply(@RequestBody JSONObject object) {
+  public JSONObject rejectApply(@RequestBody JSONObject object) {
+    JSONObject retObject = new JSONObject();
 
     Long applyId = Long.parseLong(object.get("apply_id").toString());
     Apply apply = applyService.findOne(applyId);
     apply.rejectAccept();
+
+    /*
+    1. 해당 Apply 거절
+    2. 해당 Apply 타고, 주인의 applies에서 방금 apply 삭제
+     */
+    List<Apply> applies = apply.getMeeting().getOwner().getApplies();
+    System.out.println("applies size : " + applies.size());
+
+    for (int i = 0; i < applies.size(); i++) {
+      if (applies.get(i).getId() == apply.getId()) {
+        applies.remove(i);
+        break ;
+      }
+    }
+
+    System.out.println("applies size : " + applies.size());
+
+    retObject.put("result", "true");
+    return retObject;
   }
 
   @GetMapping("/applies/success")
