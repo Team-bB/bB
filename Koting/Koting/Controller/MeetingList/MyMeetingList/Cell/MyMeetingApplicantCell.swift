@@ -43,18 +43,15 @@ class MyMeetingApplicantCell: UITableViewCell {
 //        pageControl.hidesForSinglePage = true
     }
 
-    var acceptButtonReloadData: (() -> ())?
+    var buttonReloadData: (() -> ())?
     var acceptButtonTapped: (() -> ())?
-    var rejectButtonReloadData: (() -> ())?
     var rejectButtonTapped: (() -> ())?
     
     @IBAction func acceptBtnTapped(_ sender: Any) {
-        acceptButtonReloadData?()
         acceptButtonTapped?()
     }
 
     @IBAction func rejectBtnTapped(_ sender: Any) {
-        rejectButtonReloadData?()
         rejectButtonTapped?()
     }
     
@@ -114,48 +111,50 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
             print(age ?? "0")
             AcceptMeetingAPI.shared.post(applyID: myMeeting?.participant[indexPath.row].apply_id) { [weak self] result in
                 
-                guard let strongSelf = self else { return }
-            
                 switch result {
                 case .success(let finalResult):
                     if finalResult.result == "true" {
                         DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인")
-                            }
+                            parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인",handler: {(action: UIAlertAction!) in
+                                buttonReloadData!()
+                            })
+                        }
                     } else {
                         DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "수락 실패", text: "확인")
-                            }
+                            parentVC.makeAlertBox(title: "알림", message: "수락 실패", text: "확인",handler: {(action: UIAlertAction!) in
+                                buttonReloadData!()
+                            })
                         }
+                    }
                 case .failure:
-                    parentVC.makeAlertBox(title: "알림", message: "젠장 실패", text: "확인")
+                    parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler:{(action: UIAlertAction!) in
+                        buttonReloadData!()
+                    })
                 }
             }
         }
         self.rejectButtonTapped = { [unowned self] in
             RejectMeetingAPI.shared.post(accountID: myMeeting?.participant[indexPath.row].apply_id) { [weak self] result in
                 
-                guard let strongSelf = self else { return }
-                
                 switch result {
                 case .success(let finalResult):
                     if finalResult.result == "true" {
                         DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "알림", message: "신청 완료", preferredStyle: UIAlertController.Style.alert)
-                            let okAction = UIAlertAction(title: "확인", style: .default){ (action) in }
-                            alert.addAction(okAction)
-                            parentVC.present(alert, animated: true, completion: nil)
-                            }
+                            parentVC.makeAlertBox(title: "알림", message: "거절 완료", text: "확인",handler: {(action: UIAlertAction!) in
+                                buttonReloadData!()
+                            })
+                        }
                     } else {
                         DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "알림", message: "신청 실패", preferredStyle: UIAlertController.Style.alert)
-                            let okAction = UIAlertAction(title: "확인", style: .default){ (action) in }
-                            alert.addAction(okAction)
-                            parentVC.present(alert, animated: true, completion: nil)
-                            }
+                            parentVC.makeAlertBox(title: "알림", message: "거절 실패", text: "확인",handler: {(action: UIAlertAction!) in
+                                buttonReloadData!()
+                            })
+                        }
                         }
                 case .failure:
-                    break
+                    parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler: {(action: UIAlertAction!) in
+                        buttonReloadData!()
+                    })
                 }
             }
         }
