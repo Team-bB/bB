@@ -131,14 +131,20 @@ public class ApplyController {
     Apply apply = applyService.findOne(applyId);
     apply.applyAccept();
 
+    // 해당 미팅에 신청한 사람들
     List<Apply> applies = apply.getMeeting().getParticipants();
+
+    // 수락할 사람 빼고 거절처리
     for (Apply apply_ : applies) {
       if (apply.getId() == apply_.getId())
         continue ;
       Apply one = applyService.findOne(apply_.getId());
       one.rejectAccept();
     }
-    apply.getMeeting().getOwner().getApplies().clear();
+
+    System.out.println("size : " + apply.getMeeting().getParticipants().size());
+    apply.getMeeting().getParticipants().clear();
+    System.out.println("size : " + apply.getMeeting().getParticipants().size());
 
     retObject.put("result", "true");
     return retObject;
