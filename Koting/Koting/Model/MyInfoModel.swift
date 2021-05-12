@@ -19,3 +19,18 @@ struct MyInfo {
         1 : ["동물상 재측정", "로그아웃", "회원탈퇴"]
     ]
 }
+
+struct Notice: Codable {
+    let id: Int
+    let title: String
+    let content: String
+    let date: String
+}
+
+struct GetNoticeAPIResponse: Codable {
+    let notice: [Notice]
+}
+
+struct WithdrawalAPIResponse: Codable {
+    let result: String
+}

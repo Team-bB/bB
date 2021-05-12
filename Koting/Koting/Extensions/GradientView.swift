@@ -7,11 +7,11 @@
 
 import UIKit
 
-@IBDesignable
+
 class GradientView: UIView {
     
-    @IBInspectable var topColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).cgColor
-    @IBInspectable var bottomColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor
+    var topColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1).cgColor
+    var bottomColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).cgColor
     
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)

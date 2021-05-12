@@ -1,6 +1,7 @@
 package com.teambB.koting.service;
 
 import com.teambB.koting.domain.Apply;
+import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.ApplyRepository;
 import java.util.List;
@@ -32,5 +33,9 @@ public class ApplyService {
   @Transactional(readOnly = true)
   public Apply findOne(Long id) {
     return applyRepository.findOne(id);
+  }
+
+  public List<Apply> findAll() {
+    return applyRepository.findAll();
   }
 }

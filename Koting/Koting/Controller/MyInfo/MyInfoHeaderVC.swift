@@ -45,7 +45,7 @@ class MyInfoHeaderVC: UIViewController {
         myAnimalFaceLabel.text = transString(index: userInfo.animal_idx ?? 1)
         
         nickName.text = "닉넴"
-        nickName.textColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        nickName.textColor = UIColor(cgColor: tintColor)
         myAnimalFaceLabel.textColor = .gray
 
     }

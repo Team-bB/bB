@@ -9,11 +9,13 @@ import UIKit
 import NVActivityIndicatorView
 
 class CustomIndicator: UIView {
-
-    override init(frame: CGRect) {
-        super .init(frame: frame)
+    
+    var isAnimating: Bool = false
+    
+   override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        self.backgroundColor = UIColor(cgColor: CGColor(red: 255, green: 255, blue: 255, alpha: 0.7))
+        self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
         
         self.addSubview(NVActivityIndicatorView(
             frame: CGRect(
@@ -21,7 +23,7 @@ class CustomIndicator: UIView {
                 size: CGSize(width: 100, height: 100)
             ),
             type: .ballBeat,
-            color: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1),
+            color: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1),
             padding: 0
         ))
 
@@ -33,6 +35,11 @@ class CustomIndicator: UIView {
     
     func startAnimating(superView: UIView) {
         
+        if isAnimating == true {
+            return
+        }
+        
+        self.isAnimating = true
         self.frame = superView.bounds
         
         let indicator = self.subviews.first as! NVActivityIndicatorView
@@ -46,6 +53,11 @@ class CustomIndicator: UIView {
     
     func stopAnimating() {
         
+        if isAnimating == false {
+            return
+        }
+        
+        self.isAnimating = false
         let indicator = self.subviews.first as! NVActivityIndicatorView
         
         self.removeFromSuperview()

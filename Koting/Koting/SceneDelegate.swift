@@ -39,6 +39,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        self.window?.makeKeyAndVisible()
     }
 
+    func changeRootVC (_ vc: UIViewController, animated: Bool) {
+        guard let window = self.window else { return }
+        window.rootViewController = vc
+        
+        guard animated else { return }
+        UIView.transition(with: window, duration: 0.2, options: [.transitionCrossDissolve], animations: nil, completion: nil)
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

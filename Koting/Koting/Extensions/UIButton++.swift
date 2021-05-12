@@ -9,7 +9,7 @@ import UIKit
 
 extension UIButton {
     
-    func setEnable(enable: Bool? = true, backgroundColor: UIColor? = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)) {
+    func setEnable(enable: Bool? = true, backgroundColor: UIColor? = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)) {
         self.isEnabled = enable!
         self.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         self.backgroundColor = backgroundColor

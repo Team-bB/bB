@@ -100,9 +100,15 @@ class SignUpVC: UIViewController {
         if (isValidEmail(email + form.mailDomain)) {
             indicator.startAnimating(superView: view)
             
-            SignUpAPI.shared.post(paramArray: infoArray) { result in
+            SignUpAPI.shared.post(paramArray: infoArray) { [weak self] result in
+                
+                guard let self = self else { return }
                 switch result {
                 case .success(let message):
+                    
+                    let myInfo = Owner(college: self.college.text, major: self.major.text, sex: self.sex.text, mbti: self.MBTI.text, animal_idx: 1, age: Int(self.age.text!), height: Int(self.height.text!))
+                    
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(myInfo), forKey:"myInfo")
                     UserDefaults.standard.set(message.result, forKey: "accountId")
                     UserDefaults.standard.set(false, forKey: "mailAuthChecked")
                     

@@ -12,9 +12,4 @@ class StrechyHeader: UIView {
         let headerVC = MyInfoHeaderVC(nibName: "MyInfoHeaderVC", bundle: nil)
         return headerVC.view        
     }()
-    
-    private var headerViewHeight = NSLayoutConstraint()
-    private var headerViewBottom = NSLayoutConstraint()
-    private var subHeaderViewHeight = NSLayoutConstraint()
-    
 }
