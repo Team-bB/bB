@@ -11,11 +11,6 @@ class MyContinueMeetingVC: UIViewController {
 
     var myApplies = [Meeting]()
     var myMeeting: MyMeeting?
-//    var myMeeting: MyMeeting = MyMeeting(myMeeting: Meeting(owner: Owner(college: "이과대학", major: "화학과", sex: "남", mbti: "ENTP", animal_idx: 1, age: 22, height: 176), meeting_id: 111, link: "adsf", player: "3:#"),
-//                                         participant: [Owner(college: "공과대학", major: "정보통신공학과", sex: "여", mbti: "INFP", animal_idx: 3, age: 20, height: 150),
-//                                                       Owner(college: "문과대학", major: "국어문예창작학부", sex: "여", mbti: "ESFP", animal_idx: 4, age: 27, height: 155),
-//                                                       Owner(college: "사회과학대학", major: "경제학과", sex: "여", mbti: "INTF", animal_idx: 2, age: 24, height: 160)])
-
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -27,6 +22,10 @@ class MyContinueMeetingVC: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         
+        FetchMeetings()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         FetchMeetings()
     }
     
@@ -91,7 +90,8 @@ extension MyContinueMeetingVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingApplicantCell", for: indexPath) as! MyMeetingApplicantCell
-            if myMeeting?.participant.count == 0 {
+            guard let participant = myMeeting?.participant else { return UITableViewCell() }
+            if participant.count == 0 {
                 return UITableViewCell()
             }
             cell.collectionView.tag = indexPath.row

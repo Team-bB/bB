@@ -14,8 +14,8 @@ class DeleteMeetingRoomAPI {
     
     private init() {}
     
-    func post(completion: @escaping (Result<DeleteMeetingRoomAPIResponse, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/meetings.."
+    func delete(completion: @escaping (Result<DeleteMeetingRoomAPIResponse, Error>) -> (Void)) {
+        let url = API.shared.BASE_URL + "/meetings"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

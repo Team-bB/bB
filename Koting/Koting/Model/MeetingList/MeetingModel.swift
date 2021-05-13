@@ -51,7 +51,7 @@ struct Applicant: Codable {
 
 struct MyMeeting: Codable {
     let myMeeting: Meeting
-    let participant: [Applicant]
+    let participant: [Applicant]?
 }
 
 struct CreateMeetingRoomAPIResponse: Codable {

@@ -19,9 +19,14 @@ class MyDoneMeetingVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.tableFooterView = UIView()
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
+        FetchMeetings()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         FetchMeetings()
     }
     

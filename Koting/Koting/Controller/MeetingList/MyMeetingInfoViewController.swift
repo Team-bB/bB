@@ -53,7 +53,7 @@ class MyMeetingInfoViewController: UIViewController {
     }
     
     func deleteMeeting() {
-        DeleteMeetingRoomAPI.shared.post() { [weak self] result in
+        DeleteMeetingRoomAPI.shared.delete() { [weak self] result in
             
             guard let strongSelf = self else { return }
             

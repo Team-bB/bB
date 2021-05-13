@@ -33,7 +33,6 @@ class MyMeetingApplicantCell: UITableViewCell {
         rejectBtn.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         rejectBtn.layer.cornerRadius = 12
         pageControl.hidesForSinglePage = true
-//
     }
     func setColleciontionViewWith(){
         self.collectionView.showsHorizontalScrollIndicator = false
@@ -84,7 +83,7 @@ class MyMeetingApplicantCell: UITableViewCell {
 
 extension MyMeetingApplicantCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = myMeeting?.participant.count ?? 0
+        let count = myMeeting?.participant?.count ?? 0
         pageControl.numberOfPages = count
         pageControl.isHidden = !(count>1)
         return count
@@ -92,14 +91,14 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApplicantCollectionViewCell", for: indexPath) as! ApplicantCollectionViewCell
-        cell.collegeLabel.text = myMeeting?.participant[indexPath.row].college
-        cell.animalShapeImage.image = UIImage(named: transImage(index: myMeeting?.participant[indexPath.row].animal_idx ?? 0))
+        cell.collegeLabel.text = myMeeting?.participant?[indexPath.row].college
+        cell.animalShapeImage.image = UIImage(named: transImage(index: myMeeting?.participant?[indexPath.row].animal_idx ?? 0))
         cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2
         cell.animalShapeImage.layer.masksToBounds = true
         cell.animalShapeImage.layer.borderWidth = 0
-        cell.ageLabel.text = String(myMeeting?.participant[indexPath.row].age ?? 0)
-        cell.heightLabel.text = String(myMeeting?.participant[indexPath.row].height ?? 0)
-        cell.mbtiLabel.text = myMeeting?.participant[indexPath.row].mbti
+        cell.ageLabel.text = String(myMeeting?.participant?[indexPath.row].age ?? 0)
+        cell.heightLabel.text = String(myMeeting?.participant?[indexPath.row].height ?? 0)
+        cell.mbtiLabel.text = myMeeting?.participant?[indexPath.row].mbti
         cell.collectionCellView.layer.cornerRadius = 40
         cell.collectionCellView.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
         cell.collectionCellView.layer.shadowOpacity = 1.0
@@ -107,9 +106,9 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         cell.collectionCellView.layer.shadowRadius = 5
         
         self.acceptButtonTapped = { [unowned self] in
-            let age = myMeeting?.participant[indexPath.row].age
+            let age = myMeeting?.participant?[indexPath.row].age
             print(age ?? "0")
-            AcceptMeetingAPI.shared.post(applyID: myMeeting?.participant[indexPath.row].apply_id) { [weak self] result in
+            AcceptMeetingAPI.shared.post(applyID: myMeeting?.participant?[indexPath.row].apply_id) { [weak self] result in
                 
                 switch result {
                 case .success(let finalResult):
@@ -134,7 +133,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
             }
         }
         self.rejectButtonTapped = { [unowned self] in
-            RejectMeetingAPI.shared.post(accountID: myMeeting?.participant[indexPath.row].apply_id) { [weak self] result in
+            RejectMeetingAPI.shared.post(applyID: myMeeting?.participant?[indexPath.row].apply_id) { [weak self] result in
                 
                 switch result {
                 case .success(let finalResult):
