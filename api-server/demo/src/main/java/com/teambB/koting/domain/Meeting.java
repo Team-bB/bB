@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,29 +19,20 @@ public class Meeting {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "meeting_id")
   private Long id;
-
+  private Long ownerId;
   private LocalDateTime createDate;
   private String player;
   private String link;
-
-  @OneToOne(mappedBy = "myMeeting")
-  private Member owner;
 
   @OneToMany(mappedBy = "meeting")
   private List<Apply> participants = new ArrayList<>();
 
   public static Meeting createMeeting(Member member, String player, String link) {
     Meeting meeting = new Meeting();
-    meeting.setOwner(member);
     meeting.setPlayer(player);
     meeting.setCreateDate(LocalDateTime.now());
     meeting.setLink(link);
-    meeting.setMember(member);
+    meeting.setOwnerId(member.getId());
     return meeting;
-  }
-
-  public void setMember(Member member) {
-    this.owner = member;
-    member.setMyMeeting(this);
   }
 }
