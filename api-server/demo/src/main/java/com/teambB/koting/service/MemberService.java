@@ -3,6 +3,7 @@ package com.teambB.koting.service;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +31,10 @@ public class MemberService {
     }
   }
 
+  public Member findOne(Long id) {
+    return memberRepository.findOne(id);
+  }
+
   public Member findOneByEmail(String email) {
     return memberRepository.findByEmail(email);
   }
@@ -40,5 +45,15 @@ public class MemberService {
 
   public Member findOneByAccountId(String accountId) {
     return memberRepository.findByAccountId(accountId);
+  }
+
+  public void setMemberInfo(JSONObject object, Member member) {
+    object.put("age", member.getAge());
+    object.put("animal_idx", member.getAnimalIdx());
+    object.put("height", member.getHeight());
+    object.put("college", member.getCollege());
+    object.put("major", member.getMajor());
+    object.put("sex", member.getSex());
+    object.put("mbti", member.getMbti());
   }
 }

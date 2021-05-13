@@ -4,6 +4,7 @@ import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.repository.MeetingRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,5 +26,12 @@ public class MeetingService {
 
   public List<Meeting> findAll() {
     return meetingRepository.findAll();
+  }
+
+  public void setMeetingInfo(JSONObject object, JSONObject owner, Meeting meeting) {
+    object.put("owner", owner);
+    object.put("meeting_id", meeting.getId());
+    object.put("player", meeting.getPlayer());
+    object.put("link", meeting.getLink());
   }
 }
