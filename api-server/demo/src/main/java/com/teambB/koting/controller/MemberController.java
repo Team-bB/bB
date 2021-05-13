@@ -5,14 +5,10 @@ import com.teambB.koting.repository.MemberRepository;
 import com.teambB.koting.service.MemberService;
 import java.io.UnsupportedEncodingException;
 import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +25,6 @@ public class MemberController {
 
   @Autowired private final MemberService memberService;
   @Autowired private final MemberRepository memberRepository;
-  @Autowired private JavaMailSender javaMailSender;
   @Autowired EntityManager em;
 
   private HashMap<String, String> dic = new HashMap<String, String>();
@@ -42,7 +37,7 @@ public class MemberController {
     JSONObject retObejct = new JSONObject();
     Member member = Member.createMember(object);
     memberService.join(member);
-    sendMail(member.getEmail(), member.getAuthKey()); // 비동기처리
+    memberService.sendMail(member.getEmail(), member.getAuthKey()); // 비동기처리
     retObejct.put("result", member.getAccount_id());
     return retObejct;
   }
@@ -120,39 +115,6 @@ public class MemberController {
     String accountId = object.get("account_id").toString();
     Member member = memberService.findOneByAccountId(accountId);
     retObject.put("result", member.getAuthStatus());
-    return retObject;
-  }
-
-  public void sendMail(String email, String authKey) throws MessagingException, UnsupportedEncodingException {
-
-    String to = email;
-    String from = "noreply@koting.kr";
-    String subject = "[코팅] 회원가입 인증메일입니다. ";
-    String url = "https://koting.kr/auth/email?email=" + email + "&authKey=" + authKey;
-
-    StringBuilder body = new StringBuilder();
-    body.append("<html> <body>");
-    body.append("<div> 동국대학교 학우님 반갑습니다! </div>");
-    body.append("<div> 하단의 링크를 클릭해주세요! </div>");
-    body.append("<a href=\"" + url + "\">인증하기</a>");
-    body.append("</body> </html>");
-
-    MimeMessage message = javaMailSender.createMimeMessage();
-    MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, true, "UTF-8");
-
-    mimeMessageHelper.setFrom(from,"noreply@koting.kr");
-    mimeMessageHelper.setTo(to);
-    mimeMessageHelper.setSubject(subject);
-    mimeMessageHelper.setText(body.toString(), true);
-    javaMailSender.send(message);
-  }
-
-  @DeleteMapping("/member")
-  public JSONObject deleteMember(@RequestBody JSONObject object) {
-    String account_id = object.get("account_id").toString();
-    memberRepository.deleteMember(account_id);
-    JSONObject retObject = new JSONObject();
-    retObject.put("result", "true");
     return retObject;
   }
 }

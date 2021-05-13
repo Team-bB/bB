@@ -2,8 +2,14 @@ package com.teambB.koting.service;
 
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MemberRepository;
+import java.io.UnsupportedEncodingException;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MemberService {
 
+  @Autowired
+  private JavaMailSender javaMailSender;
   private final MemberRepository memberRepository;
 
   public Long join(Member member) {
@@ -55,5 +63,29 @@ public class MemberService {
     object.put("major", member.getMajor());
     object.put("sex", member.getSex());
     object.put("mbti", member.getMbti());
+  }
+
+  public void sendMail(String email, String authKey) throws MessagingException, UnsupportedEncodingException {
+
+    String to = email;
+    String from = "noreply@koting.kr";
+    String subject = "[코팅] 회원가입 인증메일입니다. ";
+    String url = "https://koting.kr/auth/email?email=" + email + "&authKey=" + authKey;
+
+    StringBuilder body = new StringBuilder();
+    body.append("<html> <body>");
+    body.append("<div> 동국대학교 학우님 반갑습니다! </div>");
+    body.append("<div> 하단의 링크를 클릭해주세요! </div>");
+    body.append("<a href=\"" + url + "\">인증하기</a>");
+    body.append("</body> </html>");
+
+    MimeMessage message = javaMailSender.createMimeMessage();
+    MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+    mimeMessageHelper.setFrom(from,"noreply@koting.kr");
+    mimeMessageHelper.setTo(to);
+    mimeMessageHelper.setSubject(subject);
+    mimeMessageHelper.setText(body.toString(), true);
+    javaMailSender.send(message);
   }
 }
