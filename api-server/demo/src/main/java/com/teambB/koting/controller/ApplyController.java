@@ -32,9 +32,10 @@ public class ApplyController {
     JSONObject retObject = new JSONObject();
 
     Member member = memberService.findOneByAccountId(accountId);
-    Meeting myMeeting = member.getMyMeeting();
-
-    if (myMeeting != null) {
+    Long id = member.getMyMeetingId();
+    // 미팅 안만들어졌을 때 예외처
+    Meeting myMeeting = meetingService.findOne(id);
+    if (myMeeting != null) {리
         JSONObject myMeetingInfo = new JSONObject();
         JSONObject ownerInfo = new JSONObject();
         JSONObject myCreation = new JSONObject();
@@ -48,12 +49,11 @@ public class ApplyController {
         ownerInfo.put("height", member.getHeight());
 
         myMeetingInfo.put("owner", ownerInfo);
-        myMeetingInfo.put("meeting_id", member.getMyMeeting().getId());
-        myMeetingInfo.put("link", member.getMyMeeting().getLink());
-        myMeetingInfo.put("player", member.getMyMeeting().getPlayer());
+        myMeetingInfo.put("meeting_id", myMeeting.getId());
+        myMeetingInfo.put("link", myMeeting.getLink());
+        myMeetingInfo.put("player", myMeeting.getPlayer());
 
         myCreation.put("myMeeting", myMeetingInfo);
-
         List<Apply> participants = myMeeting.getParticipants();
         JSONArray jArray = new JSONArray();
         for (Apply apply : participants) {
@@ -67,6 +67,7 @@ public class ApplyController {
           myInfo.put("mbti", apply.getMember().getMbti());
           myInfo.put("account_id", apply.getMember().getAccount_id());
           myInfo.put("apply_id", apply.getId().toString());
+          myInfo.put("apply_stats", apply.getApplyStatus());
           jArray.add(myInfo);
         }
 
@@ -82,22 +83,24 @@ public class ApplyController {
       for (Apply apply : applies) {
         // 대기 거절만 리턴
         if (apply.getApplyStatus() == ApplyStatus.ACCEPT)
+          break ;
+        if (apply.getApplyStatus() == ApplyStatus.REJECT)
           continue ;
         JSONObject meetingOwner = new JSONObject();
-        meetingOwner.put("age", apply.getMeeting().getOwner().getAge());
-        meetingOwner.put("animal_idx", apply.getMeeting().getOwner().getAnimalIdx());
-        meetingOwner.put("height", apply.getMeeting().getOwner().getHeight());
-        meetingOwner.put("college", apply.getMeeting().getOwner().getCollege());
-        meetingOwner.put("major", apply.getMeeting().getOwner().getMajor());
-        meetingOwner.put("sex", apply.getMeeting().getOwner().getSex());
-        meetingOwner.put("mbti", apply.getMeeting().getOwner().getMbti());
+        Member one = memberService.findOne(apply.getMeeting().getOwnerId());
+        meetingOwner.put("age", one.getAge());
+        meetingOwner.put("animal_idx", one.getAnimalIdx());
+        meetingOwner.put("height", one.getHeight());
+        meetingOwner.put("college", one.getCollege());
+        meetingOwner.put("major", one.getMajor());
+        meetingOwner.put("sex", one.getSex());
+        meetingOwner.put("mbti", one.getMbti());
 
         JSONObject meetingInfo = new JSONObject();
         meetingInfo.put("owner", meetingOwner);
         meetingInfo.put("meeting_id", apply.getMeeting().getId());
         meetingInfo.put("link", apply.getMeeting().getLink());
         meetingInfo.put("player", apply.getMeeting().getPlayer());
-        meetingInfo.put("apply_status", apply.getApplyStatus().toString());
         jArray2.add(meetingInfo);
       }
 
@@ -122,7 +125,6 @@ public class ApplyController {
     return retObject;
   }
 
-  @Transactional
   @PostMapping("/applies/accept")
   public JSONObject acceptApply(@RequestBody JSONObject object) {
     JSONObject retObject = new JSONObject();
@@ -142,15 +144,12 @@ public class ApplyController {
       one.rejectAccept();
     }
 
-    System.out.println("size : " + apply.getMeeting().getParticipants().size());
-    apply.getMeeting().getParticipants().clear();
-    System.out.println("size : " + apply.getMeeting().getParticipants().size());
+    // 전체 비우기
 
     retObject.put("result", "true");
     return retObject;
   }
 
-  @Transactional
   @PostMapping("/applies/reject")
   public JSONObject rejectApply(@RequestBody JSONObject object) {
     JSONObject retObject = new JSONObject();
@@ -163,7 +162,10 @@ public class ApplyController {
     1. 해당 Apply 거절
     2. 해당 Apply 타고, 주인의 applies에서 방금 apply 삭제
      */
-    List<Apply> applies = apply.getMeeting().getOwner().getApplies();
+
+    Long ownerId = apply.getMeeting().getOwnerId();
+    Member owner = memberService.findOne(ownerId);
+    List<Apply> applies = owner.getApplies();
     System.out.println("applies size : " + applies.size());
 
     for (int i = 0; i < applies.size(); i++) {
@@ -172,7 +174,6 @@ public class ApplyController {
         break ;
       }
     }
-
     System.out.println("applies size : " + applies.size());
 
     retObject.put("result", "true");
@@ -187,18 +188,19 @@ public class ApplyController {
     List<Apply> all = applyService.findAll();
     JSONArray jArray2 = new JSONArray();
     for (Apply apply : all) {
-
-      if ((apply.getMeeting().getOwner().getId() == member.getId())
+      Long ownerId = apply.getMeeting().getOwnerId();
+      if ((ownerId == member.getId())
           || (apply.getMember().getId()) == member.getId()) {
 
         JSONObject meetingOwner = new JSONObject();
-        meetingOwner.put("age", apply.getMeeting().getOwner().getAge());
-        meetingOwner.put("animal_idx", apply.getMeeting().getOwner().getAnimalIdx());
-        meetingOwner.put("height", apply.getMeeting().getOwner().getHeight());
-        meetingOwner.put("college", apply.getMeeting().getOwner().getCollege());
-        meetingOwner.put("major", apply.getMeeting().getOwner().getMajor());
-        meetingOwner.put("sex", apply.getMeeting().getOwner().getSex());
-        meetingOwner.put("mbti", apply.getMeeting().getOwner().getMbti());
+        Member owner = memberService.findOne(ownerId);
+        meetingOwner.put("age", owner.getAge());
+        meetingOwner.put("animal_idx", owner.getAnimalIdx());
+        meetingOwner.put("height", owner.getHeight());
+        meetingOwner.put("college", owner.getCollege());
+        meetingOwner.put("major", owner.getMajor());
+        meetingOwner.put("sex", owner.getSex());
+        meetingOwner.put("mbti", owner.getMbti());
 
         JSONObject meetingInfo = new JSONObject();
         meetingInfo.put("owner", meetingOwner);
