@@ -81,6 +81,7 @@ public class ApplyController {
 
         JSONObject meetingInfo = new JSONObject();
         meetingService.setMeetingInfo(meetingInfo, meetingOwner, apply.getMeeting());
+        meetingInfo.put("apply_status", apply.getApplyStatus());
         jArray2.add(meetingInfo);
       }
 
