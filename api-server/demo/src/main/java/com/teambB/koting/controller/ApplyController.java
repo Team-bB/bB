@@ -58,7 +58,6 @@ public class ApplyController {
           memberService.setMemberInfo(myInfo, apply.getMember());
           myInfo.put("account_id", apply.getMember().getAccount_id());
           myInfo.put("apply_id", apply.getId().toString());
-          myInfo.put("apply_status", apply.getApplyStatus());
 
           jArray.add(myInfo);
         }
@@ -75,8 +74,6 @@ public class ApplyController {
       for (Apply apply : applies) {
         // 대기 거절만 리턴
         if (apply.getApplyStatus() == ApplyStatus.ACCEPT)
-          break ;
-        if (apply.getApplyStatus() == ApplyStatus.REJECT)
           continue ;
         JSONObject meetingOwner = new JSONObject();
         Member one = memberService.findOne(apply.getMeeting().getOwnerId());
