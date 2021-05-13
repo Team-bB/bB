@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,44 +33,29 @@ public class MeetController {
     {
       JSONObject sObject = new JSONObject();
       JSONObject owner = new JSONObject();
-      owner.put("age", meetingList.get(i).getOwner().getAge());
-      owner.put("animal_idx", meetingList.get(i).getOwner().getAnimalIdx());
-      owner.put("college", meetingList.get(i).getOwner().getCollege());
-      owner.put("height", meetingList.get(i).getOwner().getHeight());
-      owner.put("major", meetingList.get(i).getOwner().getMajor());
-      owner.put("sex", meetingList.get(i).getOwner().getSex());
-      owner.put("mbti", meetingList.get(i).getOwner().getMbti());
-      sObject.put("owner", owner);
-      sObject.put("meeting_id", meetingList.get(i).getId());
-      sObject.put("player", meetingList.get(i).getPlayer());
-      sObject.put("link", meetingList.get(i).getLink());
+      Long ownerId = meetingList.get(i).getOwnerId();
+      Member owner_ = memberService.findOne(ownerId);
+      memberService.setMemberInfo(owner, owner_);
+      meetingService.setMeetingInfo(sObject, owner, meetingList.get(i));
       jArray.add(sObject);
     }
-    retObject.put("meeting", jArray);//배열을 넣음
+    retObject.put("meeting", jArray); //배열을 넣음
 
     JSONObject myInfo = new JSONObject();
-
     Member myMember = memberService.findOneByAccountId(account_id);
     JSONObject owner = new JSONObject();
-    owner.put("age", myMember.getAge());
-    owner.put("animal_idx", myMember.getAnimalIdx());
-    owner.put("college", myMember.getCollege());
-    owner.put("height", myMember.getHeight());
-    owner.put("major", myMember.getMajor());
-    owner.put("sex", myMember.getSex());
-    owner.put("mbti", myMember.getMbti());
+    memberService.setMemberInfo(owner, myMember);
 
-    Meeting myMeeting = myMember.getMyMeeting();
+    Meeting myMeeting = meetingService.findOne(myMember.getMyMeetingId());
 
-    myInfo.put("owner", owner);
-    myInfo.put("player", myMeeting.getPlayer());
-    myInfo.put("link", myMeeting.getLink());
+    meetingService.setMeetingInfo(myInfo, owner, myMeeting);
 
     retObject.put("myMeeting", myInfo);
-
     return retObject;
   }
 
+
+  @Transactional
   @PostMapping("/meetings")
   public JSONObject createMeeting(@RequestBody JSONObject object) {
 
@@ -78,12 +64,13 @@ public class MeetController {
     String players = object.get("players").toString();
     String link = object.get("link").toString();
     Member member = memberService.findOneByAccountId(accountId);
-    if (member.getMyMeeting() != null) {
+    if (member.getMyMeetingId() != null) {
       retObject.put("result", "createFail");
     }
     else {
       Meeting meeting = Meeting.createMeeting(member, players, link);
       meetingService.join(meeting);
+      member.setMyMeetingId(meeting.getId());
       retObject.put("result", "createSuccess");
     }
     return retObject;

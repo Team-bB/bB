@@ -1,9 +1,8 @@
 package com.teambB.koting.service;
 
 import com.teambB.koting.domain.Apply;
-import com.teambB.koting.domain.Meeting;
-import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.ApplyRepository;
+import com.teambB.koting.repository.MemberRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ApplyService {
 
+  private final MemberRepository memberRepository;
   private final ApplyRepository applyRepository;
 
   public Long join(Apply apply) {
@@ -23,7 +23,7 @@ public class ApplyService {
   }
 
   private void validateApply(Apply apply) {
-    String owner = apply.getMeeting().getOwner().getAccount_id();
+    String owner = memberRepository.findOne(apply.getMeeting().getOwnerId()).getAccount_id();
     String applier = apply.getMember().getAccount_id();
     if (owner.equals(applier)) {
       throw new IllegalStateException("본인에게 신청할 수 없습니다.");

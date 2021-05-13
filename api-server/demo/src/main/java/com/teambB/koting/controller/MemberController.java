@@ -12,6 +12,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -85,13 +86,7 @@ public class MemberController {
         retObject.put("result", member.get(0).getAccount_id());
 
         JSONObject ownerInfo = new JSONObject();
-        ownerInfo.put("college", member.get(0).getCollege());
-        ownerInfo.put("major", member.get(0).getMajor());
-        ownerInfo.put("sex", member.get(0).getSex());
-        ownerInfo.put("mbti", member.get(0).getMbti());
-        ownerInfo.put("animal_idx", member.get(0).getAnimalIdx());
-        ownerInfo.put("age", member.get(0).getAge());
-        ownerInfo.put("height", member.get(0).getHeight());
+        memberService.setMemberInfo(ownerInfo, member.get(0));
 
         retObject.put("myInfo", ownerInfo);
       }
@@ -150,5 +145,14 @@ public class MemberController {
     mimeMessageHelper.setSubject(subject);
     mimeMessageHelper.setText(body.toString(), true);
     javaMailSender.send(message);
+  }
+
+  @DeleteMapping("/member")
+  public JSONObject deleteMember(@RequestBody JSONObject object) {
+    String account_id = object.get("account_id").toString();
+    memberRepository.deleteMember(account_id);
+    JSONObject retObject = new JSONObject();
+    retObject.put("result", "true");
+    return retObject;
   }
 }
