@@ -2,7 +2,6 @@ package com.teambB.koting.repository;
 
 import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.ApplyStatus;
-import com.teambB.koting.domain.Meeting;
 import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
