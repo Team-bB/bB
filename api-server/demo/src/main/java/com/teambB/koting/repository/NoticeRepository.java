@@ -14,6 +14,18 @@ public class NoticeRepository {
 
   private final EntityManager em;
 
+  public void save(Notice notice) {
+    if (notice.getId() == null) {
+      em.persist(notice);
+    } else {
+      em.merge(notice);
+    }
+  }
+
+  public Notice findOne(Long id) {
+    return em.find(Notice.class, id);
+  }
+
   public List<Notice> findAll() {
     return em.createQuery("select n from Notice n", Notice.class)
         .getResultList();

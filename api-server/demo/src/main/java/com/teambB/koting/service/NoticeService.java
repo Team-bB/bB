@@ -13,6 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class NoticeService {
   private final NoticeRepository noticeRepository;
 
+  public Long join(Notice notice) {
+    noticeRepository.save(notice);
+    return notice.getId();
+  }
+
+  @Transactional(readOnly = true)
+  public Notice findOne(Long id) {
+    return noticeRepository.findOne(id);
+  }
+
   public List<Notice> findAll() {
     return noticeRepository.findAll();
   }
