@@ -26,31 +26,35 @@ public class MeetController {
   @GetMapping("/meetings")
   public JSONObject getMeetingList(@RequestParam("account_id") String account_id) {
     List<Meeting> meetingList = meetingService.findAll();
+    Member member = memberService.findOneByAccountId(account_id);
     JSONObject retObject = new JSONObject();
     JSONArray jArray = new JSONArray();
 
-    for (int i = 0; i < meetingList.size(); i++)
-    {
+    // 내가 만든 미팅 없을 때 예외 막기
+
+    for (Meeting meeting : meetingList) {
+      if (member.getId() == meeting.getOwnerId()) {
+        continue ;
+      }
       JSONObject sObject = new JSONObject();
       JSONObject owner = new JSONObject();
-      Long ownerId = meetingList.get(i).getOwnerId();
+      Long ownerId = meeting.getOwnerId();
       Member owner_ = memberService.findOne(ownerId);
       memberService.setMemberInfo(owner, owner_);
-      meetingService.setMeetingInfo(sObject, owner, meetingList.get(i));
+      meetingService.setMeetingInfo(sObject, owner, meeting);
       jArray.add(sObject);
     }
     retObject.put("meeting", jArray); //배열을 넣음
 
     JSONObject myInfo = new JSONObject();
-    Member myMember = memberService.findOneByAccountId(account_id);
     JSONObject owner = new JSONObject();
-    memberService.setMemberInfo(owner, myMember);
+    memberService.setMemberInfo(owner, member);
 
-    Meeting myMeeting = meetingService.findOne(myMember.getMyMeetingId());
-
-    meetingService.setMeetingInfo(myInfo, owner, myMeeting);
-
-    retObject.put("myMeeting", myInfo);
+    if (member.getMyMeetingId() != null) {
+      Meeting myMeeting = meetingService.findOne(member.getMyMeetingId());
+      meetingService.setMeetingInfo(myInfo, owner, myMeeting);
+      retObject.put("myMeeting", myInfo);
+    }
     return retObject;
   }
 
