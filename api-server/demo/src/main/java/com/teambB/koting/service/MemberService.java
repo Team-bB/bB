@@ -60,14 +60,18 @@ public class MemberService {
     member.setMyMeetingId(null);
   }
 
-  public void setMemberInfo(JSONObject object, Member member) {
-    object.put("age", member.getAge());
-    object.put("animal_idx", member.getAnimalIdx());
-    object.put("height", member.getHeight());
-    object.put("college", member.getCollege());
-    object.put("major", member.getMajor());
-    object.put("sex", member.getSex());
-    object.put("mbti", member.getMbti());
+  public JSONObject setMemberInfo(Member member) {
+    JSONObject retObject = new JSONObject();
+
+    retObject.put("age", member.getAge());
+    retObject.put("animal_idx", member.getAnimalIdx());
+    retObject.put("height", member.getHeight());
+    retObject.put("college", member.getCollege());
+    retObject.put("major", member.getMajor());
+    retObject.put("sex", member.getSex());
+    retObject.put("mbti", member.getMbti());
+
+    return retObject;
   }
 
   public void sendMail(String email, String authKey) throws MessagingException, UnsupportedEncodingException {
