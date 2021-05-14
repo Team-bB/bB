@@ -5,7 +5,6 @@ import com.teambB.koting.repository.MemberRepository;
 import com.teambB.koting.service.MemberService;
 import java.io.UnsupportedEncodingException;
 import javax.mail.MessagingException;
-import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +24,13 @@ public class MemberController {
 
   @Autowired private final MemberService memberService;
   @Autowired private final MemberRepository memberRepository;
-  @Autowired EntityManager em;
 
   private HashMap<String, String> dic = new HashMap<String, String>();
-  private final String api_key = "NCSRF0PYIQASDVPU";
-  private final String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
 
   @PostMapping("/members")
   public JSONObject signUp(@RequestBody JSONObject object) throws UnsupportedEncodingException, MessagingException {
-
     JSONObject retObejct = new JSONObject();
+
     Member member = Member.createMember(object);
     memberService.join(member);
     memberService.sendMail(member.getEmail(), member.getAuthKey()); // 비동기처리
@@ -44,6 +40,8 @@ public class MemberController {
 
   @GetMapping("/auth/number")
   public String sendCode(@RequestParam("phoneNumber") String phoneNumber) {
+    String api_key = "NCSRF0PYIQASDVPU";
+    String api_secret = "CR2RF1F8AWBNK406P1RD51VGBWK1881M";
 
     Message coolsms = new Message(api_key, api_secret);
     String code = Member.makeRandomNumber(4);
@@ -72,18 +70,14 @@ public class MemberController {
   @GetMapping("/auth/code")
   public JSONObject checkCode(@RequestParam("phoneNumber") String phoneNumber,
                               @RequestParam("code") String code) {
-
     JSONObject retObject = new JSONObject();
-    if (dic.get(phoneNumber).toString().equals(code)) {
+
+    if (dic.get(phoneNumber).equals(code)) {
       dic.remove(phoneNumber);
       List<Member> member = memberService.findOneByNumber(phoneNumber);
       if (!member.isEmpty()) { // 가입되어 있으면
         retObject.put("result", member.get(0).getAccount_id());
-
-        JSONObject ownerInfo = new JSONObject();
-        memberService.setMemberInfo(ownerInfo, member.get(0));
-
-        retObject.put("myInfo", ownerInfo);
+        retObject.put("myInfo", memberService.setMemberInfo(member.get(0)));
       }
       else { // 가입되어 있지 않으면
         // 로그인페이지로 이동
@@ -98,8 +92,8 @@ public class MemberController {
 
   @GetMapping("/auth/email")
   public String authEmail(@RequestParam("email") String email, @RequestParam("authKey") String authKey) {
-
     Member findMember = memberService.findOneByEmail(email);
+
     if (findMember.getAuthKey().equals(authKey)) {
       findMember.setAuthStatus(true);
       memberRepository.save(findMember);
@@ -110,8 +104,8 @@ public class MemberController {
 
   @PostMapping("/checkStatus")
   public JSONObject checkStatus(@RequestBody JSONObject object) {
-
     JSONObject retObject = new JSONObject();
+
     String accountId = object.get("account_id").toString();
     Member member = memberService.findOneByAccountId(accountId);
     retObject.put("result", member.getAuthStatus());

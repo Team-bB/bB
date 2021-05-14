@@ -34,13 +34,10 @@ public class ApplyController {
 
     if (member.getMyMeetingId() != null) {
       Meeting myMeeting = meetingService.findOne(member.getMyMeetingId());
-      JSONObject myMeetingInfo = new JSONObject();
-      JSONObject ownerInfo = new JSONObject();
+      JSONObject ownerInfo = memberService.setMemberInfo(member);
       JSONObject myCreation = new JSONObject();
-      memberService.setMemberInfo(ownerInfo, member);
-      meetingService.setMeetingInfo(myMeetingInfo, ownerInfo, myMeeting);
 
-      myCreation.put("myMeeting", myMeetingInfo);
+      myCreation.put("myMeeting", meetingService.setMeetingInfo(ownerInfo, myMeeting));
 
       if (myMeeting.getParticipants() != null) {
         List<Apply> participants = myMeeting.getParticipants();
@@ -53,9 +50,7 @@ public class ApplyController {
           }
           if (apply.getApplyStatus() == ApplyStatus.REJECT)
             continue;
-          JSONObject myInfo = new JSONObject();
-
-          memberService.setMemberInfo(myInfo, apply.getMember());
+          JSONObject myInfo = memberService.setMemberInfo(apply.getMember());
           myInfo.put("account_id", apply.getMember().getAccount_id());
           myInfo.put("apply_id", apply.getId().toString());
 
@@ -75,14 +70,13 @@ public class ApplyController {
         // 대기 거절만 리턴
         if (apply.getApplyStatus() == ApplyStatus.ACCEPT)
           continue ;
-        JSONObject meetingOwner = new JSONObject();
+
         Member one = memberService.findOne(apply.getMeeting().getOwnerId());
-        memberService.setMemberInfo(meetingOwner, one);
+        JSONObject meetingOwner = memberService.setMemberInfo(one);
 
         JSONObject meetingInfo = new JSONObject();
-        meetingService.setMeetingInfo(meetingInfo, meetingOwner, apply.getMeeting());
         meetingInfo.put("apply_status", apply.getApplyStatus());
-        jArray2.add(meetingInfo);
+        jArray2.add(meetingService.setMeetingInfo(meetingOwner, apply.getMeeting()));
       }
 
       retObject.put("myApplies", jArray2);
@@ -157,13 +151,10 @@ public class ApplyController {
       if ((ownerId == member.getId())
           || (apply.getMember().getId()) == member.getId()) {
 
-        JSONObject meetingOwner = new JSONObject();
         Member owner = memberService.findOne(ownerId);
-        memberService.setMemberInfo(meetingOwner, owner);
+        JSONObject meetingOwner = memberService.setMemberInfo(owner);
 
-        JSONObject meetingInfo = new JSONObject();
-        meetingService.setMeetingInfo(meetingInfo, meetingOwner, apply.getMeeting());
-        jArray2.add(meetingInfo);
+        jArray2.add(meetingService.setMeetingInfo(meetingOwner, apply.getMeeting()));
       }
 
       retObject.put("result", jArray2);
