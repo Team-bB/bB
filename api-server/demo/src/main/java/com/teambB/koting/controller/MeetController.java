@@ -9,6 +9,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,8 +30,6 @@ public class MeetController {
     Member member = memberService.findOneByAccountId(account_id);
     JSONObject retObject = new JSONObject();
     JSONArray jArray = new JSONArray();
-
-    // 내가 만든 미팅 없을 때 예외 막기
 
     for (Meeting meeting : meetingList) {
       if (member.getId() == meeting.getOwnerId()) {
@@ -77,6 +76,15 @@ public class MeetController {
       member.setMyMeetingId(meeting.getId());
       retObject.put("result", "createSuccess");
     }
+    return retObject;
+  }
+
+  @DeleteMapping("/meetings")
+  public JSONObject deleteMeeting(@RequestBody JSONObject object) {
+    JSONObject retObject = new JSONObject();
+    String accountId = object.get("account_id").toString();
+    memberService.clearMyMeetingId(accountId);
+    retObject.put("result", "true");
     return retObject;
   }
 }

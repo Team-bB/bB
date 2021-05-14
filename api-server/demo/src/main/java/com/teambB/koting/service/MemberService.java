@@ -55,6 +55,11 @@ public class MemberService {
     return memberRepository.findByAccountId(accountId);
   }
 
+  public void clearMyMeetingId(String accountId) {
+    Member member = memberRepository.findByAccountId(accountId);
+    member.setMyMeetingId(null);
+  }
+
   public void setMemberInfo(JSONObject object, Member member) {
     object.put("age", member.getAge());
     object.put("animal_idx", member.getAnimalIdx());
