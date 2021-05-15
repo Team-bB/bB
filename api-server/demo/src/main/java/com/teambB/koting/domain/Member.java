@@ -40,7 +40,6 @@ public class Member {
   private List<Apply> applies = new ArrayList<>();
 
   public static Member createMember(JSONObject object) {
-
     Member member = new Member();
     member.setAccount_id(member.makeRandomString(16));
     member.setSex(object.get("sex").toString());

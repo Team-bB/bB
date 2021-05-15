@@ -66,6 +66,7 @@ public class MeetController {
   @DeleteMapping("/meetings")
   public JSONObject deleteMeeting(@RequestBody JSONObject object) {
     JSONObject retObject = new JSONObject();
+
     String accountId = object.get("account_id").toString();
     memberService.clearMyMeetingId(accountId);
     retObject.put("result", "true");
