@@ -32,6 +32,7 @@ public class ApplyController {
     JSONObject retObject = new JSONObject();
     Member member = memberService.findOneByAccountId(accountId);
 
+    // 내 미팅이 존재하면
     if (member.getMyMeetingId() != null) {
       Meeting myMeeting = meetingService.findOne(member.getMyMeetingId());
       JSONObject ownerInfo = memberService.setMemberInfo(member);
@@ -39,6 +40,7 @@ public class ApplyController {
 
       myCreation.put("myMeeting", meetingService.setMeetingInfo(ownerInfo, myMeeting));
 
+      // 내 미팅에 신청한 사람이 존재하면
       if (myMeeting.getParticipants() != null) {
         List<Apply> participants = myMeeting.getParticipants();
 
@@ -63,6 +65,7 @@ public class ApplyController {
       retObject.put("myCreation", myCreation);
     }
 
+    // 내가 신청한 미팅이 존재하면
     if (member.getApplies() != null) {
       List<Apply> applies = member.getApplies();
       JSONArray jArray2 = new JSONArray();
@@ -74,8 +77,6 @@ public class ApplyController {
         Member one = memberService.findOne(apply.getMeeting().getOwnerId());
         JSONObject meetingOwner = memberService.setMemberInfo(one);
 
-        JSONObject meetingInfo = new JSONObject();
-        meetingInfo.put("apply_status", apply.getApplyStatus());
         jArray2.add(meetingService.setMeetingInfo(meetingOwner, apply.getMeeting()));
       }
 
@@ -86,16 +87,12 @@ public class ApplyController {
 
   @PostMapping("/applies")
   public JSONObject applyMeeting(@RequestBody JSONObject object) {
-
     JSONObject retObject = new JSONObject();
+
     String accountId = object.get("account_id").toString();
-    Member member = memberService.findOneByAccountId(accountId);
-
     Long meetingId = Long.parseLong(object.get("meeting_id").toString());
-    Meeting meeting = meetingService.findOne(meetingId);
 
-    Apply apply = Apply.createApply(member, meeting);
-    applyService.join(apply);
+    applyService.Apply(accountId, meetingId);
     retObject.put("result", "applyMeetingSuccess");
     return retObject;
   }
@@ -119,8 +116,6 @@ public class ApplyController {
       Apply one = applyService.findOne(apply_.getId());
       one.rejectAccept();
     }
-
-    // 전체 비우기
 
     retObject.put("result", "true");
     return retObject;
