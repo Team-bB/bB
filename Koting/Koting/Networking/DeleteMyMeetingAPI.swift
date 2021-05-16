@@ -17,7 +17,7 @@ class DeleteMeetingRoomAPI {
     func delete(completion: @escaping (Result<DeleteMeetingRoomAPIResponse, Error>) -> (Void)) {
         let url = API.shared.BASE_URL + "/meetings"
         var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
+        request.httpMethod = "DELETE"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         

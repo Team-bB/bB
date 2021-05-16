@@ -28,9 +28,9 @@ class MyMeetingApplicantCell: UITableViewCell {
 //
 //        self.collectionView.delegate = self
 //        self.collectionView.dataSource = self
-        acceptBtn.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        acceptBtn.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         acceptBtn.layer.cornerRadius = 12
-        rejectBtn.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        rejectBtn.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         rejectBtn.layer.cornerRadius = 12
         pageControl.hidesForSinglePage = true
     }
