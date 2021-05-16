@@ -53,6 +53,9 @@
 		889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */; };
 		889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F85260890B200B3DA62 /* MyInfoVC.swift */; };
 		889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F9C2608983800B3DA62 /* IntroModel.swift */; };
+		88A3AFA42651243100FFF90F /* ConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3AFA32651243100FFF90F /* ConversationVC.swift */; };
+		88A3AFA62651244000FFF90F /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3AFA52651244000FFF90F /* ChatVC.swift */; };
+		88A3AFA82651282000FFF90F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A3AFA72651282000FFF90F /* GoogleService-Info.plist */; };
 		88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B51DC426496ADD00E460FA /* CustomIndicator.swift */; };
 		D392E1282644CDAB00938E85 /* MyMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1272644CDAB00938E85 /* MyMeetingCell.swift */; };
 		D392E12B2644D29E00938E85 /* MyMeetingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */; };
@@ -128,6 +131,9 @@
 		889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeetingListStoryboard.storyboard; sourceTree = "<group>"; };
 		889F7F85260890B200B3DA62 /* MyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoVC.swift; sourceTree = "<group>"; };
 		889F7F9C2608983800B3DA62 /* IntroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroModel.swift; sourceTree = "<group>"; };
+		88A3AFA32651243100FFF90F /* ConversationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationVC.swift; sourceTree = "<group>"; };
+		88A3AFA52651244000FFF90F /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		88A3AFA72651282000FFF90F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		88B51DC426496ADD00E460FA /* CustomIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
 		D392E1272644CDAB00938E85 /* MyMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingCell.swift; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 		889F7F4C26088F6200B3DA62 /* Koting */ = {
 			isa = PBXGroup;
 			children = (
+				88A3AFA72651282000FFF90F /* GoogleService-Info.plist */,
 				88556CA02609D89500CF7CAC /* Extensions */,
 				88556C9F2609D88E00CF7CAC /* Networking */,
 				889F7F7426088FBF00B3DA62 /* View */,
@@ -282,6 +289,7 @@
 				889F7F90260894EC00B3DA62 /* Intro */,
 				889F7F792608900B00B3DA62 /* MeetingList */,
 				889F7F782608900300B3DA62 /* MyInfo */,
+				88A3AFA12651240700FFF90F /* Chat */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -360,6 +368,15 @@
 				886D82D3260A551E00EE411C /* SignUpModel.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		88A3AFA12651240700FFF90F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				88A3AFA32651243100FFF90F /* ConversationVC.swift */,
+				88A3AFA52651244000FFF90F /* ChatVC.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		D392E13C2645656D00938E85 /* Cell */ = {
@@ -488,6 +505,7 @@
 				889F7F5726088F6300B3DA62 /* Assets.xcassets in Resources */,
 				884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */,
 				889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */,
+				88A3AFA82651282000FFF90F /* GoogleService-Info.plist in Resources */,
 				889F7F5526088F6200B3DA62 /* Main.storyboard in Resources */,
 				88869F1A26429C0C0078A74F /* MyInfoHeaderVC.xib in Resources */,
 			);
@@ -566,6 +584,7 @@
 				883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				D392E15A26459F5300938E85 /* ApplicantCollectionViewCell.swift in Sources */,
+				88A3AFA62651244000FFF90F /* ChatVC.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
 				88869F1926429C0C0078A74F /* MyInfoHeaderVC.swift in Sources */,
 				886D82D1260A514C00EE411C /* SignUpVC.swift in Sources */,
@@ -584,6 +603,7 @@
 				886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */,
 				88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
+				88A3AFA42651243100FFF90F /* ConversationVC.swift in Sources */,
 				D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */,
 				D392E151264574B500938E85 /* MyMeetingApplicantCell.swift in Sources */,
 				D392E13E264565A300938E85 /* MenuCell.swift in Sources */,
@@ -756,7 +776,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTestsadgdsa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teambb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -778,7 +798,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.jeongwooTestsadgdsa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teambb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
