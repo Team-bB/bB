@@ -63,7 +63,7 @@ struct DeleteMeetingRoomAPIResponse: Codable {
 }
 
 struct FetchMeetingRoomsAPIResponse: Codable {
-    let myMeeting: Meeting
+    let myMeeting: Meeting?
     let meeting: [Meeting]
 }
 

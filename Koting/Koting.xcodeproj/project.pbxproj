@@ -71,6 +71,7 @@
 		D392E16626482A6700938E85 /* AcceptMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E16526482A6700938E85 /* AcceptMeetingAPI.swift */; };
 		D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E168264830B900938E85 /* RejectMeetingAPI.swift */; };
 		D392E16F264833E000938E85 /* DeleteCompleteMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */; };
+		D392E19A265128CF00938E85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D392E199265128CF00938E85 /* GoogleService-Info.plist */; };
 		D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */; };
 		D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF1260B1835000625DF /* MeetingModel.swift */; };
 		D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */; };
@@ -147,6 +148,7 @@
 		D392E16526482A6700938E85 /* AcceptMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptMeetingAPI.swift; sourceTree = "<group>"; };
 		D392E168264830B900938E85 /* RejectMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectMeetingAPI.swift; sourceTree = "<group>"; };
 		D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCompleteMeetingAPI.swift; sourceTree = "<group>"; };
+		D392E199265128CF00938E85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListVC.swift; sourceTree = "<group>"; };
 		D3BC8CF1260B1835000625DF /* MeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingModel.swift; sourceTree = "<group>"; };
 		D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListAndMyInfoAPI.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		889F7F4C26088F6200B3DA62 /* Koting */ = {
 			isa = PBXGroup;
 			children = (
+				D392E199265128CF00938E85 /* GoogleService-Info.plist */,
 				88556CA02609D89500CF7CAC /* Extensions */,
 				88556C9F2609D88E00CF7CAC /* Networking */,
 				889F7F7426088FBF00B3DA62 /* View */,
@@ -488,6 +491,7 @@
 				889F7F5726088F6300B3DA62 /* Assets.xcassets in Resources */,
 				884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */,
 				889F7F802608907F00B3DA62 /* MeetingListStoryboard.storyboard in Resources */,
+				D392E19A265128CF00938E85 /* GoogleService-Info.plist in Resources */,
 				889F7F5526088F6200B3DA62 /* Main.storyboard in Resources */,
 				88869F1A26429C0C0078A74F /* MyInfoHeaderVC.xib in Resources */,
 			);
