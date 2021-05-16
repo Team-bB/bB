@@ -27,7 +27,7 @@ class MeetingListVC: UIViewController {
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissNotification(_:)), name: NSNotification.Name(rawValue: "DidDismissViewController"), object: nil)
         setFloatingButton()
         
-        
+        setChatButton()
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         FetchMeetings()
@@ -187,5 +187,21 @@ extension MeetingListVC: UITableViewDelegate {
 //            }
             vc?.meeting = myMeeting
         }
+    }
+}
+
+// MARK: - Chat
+extension MeetingListVC {
+    func setChatButton() {
+        
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(barButtonSystemItem: .organize,
+                                                                   target: self,
+                                                                   action: #selector(didTapChatButton)))
+    }
+    
+    @objc func didTapChatButton() {
+        
+        let nextVC = ConversationVC()
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }

@@ -16,7 +16,7 @@ class ConversationVC: UIViewController {
         
         table.register(UITableViewCell.self,
                        forCellReuseIdentifier: "cell")
-        table.isHidden = true
+//        table.isHidden = true
         
         return table
     }()
@@ -34,7 +34,8 @@ class ConversationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationItem.largeTitleDisplayMode = .never
         view.addSubview(tableView)
         view.addSubview(noConversationsLabel)
         
