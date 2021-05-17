@@ -21,7 +21,9 @@ class MeetingListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
