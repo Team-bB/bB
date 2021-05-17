@@ -1,6 +1,6 @@
 package com.teambB.koting.domain;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,13 +24,13 @@ public class Notice {
   @Column(columnDefinition = "LONGTEXT")
   private String content;
 
-  private LocalDateTime createDate;
+  private LocalDate createDate;
 
   public static Notice createNotice(String title, String content) {
     Notice notice = new Notice();
     notice.setTitle(title);
     notice.setContent(content);
-    notice.setCreateDate(LocalDateTime.now());
+    notice.setCreateDate(LocalDate.now());
     return notice;
   }
 }
