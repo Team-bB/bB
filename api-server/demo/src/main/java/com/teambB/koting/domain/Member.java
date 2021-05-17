@@ -1,5 +1,6 @@
 package com.teambB.koting.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -35,6 +36,7 @@ public class Member {
   private int animalIdx;
   private String authKey;
   private Boolean authStatus;
+  private LocalDateTime createDate;
 
   @OneToMany(mappedBy = "member")
   private List<Apply> applies = new ArrayList<>();
@@ -51,6 +53,7 @@ public class Member {
     member.setEmail(object.get("email").toString());
     member.setNumber(object.get("phoneNumber").toString());
     member.setAnimalIdx(Integer.parseInt(object.get("animalIdx").toString()));
+    member.setCreateDate(LocalDateTime.now());
     member.setAuthKey(makeRandomString(8));
     member.setAuthStatus(false);
     return member;

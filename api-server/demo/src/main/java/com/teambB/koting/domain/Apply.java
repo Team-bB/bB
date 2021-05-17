@@ -2,6 +2,7 @@ package com.teambB.koting.domain;
 
 import static com.teambB.koting.domain.ApplyStatus.*;
 
+import java.time.LocalDateTime;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +37,7 @@ public class Apply {
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "member_id")
   private Member member;
+  private LocalDateTime createDate;
 
   public void setMember(Member member) {
     this.member = member;
@@ -52,6 +54,7 @@ public class Apply {
     apply.setMeeting(meeting);
     apply.setMember(member);
     apply.setApplyStatus(WAIT);
+    apply.setCreateDate(LocalDateTime.now());
     return apply;
   }
 
