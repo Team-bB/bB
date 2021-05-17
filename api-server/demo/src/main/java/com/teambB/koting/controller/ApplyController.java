@@ -122,8 +122,8 @@ public class ApplyController {
       Apply one = applyService.findOne(apply_.getId());
       one.rejectAccept();
     }
-
-    retObject.put("result", "true");
+    String ApplierEmail = apply.getMember().getAccount_id() + "@dgu.ac.kr";
+    retObject.put("targetUserEmail", ApplierEmail);
     return retObject;
   }
 

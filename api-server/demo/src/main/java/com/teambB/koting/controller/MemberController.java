@@ -78,7 +78,7 @@ public class MemberController {
       if (!member.isEmpty()) { // 가입되어 있으면
         retObject.put("result", member.get(0).getAccount_id());
         retObject.put("myInfo", memberService.setMemberInfo(member.get(0)));
-        retObject.put("email", member.get(0).getEmail());
+        retObject.put("email", member.get(0).getAccount_id() + "@dgu.ac.kr");
       }
       else { // 가입되어 있지 않으면
         // 로그인페이지로 이동
