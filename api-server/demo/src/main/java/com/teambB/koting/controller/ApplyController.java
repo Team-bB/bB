@@ -109,8 +109,10 @@ public class ApplyController {
     Long applyId = Long.parseLong(object.get("apply_id").toString());
     Apply apply = applyService.findOne(applyId);
     apply.applyAccept();
-
-    //
+    Long ownerId = apply.getMeeting().getOwnerId();
+    // 내 미팅
+    Member owner = memberService.findOne(ownerId);
+    owner.setMyMeetingId(null);
 
     // 해당 미팅에 신청한 사람들
     List<Apply> applies = apply.getMeeting().getParticipants();
@@ -123,6 +125,7 @@ public class ApplyController {
       one.rejectAccept();
     }
     String ApplierEmail = apply.getMember().getAccount_id() + "@dgu.ac.kr";
+    retObject.put("result", "true");
     retObject.put("targetUserEmail", ApplierEmail);
     return retObject;
   }
