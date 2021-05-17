@@ -1,5 +1,6 @@
 package com.teambB.koting.service;
 
+import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MeetingRepository;
@@ -25,6 +26,7 @@ public class MemberService {
   private JavaMailSender javaMailSender;
   private final MemberRepository memberRepository;
   private final MeetingRepository meetingRepository;
+  private final ApplyService applyService;
 
   public Long join(Member member) {
     if (member.getId() == null) {
@@ -61,9 +63,12 @@ public class MemberService {
   public void clearMyMeetingId(String accountId) {
     Member member = memberRepository.findByAccountId(accountId);
 
+    // 삭제 말고 전체 거절처리
     Meeting myMeeting = meetingRepository.findById(member.getMyMeetingId());
-    meetingRepository.delete(myMeeting);
-
+    for (Apply apply_ : myMeeting.getParticipants()) {
+      Apply one = applyService.findOne(apply_.getId());
+      one.rejectAccept();
+    }
     member.setMyMeetingId(null);
   }
 
