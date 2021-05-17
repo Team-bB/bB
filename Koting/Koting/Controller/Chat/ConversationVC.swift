@@ -35,7 +35,7 @@ class ConversationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.largeTitleDisplayMode = .always
         view.addSubview(tableView)
         view.addSubview(noConversationsLabel)
         
@@ -80,7 +80,7 @@ extension ConversationVC: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let nextVC = ChatVC()
+        let nextVC = ChatVC(with: "kkknigga@naver.com")
         nextVC.title = "홍화형"
         nextVC.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(nextVC, animated: true)
