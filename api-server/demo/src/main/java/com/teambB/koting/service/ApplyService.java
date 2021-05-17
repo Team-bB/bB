@@ -32,6 +32,11 @@ public class ApplyService {
     Member member = memberRepository.findByAccountId(accountId);
     Meeting meeting = meetingRepository.findById(meetingId);
 
+    for (Apply myApply : member.getApplies()) {
+      if (myApply.getMeeting().getId() == meetingId) {
+        return null;
+      }
+    }
     Apply apply = Apply.createApply(member, meeting);
     Long applyId = join(apply);
     return applyId;
