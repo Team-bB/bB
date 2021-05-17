@@ -7,6 +7,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import FirebaseAuth
 
 class SignUpVC: UIViewController {
     
@@ -97,39 +98,45 @@ class SignUpVC: UIViewController {
     @IBAction func signUpButtonTapped(_ sender: Any) {
         guard  let email = mail.text else { return }
         
-        if (isValidEmail(email + form.mailDomain)) {
+        let totalEmail = email + form.mailDomain
+        
+        if (isValidEmail(totalEmail)) {
             indicator.startAnimating(superView: view)
             
             SignUpAPI.shared.post(paramArray: infoArray) { [weak self] result in
                 
-                guard let self = self else { return }
+                guard let strongSelf = self else { return }
                 switch result {
                 case .success(let message):
                     
-                    let myInfo = Owner(college: self.college.text, major: self.major.text, sex: self.sex.text, mbti: self.MBTI.text, animal_idx: 1, age: Int(self.age.text!), height: Int(self.height.text!))
+                    let myInfo = Owner(college: strongSelf.college.text, major: strongSelf.major.text, sex: strongSelf.sex.text, mbti: strongSelf.MBTI.text, animal_idx: 1, age: Int(strongSelf.age.text!), height: Int(strongSelf.height.text!))
                     
                     UserDefaults.standard.set(try? PropertyListEncoder().encode(myInfo), forKey:"myInfo")
                     UserDefaults.standard.set(message.result, forKey: "accountId")
+                    UserDefaults.standard.set(totalEmail, forKey: "email")
                     UserDefaults.standard.set(false, forKey: "mailAuthChecked")
                     
+                    // MARK: - Firebase 채팅서버 유저생성
+                    strongSelf.createFirebaseUser(email: totalEmail)
+                    
                     DispatchQueue.main.async {
-                        self.indicator.stopAnimating()
+                        strongSelf.indicator.stopAnimating()
                         let alertController = UIAlertController(title: "가입완료", message: "메일 인증후 이용가능합니다.", preferredStyle: UIAlertController.Style.alert)
                         let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel) { action in
-                            self.asyncPresentView(identifier: "GettingStarted")
+                            strongSelf.asyncPresentView(identifier: "GettingStarted")
                         }
                         
                         alertController.addAction(okButton)
                         
-                        self.present(alertController, animated: true, completion: nil)
+                        strongSelf.present(alertController, animated: true, completion: nil)
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
-                        self.indicator.stopAnimating()
+                        strongSelf.indicator.stopAnimating()
                         let alertController = UIAlertController(title: "에러", message: "CodableError", preferredStyle: UIAlertController.Style.alert)
                         let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel)
                         alertController.addAction(okButton)
-                        self.present(alertController, animated: true, completion: nil)
+                        strongSelf.present(alertController, animated: true, completion: nil)
                     }
                     print(error)
                 }
@@ -180,6 +187,20 @@ extension SignUpVC {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         
         return emailPred.evaluate(with: email)
+    }
+    
+    // 채팅서버 createUser
+    private func createFirebaseUser(email: String, password: String = "koting0000") {
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult , error in
+            guard let result = authResult, error == nil else {
+                print("❌ Creating User 에러 발생 ❌")
+                return
+            }
+            
+            let user = result.user
+            print("✅ 채팅서버 계정 생성 완료 ✅")
+            print("채팅서버: 유저(\(user))")
+        }
     }
 }
 

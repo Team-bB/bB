@@ -49,7 +49,7 @@ class MyMeetingViewController: UIViewController {
         menuViewController.cellAlignment = .center
         
         dataSource = makeDataSource()
-        
+        navigationItem.largeTitleDisplayMode = .never
     }
  
     

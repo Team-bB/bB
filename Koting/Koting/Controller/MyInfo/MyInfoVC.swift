@@ -7,6 +7,7 @@
 import UIKit
 import MessageUI
 import NVActivityIndicatorView
+import FirebaseAuth
 
 fileprivate let reuseIdentifier = "cell"
 
@@ -226,14 +227,25 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
             print("⚠️ Unknown Error ⚠️")
             return }
         
-        deleteUserDefaults()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "GettingStarted") as! GettingStartedVC
         
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(vc, animated: true)
+        do {
+            try FirebaseAuth.Auth.auth().signOut()
+            
+            deleteUserDefaults()
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "GettingStarted") as! GettingStartedVC
+            
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(vc, animated: true)
+            
+            print(" ✅ LogOut Success ✅")
+            
+        } catch  {
+            print("로그아웃 실패!")
+        }
         
-        print(" ✅ LogOut Success ✅")
+
     }
     
     func transImage(index: Int) -> String {

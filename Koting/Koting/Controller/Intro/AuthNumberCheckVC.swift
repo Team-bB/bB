@@ -7,6 +7,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import FirebaseAuth
 
 class AuthNumberCheckVC: UIViewController {
     // MARK:- 변수
@@ -37,7 +38,7 @@ class AuthNumberCheckVC: UIViewController {
         indicator.startAnimating(superView: view)
         AuthNumberCheckAPI.shared.get(code: authNumberTextField.text!) { [weak self] result in
             
-            guard let self = self else { return }
+            guard let strongSelf = self else { return }
             
             let failed = "phoneAuthFailed"
             let register = "moveRegister"
@@ -47,24 +48,23 @@ class AuthNumberCheckVC: UIViewController {
                 if message.result == failed {
                     // MARK:- 여기서 알러트 띄우고 하던가 진동을 울리게 해야함.
                     DispatchQueue.main.async {
-                        self.indicator.stopAnimating()
+                        strongSelf.indicator.stopAnimating()
                     }
-                    self.asyncDismissView()
+                    strongSelf.asyncDismissView()
                 } else if message.result == register {
                     DispatchQueue.main.async {
-                        self.indicator.stopAnimating()
+                        strongSelf.indicator.stopAnimating()
                     }
-                    self.asyncPresentView(identifier: "Register")
+                    strongSelf.asyncPresentView(identifier: "Register")
                 } else {
                     
-                    guard let myInfo = message.myInfo else { return }
+                    guard let myInfo = message.myInfo, let email = message.email else { return }
 
                     UserDefaults.standard.set(message.result, forKey: "accountId")
+                    UserDefaults.standard.set(email, forKey: "email")
                     UserDefaults.standard.set(try? PropertyListEncoder().encode(myInfo), forKey:"myInfo")
                     
-                    MailAuthCheckAPI.shared.post() { [weak self] result in
-                        
-                        guard let strongSelf = self else { return }
+                    MailAuthCheckAPI.shared.post() {result in
                         
                         switch result {
                         case .success(let mailAuth):
@@ -72,6 +72,7 @@ class AuthNumberCheckVC: UIViewController {
                             let authCheck = mailAuth.result
                             
                             UserDefaults.standard.set(authCheck, forKey: "mailAuthChecked")
+                            strongSelf.loginFirebaseUser(email: email)
                             
                             if authCheck {
                                 DispatchQueue.main.async {
@@ -86,6 +87,8 @@ class AuthNumberCheckVC: UIViewController {
                                 strongSelf.asyncPresentView(identifier: "GettingStarted")
                             }
                             
+                            
+                            
                         case .failure(let error):
                             DispatchQueue.main.async {
                                 strongSelf.indicator.stopAnimating()
@@ -97,11 +100,26 @@ class AuthNumberCheckVC: UIViewController {
             case .failure(let error):
                 print(error)
                 DispatchQueue.main.async {
-                    self.indicator.stopAnimating()
-                    self.makeAlertBox(title: "실패", message: "잠시후 다시시도 하세요.", text: "확인")
+                    strongSelf.indicator.stopAnimating()
+                    strongSelf.makeAlertBox(title: "실패", message: "잠시후 다시시도 하세요.", text: "확인")
                 }
             }
         }
+    }
+    
+    private func loginFirebaseUser(email: String, password: String = "koting0000") {
+        
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { authReulst, error in
+
+            guard let result = authReulst, error == nil else {
+                print("❌ 로그인 에러발생: \(errSecMissingAttributeKey) ❌")
+                return
+            }
+            
+            let user = result.user
+            print("✅ 로그인 유저: \(user) ✅")
+        }
+        
     }
 }
 

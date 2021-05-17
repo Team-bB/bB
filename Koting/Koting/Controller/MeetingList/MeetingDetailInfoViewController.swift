@@ -34,6 +34,8 @@ class MeetingDetailInfoViewController: UIViewController {
         self.imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.imageView.clipsToBounds = true
         
+        navigationItem.largeTitleDisplayMode = .never
+        
         updateUI()
     }
     
@@ -48,7 +50,13 @@ class MeetingDetailInfoViewController: UIViewController {
                 
                 if finalResult.result == "applyMeetingSuccess" {
                     DispatchQueue.main.async {
-                        strongSelf.makeAlertBox(title: "성공", message: "미팅을 신청했습니다.", text: "확인") { (action) in
+                        strongSelf.makeAlertBox(title: "성공", message: "미팅신청에 성공했습니다.", text: "확인") { (action) in
+                            strongSelf.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                }else if finalResult.result == "applyMeetingFailed" {
+                    DispatchQueue.main.async {
+                        strongSelf.makeAlertBox(title: "실패", message: "이미 신청된 미팅입니다.", text: "확인") { (action) in
                             strongSelf.navigationController?.popViewController(animated: true)
                         }
                     }
@@ -60,7 +68,11 @@ class MeetingDetailInfoViewController: UIViewController {
                     }
                 }
             case .failure:
-                break
+                DispatchQueue.main.async {
+                    strongSelf.makeAlertBox(title: "실패", message: "Error", text: "확인") { (action) in
+                        strongSelf.navigationController?.popViewController(animated: true)
+                    }
+                }
             }
         }
     }

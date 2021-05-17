@@ -16,6 +16,7 @@ class CreateMeetingRoomVC: UIViewController {
     @IBOutlet weak var createMeetingRoomBtn: UIButton!
     @IBOutlet var MeetingRoomInfo: [UITextField]!
     
+    
     let participantsPicker = UIPickerView()
     let participantsArray: [String] = {
         let array: [String] = ["1 : 1", "2 : 2", "3 : 3", "4 : 4"]
@@ -23,7 +24,7 @@ class CreateMeetingRoomVC: UIViewController {
     }()
     
     var reloadTableViewBtn: (() -> ())?
-    
+    //let vc = MeetingListVC()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,13 +38,12 @@ class CreateMeetingRoomVC: UIViewController {
     
     
     @IBAction func createMeetingRoomBtnTapped(_ sender: Any) {
-//        meetingList.append(Meeting(numberOfParticipants: participantsNumber.text ?? "", progressCondition: "진행중", userInfo: Info(sex: "여", phoneNumber: "01012345678", college: "예술대학", major: "연극영화학과", age: "21", height: "163", mbti: "INTP", email: "kkkk@dgu.ac.kr")))
-//
         guard checkTextFiled() == true else {
             self.makeAlertBox(title: "알림", message: "인원과 오픈 카카오톡 링크를 작성해 주세요.", text: "확인")
             return
         }
         createMeeting()
+        //vc.FetchMeetings()
         //reloadTableViewBtn?()
         
         // 여기서 나의 진행중인 미팅에 넘겨줘야함
@@ -72,9 +72,6 @@ class CreateMeetingRoomVC: UIViewController {
                         }
                     }
                 }
-               
-                
-                
             case .failure:
                 break
             }
