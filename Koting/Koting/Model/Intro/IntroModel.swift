@@ -12,6 +12,7 @@ struct MailAuth: Codable {
 }
 
 struct PhoneAuth: Codable {
+    let email: String?
     let result: String
     let myInfo: Owner?
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import FirebaseAuth
 
 class GettingStartedVC: UIViewController {
     
@@ -41,6 +42,9 @@ class GettingStartedVC: UIViewController {
                     UserDefaults.standard.set(authCheck, forKey: "mailAuthChecked")
                     
                     if authCheck {
+                        guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+                        strongSelf.loginFirebaseUser(email: email)
+                        
                         DispatchQueue.main.async {
                             strongSelf.indicator.stopAnimating()
                             strongSelf.performSegue(withIdentifier: "MeetingList", sender: nil)
@@ -65,5 +69,20 @@ class GettingStartedVC: UIViewController {
     private func checkAccountId() -> Bool {
         guard let _ = UserDefaults.standard.string(forKey: "accountId") else { return false }
         return true
+    }
+    
+    private func loginFirebaseUser(email: String, password: String = "koting0000") {
+        
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { authReulst, error in
+
+            guard let result = authReulst, error == nil else {
+                print("❌ 로그인 에러발생: \(errSecMissingAttributeKey) ❌")
+                return
+            }
+            
+            let user = result.user
+            print("✅ 로그인 유저: \(user) ✅")
+        }
+        
     }
 }
