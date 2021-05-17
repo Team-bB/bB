@@ -1,6 +1,7 @@
 package com.teambB.koting.service;
 
 import com.teambB.koting.domain.Meeting;
+import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MeetingRepository;
 import java.util.List;
@@ -46,7 +47,7 @@ public class MeetingService {
 
     List<Meeting> meetingList = findAll();
     for (Meeting meeting : meetingList) {
-      if (member.getId() == meeting.getOwnerId()) {
+      if (member.getId() == meeting.getOwnerId() || meeting.getMeetingStatus() == MeetingStatus.CLOSE) {
         continue ;
       }
       Long ownerId = meeting.getOwnerId();
