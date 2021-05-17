@@ -32,6 +32,7 @@ public class ApplyService {
     Member member = memberRepository.findByAccountId(accountId);
     Meeting meeting = meetingRepository.findById(meetingId);
 
+    // 중복신청 안되게
     for (Apply myApply : member.getApplies()) {
       if (myApply.getMeeting().getId() == meetingId) {
         return null;

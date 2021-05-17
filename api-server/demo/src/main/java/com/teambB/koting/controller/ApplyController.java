@@ -3,6 +3,7 @@ package com.teambB.koting.controller;
 import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.ApplyStatus;
 import com.teambB.koting.domain.Meeting;
+import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.service.ApplyService;
 import com.teambB.koting.service.MeetingService;
@@ -124,6 +125,12 @@ public class ApplyController {
       Apply one = applyService.findOne(apply_.getId());
       one.rejectAccept();
     }
+
+    // 미팅 CANCEL 변경
+    Long meetingId = apply.getMeeting().getId();
+    Meeting meeting = meetingService.findOne(meetingId);
+    meeting.setMeetingStatus(MeetingStatus.CLOSE);
+
     String ApplierEmail = apply.getMember().getAccount_id() + "@dgu.ac.kr";
     retObject.put("result", "true");
     retObject.put("targetUserEmail", ApplierEmail);
