@@ -260,14 +260,14 @@
 		889F7F4C26088F6200B3DA62 /* Koting */ = {
 			isa = PBXGroup;
 			children = (
-				88A3AFB026526ACD00FFF90F /* Resources */,
 				D392E1A626512F3600938E85 /* GoogleService-Info.plist */,
+				889F7F5B26088F6300B3DA62 /* Info.plist */,
+				88A3AFB026526ACD00FFF90F /* Resources */,
 				88556CA02609D89500CF7CAC /* Extensions */,
 				88556C9F2609D88E00CF7CAC /* Networking */,
 				889F7F7426088FBF00B3DA62 /* View */,
 				889F7F7326088FB500B3DA62 /* Controller */,
 				889F7F7226088FAF00B3DA62 /* Model */,
-				889F7F5B26088F6300B3DA62 /* Info.plist */,
 			);
 			path = Koting;
 			sourceTree = "<group>";
