@@ -112,6 +112,8 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
                 
                 switch result {
                 case .success(let finalResult):
+                    
+                    /// 채팅방을 개설후 상대방에게 기본 메시지를 보냅니다.
                     if finalResult.result == "true" {
                         DispatchQueue.main.async {
                             parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인",handler: {(action: UIAlertAction!) in
@@ -132,6 +134,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
                 }
             }
         }
+        
         self.rejectButtonTapped = { [unowned self] in
             RejectMeetingAPI.shared.post(applyID: myMeeting?.participant?[indexPath.row].apply_id) { [weak self] result in
                 

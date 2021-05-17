@@ -113,11 +113,11 @@ class SignUpVC: UIViewController {
                     
                     UserDefaults.standard.set(try? PropertyListEncoder().encode(myInfo), forKey:"myInfo")
                     UserDefaults.standard.set(message.result, forKey: "accountId")
-                    UserDefaults.standard.set(totalEmail, forKey: "email")
+                    UserDefaults.standard.set(message.result + strongSelf.form.mailDomain, forKey: "email")
                     UserDefaults.standard.set(false, forKey: "mailAuthChecked")
                     
                     // MARK: - Firebase 채팅서버 유저생성
-                    strongSelf.createFirebaseUser(email: totalEmail)
+                    strongSelf.createFirebaseUser(email: message.result + strongSelf.form.mailDomain, userInfo: myInfo)
                     
                     DispatchQueue.main.async {
                         strongSelf.indicator.stopAnimating()
@@ -190,13 +190,19 @@ extension SignUpVC {
     }
     
     // 채팅서버 createUser
-    private func createFirebaseUser(email: String, password: String = "koting0000") {
+    private func createFirebaseUser(email: String, password: String = "koting0000", userInfo: Owner) {
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult , error in
             guard let result = authResult, error == nil else {
                 print("❌ Creating User 에러 발생 ❌")
                 return
             }
             
+            DatabaseManager.shared.insertUser(with: ChatAppUser(nickName: "테스트",
+                                                                emailAddress: email,
+                                                                age: "\(userInfo.age!)살",
+                                                                college: userInfo.college!,
+                                                                major: userInfo.major!,
+                                                                mbti: userInfo.mbti!))
             let user = result.user
             print("✅ 채팅서버 계정 생성 완료 ✅")
             print("채팅서버: 유저(\(user))")
