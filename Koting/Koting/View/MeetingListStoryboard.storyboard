@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyMeetingCell" rowHeight="134" id="tWu-Zi-j9R" customClass="MyMeetingCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="55.5" width="288" height="134"/>
+                                        <rect key="frame" x="16" y="49.5" width="288" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tWu-Zi-j9R" id="Y3n-Ii-Y3T">
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="134"/>
@@ -109,7 +109,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MeetingListTableViewCell" rowHeight="134.5" id="hdB-I3-qr9" customClass="MeetingListTableViewCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="189.5" width="288" height="134.5"/>
+                                        <rect key="frame" x="16" y="183.5" width="288" height="134.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdB-I3-qr9" id="49W-Rs-UEp">
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="134.5"/>
@@ -661,6 +661,7 @@
                     <connections>
                         <outlet property="tabBar" destination="9HO-Vp-hlp" id="WVL-S3-qSa"/>
                         <segue destination="hG1-CI-edF" kind="relationship" relationship="viewControllers" id="cwL-6A-w14"/>
+                        <segue destination="Koo-JH-QHm" kind="relationship" relationship="viewControllers" id="jCN-sO-fBT"/>
                         <segue destination="TIx-4i-B5J" kind="relationship" relationship="viewControllers" id="t1o-2o-As6"/>
                     </connections>
                 </tabBarController>
@@ -677,6 +678,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkB-ws-EEx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2174" y="178"/>
+        </scene>
+        <!--ChatStoryboard-->
+        <scene sceneID="qoZ-CB-V2R">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChatStoryboard" id="Koo-JH-QHm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="yCg-xd-qtV"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yXp-py-NiL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2707" y="177"/>
         </scene>
     </scenes>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
