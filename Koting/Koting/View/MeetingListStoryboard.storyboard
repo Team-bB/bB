@@ -20,6 +20,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ovb-vu-7Ed">
                                 <rect key="frame" x="0.0" y="44" width="320" height="475"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyMeetingCell" rowHeight="134" id="tWu-Zi-j9R" customClass="MyMeetingCell" customModule="Koting" customModuleProvider="target">
                                         <rect key="frame" x="16" y="55.5" width="288" height="134"/>
@@ -574,6 +575,7 @@
         <!--List-->
         <scene sceneID="JBn-TD-u8o">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U3g-Mx-aEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hG1-CI-edF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" id="tot-Rg-8Oc"/>
                     <toolbarItems/>
@@ -586,7 +588,6 @@
                         <segue destination="UvI-Gg-ac9" kind="relationship" relationship="rootViewController" id="zfG-IL-HoZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U3g-Mx-aEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3098.4000000000001" y="-383.65817091454278"/>
         </scene>

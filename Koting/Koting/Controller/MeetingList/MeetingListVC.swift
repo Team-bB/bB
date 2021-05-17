@@ -13,9 +13,7 @@ import PanModal
 class MeetingListVC: UIViewController {
     var meetings = [Meeting]()
     var myMeeting: Meeting?
-    
-    //var createMeetingRoom: UIViewController!
-    
+        
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -23,6 +21,7 @@ class MeetingListVC: UIViewController {
         super.viewDidLoad()
         
 //        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "미팅 리스트"
         navigationController?.navigationBar.prefersLargeTitles = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -35,11 +34,11 @@ class MeetingListVC: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         FetchMeetings()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         FetchMeetings()
     }
     
