@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyMeetingCell" rowHeight="134" id="tWu-Zi-j9R" customClass="MyMeetingCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="49.5" width="288" height="134"/>
+                                        <rect key="frame" x="16" y="55.5" width="288" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tWu-Zi-j9R" id="Y3n-Ii-Y3T">
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="134"/>
@@ -31,21 +31,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pll-AO-NiL">
                                                     <rect key="frame" x="8" y="11" width="271" height="112.5"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZF-W7-lfd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="271" height="112.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="112.5" id="ctt-cX-LwS"/>
-                                                                <constraint firstAttribute="width" constant="271" id="dx8-bN-BWL"/>
-                                                            </constraints>
-                                                            <color key="tintColor" red="0.53387361764907837" green="0.06793946772813797" blue="0.96206063032150269" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal">
-                                                                <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" weight="regular"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="noMyMeetingBtnTapped:" destination="tWu-Zi-j9R" eventType="touchUpInside" id="Pcw-fW-QIW"/>
-                                                            </connections>
-                                                        </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2MQ-X3-mWO">
                                                             <rect key="frame" x="3" y="16" width="264" height="80"/>
                                                             <subviews>
@@ -84,11 +69,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="2MQ-X3-mWO" secondAttribute="trailing" constant="4" id="1yU-Fv-McM"/>
                                                         <constraint firstItem="2MQ-X3-mWO" firstAttribute="top" secondItem="pll-AO-NiL" secondAttribute="top" constant="16" id="GPT-Yw-zo6"/>
                                                         <constraint firstItem="2MQ-X3-mWO" firstAttribute="leading" secondItem="pll-AO-NiL" secondAttribute="leading" constant="3" id="Lil-d5-CD7"/>
-                                                        <constraint firstAttribute="bottom" secondItem="7ZF-W7-lfd" secondAttribute="bottom" id="OGN-eO-Rc9"/>
-                                                        <constraint firstItem="7ZF-W7-lfd" firstAttribute="top" secondItem="pll-AO-NiL" secondAttribute="top" id="gNF-iL-Cvo"/>
-                                                        <constraint firstAttribute="trailing" secondItem="7ZF-W7-lfd" secondAttribute="trailing" id="gXc-bw-EWi"/>
                                                         <constraint firstAttribute="bottom" secondItem="2MQ-X3-mWO" secondAttribute="bottom" constant="16.5" id="hEK-Ws-blc"/>
-                                                        <constraint firstItem="7ZF-W7-lfd" firstAttribute="leading" secondItem="pll-AO-NiL" secondAttribute="leading" id="kYB-Ua-Xkr"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -103,13 +84,12 @@
                                             <outlet property="animalShapeImage" destination="u2q-gc-OFH" id="c3B-8g-U6a"/>
                                             <outlet property="collegeName" destination="MW7-K9-TJE" id="ZAx-Hi-NcR"/>
                                             <outlet property="myMeetingStackView" destination="2MQ-X3-mWO" id="ZOO-hS-5ah"/>
-                                            <outlet property="noMyMeeting" destination="7ZF-W7-lfd" id="BYD-oL-P9A"/>
                                             <outlet property="numberOfParticipants" destination="HGQ-VL-JJo" id="zqI-wE-0de"/>
                                             <outlet property="tableViewCellLayer" destination="pll-AO-NiL" id="Oz7-2g-Yuv"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MeetingListTableViewCell" rowHeight="134.5" id="hdB-I3-qr9" customClass="MeetingListTableViewCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="183.5" width="288" height="134.5"/>
+                                        <rect key="frame" x="16" y="189.5" width="288" height="134.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdB-I3-qr9" id="49W-Rs-UEp">
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="134.5"/>
@@ -167,6 +147,51 @@
                                             <outlet property="collegeName" destination="zeG-Tn-wcF" id="mfa-cl-7tA"/>
                                             <outlet property="numberOfParticipants" destination="N6K-eK-pMF" id="dZS-vD-kBo"/>
                                             <outlet property="tableViewCellLayer" destination="Ai9-yx-uGO" id="hx1-Kf-aki"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoMyMeetingCell" rowHeight="134" id="wmL-kn-Khg" customClass="NoMyMeetingCell" customModule="Koting" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="324" width="288" height="134"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wmL-kn-Khg" id="Jsd-cU-NZA">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="134"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8O-9e-Vfc">
+                                                    <rect key="frame" x="8" y="11" width="271" height="112.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZF-W7-lfd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="271" height="112.5"/>
+                                                            <color key="tintColor" red="0.53387361764907837" green="0.06793946772813797" blue="0.96206063032150269" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal">
+                                                                <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" weight="regular"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="noMyMeetingBtnTapped:" destination="wmL-kn-Khg" eventType="touchUpInside" id="ug6-Ds-oqe"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="112.5" id="0RD-4p-UqN"/>
+                                                        <constraint firstItem="7ZF-W7-lfd" firstAttribute="leading" secondItem="n8O-9e-Vfc" secondAttribute="leading" id="8cs-NN-M9W"/>
+                                                        <constraint firstAttribute="width" constant="271" id="D2E-13-9d0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7ZF-W7-lfd" secondAttribute="trailing" id="O9n-bb-Gb2"/>
+                                                        <constraint firstItem="7ZF-W7-lfd" firstAttribute="top" secondItem="n8O-9e-Vfc" secondAttribute="top" id="SFX-Ed-PUb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7ZF-W7-lfd" secondAttribute="bottom" id="yME-tK-uew"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="n8O-9e-Vfc" firstAttribute="leading" secondItem="Jsd-cU-NZA" secondAttribute="leading" constant="8" id="4NB-Xd-eov"/>
+                                                <constraint firstAttribute="bottom" secondItem="n8O-9e-Vfc" secondAttribute="bottom" constant="10.5" id="LnV-nQ-KoJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="n8O-9e-Vfc" secondAttribute="trailing" constant="9" id="P71-zO-9a2"/>
+                                                <constraint firstItem="n8O-9e-Vfc" firstAttribute="top" secondItem="Jsd-cU-NZA" secondAttribute="top" constant="11" id="Ymj-Rp-u75"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="noMyMeeting" destination="7ZF-W7-lfd" id="Bni-3l-tgv"/>
+                                            <outlet property="tableViewCellLayer" destination="n8O-9e-Vfc" id="au5-Vq-ia7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -354,11 +379,11 @@
         <scene sceneID="Crq-gh-ayu">
             <objects>
                 <viewController id="KP4-dU-TG8" customClass="MeetingDetailInfoViewController" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="bLL-zb-XDf">
+                    <view key="view" contentMode="scaleToFill" id="bLL-zb-XDf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NW-UG-3rt" customClass="CustomButton" customModule="Koting" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NW-UG-3rt" customClass="CustomButton" customModule="Koting" customModuleProvider="target">
                                 <rect key="frame" x="70" y="552" width="180" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ZhE-vc-MtX"/>
@@ -392,7 +417,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vxF-n5-DDY">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxF-n5-DDY">
                                 <rect key="frame" x="5" y="202" width="310" height="310"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VL8-g7-wP0">

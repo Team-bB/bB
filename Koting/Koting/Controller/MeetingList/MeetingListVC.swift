@@ -34,9 +34,11 @@ class MeetingListVC: UIViewController {
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         FetchMeetings()
         
-        navigationItem.largeTitleDisplayMode = .always
- 
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        FetchMeetings()
     }
     
     @objc private func didPullToRefresh() {
@@ -46,11 +48,11 @@ class MeetingListVC: UIViewController {
     // MARK: FetchMeetings
     func FetchMeetings() {
         
-        if tableView.refreshControl?.isRefreshing == true {
-            print("-----Refreshing Meetings-----\n")
-        } else {
-            print("-----Fetching Meetings-----\n")
-        }
+//        if tableView.refreshControl?.isRefreshing == true {
+//            print("-----Refreshing Meetings-----\n")
+//        } else {
+//            print("-----Fetching Meetings-----\n")
+//        }
         
         FetchMeetingRoomsAPI.shared.get(accountID: UserDefaults.standard.string(forKey: "accountId")) { [weak self] result in
             guard let strongSelf = self else { return }
@@ -117,18 +119,21 @@ extension MeetingListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingCell", for: indexPath) as! MyMeetingCell
             if myMeeting == nil {
-                cell.myMeetingStackView.isHidden = true
-                cell.noMyMeeting.isHidden = false
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NoMyMeetingCell", for: indexPath) as! NoMyMeetingCell
                 cell.buttonCreateMyMeeting = { [unowned self] in
                     cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .touchUpInside)
                 }
-            }else {
-                cell.noMyMeeting.isHidden = true
-                cell.myMeetingStackView.isHidden = false
+                cell.tableViewCellLayer.layer.cornerRadius = 20
+                cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
+                cell.tableViewCellLayer.layer.shadowOpacity = 1.0
+                cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
+                cell.tableViewCellLayer.layer.shadowRadius = 6
                 
-            }
+                return cell
+            }else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingCell", for: indexPath) as! MyMeetingCell
+                
                 cell.collegeName.text = myMeeting?.owner?.college
                 cell.numberOfParticipants.text = myMeeting?.player
                 cell.animalShapeImage.image = UIImage(named: transImage(index: myMeeting?.owner?.animal_idx ?? 0))
@@ -143,6 +148,7 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.tableViewCellLayer.layer.shadowRadius = 6
                 
                 return cell
+            }
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingListTableViewCell", for: indexPath) as! MeetingListTableViewCell
             cell.tableViewCellLayer.layer.cornerRadius = 20
@@ -180,7 +186,9 @@ extension MeetingListVC: UITableViewDataSource {
 extension MeetingListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            performSegue(withIdentifier: "MyMeetingInfo", sender: indexPath.row)
+            if myMeeting != nil {
+                performSegue(withIdentifier: "MyMeetingInfo", sender: indexPath.row)
+            }
         }else {
             performSegue(withIdentifier: "MeetingDetailInfo", sender: indexPath.row)
         }

@@ -76,6 +76,7 @@
 		D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E168264830B900938E85 /* RejectMeetingAPI.swift */; };
 		D392E16F264833E000938E85 /* DeleteCompleteMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */; };
 		D392E1A726512F3600938E85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D392E1A626512F3600938E85 /* GoogleService-Info.plist */; };
+		D392E1CA26527FC400938E85 /* NoMyMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1C926527FC400938E85 /* NoMyMeetingCell.swift */; };
 		D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */; };
 		D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF1260B1835000625DF /* MeetingModel.swift */; };
 		D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */; };
@@ -157,6 +158,7 @@
 		D392E168264830B900938E85 /* RejectMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectMeetingAPI.swift; sourceTree = "<group>"; };
 		D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCompleteMeetingAPI.swift; sourceTree = "<group>"; };
 		D392E1A626512F3600938E85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D392E1C926527FC400938E85 /* NoMyMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMyMeetingCell.swift; sourceTree = "<group>"; };
 		D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListVC.swift; sourceTree = "<group>"; };
 		D3BC8CF1260B1835000625DF /* MeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingModel.swift; sourceTree = "<group>"; };
 		D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListAndMyInfoAPI.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			children = (
 				D392E1272644CDAB00938E85 /* MyMeetingCell.swift */,
 				88556CB02609D8FC00CF7CAC /* MeetingListTableViewCell.swift */,
+				D392E1C926527FC400938E85 /* NoMyMeetingCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				88A3AFAD265257F900FFF90F /* DatabaseManager.swift in Sources */,
 				D392E16626482A6700938E85 /* AcceptMeetingAPI.swift in Sources */,
 				889ACAEC26372B95006DCF93 /* LoadingHUD.swift in Sources */,
+				D392E1CA26527FC400938E85 /* NoMyMeetingCell.swift in Sources */,
 				889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
