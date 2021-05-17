@@ -72,9 +72,6 @@ class CreateMeetingRoomVC: UIViewController {
                         }
                     }
                 }
-               
-                
-                
             case .failure:
                 break
             }

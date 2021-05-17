@@ -33,6 +33,8 @@ class MeetingListVC: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         FetchMeetings()
+        
+        navigationItem.largeTitleDisplayMode = .always
  
         
     }
@@ -192,9 +194,6 @@ extension MeetingListVC: UITableViewDelegate {
             }
         }else if segue.identifier == "MyMeetingInfo" {
             let vc = segue.destination as? MyMeetingInfoViewController
-//            if let index = sender as? Int {
-//                vc?.meeting = myMeeting
-//            }
             vc?.meeting = myMeeting
         }
     }
