@@ -106,6 +106,8 @@ public class ApplyController {
     Apply apply = applyService.findOne(applyId);
     apply.applyAccept();
 
+    //
+
     // 해당 미팅에 신청한 사람들
     List<Apply> applies = apply.getMeeting().getParticipants();
 

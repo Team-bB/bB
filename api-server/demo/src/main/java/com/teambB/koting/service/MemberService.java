@@ -1,6 +1,8 @@
 package com.teambB.koting.service;
 
+import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
+import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
 import java.io.UnsupportedEncodingException;
 import javax.mail.MessagingException;
@@ -22,6 +24,7 @@ public class MemberService {
   @Autowired
   private JavaMailSender javaMailSender;
   private final MemberRepository memberRepository;
+  private final MeetingRepository meetingRepository;
 
   public Long join(Member member) {
     if (member.getId() == null) {
@@ -57,6 +60,10 @@ public class MemberService {
 
   public void clearMyMeetingId(String accountId) {
     Member member = memberRepository.findByAccountId(accountId);
+
+    Meeting myMeeting = meetingRepository.findById(member.getMyMeetingId());
+    meetingRepository.delete(myMeeting);
+
     member.setMyMeetingId(null);
   }
 
