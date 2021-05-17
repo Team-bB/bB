@@ -2,6 +2,7 @@ package com.teambB.koting.service;
 
 import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.Meeting;
+import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
@@ -69,6 +70,7 @@ public class MemberService {
       Apply one = applyService.findOne(apply_.getId());
       one.rejectAccept();
     }
+    myMeeting.setMeetingStatus(MeetingStatus.CLOSE);
     member.setMyMeetingId(null);
   }
 
