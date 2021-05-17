@@ -122,12 +122,11 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.buttonCreateMyMeeting = { [unowned self] in
                     cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .touchUpInside)
                 }
-                return cell
             }else {
                 cell.noMyMeeting.isHidden = true
                 cell.myMeetingStackView.isHidden = false
-                cell.tableViewCellLayer.layer.cornerRadius = 20
                 
+            }
                 cell.collegeName.text = myMeeting?.owner?.college
                 cell.numberOfParticipants.text = myMeeting?.player
                 cell.animalShapeImage.image = UIImage(named: transImage(index: myMeeting?.owner?.animal_idx ?? 0))
@@ -135,13 +134,13 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.animalShapeImage.layer.masksToBounds = true
                 cell.animalShapeImage.layer.borderWidth = 0
                 
+                cell.tableViewCellLayer.layer.cornerRadius = 20
                 cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
                 cell.tableViewCellLayer.layer.shadowOpacity = 1.0
                 cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
                 cell.tableViewCellLayer.layer.shadowRadius = 6
                 
                 return cell
-            }
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingListTableViewCell", for: indexPath) as! MeetingListTableViewCell
             cell.tableViewCellLayer.layer.cornerRadius = 20
