@@ -45,7 +45,6 @@
 		889DB262263D824400E8B1BE /* MyMeetingListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889DB261263D824400E8B1BE /* MyMeetingListAPI.swift */; };
 		889F7F4E26088F6200B3DA62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4D26088F6200B3DA62 /* AppDelegate.swift */; };
 		889F7F5026088F6200B3DA62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */; };
-		889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F7F5126088F6200B3DA62 /* ViewController.swift */; };
 		889F7F5526088F6200B3DA62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F5326088F6200B3DA62 /* Main.storyboard */; };
 		889F7F5726088F6300B3DA62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F5626088F6300B3DA62 /* Assets.xcassets */; };
 		889F7F5A26088F6300B3DA62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889F7F5826088F6300B3DA62 /* LaunchScreen.storyboard */; };
@@ -125,7 +124,6 @@
 		889F7F4A26088F6200B3DA62 /* Koting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		889F7F4D26088F6200B3DA62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		889F7F5126088F6200B3DA62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		889F7F5426088F6200B3DA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		889F7F5626088F6300B3DA62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		889F7F5926088F6300B3DA62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -262,19 +260,14 @@
 		889F7F4C26088F6200B3DA62 /* Koting */ = {
 			isa = PBXGroup;
 			children = (
+				88A3AFB026526ACD00FFF90F /* Resources */,
 				D392E1A626512F3600938E85 /* GoogleService-Info.plist */,
 				88556CA02609D89500CF7CAC /* Extensions */,
 				88556C9F2609D88E00CF7CAC /* Networking */,
 				889F7F7426088FBF00B3DA62 /* View */,
 				889F7F7326088FB500B3DA62 /* Controller */,
 				889F7F7226088FAF00B3DA62 /* Model */,
-				889F7F4D26088F6200B3DA62 /* AppDelegate.swift */,
-				889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */,
-				889F7F5126088F6200B3DA62 /* ViewController.swift */,
-				889F7F5626088F6300B3DA62 /* Assets.xcassets */,
 				889F7F5B26088F6300B3DA62 /* Info.plist */,
-				88A3AFAA2651367800FFF90F /* StorageManager.swift */,
-				88A3AFAC265257F900FFF90F /* DatabaseManager.swift */,
 			);
 			path = Koting;
 			sourceTree = "<group>";
@@ -305,6 +298,7 @@
 		889F7F7426088FBF00B3DA62 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				889F7F5626088F6300B3DA62 /* Assets.xcassets */,
 				889F7F5326088F6200B3DA62 /* Main.storyboard */,
 				889F7F7C2608907300B3DA62 /* MyInfoStoryboard.storyboard */,
 				889F7F7F2608907F00B3DA62 /* MeetingListStoryboard.storyboard */,
@@ -386,6 +380,17 @@
 				88A3AFA52651244000FFF90F /* ChatVC.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		88A3AFB026526ACD00FFF90F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				889F7F4D26088F6200B3DA62 /* AppDelegate.swift */,
+				889F7F4F26088F6200B3DA62 /* SceneDelegate.swift */,
+				88A3AFAA2651367800FFF90F /* StorageManager.swift */,
+				88A3AFAC265257F900FFF90F /* DatabaseManager.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D392E13C2645656D00938E85 /* Cell */ = {
@@ -590,7 +595,6 @@
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
 				88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */,
 				883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */,
-				889F7F5226088F6200B3DA62 /* ViewController.swift in Sources */,
 				883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */,
 				88A3AFAB2651367800FFF90F /* StorageManager.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
