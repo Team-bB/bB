@@ -92,8 +92,12 @@ public class ApplyController {
     String accountId = object.get("account_id").toString();
     Long meetingId = Long.parseLong(object.get("meeting_id").toString());
 
-    applyService.Apply(accountId, meetingId);
-    retObject.put("result", "applyMeetingSuccess");
+    if (applyService.Apply(accountId, meetingId) != null) {
+      retObject.put("result", "applyMeetingSuccess");
+    }
+    else {
+      retObject.put("result", "applyMeetingFailed");
+    }
     return retObject;
   }
 
