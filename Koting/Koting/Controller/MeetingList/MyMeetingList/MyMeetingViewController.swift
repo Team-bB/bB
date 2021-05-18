@@ -57,12 +57,12 @@ class MyMeetingViewController: UIViewController {
     }
     
     fileprivate func makeDataSource() -> [(menu: String, content: UIViewController)] {
-        let myMenuArray = ["진행중인 미팅", "완료된 미팅"]
+        let myMenuArray = ["나의 미팅", "완료된 미팅"]
         return myMenuArray.map{
             let title = $0
             
             switch title {
-            case "진행중인 미팅":
+            case "나의 미팅":
                 let vc = UIStoryboard(name: "MyMeetingList",bundle: nil).instantiateViewController(identifier: "MyContinueMeetingVC") as! MyContinueMeetingVC
                 return (menu: title, content: vc)
             case "완료된 미팅":

@@ -20,19 +20,31 @@ class MeetingListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
-        preventLargeTitleCollapsing()
-        navigationController?.navigationBar.largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9149076847, green: 0.2422577689, blue: 1, alpha: 1),
-             NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30) ??
-                                         UIFont.systemFont(ofSize: 30),
-             NSAttributedString.Key.backgroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-             ]
+        //navigationController?.navigationBar.prefersLargeTitles = true
+        //preventLargeTitleCollapsing()
+//        navigationController?.navigationBar.largeTitleTextAttributes =
+//            [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9149076847, green: 0.2422577689, blue: 1, alpha: 1),
+//             NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30) ??
+//                                         UIFont.systemFont(ofSize: 30),
+//             NSAttributedString.Key.backgroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//             ]
+        
+        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 44))
+        lbl.text = "미팅"
+        lbl.textColor = .black
+        lbl.textAlignment = .left
+        //lbl.font = UIFont(name: "Papyrus", size: 20)
+        lbl.font = UIFont.boldSystemFont(ofSize: 30)
+        navigationItem.titleView = lbl
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none //테이블 뷰 셀 나누는 줄 없애는 코드
+        //tableView.separatorStyle = UITableViewCell.SeparatorStyle.none //테이블 뷰 셀 나누는 줄 없애는 코드
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissNotification(_:)), name: NSNotification.Name(rawValue: "DidDismissViewController"), object: nil)
         //setFloatingButton()
         
@@ -53,13 +65,13 @@ class MeetingListVC: UIViewController {
         view.sendSubviewToBack(dummyView)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if(scrollView.contentOffset.y > 0){
-            //self.navigationController?.navigationBar.prefersLargeTitles = false
-        }else {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if(scrollView.contentOffset.y > 0){
+//            //self.navigationController?.navigationBar.prefersLargeTitles = false
+//        }else {
+//            self.navigationController?.navigationBar.prefersLargeTitles = true
+//        }
+//    }
     
     @objc private func didPullToRefresh() {
         print("Start Refresh")
@@ -120,10 +132,10 @@ extension MeetingListVC: UITableViewDataSource {
                     cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .touchUpInside)
                 }
                 cell.tableViewCellLayer.layer.cornerRadius = 20
-                cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
-                cell.tableViewCellLayer.layer.shadowOpacity = 1.0
-                cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
-                cell.tableViewCellLayer.layer.shadowRadius = 6
+                //cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
+                //cell.tableViewCellLayer.layer.shadowOpacity = 1.0
+                //cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
+                //cell.tableViewCellLayer.layer.shadowRadius = 6
                 
                 return cell
             }else {
@@ -135,12 +147,13 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2
                 cell.animalShapeImage.layer.masksToBounds = true
                 cell.animalShapeImage.layer.borderWidth = 0
+                cell.mbtiLabel.text = myMeeting?.owner?.mbti
                 
                 cell.tableViewCellLayer.layer.cornerRadius = 20
-                cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
-                cell.tableViewCellLayer.layer.shadowOpacity = 1.0
-                cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
-                cell.tableViewCellLayer.layer.shadowRadius = 6
+                //cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
+                //cell.tableViewCellLayer.layer.shadowOpacity = 1.0
+                //cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
+                //cell.tableViewCellLayer.layer.shadowRadius = 6
                 
                 return cell
             }
@@ -156,10 +169,10 @@ extension MeetingListVC: UITableViewDataSource {
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
             
-            cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
-            cell.tableViewCellLayer.layer.shadowOpacity = 1.0
-            cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
-            cell.tableViewCellLayer.layer.shadowRadius = 6
+            //cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
+            //cell.tableViewCellLayer.layer.shadowOpacity = 1.0
+            //cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
+            //cell.tableViewCellLayer.layer.shadowRadius = 6
             
             return cell
         }
