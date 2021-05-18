@@ -33,7 +33,6 @@ class MeetingListVC: UIViewController {
         lbl.text = "진행중인 미팅"
         lbl.textColor = .black
         lbl.textAlignment = .left
-        //lbl.font = UIFont(name: "Papyrus", size: 20)
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
         navigationItem.titleView = lbl
         self.navigationController?.navigationBar.isTranslucent = false
