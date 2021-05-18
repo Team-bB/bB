@@ -216,14 +216,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="house" catalog="system" selectedImage="house.fill" id="lA3-6U-dTk"/>
-                    <navigationItem key="navigationItem" title="미팅 리스트" largeTitleDisplayMode="always" id="dAm-c2-XEa">
+                    <navigationItem key="navigationItem" title="미팅 리스트" id="dAm-c2-XEa">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="list.star" catalog="system" id="GcR-Pj-RZQ">
                             <connections>
                                 <segue destination="x5Y-dp-glL" kind="show" identifier="MyMeetingList" id="0zA-GO-gG5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Ovb-vu-7Ed" id="0RC-eE-WYp"/>
                         <segue destination="KP4-dU-TG8" kind="show" identifier="MeetingDetailInfo" id="57c-6E-yGG"/>
@@ -359,7 +358,7 @@
                             <constraint firstItem="e0N-qU-b2R" firstAttribute="bottom" secondItem="OfS-38-6nZ" secondAttribute="bottom" constant="30.5" id="hGC-sS-5g1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Sx4-hF-yb9"/>
+                    <navigationItem key="navigationItem" id="Sx4-hF-yb9"/>
                     <connections>
                         <outlet property="ageLabel" destination="X0V-CL-nva" id="Yg4-QS-Ohi"/>
                         <outlet property="animalLabel" destination="gpp-aX-XvM" id="crw-VI-gLh"/>
@@ -556,7 +555,7 @@
                             <constraint firstItem="JaC-sA-MaH" firstAttribute="centerX" secondItem="bLL-zb-XDf" secondAttribute="centerX" id="iIB-8T-sqy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="zgf-t8-xjr"/>
+                    <navigationItem key="navigationItem" id="zgf-t8-xjr"/>
                     <connections>
                         <outlet property="ageLabel" destination="nuH-Oa-Zei" id="5fn-lt-Paa"/>
                         <outlet property="animalLabel" destination="4nq-4C-Ggl" id="zDB-zB-bfq"/>
@@ -579,13 +578,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hG1-CI-edF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" id="tot-Rg-8Oc"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="yIh-dn-uTT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yIh-dn-uTT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="UvI-Gg-ac9" kind="relationship" relationship="rootViewController" id="zfG-IL-HoZ"/>
+                        <segue destination="UvI-Gg-ac9" kind="relationship" relationship="rootViewController" id="51q-Xw-QF6"/>
                     </connections>
                 </navigationController>
             </objects>

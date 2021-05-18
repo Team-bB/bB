@@ -11,17 +11,8 @@ import PagingKit
 
 class MyMeetingViewController: UIViewController {
     
-//    private var myMeeting: MyMeeting?
-//    private var applyList = [Meeting]()
-    
     var menuViewController: PagingMenuViewController!
     var contentViewController: PagingContentViewController!
-    
-    static var viewController: (UIColor) -> UIViewController = { (color) in
-        let vc = UIViewController()
-        vc.view.backgroundColor = color
-        return vc
-    }
 
     var dataSource = [(menu: String, content: UIViewController)]() {
         didSet{

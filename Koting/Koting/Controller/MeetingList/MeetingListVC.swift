@@ -21,8 +21,9 @@ class MeetingListVC: UIViewController {
         super.viewDidLoad()
         
 //        navigationItem.largeTitleDisplayMode = .always
-        navigationItem.title = "미팅 리스트"
         navigationController?.navigationBar.prefersLargeTitles = true
+        preventLargeTitleCollapsing()
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -38,8 +39,13 @@ class MeetingListVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         FetchMeetings()
+    }
+    
+    private func preventLargeTitleCollapsing() {
+        let dummyView = UIView()
+        view.addSubview(dummyView)
+        view.sendSubviewToBack(dummyView)
     }
     
     @objc private func didPullToRefresh() {
@@ -48,13 +54,6 @@ class MeetingListVC: UIViewController {
     }
     // MARK: FetchMeetings
     func FetchMeetings() {
-        
-//        if tableView.refreshControl?.isRefreshing == true {
-//            print("-----Refreshing Meetings-----\n")
-//        } else {
-//            print("-----Fetching Meetings-----\n")
-//        }
-        
         FetchMeetingRoomsAPI.shared.get(accountID: UserDefaults.standard.string(forKey: "accountId")) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
