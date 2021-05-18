@@ -51,7 +51,9 @@
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="미래융합대학">
                                                                             <attributes>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <color key="NSColor" white="0.21973654972452697" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <font key="NSFont" size="15" name="AppleSDGothicNeo-Light"/>
+                                                                                <font key="NSOriginalFont" size="13" name="AppleSDGothicNeo-Thin"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
@@ -70,8 +72,9 @@
                                                                             <attributedString key="attributedText">
                                                                                 <fragment content="MBTI">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" size="24" name="AppleSDGothicNeo-Bold"/>
-                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                        <font key="NSFont" size="24" name="AppleSDGothicNeo-Medium"/>
+                                                                                        <font key="NSOriginalFont" size="24" name="AppleSDGothicNeo-Medium"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                             </attributedString>
@@ -126,77 +129,112 @@
                                             <outlet property="tableViewCellLayer" destination="pll-AO-NiL" id="Oz7-2g-Yuv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MeetingListTableViewCell" rowHeight="134" id="hdB-I3-qr9" customClass="MeetingListTableViewCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="155.5" width="320" height="134"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MeetingListTableViewCell" rowHeight="100" id="hdB-I3-qr9" customClass="MeetingListTableViewCell" customModule="Koting" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="155.5" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdB-I3-qr9" id="49W-Rs-UEp">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ai9-yx-uGO">
-                                                    <rect key="frame" x="9" y="11" width="303" height="112"/>
+                                                    <rect key="frame" x="16" y="5" width="288" height="90"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0wI-Jl-O9h">
-                                                            <rect key="frame" x="3" y="16" width="296" height="80"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jNq-3P-r7i">
+                                                            <rect key="frame" x="14" y="5" width="80" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="nqu-t1-d2u"/>
+                                                                <constraint firstAttribute="height" constant="80" id="s8y-Dc-NPm"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qRu-WZ-vwt">
+                                                            <rect key="frame" x="118" y="20" width="100" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeG-Tn-wcF">
-                                                                    <rect key="frame" x="0.0" y="25" width="90" height="30"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeG-Tn-wcF">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="90" id="ZPs-T0-b4Q"/>
-                                                                        <constraint firstAttribute="height" constant="30" id="lZX-2V-036"/>
+                                                                        <constraint firstAttribute="width" constant="100" id="ZPs-T0-b4Q"/>
+                                                                        <constraint firstAttribute="height" constant="25" id="lZX-2V-036"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
+                                                                    <attributedString key="attributedText">
+                                                                        <fragment content="단과대학">
+                                                                            <attributes>
+                                                                                <color key="NSColor" white="0.21656054177251802" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <font key="NSFont" size="15" name="AppleSDGothicNeo-Light"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6K-eK-pMF">
-                                                                    <rect key="frame" x="92" y="25" width="122" height="30"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="30" id="5C0-3p-LQ1"/>
-                                                                        <constraint firstAttribute="width" constant="90" id="Nf9-pK-3WC"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jNq-3P-r7i">
-                                                                    <rect key="frame" x="216" y="0.0" width="80" height="80"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="bAY-Y1-Bcr"/>
-                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="dcE-mb-WPz"/>
-                                                                        <constraint firstAttribute="width" constant="80" id="nqu-t1-d2u"/>
-                                                                        <constraint firstAttribute="height" constant="80" id="s8y-Dc-NPm"/>
-                                                                    </constraints>
-                                                                </imageView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsL-4f-PgI">
+                                                                    <rect key="frame" x="0.0" y="25" width="100" height="25"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJC-hs-CPW">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="25"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="65" id="BlK-ob-TCC"/>
+                                                                                <constraint firstAttribute="height" constant="25" id="jAR-BL-G2L"/>
+                                                                            </constraints>
+                                                                            <attributedString key="attributedText">
+                                                                                <fragment content="MBTI">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="24" name="AppleSDGothicNeo-Medium"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6K-eK-pMF">
+                                                                            <rect key="frame" x="65" y="0.0" width="35" height="25"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="25" id="5C0-3p-LQ1"/>
+                                                                                <constraint firstAttribute="width" constant="35" id="Nf9-pK-3WC"/>
+                                                                            </constraints>
+                                                                            <attributedString key="attributedText">
+                                                                                <fragment content="3 : 3">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                        <font key="NSFont" size="14" name="AppleSDGothicNeo-Bold"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="0wI-Jl-O9h" firstAttribute="top" secondItem="Ai9-yx-uGO" secondAttribute="top" constant="16" id="0Mc-JK-Rk0"/>
-                                                        <constraint firstAttribute="height" constant="112" id="bPm-bJ-y83"/>
-                                                        <constraint firstAttribute="bottom" secondItem="0wI-Jl-O9h" secondAttribute="bottom" constant="16" id="nt4-2v-uTi"/>
-                                                        <constraint firstItem="0wI-Jl-O9h" firstAttribute="leading" secondItem="Ai9-yx-uGO" secondAttribute="leading" constant="3" id="ufP-rb-kXq"/>
-                                                        <constraint firstAttribute="trailing" secondItem="0wI-Jl-O9h" secondAttribute="trailing" constant="4" id="yyy-PL-H4S"/>
+                                                        <constraint firstItem="qRu-WZ-vwt" firstAttribute="leading" secondItem="jNq-3P-r7i" secondAttribute="trailing" constant="24" id="6zz-Fm-zFY"/>
+                                                        <constraint firstAttribute="width" constant="288" id="B7j-jV-54O"/>
+                                                        <constraint firstAttribute="height" constant="90" id="Pq2-kM-iRs"/>
+                                                        <constraint firstItem="jNq-3P-r7i" firstAttribute="top" secondItem="Ai9-yx-uGO" secondAttribute="top" constant="5" id="c1l-Wd-VJC"/>
+                                                        <constraint firstItem="qRu-WZ-vwt" firstAttribute="top" secondItem="Ai9-yx-uGO" secondAttribute="top" constant="20" id="cJX-Q1-ESe"/>
+                                                        <constraint firstItem="jNq-3P-r7i" firstAttribute="leading" secondItem="Ai9-yx-uGO" secondAttribute="leading" constant="14" id="mBm-nB-9zE"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ai9-yx-uGO" firstAttribute="bottom" secondItem="49W-Rs-UEp" secondAttribute="bottomMargin" id="DSy-CC-FHf"/>
-                                                <constraint firstItem="Ai9-yx-uGO" firstAttribute="top" secondItem="49W-Rs-UEp" secondAttribute="topMargin" id="NEq-cS-04I"/>
-                                                <constraint firstItem="Ai9-yx-uGO" firstAttribute="leading" secondItem="49W-Rs-UEp" secondAttribute="leadingMargin" constant="-7" id="OQN-L9-ccO"/>
-                                                <constraint firstItem="Ai9-yx-uGO" firstAttribute="trailing" secondItem="49W-Rs-UEp" secondAttribute="trailingMargin" constant="8" id="oNN-aP-vkq"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ai9-yx-uGO" secondAttribute="trailing" constant="16" id="KZL-VI-Wvb"/>
+                                                <constraint firstItem="Ai9-yx-uGO" firstAttribute="leading" secondItem="49W-Rs-UEp" secondAttribute="leading" constant="16" id="Kma-9V-WBF"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ai9-yx-uGO" secondAttribute="bottom" constant="5" id="gPI-cf-Tri"/>
+                                                <constraint firstItem="Ai9-yx-uGO" firstAttribute="top" secondItem="49W-Rs-UEp" secondAttribute="top" constant="5" id="vtO-eh-4Wh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="animalShapeImage" destination="jNq-3P-r7i" id="sAG-Vb-rer"/>
                                             <outlet property="collegeName" destination="zeG-Tn-wcF" id="mfa-cl-7tA"/>
+                                            <outlet property="mbtiLabel" destination="kJC-hs-CPW" id="5E8-kL-pBK"/>
                                             <outlet property="numberOfParticipants" destination="N6K-eK-pMF" id="dZS-vD-kBo"/>
                                             <outlet property="tableViewCellLayer" destination="Ai9-yx-uGO" id="hx1-Kf-aki"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoMyMeetingCell" rowHeight="100" id="wmL-kn-Khg" customClass="NoMyMeetingCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="289.5" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="255.5" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wmL-kn-Khg" id="Jsd-cU-NZA">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>

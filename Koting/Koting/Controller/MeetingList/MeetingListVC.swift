@@ -30,11 +30,11 @@ class MeetingListVC: UIViewController {
 //             ]
         
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 44))
-        lbl.text = "미팅"
+        lbl.text = "진행중인 미팅"
         lbl.textColor = .black
         lbl.textAlignment = .left
         //lbl.font = UIFont(name: "Papyrus", size: 20)
-        lbl.font = UIFont.boldSystemFont(ofSize: 30)
+        lbl.font = UIFont.boldSystemFont(ofSize: 20)
         navigationItem.titleView = lbl
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -168,6 +168,7 @@ extension MeetingListVC: UITableViewDataSource {
             cell.animalShapeImage.layer.cornerRadius = cell.animalShapeImage.frame.size.height/2 //102~104 이미지 동그랗게 만드는코드 약간애매
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
+            cell.mbtiLabel.text = meetings[indexPath.row].owner?.mbti
             
             //cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
             //cell.tableViewCellLayer.layer.shadowOpacity = 1.0
