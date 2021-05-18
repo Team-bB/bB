@@ -202,7 +202,7 @@ extension SignUpVC {
                                                                 age: "\(userInfo.age!)살",
                                                                 college: userInfo.college!,
                                                                 major: userInfo.major!,
-                                                                mbti: userInfo.mbti!))
+                                                                mbti: userInfo.mbti!), completion: {result in print("okay",result)}) //오류떠서 만들어둠
             let user = result.user
             print("✅ 채팅서버 계정 생성 완료 ✅")
             print("채팅서버: 유저(\(user))")

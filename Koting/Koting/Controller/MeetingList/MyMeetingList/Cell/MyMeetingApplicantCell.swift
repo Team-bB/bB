@@ -105,60 +105,74 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         cell.collectionCellView.layer.shadowOffset = CGSize.zero
         cell.collectionCellView.layer.shadowRadius = 5
         
-        self.acceptButtonTapped = { [unowned self] in
-            let age = myMeeting?.participant?[indexPath.row].age
-            print(age ?? "0")
-            AcceptMeetingAPI.shared.post(applyID: myMeeting?.participant?[indexPath.row].apply_id) { [weak self] result in
-                
-                switch result {
-                case .success(let finalResult):
-                    
-                    /// 채팅방을 개설후 상대방에게 기본 메시지를 보냅니다.
-                    if finalResult.result == "true" {
-                        DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인",handler: {(action: UIAlertAction!) in
-                                buttonReloadData!()
-                            })
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "수락 실패", text: "확인",handler: {(action: UIAlertAction!) in
-                                buttonReloadData!()
-                            })
-                        }
-                    }
-                case .failure:
-                    parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler:{(action: UIAlertAction!) in
-                        buttonReloadData!()
-                    })
-                }
-            }
+        var applyID: String?
+        var college: String?
+        if pageControl.currentPage == 0 { applyID = myMeeting?.participant?[0].apply_id
+            college = myMeeting?.participant?[0].college
+        }
+        else if pageControl.currentPage == 1 { applyID = myMeeting?.participant?[1].apply_id
+            college = myMeeting?.participant?[1].college
+        }
+        else { applyID = myMeeting?.participant?[2].apply_id
+            college = myMeeting?.participant?[2].college
+        }
+        
+        acceptButtonTapped = { [unowned self] in
+            print(college ?? "단과대학")
+            buttonReloadData!()
+//            AcceptMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
+//
+//                switch result {
+//                case .success(let finalResult):
+//
+//                    /// 채팅방을 개설후 상대방에게 기본 메시지를 보냅니다.
+//                    if finalResult.result == "true" {
+//                        DispatchQueue.main.async {
+//                            parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인",handler: {(action: UIAlertAction!) in
+//                                buttonReloadData!()
+//                            })
+//                        }
+//                    } else {
+//                        DispatchQueue.main.async {
+//                            parentVC.makeAlertBox(title: "알림", message: "수락 실패", text: "확인",handler: {(action: UIAlertAction!) in
+//                                buttonReloadData!()
+//                            })
+//                        }
+//                    }
+//                case .failure:
+//                    parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler:{(action: UIAlertAction!) in
+//                        buttonReloadData!()
+//                    })
+//                }
+//            }
         }
         
         self.rejectButtonTapped = { [unowned self] in
-            RejectMeetingAPI.shared.post(applyID: myMeeting?.participant?[indexPath.row].apply_id) { [weak self] result in
-                
-                switch result {
-                case .success(let finalResult):
-                    if finalResult.result == "true" {
-                        DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "거절 완료", text: "확인",handler: {(action: UIAlertAction!) in
-                                buttonReloadData!()
-                            })
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "거절 실패", text: "확인",handler: {(action: UIAlertAction!) in
-                                buttonReloadData!()
-                            })
-                        }
-                        }
-                case .failure:
-                    parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler: {(action: UIAlertAction!) in
-                        buttonReloadData!()
-                    })
-                }
-            }
+            print(college ?? "단과대학")
+            buttonReloadData!()
+//            RejectMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
+//
+//                switch result {
+//                case .success(let finalResult):
+//                    if finalResult.result == "true" {
+//                        DispatchQueue.main.async {
+//                            parentVC.makeAlertBox(title: "알림", message: "거절 완료", text: "확인",handler: {(action: UIAlertAction!) in
+//                                buttonReloadData!()
+//                            })
+//                        }
+//                    } else {
+//                        DispatchQueue.main.async {
+//                            parentVC.makeAlertBox(title: "알림", message: "거절 실패", text: "확인",handler: {(action: UIAlertAction!) in
+//                                buttonReloadData!()
+//                            })
+//                        }
+//                        }
+//                case .failure:
+//                    parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler: {(action: UIAlertAction!) in
+//                        buttonReloadData!()
+//                    })
+//                }
+//            }
         }
         return cell
     }

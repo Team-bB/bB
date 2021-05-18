@@ -100,7 +100,6 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             cell.parentVC = self
             cell.buttonReloadData = { [unowned self] in
                 FetchMeetings()
-                tableView.reloadData()
             }
             
             let bgView = UIView()
