@@ -107,6 +107,30 @@ body {
   -webkit-transition: 0.1s;
   transition: 0.1s; }
 
+.box {
+  transform: skewX(-30deg);
+  display:block;
+  position: absolute;
+  left: 83%;
+  top: 91%;
+  width:500px;
+  height:100px;
+  /*background: rgb(23,168,254);*/
+  background: #5D11F7;
+}
+
+.box > div {
+  transform: skewX(30deg);
+  padding-left: 70px;
+  padding-top: 15px;
+  text-align: left;
+}
+
+.box > div > a {
+  text-decoration: none;
+  color: white;
+}
+
 body.page-template-page-fullsingle-me {
   height: 100vh;
   background-color: #141414;
