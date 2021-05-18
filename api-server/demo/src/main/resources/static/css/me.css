@@ -111,8 +111,8 @@ body {
   transform: skewX(-30deg);
   display:block;
   position: absolute;
-  left: 83%;
-  top: 91%;
+  left: 75%;
+  top: 90%;
   width:500px;
   height:100px;
   /*background: rgb(23,168,254);*/
@@ -147,7 +147,7 @@ body.page-template-page-fullsingle-me {
   overflow: hidden;
   position: absolute; }
 .fs-me .me-content {
-  width: 162.7vh;
+  width: 150.75vh;
   height: 80vh;
   display: flex;}
 
