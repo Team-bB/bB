@@ -20,9 +20,14 @@ class MeetingListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         preventLargeTitleCollapsing()
+        navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9149076847, green: 0.2422577689, blue: 1, alpha: 1),
+             NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30) ??
+                                         UIFont.systemFont(ofSize: 30),
+             NSAttributedString.Key.backgroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+             ]
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -46,6 +51,14 @@ class MeetingListVC: UIViewController {
         let dummyView = UIView()
         view.addSubview(dummyView)
         view.sendSubviewToBack(dummyView)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(scrollView.contentOffset.y > 0){
+            //self.navigationController?.navigationBar.prefersLargeTitles = false
+        }else {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
     }
     
     @objc private func didPullToRefresh() {
@@ -74,24 +87,6 @@ class MeetingListVC: UIViewController {
             }
         }
     }
-    
-    // MARK: Create Floating Button
-//    func setFloatingButton() {
-//        let floatingButton = MDCFloatingButton()
-//        floatingButton.mode = .expanded
-//        let image = UIImage(systemName: "plus")
-//        floatingButton.sizeToFit()
-//        floatingButton.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 관련 이걸 true로 하면 자동으로 위치 바뀌나??
-//        floatingButton.setTitle("미팅 개설", for: .normal)
-//        floatingButton.setTitleColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
-//        floatingButton.setImage(image, for: .normal)
-//        floatingButton.setImageTintColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
-//        floatingButton.backgroundColor = .white
-//        floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-//        view.addSubview(floatingButton)
-//        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0))
-//        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 256))
-//    }
     
     @objc func tap(_ sender: Any) {
         let vc = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "CreateMeetingRoomVC") as! CreateMeetingRoomVC
@@ -222,3 +217,22 @@ extension MeetingListVC: UITableViewDelegate {
 //        navigationController?.pushViewController(nextVC, animated: true)
 //    }
 //}
+
+
+// MARK: Create Floating Button
+//    func setFloatingButton() {
+//        let floatingButton = MDCFloatingButton()
+//        floatingButton.mode = .expanded
+//        let image = UIImage(systemName: "plus")
+//        floatingButton.sizeToFit()
+//        floatingButton.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 관련 이걸 true로 하면 자동으로 위치 바뀌나??
+//        floatingButton.setTitle("미팅 개설", for: .normal)
+//        floatingButton.setTitleColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
+//        floatingButton.setImage(image, for: .normal)
+//        floatingButton.setImageTintColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
+//        floatingButton.backgroundColor = .white
+//        floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+//        view.addSubview(floatingButton)
+//        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0))
+//        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 256))
+//    }

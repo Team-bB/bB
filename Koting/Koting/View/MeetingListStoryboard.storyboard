@@ -35,7 +35,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2MQ-X3-mWO">
                                                             <rect key="frame" x="3" y="16" width="264" height="80"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MW7-K9-TJE">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MW7-K9-TJE">
                                                                     <rect key="frame" x="0.0" y="25" width="90" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="90" id="F5b-x4-nLu"/>
@@ -45,7 +45,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGQ-VL-JJo">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGQ-VL-JJo">
                                                                     <rect key="frame" x="92" y="25" width="90" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="90" id="FUc-kT-alU"/>
@@ -102,7 +102,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0wI-Jl-O9h">
                                                             <rect key="frame" x="3" y="16" width="264" height="80"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeG-Tn-wcF">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeG-Tn-wcF">
                                                                     <rect key="frame" x="0.0" y="25" width="90" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="90" id="ZPs-T0-b4Q"/>
@@ -218,6 +218,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="house" catalog="system" selectedImage="house.fill" id="lA3-6U-dTk"/>
                     <navigationItem key="navigationItem" title="미팅 리스트" id="dAm-c2-XEa">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="list.star" catalog="system" id="GcR-Pj-RZQ">
+                            <color key="tintColor" red="0.91490768469631423" green="0.24225776886910677" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="x5Y-dp-glL" kind="show" identifier="MyMeetingList" id="0zA-GO-gG5"/>
                             </connections>
