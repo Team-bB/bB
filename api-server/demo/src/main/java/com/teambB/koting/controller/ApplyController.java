@@ -77,8 +77,12 @@ public class ApplyController {
 
         Member one = memberService.findOne(apply.getMeeting().getOwnerId());
         JSONObject meetingOwner = memberService.setMemberInfo(one);
-
-        jArray2.add(meetingService.setMeetingInfo(meetingOwner, apply.getMeeting()));
+        JSONObject meetingInfo = meetingService.setMeetingInfo(meetingOwner, apply.getMeeting());
+        if (apply.getApplyStatus() == ApplyStatus.REJECT)
+          meetingInfo.put("apply_status", "거절됨");
+        else if (apply.getApplyStatus() == ApplyStatus.WAIT)
+          meetingInfo.put("apply_status", "대기중");
+        jArray2.add(meetingInfo);
       }
 
       retObject.put("myApplies", jArray2);
