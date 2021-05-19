@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5BAA480BD1741B8300EE6800 /* Pods_Koting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */; };
+		88000B542653F312008671D2 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88000B532653F312008671D2 /* ConversationTableViewCell.swift */; };
 		881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */; };
 		883B4196264A8B3E007EB33C /* NoticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4195264A8B3E007EB33C /* NoticeVC.swift */; };
 		883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4197264A8DDE007EB33C /* NoticeCell.swift */; };
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		6ADA15F079F682A7912D7A20 /* Pods-Koting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.debug.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.debug.xcconfig"; sourceTree = "<group>"; };
 		7B6B835F324DAEBFD34AD9C8 /* Pods_Koting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88000B532653F312008671D2 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeetingRoomsAPI.swift; sourceTree = "<group>"; };
 		883B4195264A8B3E007EB33C /* NoticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeVC.swift; sourceTree = "<group>"; };
 		883B4197264A8DDE007EB33C /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			children = (
 				88A3AFA32651243100FFF90F /* ConversationVC.swift */,
 				88A3AFA52651244000FFF90F /* ChatVC.swift */,
+				88000B532653F312008671D2 /* ConversationTableViewCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
 				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
 				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
+				88000B542653F312008671D2 /* ConversationTableViewCell.swift in Sources */,
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
 				88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */,
 				883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */,

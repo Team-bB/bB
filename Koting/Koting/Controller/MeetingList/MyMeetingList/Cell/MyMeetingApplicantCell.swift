@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class MyMeetingApplicantCell: UITableViewCell {
+    
+    private var users = [[String: String]]()
+    
     var myMeeting: MyMeeting? {
         didSet {
             collectionView.reloadData()
@@ -126,12 +129,17 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
             }
             print(college ?? "단과대학")
             AcceptMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
-
+                
                 switch result {
                 case .success(let finalResult):
 
                     /// 채팅방을 개설후 상대방에게 기본 메시지를 보냅니다.
                     if finalResult.result == "true" {
+                        
+                        guard let targetUserEmail = finalResult.targetUserEmail else { return }
+                        
+//                        DatabaseManager.shared.createNewConversation(with: targetUserEmail, name: , firstMessage: <#T##Message#>, completion: <#T##(Bool) -> Void#>)
+                        
                         DispatchQueue.main.async {
                             parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인",handler: {(action: UIAlertAction!) in
                                 buttonReloadData!()
@@ -192,7 +200,6 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         }
         return cell
     }
-    
     
 }
 
