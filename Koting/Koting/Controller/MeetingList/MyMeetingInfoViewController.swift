@@ -6,28 +6,27 @@
 //
 
 import UIKit
+import PanModal
 
 class MyMeetingInfoViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var animalLabel: UILabel!
+    //@IBOutlet weak var animalLabel: UILabel!
     @IBOutlet weak var collegeLabel: UILabel!
     @IBOutlet weak var mbtiLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var deleteBtn: UIButton!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var numberOfParticipant: UILabel!
     var meeting: Meeting?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.imageView.layer.cornerRadius = imageView.frame.width / 2
-        self.imageView.layer.borderWidth = 1
         self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
-        self.imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.imageView.clipsToBounds = true
-        
-        self.navigationItem.largeTitleDisplayMode = .never
         
         updateUI()
     }
@@ -46,7 +45,9 @@ class MyMeetingInfoViewController: UIViewController {
             ageLabel.text = "\(age)살"
             heightLabel.text = "\(height)cm"
             imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
-            animalLabel.text = transAnimal(index: animal, isImage: false) + "상"
+            numberOfParticipant.text = "\(meeting.player)"
+            deleteBtn.layer.borderWidth = 0.3
+            deleteBtn.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
     }
     
@@ -66,19 +67,16 @@ class MyMeetingInfoViewController: UIViewController {
                 if result == "true" {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "알림", message: "미팅을 삭제했습니다.", text: "확인") { (action) in
-                            strongSelf.navigationController?.popViewController(animated: true)
+                            strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "알림", message: "삭제에 실패했습니다..", text: "확인") { (action) in
-                            strongSelf.navigationController?.popViewController(animated: true)
+                            strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }
-               
-                
-                
             case .failure:
                 break
             }
@@ -107,5 +105,24 @@ class MyMeetingInfoViewController: UIViewController {
             default: return "동물"
             }
         }
+    }
+}
+// MARK:- PanModal 설정
+extension MyMeetingInfoViewController: PanModalPresentable {
+
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+
+    var shortFormHeight: PanModalHeight {
+        return .contentHeight(230)
+    }
+
+    var longFormHeight: PanModalHeight {
+        return .contentHeight(350)
+    }
+
+    var anchorModalToLongForm: Bool {
+        return true
     }
 }

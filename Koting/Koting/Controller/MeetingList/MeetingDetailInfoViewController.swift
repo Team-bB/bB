@@ -54,21 +54,18 @@ class MeetingDetailInfoViewController: UIViewController {
                 if finalResult.result == "applyMeetingSuccess" {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "성공", message: "미팅신청에 성공했습니다.", text: "확인") { (action) in
-//                            strongSelf.navigationController?.popViewController(animated: true)
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }else if finalResult.result == "applyMeetingFailed" {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "실패", message: "이미 신청된 미팅입니다.", text: "확인") { (action) in
-//                            strongSelf.navigationController?.popViewController(animated: true)
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "실패", message: "신청이 마감되었습니다.", text: "확인") { (action) in
-//                            strongSelf.navigationController?.popViewController(animated: true)
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
@@ -76,7 +73,6 @@ class MeetingDetailInfoViewController: UIViewController {
             case .failure:
                 DispatchQueue.main.async {
                     strongSelf.makeAlertBox(title: "실패", message: "Error", text: "확인") { (action) in
-//                        strongSelf.navigationController?.popViewController(animated: true)
                         strongSelf.dismiss(animated: true, completion: nil)
                     }
                 }
@@ -99,9 +95,9 @@ class MeetingDetailInfoViewController: UIViewController {
             heightLabel.text = "\(height)cm"
             imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
 //            animalLabel.text = transAnimal(index: animal, isImage: false) + "상"
-            numberOfParticipant.text = "\(meeting.player) : \(meeting.player)"
-            applyBtnTapped.layer.borderWidth = 0.5
-            applyBtnTapped.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            numberOfParticipant.text = "\(meeting.player)"
+            applyBtnTapped.layer.borderWidth = 0.3
+            applyBtnTapped.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
     }
     
@@ -142,7 +138,7 @@ extension MeetingDetailInfoViewController: PanModalPresentable {
     }
 
     var longFormHeight: PanModalHeight {
-        return .contentHeight(230)
+        return .contentHeight(350)
     }
 
     var anchorModalToLongForm: Bool {

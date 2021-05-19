@@ -20,15 +20,6 @@ class MeetingListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navigationController?.navigationBar.prefersLargeTitles = true
-        //preventLargeTitleCollapsing()
-//        navigationController?.navigationBar.largeTitleTextAttributes =
-//            [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9149076847, green: 0.2422577689, blue: 1, alpha: 1),
-//             NSAttributedString.Key.font: UIFont(name: "Papyrus", size: 30) ??
-//                                         UIFont.systemFont(ofSize: 30),
-//             NSAttributedString.Key.backgroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//             ]
-        
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 44))
         lbl.text = "진행중인 미팅"
         lbl.textColor = .black
@@ -45,7 +36,6 @@ class MeetingListVC: UIViewController {
         
         //tableView.separatorStyle = UITableViewCell.SeparatorStyle.none //테이블 뷰 셀 나누는 줄 없애는 코드
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissNotification(_:)), name: NSNotification.Name(rawValue: "DidDismissViewController"), object: nil)
-        //setFloatingButton()
         
 //        setChatButton()
         tableView.refreshControl = UIRefreshControl()
@@ -131,10 +121,6 @@ extension MeetingListVC: UITableViewDataSource {
                     cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .touchUpInside)
                 }
                 cell.tableViewCellLayer.layer.cornerRadius = 20
-                //cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
-                //cell.tableViewCellLayer.layer.shadowOpacity = 1.0
-                //cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
-                //cell.tableViewCellLayer.layer.shadowRadius = 6
                 
                 return cell
             }else {
@@ -148,18 +134,10 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.animalShapeImage.layer.borderWidth = 0
                 cell.mbtiLabel.text = myMeeting?.owner?.mbti
                 
-                cell.tableViewCellLayer.layer.cornerRadius = 20
-                //cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
-                //cell.tableViewCellLayer.layer.shadowOpacity = 1.0
-                //cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
-                //cell.tableViewCellLayer.layer.shadowRadius = 6
-                
                 return cell
             }
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingListTableViewCell", for: indexPath) as! MeetingListTableViewCell
-            cell.tableViewCellLayer.layer.cornerRadius = 20
-            
             
             cell.collegeName.text = meetings[indexPath.row].owner?.college ?? "단과대학"
             cell.numberOfParticipants.text = meetings[indexPath.row].player
@@ -168,12 +146,7 @@ extension MeetingListVC: UITableViewDataSource {
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
             cell.mbtiLabel.text = meetings[indexPath.row].owner?.mbti
-            
-            //cell.tableViewCellLayer.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
-            //cell.tableViewCellLayer.layer.shadowOpacity = 1.0
-            //cell.tableViewCellLayer.layer.shadowOffset = CGSize.zero
-            //cell.tableViewCellLayer.layer.shadowRadius = 6
-            
+
             return cell
         }
     }
@@ -195,7 +168,10 @@ extension MeetingListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if myMeeting != nil {
-                performSegue(withIdentifier: "MyMeetingInfo", sender: indexPath.row)
+                //performSegue(withIdentifier: "MyMeetingInfo", sender: indexPath.row)
+                let vc = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MyMeetingInfo") as! MyMeetingInfoViewController
+                vc.meeting = myMeeting
+                presentPanModal(vc)
             }
         }else {
             let vc = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MeetingDetailInfo") as! MeetingDetailInfoViewController
@@ -203,19 +179,6 @@ extension MeetingListVC: UITableViewDelegate {
             presentPanModal(vc)
         }
     }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "MeetingDetailInfo" {
-//            let vc = segue.destination as? MeetingDetailInfoViewController
-//            if let index = sender as? Int {
-//                vc?.meeting = meetings[index]
-//            }
-//        }else if segue.identifier == "MyMeetingInfo" {
-//            let vc = segue.destination as? MyMeetingInfoViewController
-//            vc?.meeting = myMeeting
-//        }
-//    }
 }
 
 // MARK: - Chat
@@ -233,22 +196,3 @@ extension MeetingListVC: UITableViewDelegate {
 //        navigationController?.pushViewController(nextVC, animated: true)
 //    }
 //}
-
-
-// MARK: Create Floating Button
-//    func setFloatingButton() {
-//        let floatingButton = MDCFloatingButton()
-//        floatingButton.mode = .expanded
-//        let image = UIImage(systemName: "plus")
-//        floatingButton.sizeToFit()
-//        floatingButton.translatesAutoresizingMaskIntoConstraints = false //오토레이아웃 관련 이걸 true로 하면 자동으로 위치 바뀌나??
-//        floatingButton.setTitle("미팅 개설", for: .normal)
-//        floatingButton.setTitleColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
-//        floatingButton.setImage(image, for: .normal)
-//        floatingButton.setImageTintColor(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .normal)
-//        floatingButton.backgroundColor = .white
-//        floatingButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-//        view.addSubview(floatingButton)
-//        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0))
-//        view.addConstraint(NSLayoutConstraint(item: floatingButton, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 256))
-//    }
