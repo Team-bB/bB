@@ -28,13 +28,10 @@ class MyMeetingApplicantCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//
+        acceptBtn.setDefault()
+        rejectBtn.setDefault()
 //        self.collectionView.delegate = self
 //        self.collectionView.dataSource = self
-        acceptBtn.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-        acceptBtn.layer.cornerRadius = 12
-        rejectBtn.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-        rejectBtn.layer.cornerRadius = 12
         pageControl.hidesForSinglePage = true
     }
     func setColleciontionViewWith(){

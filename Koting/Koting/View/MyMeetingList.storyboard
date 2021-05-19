@@ -369,27 +369,58 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="E1T-zC-IdN">
                                                     <rect key="frame" x="98" y="186" width="179" height="30"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBq-rz-xf2">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hBq-rz-xf2">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="MbZ-gr-w4h"/>
                                                                 <constraint firstAttribute="width" constant="60" id="O96-Ag-Hob"/>
                                                             </constraints>
-                                                            <state key="normal" title="수  락">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal">
+                                                                <attributedString key="attributedTitle">
+                                                                    <fragment content="수">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="11" name=".AppleSDGothicNeoI-Regular"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment content="  ">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" metaFont="smallSystem"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment content="락">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="11" name=".AppleSDGothicNeoI-Regular"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
                                                             </state>
                                                             <connections>
                                                                 <action selector="acceptBtnTapped:" destination="bU6-nl-F4o" eventType="touchUpInside" id="niE-Sw-364"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTu-eF-IXf">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GTu-eF-IXf">
                                                             <rect key="frame" x="119" y="0.0" width="60" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="e0C-zl-qft"/>
                                                                 <constraint firstAttribute="height" constant="30" id="fGJ-vY-7E6"/>
                                                             </constraints>
-                                                            <state key="normal" title="거  절">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal">
+                                                                <attributedString key="attributedTitle">
+                                                                    <fragment content="거  절">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="11" name="AppleSDGothicNeo-Regular"/>
+                                                                            <font key="NSOriginalFont" size="11" name="AppleSDGothicNeo-Regular"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
                                                             </state>
                                                             <connections>
                                                                 <action selector="rejectBtnTapped:" destination="bU6-nl-F4o" eventType="touchUpInside" id="ll1-hx-bIk"/>
