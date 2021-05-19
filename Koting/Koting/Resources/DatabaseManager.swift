@@ -21,6 +21,19 @@ final class DatabaseManager {
         return safeEmail
     }
 }
+extension DatabaseManager {
+    
+    public func getDataFor(path: String, completion: @escaping (Result<Any, Error>) -> Void) {
+        
+        self.database.child("\(path)").observeSingleEvent(of: .value) { snapshot in
+            guard let value = snapshot.value else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            completion(.success(value))
+        }
+    }
+}
 
 // MARK: - Account Management
 
@@ -129,6 +142,10 @@ extension DatabaseManager {
     /// Creates a new conversation with target user email and first message set
     public func createNewConversation(with otherUserEmail: String, name: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
         
+        // ⚠️ UserDefault에서 닉네임도 불러와야함 ⚠️
+//        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
+//              let currentName = UserDefaults.standard.value(forKey: "nickName") as? String else { return }
+        
         guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String else { return }
         
         let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
@@ -188,6 +205,7 @@ extension DatabaseManager {
                 "id": conversationId,
                 "other_user_email": safeEmail,
                 "name": "나",
+//                ⚠️"name": currentName,
                 "latest_message": [
                     "date": dateString,
                     "message": message,
@@ -386,8 +404,78 @@ extension DatabaseManager {
     }
     
     /// Sends a message with tagrget conversation and message
-    public func sendMessage(to conversation: String, mmessage: Message, completion: @escaping (Bool) -> Void) {
+    public func sendMessage(to conversation: String, name: String, newMessage: Message, completion: @escaping (Bool) -> Void) {
+        // Add new message to messages
         
+        // Update sender
+        
+        // Update recipient
+        database.child("\(conversation)/messages").observeSingleEvent(of: .value) { [weak self] snapshot in
+            
+            guard let strongSelf = self else { return }
+            guard var currentMessages = snapshot.value as? [[String: Any]] else {
+                completion(false)
+                return
+            }
+            
+            let messageDate = newMessage.sentDate
+            let dateString = ChatVC.dateFormatter.string(from: messageDate)
+            
+            var message = ""
+            
+            switch newMessage.kind {
+            
+            case .text(let messageText):
+                message = messageText
+            case .attributedText(_):
+                break
+            case .photo(_):
+                break
+            case .video(_):
+                break
+            case .location(_):
+                break
+            case .emoji(_):
+                break
+            case .audio(_):
+                break
+            case .contact(_):
+                break
+            case .linkPreview(_):
+                break
+            case .custom(_):
+                break
+            }
+            
+            guard let myEmail = UserDefaults.standard.value(forKey: "email") as? String
+            else {
+                completion(false)
+                return
+            }
+            
+            let currentUserEmail = DatabaseManager.safeEmail(email: myEmail)
+            
+            let newMessageEntry: [String: Any] = [
+                "id": newMessage.messageId,
+                "type": newMessage.kind.messageKindString,
+                "content": message,
+                "date": dateString,
+                "sender_email": currentUserEmail,
+                "is_read": false,
+                "name": name
+            ]
+            
+            currentMessages.append(newMessageEntry)
+            
+            strongSelf.database.child("\(conversation)/messages").setValue(currentMessages) { error, _ in
+                
+                guard error == nil else {
+                    completion(false)
+                    return
+                }
+                completion(true)
+            }
+        }
     }
 }
 

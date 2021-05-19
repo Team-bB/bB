@@ -81,10 +81,6 @@ class ChatVC: MessagesViewController {
         self.conversationId = id
         self.otherUserEmail = DatabaseManager.safeEmail(email: email)
         super.init(nibName: nil, bundle: nil)
-        
-        if let conversationId = conversationId {
-            listenForMessages(id: conversationId)
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -107,19 +103,25 @@ class ChatVC: MessagesViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messageInputBar.inputTextView.becomeFirstResponder()
-        
+        if let conversationId = conversationId {
+            listenForMessages(id: conversationId, shouldScrollToBottom: true)
+        }
     }
     
-    private func listenForMessages(id: String) {
+    private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
         DatabaseManager.shared.getAllMessagesForConversation(with: id) { [weak self] result in
             switch result {
             case .success(let messages):
+                print("✉️✅ 메세지를 가져오는데 성공했습니다 ✉️✅")
                 guard !messages.isEmpty else { return }
                 
                 self?.messages = messages
                 
                 DispatchQueue.main.async {
                     self?.messagesCollectionView.reloadDataAndKeepOffset()
+                    if shouldScrollToBottom {
+                        self?.messagesCollectionView.scrollToBottom()
+                    }
                 }
                 
             case .failure(let error):
@@ -158,25 +160,42 @@ extension ChatVC: InputBarAccessoryViewDelegate {
               let messageId = createMessageId() else { return }
         
         print("Sending: \(text)")
+        
+        let mmessage = Message(sender: selfSender,
+                               messageId: messageId ,
+                               sentDate: Date(),
+                               kind: .text(text))
+        
         // Send Meaage
         if isNewConversation {
             // create convo in database
-            let mmessage = Message(sender: selfSender,
-                                   messageId: messageId ,
-                                   sentDate: Date(),
-                                   kind: .text(text))
             
             // name: 받는 사람 닉네임
             DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage) { [weak self] success in
                 
                 if success {
                     print("📝 메세지 전송 완료. 📝")
+                    self?.isNewConversation = false
+                    
                 } else {
                     print("⛔️ 메세지 전송 실패 ⛔️")
                 }
             }
         } else {
             // append to existing conversation data
+            
+            guard let conversationId = conversationId else { return }
+            let name = self.title ?? "User"
+            
+            DatabaseManager.shared.sendMessage(to: conversationId, name: name, newMessage: mmessage) { success in
+                
+                if success {
+                    print("📝 메세지 전송 완료. 📝")
+                    
+                } else {
+                    print("⛔️ 메세지 전송 실패 ⛔️")
+                }
+            }
         }
     }
     
