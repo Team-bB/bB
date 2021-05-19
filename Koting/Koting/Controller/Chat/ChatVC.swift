@@ -147,6 +147,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
             
             if success {
                 print("📝 메세지 전송 완료. 📝")
+                self?.isNewConversation = false
             } else {
                 print("⛔️ 메세지 전송 실패 ⛔️")
             }
