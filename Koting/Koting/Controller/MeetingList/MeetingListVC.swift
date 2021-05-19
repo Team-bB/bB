@@ -198,21 +198,24 @@ extension MeetingListVC: UITableViewDelegate {
                 performSegue(withIdentifier: "MyMeetingInfo", sender: indexPath.row)
             }
         }else {
-            performSegue(withIdentifier: "MeetingDetailInfo", sender: indexPath.row)
+            let vc = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MeetingDetailInfo") as! MeetingDetailInfoViewController
+            vc.meeting = meetings[indexPath.row]
+            presentPanModal(vc)
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MeetingDetailInfo" {
-            let vc = segue.destination as? MeetingDetailInfoViewController
-            if let index = sender as? Int {
-                vc?.meeting = meetings[index]
-            }
-        }else if segue.identifier == "MyMeetingInfo" {
-            let vc = segue.destination as? MyMeetingInfoViewController
-            vc?.meeting = myMeeting
-        }
-    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "MeetingDetailInfo" {
+//            let vc = segue.destination as? MeetingDetailInfoViewController
+//            if let index = sender as? Int {
+//                vc?.meeting = meetings[index]
+//            }
+//        }else if segue.identifier == "MyMeetingInfo" {
+//            let vc = segue.destination as? MyMeetingInfoViewController
+//            vc?.meeting = myMeeting
+//        }
+//    }
 }
 
 // MARK: - Chat

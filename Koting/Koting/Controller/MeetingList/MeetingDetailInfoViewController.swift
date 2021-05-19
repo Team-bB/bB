@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 
 class MeetingDetailInfoViewController: UIViewController {
     
@@ -14,27 +15,29 @@ class MeetingDetailInfoViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var applyBtnTapped: UIButton!
     
-    @IBOutlet weak var animalLabel: UILabel!
+    //@IBOutlet weak var animalLabel: UILabel!
     @IBOutlet weak var collegeLabel: UILabel!
     @IBOutlet weak var mbtiLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var numberOfParticipant: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.meetingInfoView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        self.meetingInfoView.layer.cornerRadius = 20
-        self.meetingInfoView.layer.borderWidth = 2
+//        self.meetingInfoView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+//        self.meetingInfoView.layer.cornerRadius = 20
+//        self.meetingInfoView.layer.borderWidth = 2
 
         
         self.imageView.layer.cornerRadius = imageView.frame.width / 2
-        self.imageView.layer.borderWidth = 1
+        //self.imageView.layer.borderWidth = 1
         self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
-        self.imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        //self.imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.imageView.clipsToBounds = true
         
-        self.navigationItem.largeTitleDisplayMode = .never
+        //self.navigationItem.largeTitleDisplayMode = .never
         
         updateUI()
     }
@@ -51,26 +54,30 @@ class MeetingDetailInfoViewController: UIViewController {
                 if finalResult.result == "applyMeetingSuccess" {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "성공", message: "미팅신청에 성공했습니다.", text: "확인") { (action) in
-                            strongSelf.navigationController?.popViewController(animated: true)
+//                            strongSelf.navigationController?.popViewController(animated: true)
+                            strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }else if finalResult.result == "applyMeetingFailed" {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "실패", message: "이미 신청된 미팅입니다.", text: "확인") { (action) in
-                            strongSelf.navigationController?.popViewController(animated: true)
+//                            strongSelf.navigationController?.popViewController(animated: true)
+                            strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "실패", message: "신청이 마감되었습니다.", text: "확인") { (action) in
-                            strongSelf.navigationController?.popViewController(animated: true)
+//                            strongSelf.navigationController?.popViewController(animated: true)
+                            strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }
             case .failure:
                 DispatchQueue.main.async {
                     strongSelf.makeAlertBox(title: "실패", message: "Error", text: "확인") { (action) in
-                        strongSelf.navigationController?.popViewController(animated: true)
+//                        strongSelf.navigationController?.popViewController(animated: true)
+                        strongSelf.dismiss(animated: true, completion: nil)
                     }
                 }
             }
@@ -91,7 +98,10 @@ class MeetingDetailInfoViewController: UIViewController {
             ageLabel.text = "\(age)살"
             heightLabel.text = "\(height)cm"
             imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
-            animalLabel.text = transAnimal(index: animal, isImage: false) + "상"
+//            animalLabel.text = transAnimal(index: animal, isImage: false) + "상"
+            numberOfParticipant.text = "\(meeting.player) : \(meeting.player)"
+            applyBtnTapped.layer.borderWidth = 0.5
+            applyBtnTapped.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         }
     }
     
@@ -118,6 +128,24 @@ class MeetingDetailInfoViewController: UIViewController {
             }
         }
     }
-    
-    
+}
+
+// MARK:- PanModal 설정
+extension MeetingDetailInfoViewController: PanModalPresentable {
+
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+
+    var shortFormHeight: PanModalHeight {
+        return .contentHeight(230)
+    }
+
+    var longFormHeight: PanModalHeight {
+        return .contentHeight(230)
+    }
+
+    var anchorModalToLongForm: Bool {
+        return true
+    }
 }
