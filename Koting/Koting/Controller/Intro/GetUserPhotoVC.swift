@@ -4,7 +4,8 @@
 //
 //  Created by 임정우 on 2021/04/04.
 //
-
+import CoreML
+import Vision
 import UIKit
 import Photos
 
@@ -24,7 +25,7 @@ class GetUserPhotoVC: UIViewController {
         
         imageView.backgroundColor = .lightGray
         imageView.contentMode = . scaleAspectFill
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,7 +49,7 @@ class GetUserPhotoVC: UIViewController {
         
         aView.layer.shadowOffset = CGSize(width: 5, height: 5)
         aView.layer.shadowOpacity = 0.7
-        aView.layer.shadowRadius = 5
+        aView.layer.shadowRadius = 10
         aView.layer.shadowColor = UIColor.gray.cgColor
         aView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -101,15 +102,90 @@ class GetUserPhotoVC: UIViewController {
         
         present(alert, animated: true, completion: nil)
         self.present(self.picker, animated: true, completion: nil)
+        
+        count += 1
+    }
+    
+    //MARK : connectML
+    @IBOutlet weak var predictLabel : UILabel!
+    @IBOutlet weak var recheckButton: UIButton!
+
+    var count = 0
+
+    @IBAction func tappedRecheck(_ sender: Any) {
+        if count > 0 {
+            let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            let library = UIAlertAction(title: "다시 측정할 사진 가져오기", style: .default) { action in
+                self.openLibrary()
+            }
+            
+            alert.addAction(library)
+            alert.addAction(cancel)
+            
+            present(alert, animated: true, completion: nil)
+            self.present(self.picker, animated: true, completion: nil)
+        }
+        else{
+            print("error")
+        }
+        
+    }
+
+    func predict(image: CIImage){
+        guard let model = try? VNCoreMLModel(for: animalFaceML(configuration: MLModelConfiguration.init()).model) else {
+            fatalError("load error")
+            
+        }
+        let request = VNCoreMLRequest (model: model) { (req, error) in
+            guard let results = req.results as? [VNClassificationObservation] else{
+                fatalError ("ML fail")
+            }
+            print ("예상결과: ")
+            print (results)
+            if let firstResult = results.first{
+                self.navigationItem.title = firstResult.identifier
+                print(firstResult)
+                self.predictLabel.text = "\(round((firstResult.confidence)*1000)/10) %의 확률로 \(firstResult.identifier)상 이시네 >____<"
+                
+                switch firstResult.identifier {
+                case "강아지":
+                    self.imageView.image = #imageLiteral(resourceName: "dog")
+                case "고양이":
+                    self.imageView.image = #imageLiteral(resourceName: "cat")
+                case "공룡":
+                    self.imageView.image = #imageLiteral(resourceName: "dino")
+                case "토끼":
+                    self.imageView.image = #imageLiteral(resourceName: "rabbit")
+                case "곰":
+                    self.imageView.image = #imageLiteral(resourceName: "bear")
+                default:
+                    print("error")
+                }
+                
+            }
+            
+        }
+        let handler = VNImageRequestHandler(ciImage: image)
+           
+        do{
+            try handler.perform([request])
+        }catch{
+            print(error)
+        }
     }
 }
 
+
 // MARK:- UIImagePickerControllerDelegate
 extension GetUserPhotoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let originalImage: UIImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        
-        self.imageView.image = originalImage
-        self.dismiss(animated: true, completion: nil)
+func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if let originalImage: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            guard let ciimage = CIImage(image: originalImage) else{
+                fatalError("CIImage error")
     }
+    predict(image:ciimage)
+    }
+    dismiss(animated: true, completion: nil)
+}
 }

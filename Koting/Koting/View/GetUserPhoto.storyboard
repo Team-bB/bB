@@ -1,68 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Get User PhotoVC-->
-        <scene sceneID="MQo-cd-uSF">
+        <scene sceneID="BpW-e8-IkK">
             <objects>
-                <viewController storyboardIdentifier="GetUserPhoto" id="QcF-gc-Cgo" customClass="GetUserPhotoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HBR-aj-3Ev">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController storyboardIdentifier="GetUserPhoto" id="oxL-IE-BBd" customClass="GetUserPhotoVC" customModule="connectML" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kh9-OP-GvK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Rtc-lf-3Ci">
-                                <rect key="frame" x="37" y="20" width="301.5" height="352.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mgU-N5-mj2">
+                                <rect key="frame" x="15" y="595.33333333333337" width="345" height="102.66666666666663"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자신의 사진을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4A-6p-T9p">
-                                        <rect key="frame" x="15.5" y="0.0" width="270.5" height="30"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPS-AG-ihb">
-                                        <rect key="frame" x="19" y="54" width="263" height="254"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="254" id="TAi-CS-Uvl"/>
-                                            <constraint firstAttribute="width" constant="263" id="xNN-Fi-RYO"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7i-9N-FZN">
-                                        <rect key="frame" x="0.0" y="332" width="301.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSi-so-9HK">
+                                        <rect key="frame" x="21.666666666666657" y="0.0" width="301.66666666666674" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="사진을 등록하시면 결과가 나옵니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApW-4M-pZA">
+                                        <rect key="frame" x="53.333333333333329" y="40.333333333333258" width="238.33333333333337" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5V-Ue-pTf">
+                                        <rect key="frame" x="135.66666666666666" y="80.666666666666629" width="73.666666666666657" height="22"/>
+                                        <state key="normal" title="재측정" image="camera.badge.ellipsis" catalog="system">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tappedRecheck:" destination="oxL-IE-BBd" eventType="touchUpInside" id="bry-qn-YKV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="o7i-9N-FZN" firstAttribute="leading" secondItem="Rtc-lf-3Ci" secondAttribute="leading" id="A4g-B0-zqY"/>
-                                    <constraint firstItem="o7i-9N-FZN" firstAttribute="top" secondItem="NPS-AG-ihb" secondAttribute="bottom" constant="24" id="cjB-Uf-lxh"/>
-                                    <constraint firstAttribute="trailing" secondItem="o7i-9N-FZN" secondAttribute="trailing" id="rJ2-hy-uc1"/>
-                                </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="WTL-CV-Ka9">
+                                <rect key="frame" x="56" y="241.33333333333337" width="263" height="254"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j3q-G2-WZJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="254"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="263" id="KGh-ZM-zpF"/>
+                                            <constraint firstAttribute="height" constant="254" id="gTZ-h9-WrS"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자신의 사진을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTr-5v-gCQ">
+                                <rect key="frame" x="52.333333333333343" y="174" width="270.33333333333326" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="mOg-ki-joo"/>
+                        <viewLayoutGuide key="safeArea" id="Usr-09-awS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Rtc-lf-3Ci" firstAttribute="centerX" secondItem="HBR-aj-3Ev" secondAttribute="centerX" id="0Wz-GQ-f7c"/>
-                            <constraint firstItem="Rtc-lf-3Ci" firstAttribute="centerY" secondItem="HBR-aj-3Ev" secondAttribute="centerY" constant="-137.25" id="waA-qt-oCP"/>
+                            <constraint firstItem="WTL-CV-Ka9" firstAttribute="centerX" secondItem="kTr-5v-gCQ" secondAttribute="centerX" id="4PX-Iz-o3d"/>
+                            <constraint firstItem="kTr-5v-gCQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Usr-09-awS" secondAttribute="leading" id="7Ra-5V-vnH"/>
+                            <constraint firstItem="Usr-09-awS" firstAttribute="trailing" secondItem="mgU-N5-mj2" secondAttribute="trailing" constant="15" id="AYb-wW-YXB"/>
+                            <constraint firstItem="kTr-5v-gCQ" firstAttribute="top" secondItem="Usr-09-awS" secondAttribute="top" constant="130" id="Byj-zA-c6T"/>
+                            <constraint firstItem="kTr-5v-gCQ" firstAttribute="centerX" secondItem="Kh9-OP-GvK" secondAttribute="centerX" id="C5Z-R6-y3G"/>
+                            <constraint firstItem="Usr-09-awS" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kTr-5v-gCQ" secondAttribute="trailing" id="ETG-zQ-BVr"/>
+                            <constraint firstItem="Usr-09-awS" firstAttribute="bottom" secondItem="mgU-N5-mj2" secondAttribute="bottom" constant="80" id="FSy-c9-1s0"/>
+                            <constraint firstItem="kTr-5v-gCQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Usr-09-awS" secondAttribute="leading" id="Fa1-y5-tjS"/>
+                            <constraint firstItem="mgU-N5-mj2" firstAttribute="top" secondItem="WTL-CV-Ka9" secondAttribute="bottom" constant="100" id="hpI-6c-diy"/>
+                            <constraint firstItem="mgU-N5-mj2" firstAttribute="leading" secondItem="Usr-09-awS" secondAttribute="leading" constant="15" id="pgw-bO-VQX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="NPS-AG-ihb" id="ual-qs-Ffu"/>
+                        <outlet property="imageView" destination="j3q-G2-WZJ" id="sU4-a4-LCv"/>
+                        <outlet property="predictLabel" destination="ApW-4M-pZA" id="QE2-GZ-Zkl"/>
+                        <outlet property="recheckButton" destination="R5V-Ue-pTf" id="Lss-kd-5vv"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F9w-kY-3Lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CJD-2B-aF8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="184.80000000000001" y="101.19940029985008"/>
+            <point key="canvasLocation" x="183.19999999999999" y="100.29985007496252"/>
         </scene>
     </scenes>
     <resources>
+        <image name="camera.badge.ellipsis" catalog="system" width="128" height="92"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
