@@ -197,12 +197,19 @@ extension SignUpVC {
                 return
             }
             
-            DatabaseManager.shared.insertUser(with: ChatAppUser(nickName: "테스트",
-                                                                emailAddress: email,
-                                                                age: "\(userInfo.age!)살",
-                                                                college: userInfo.college!,
-                                                                major: userInfo.major!,
-                                                                mbti: userInfo.mbti!), completion: {result in print("okay",result)}) //오류떠서 만들어둠
+            let chatUser = ChatAppUser(nickName: "테스트",
+                                       emailAddress: email,
+                                       age: "\(userInfo.age!)살",
+                                       college: userInfo.college!,
+                                       major: userInfo.major!,
+                                       mbti: userInfo.mbti!)
+            
+            DatabaseManager.shared.insertUser(with: chatUser) { success in
+                
+                // 프로필 이미지 업로드 가능함.
+                print("💿 유저 데이터 저장완료 💿")
+            }
+            
             let user = result.user
             print("✅ 채팅서버 계정 생성 완료 ✅")
             print("채팅서버: 유저(\(user))")

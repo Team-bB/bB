@@ -7,16 +7,32 @@
 
 import UIKit
 
+struct Conversation {
+    let id: String
+    let name: String
+    let otherUserEmail: String
+    let latestMessage: LatestMessage
+}
+
+struct LatestMessage {
+    let date: String
+    let text: String
+    let isRead: Bool
+}
+
+
 class ConversationVC: UIViewController {
     
     private let indicator = CustomIndicator()
     
+    private var conversations = [Conversation]()
+    
     private let tableView: UITableView = {
         let table = UITableView()
         
-        table.register(UITableViewCell.self,
-                       forCellReuseIdentifier: "cell")
-//        table.isHidden = true
+        table.register(ConversationTableViewCell.self,
+                       forCellReuseIdentifier: ConversationTableViewCell.identifier)
+        table.isHidden = true
         
         return table
     }()
@@ -40,7 +56,8 @@ class ConversationVC: UIViewController {
         view.addSubview(noConversationsLabel)
         
         setupTableView()
-        
+        fetchConversations()
+        startListeningForConversations()
     }
     
     // MARK: - viewDidLayoutSubviews
@@ -59,6 +76,11 @@ class ConversationVC: UIViewController {
         
         tableView.isHidden = false
     }
+    
+    private func startListeningForConversations() {
+        
+        
+    }
 }
 
 extension ConversationVC: UITableViewDelegate, UITableViewDataSource {
@@ -69,7 +91,7 @@ extension ConversationVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConversationTableViewCell.identifier, for: indexPath)
         cell.textLabel?.text = "채팅방"
         cell.accessoryType = .disclosureIndicator
         
