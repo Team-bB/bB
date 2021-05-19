@@ -60,6 +60,7 @@ class ChatVC: MessagesViewController {
         return formatter
     }()
     
+    private let conversationId: String?
     public let otherUserEmail: String
     public var isNewConversation = false
     
@@ -69,14 +70,21 @@ class ChatVC: MessagesViewController {
     private var selfSender: Sender? = {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return nil }
         
+        let safeEmail = DatabaseManager.safeEmail(email: email)
+        
         return Sender(photoURL: "",
-                      senderId: email,
-                      displayName: "닉네임")
+                      senderId: safeEmail,
+                      displayName: "닉네임") // 닉네임 변경해야함
     }()
     
-    init(with email: String) {
+    init(with email: String, id: String?) {
+        self.conversationId = id
         self.otherUserEmail = DatabaseManager.safeEmail(email: email)
         super.init(nibName: nil, bundle: nil)
+        
+        if let conversationId = conversationId {
+            listenForMessages(id: conversationId)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -102,11 +110,47 @@ class ChatVC: MessagesViewController {
         
     }
     
+    private func listenForMessages(id: String) {
+        DatabaseManager.shared.getAllMessagesForConversation(with: id) { [weak self] result in
+            switch result {
+            case .success(let messages):
+                guard !messages.isEmpty else { return }
+                
+                self?.messages = messages
+                
+                DispatchQueue.main.async {
+                    self?.messagesCollectionView.reloadDataAndKeepOffset()
+                }
+                
+            case .failure(let error):
+                print("✉️❌ 메세지를 가져오는데 실패했습니다 ✉️❌: \(error)")
+            }
+        }
+    }
+    
 }
 
 extension ChatVC: InputBarAccessoryViewDelegate {
     
-    // sendButton 눌렀을때
+    func sendDefaultMesaage() {
+        guard let selfSender = self.selfSender, let messageId = createMessageId() else { return }
+        
+        let mmessage = Message(sender: selfSender,
+                               messageId: messageId ,
+                               sentDate: Date(),
+                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요~\n- 코팅 운영진😃 -"))
+        
+        // name: 받는 사람 닉네임
+        DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage) { [weak self] success in
+            
+            if success {
+                print("📝 메세지 전송 완료. 📝")
+            } else {
+                print("⛔️ 메세지 전송 실패 ⛔️")
+            }
+        }
+    }
+    
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
         guard !text.replacingOccurrences(of: " ", with: " ").isEmpty,
@@ -164,11 +208,9 @@ extension ChatVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
         }
         
         fatalError("Self Sender is nil")
-        return Sender(photoURL: "", senderId: "12", displayName: "")
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        
         return messages[indexPath.section]
     }
     

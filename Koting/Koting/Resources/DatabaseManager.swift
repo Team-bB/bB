@@ -118,6 +118,7 @@ extension DatabaseManager {
     
     public enum DatabaseError: Error {
         case failedToFind
+        case failedToFetch
     }
 }
 
@@ -175,6 +176,7 @@ extension DatabaseManager {
             let newConversationData: [String: Any] = [
                 "id": conversationId,
                 "other_user_email": otherUserEmail,
+                "name": name,
                 "latest_message": [
                     "date": dateString,
                     "message": message,
@@ -288,13 +290,73 @@ extension DatabaseManager {
     }
     
     /// Fetches and returns all conversations for the user with passed in email
-    public func getAllConversations(for email: String, completion: @escaping (Result<String, Error>) -> Void) {
+    public func getAllConversations(for email: String, completion: @escaping (Result<[Conversation], Error>) -> Void) {
+        
+        database.child("\(email)/conversations").observe(.value) { snapshot in
+            guard let value = snapshot.value as? [[String: Any]] else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            
+            let conversations: [Conversation] = value.compactMap { dictonary in
+                
+                guard let conversationId = dictonary["id"] as? String,
+                      let name = dictonary["name"] as? String,
+                      let otherUserEmail = dictonary["other_user_email"] as? String,
+                      let latestMessage = dictonary["latest_message"] as? [String: Any],
+                      let date = latestMessage["date"] as? String,
+                      let message = latestMessage["message"] as? String,
+                      let isRead = latestMessage["is_read"] as? Bool
+                else {
+                    return nil
+                }
+                
+                let latestMessageObject = LatestMessage(date: date,
+                                                        text: message,
+                                                        isRead: isRead)
+                
+                return Conversation(id: conversationId,
+                                    name: name,
+                                    otherUserEmail: otherUserEmail,
+                                    latestMessage: latestMessageObject)
+            }
+            completion(.success(conversations))
+        }
         
     }
     
     /// Gets all messages for a given conversation
-    public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
+    public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<[Message], Error>) -> Void) {
+        database.child("\(id)/messages").observe(.value) { snapshot in
+            guard let value = snapshot.value as? [[String: Any]] else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            
+            let messages: [Message] = value.compactMap { dictonary in
+                guard let name = dictonary["name"] as? String,
+                      let isRead = dictonary["is_read"] as? Bool,
+                      let messageID = dictonary["id"] as? String,
+                      let content = dictonary["content"] as? String,
+                      let senderEmail = dictonary["sender_email"] as? String,
+                      let type = dictonary["type"] as? String,
+                      let dateString = dictonary["date"] as? String,
+                      let date = ChatVC.dateFormatter.date(from: dateString)
+                else {
+                    return nil
+                }
+                
+                let sender = Sender(photoURL: "",
+                                    senderId: senderEmail,
+                                    displayName: name)
+                
+                return Message(sender: sender,
+                               messageId: messageID,
+                               sentDate: date,
+                               kind: .text(content))
+            }
+            completion(.success(messages))
+        }
     }
     
     /// Sends a message with tagrget conversation and message

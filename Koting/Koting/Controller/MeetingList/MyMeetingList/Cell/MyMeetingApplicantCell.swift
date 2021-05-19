@@ -138,7 +138,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
                         
                         guard let targetUserEmail = finalResult.targetUserEmail else { return }
                         
-//                        DatabaseManager.shared.createNewConversation(with: targetUserEmail, name: , firstMessage: <#T##Message#>, completion: <#T##(Bool) -> Void#>)
+                        ConversationVC.createNewConversation(name: "상대닉네임", email: targetUserEmail)
                         
                         DispatchQueue.main.async {
                             parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인",handler: {(action: UIAlertAction!) in
