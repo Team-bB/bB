@@ -23,8 +23,6 @@ class CreateMeetingRoomVC: UIViewController {
         return array
     }()
     
-    var reloadTableViewBtn: (() -> ())?
-    //let vc = MeetingListVC()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,8 +41,6 @@ class CreateMeetingRoomVC: UIViewController {
             return
         }
         createMeeting()
-        //vc.FetchMeetings()
-        //reloadTableViewBtn?()
         
         // 여기서 나의 진행중인 미팅에 넘겨줘야함
         

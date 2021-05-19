@@ -21,7 +21,7 @@ class MeetingListVC: UIViewController {
         super.viewDidLoad()
         
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 44))
-        lbl.text = "진행중인 미팅"
+        lbl.text = "코팅"
         lbl.textColor = .black
         lbl.textAlignment = .left
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
@@ -46,12 +46,6 @@ class MeetingListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         FetchMeetings()
-    }
-    
-    private func preventLargeTitleCollapsing() {
-        let dummyView = UIView()
-        view.addSubview(dummyView)
-        view.sendSubviewToBack(dummyView)
     }
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -134,6 +128,12 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.animalShapeImage.layer.borderWidth = 0
                 cell.mbtiLabel.text = myMeeting?.owner?.mbti
                 
+                let bgView = UIView()
+                bgView.backgroundColor = .white
+                bgView.layer.borderWidth = 0.5
+                bgView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                cell.selectedBackgroundView = bgView
+                
                 return cell
             }
         }else {
@@ -168,7 +168,6 @@ extension MeetingListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if myMeeting != nil {
-                //performSegue(withIdentifier: "MyMeetingInfo", sender: indexPath.row)
                 let vc = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MyMeetingInfo") as! MyMeetingInfoViewController
                 vc.meeting = myMeeting
                 presentPanModal(vc)

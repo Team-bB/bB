@@ -23,10 +23,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT8-Ux-cYz" customClass="CustomButton" customModule="Koting" customModuleProvider="target">
-                                <rect key="frame" x="60" y="417" width="255" height="50"/>
+                                <rect key="frame" x="127.5" y="417" width="120" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="HBW-YU-Qfe"/>
                                     <constraint firstAttribute="height" constant="50" id="VpZ-ii-TGH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vod-8I-osX"/>
                                 </constraints>
                                 <state key="normal" title="시작하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,7 +50,6 @@
                             <constraint firstAttribute="trailing" secondItem="LNe-jZ-qmj" secondAttribute="trailing" id="3gL-iz-agC"/>
                             <constraint firstItem="GT8-Ux-cYz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VFu-2m-hA9"/>
                             <constraint firstItem="LNe-jZ-qmj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b5E-cN-iSW"/>
-                            <constraint firstItem="GT8-Ux-cYz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="iTG-tX-jML"/>
                             <constraint firstItem="LNe-jZ-qmj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="mLC-Aj-vbj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GT8-Ux-cYz" secondAttribute="bottom" constant="200" id="qEE-Wj-jyg"/>
                         </constraints>

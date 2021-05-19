@@ -9,9 +9,9 @@ import UIKit
 
 extension UIButton {
     
-    func setEnable(enable: Bool? = true, backgroundColor: UIColor? = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)) {
+    func setEnable(enable: Bool? = true, backgroundColor: UIColor? = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)) {
         self.isEnabled = enable!
-        self.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        self.setTitleColor(#colorLiteral(red: 0.5818830132, green: 0.2156915367, blue: 1, alpha: 1), for: .normal)
         self.backgroundColor = backgroundColor
     }
 
@@ -20,9 +20,11 @@ extension UIButton {
         self.backgroundColor = `backgroundColor`
     }
     
-    func setDefault(value: CGFloat? = 8, bool: Bool? = true) {
-        self.layer.cornerRadius = value!
+    func setDefault(value: CGFloat? = 0.3, bool: Bool? = true) {
+        //self.layer.cornerRadius = value!
         self.layer.masksToBounds = bool!
+        self.layer.borderWidth = value!
+        self.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
 }
 
@@ -40,8 +42,7 @@ class CustomButton: UIButton {
     func setRadiusAndShadow() {
         setDefault()
         setEnable()
-        
-        layer.cornerRadius = frame.height / 2
+//        layer.cornerRadius = frame.height / 2
         clipsToBounds = true
         layer.masksToBounds = true
         
