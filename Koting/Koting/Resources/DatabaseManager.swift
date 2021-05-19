@@ -134,7 +134,7 @@ extension DatabaseManager {
         let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
         let ref = database.child("\(safeEmail)")
 
-        ref.observeSingleEvent(of: .value) { snapshot in
+        ref.observeSingleEvent(of: .value) { [weak self] snapshot in
             
             guard var userNode = snapshot.value as? [String: Any] else {
                 completion(false)
@@ -184,6 +184,32 @@ extension DatabaseManager {
                 ]
             ]
             
+            let recipient_newConversationData: [String: Any] = [
+                "id": conversationId,
+                "other_user_email": safeEmail,
+                "name": "나",
+                "latest_message": [
+                    "date": dateString,
+                    "message": message,
+                    "is_read": false
+                ]
+            ]
+            
+            // Update recipient conversation entry
+            
+            self?.database.child("\(otherUserEmail)/conversations").observeSingleEvent(of: .value) { [weak self] snapshot in
+                
+                if var conversations = snapshot.value as? [[String: Any]] {
+                    // 추가(append)
+                    conversations.append(recipient_newConversationData)
+                    self?.database.child("\(otherUserEmail)/conversations").setValue(conversations)
+                    
+                } else {
+                    // 새롭게 생성(create)
+                    self?.database.child("\(otherUserEmail)/conversations").setValue([recipient_newConversationData])
+                }
+            }
+            // Update current user conversation entry
             if var conversations = userNode["conversations"] as? [[String: Any]] {
                 // 현재 유저의 대화 array가 이미 존재함: append
                 
