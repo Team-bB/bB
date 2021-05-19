@@ -59,6 +59,7 @@
 		88A3AFAD265257F900FFF90F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3AFAC265257F900FFF90F /* DatabaseManager.swift */; };
 		88A3AFAF26525A0100FFF90F /* ChatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */; };
 		88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B51DC426496ADD00E460FA /* CustomIndicator.swift */; };
+		D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEA26554208001502D7 /* animalFaceML.mlmodel */; };
 		D392E1282644CDAB00938E85 /* MyMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1272644CDAB00938E85 /* MyMeetingCell.swift */; };
 		D392E12B2644D29E00938E85 /* MyMeetingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */; };
 		D392E12F26455DF000938E85 /* MyMeetingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D392E12E26455DF000938E85 /* MyMeetingList.storyboard */; };
@@ -142,6 +143,7 @@
 		88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatStoryboard.storyboard; sourceTree = "<group>"; };
 		88B51DC426496ADD00E460FA /* CustomIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
+		D328BBE926554208001502D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Base; path = Base.lproj/animalFaceML.mlmodel; sourceTree = "<group>"; };
 		D392E1272644CDAB00938E85 /* MyMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingCell.swift; sourceTree = "<group>"; };
 		D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingInfoViewController.swift; sourceTree = "<group>"; };
 		D392E12E26455DF000938E85 /* MyMeetingList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyMeetingList.storyboard; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */,
 				886D82D0260A514C00EE411C /* SignUpVC.swift */,
 				884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */,
+				D328BBEA26554208001502D7 /* animalFaceML.mlmodel */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				88556CAA2609D8D300CF7CAC /* AuthNumberCheckAPI.swift in Sources */,
 				88984E5D2644614400997ED2 /* UIView++.swift in Sources */,
 				889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */,
+				D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */,
 				88556CB22609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift in Sources */,
 				88556CA42609D8B500CF7CAC /* UIButton++.swift in Sources */,
 				88849D612644367000E2B1AF /* StrechyHeaderLayout.swift in Sources */,
@@ -664,6 +668,14 @@
 				889F7F5926088F6300B3DA62 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D328BBEA26554208001502D7 /* animalFaceML.mlmodel */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D328BBE926554208001502D7 /* Base */,
+			);
+			name = animalFaceML.mlmodel;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
