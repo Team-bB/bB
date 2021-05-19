@@ -21,8 +21,8 @@ class MeetingListVC: UIViewController {
         super.viewDidLoad()
         
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 44))
-        lbl.text = "코팅"
-        lbl.textColor = .black
+        lbl.text = "코 팅"
+        lbl.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         lbl.textAlignment = .left
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
         navigationItem.titleView = lbl

@@ -22,22 +22,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="FPX-Vs-n62">
-                                <rect key="frame" x="0.0" y="112" width="376" height="443"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="443" id="ONb-rg-oLA"/>
-                                    <constraint firstAttribute="width" constant="376" id="oeA-jm-Lv2"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DMJ-bG-GAb" secondAttribute="trailing" id="K6x-G0-Axv"/>
                             <constraint firstItem="DMJ-bG-GAb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="106" id="Xlg-cq-NHx"/>
-                            <constraint firstItem="FPX-Vs-n62" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nIK-z9-QrG"/>
                             <constraint firstItem="DMJ-bG-GAb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qbt-T0-sH1"/>
-                            <constraint firstItem="FPX-Vs-n62" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="shX-oZ-Ld6"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -47,7 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Launch_Icon" width="60" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -99,11 +99,8 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         cell.ageLabel.text = String(myMeeting?.participant?[indexPath.row].age ?? 0)
         cell.heightLabel.text = String(myMeeting?.participant?[indexPath.row].height ?? 0)
         cell.mbtiLabel.text = myMeeting?.participant?[indexPath.row].mbti
-        cell.collectionCellView.layer.cornerRadius = 40
-        cell.collectionCellView.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
-        cell.collectionCellView.layer.shadowOpacity = 1.0
-        cell.collectionCellView.layer.shadowOffset = CGSize.zero
-        cell.collectionCellView.layer.shadowRadius = 5
+        cell.collectionCellView.layer.borderWidth = 0.3
+        cell.collectionCellView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         
         var applyID: String?
         var college: String?
