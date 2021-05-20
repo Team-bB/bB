@@ -26,18 +26,9 @@ class MeetingDetailInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.meetingInfoView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-//        self.meetingInfoView.layer.cornerRadius = 20
-//        self.meetingInfoView.layer.borderWidth = 2
-
-        
         self.imageView.layer.cornerRadius = imageView.frame.width / 2
-        //self.imageView.layer.borderWidth = 1
         self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
-        //self.imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         self.imageView.clipsToBounds = true
-        
-        //self.navigationItem.largeTitleDisplayMode = .never
         
         updateUI()
     }

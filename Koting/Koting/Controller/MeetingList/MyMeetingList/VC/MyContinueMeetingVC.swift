@@ -123,8 +123,10 @@ extension MyContinueMeetingVC: UITableViewDataSource{
 
             let bgView = UIView()
             bgView.backgroundColor = .white
+            bgView.layer.borderWidth = 0.5
+            bgView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             cell.selectedBackgroundView = bgView
-            print(myApplies)
+            
             return cell
         }
     }
@@ -136,9 +138,10 @@ extension MyContinueMeetingVC: UITableViewDataSource{
 
 extension MyContinueMeetingVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath.section == 1{
-//            print(myApplies[indexPath.row].meeting_id)
-//        }
+        if indexPath.section == 1 {
+            let vc = UIStoryboard(name: "MyMeetingList", bundle: nil).instantiateViewController(withIdentifier: "SimpleMeetingInfo") as! SimpleMeetingInfoViewController
+            vc.meeting = myApplies[indexPath.row]
+            presentPanModal(vc)
+        }
     }
-    
 }

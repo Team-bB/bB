@@ -60,6 +60,7 @@
 		88A3AFAF26525A0100FFF90F /* ChatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */; };
 		88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B51DC426496ADD00E460FA /* CustomIndicator.swift */; };
 		D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEA26554208001502D7 /* animalFaceML.mlmodel */; };
+		D328BBED26564753001502D7 /* SimpleMeetingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEC26564752001502D7 /* SimpleMeetingInfoViewController.swift */; };
 		D392E1282644CDAB00938E85 /* MyMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1272644CDAB00938E85 /* MyMeetingCell.swift */; };
 		D392E12B2644D29E00938E85 /* MyMeetingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */; };
 		D392E12F26455DF000938E85 /* MyMeetingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D392E12E26455DF000938E85 /* MyMeetingList.storyboard */; };
@@ -144,6 +145,7 @@
 		88B51DC426496ADD00E460FA /* CustomIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
 		D328BBE926554208001502D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Base; path = Base.lproj/animalFaceML.mlmodel; sourceTree = "<group>"; };
+		D328BBEC26564752001502D7 /* SimpleMeetingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMeetingInfoViewController.swift; sourceTree = "<group>"; };
 		D392E1272644CDAB00938E85 /* MyMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingCell.swift; sourceTree = "<group>"; };
 		D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingInfoViewController.swift; sourceTree = "<group>"; };
 		D392E12E26455DF000938E85 /* MyMeetingList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyMeetingList.storyboard; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 			children = (
 				D392E146264572C800938E85 /* MyContinueMeetingVC.swift */,
 				D392E149264572DB00938E85 /* MyDoneMeetingVC.swift */,
+				D328BBEC26564752001502D7 /* SimpleMeetingInfoViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
 				88000B542653F312008671D2 /* ConversationTableViewCell.swift in Sources */,
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
+				D328BBED26564753001502D7 /* SimpleMeetingInfoViewController.swift in Sources */,
 				88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */,
 				883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */,
 				883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */,
@@ -812,7 +816,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.TeamKook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teamkook1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -834,7 +838,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.TeamKook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teamkook1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
