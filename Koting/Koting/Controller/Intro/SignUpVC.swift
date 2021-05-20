@@ -45,6 +45,7 @@ class SignUpVC: UIViewController {
         age.delegate = self
         height.delegate = self
         mail.delegate = self
+        nickName.delegate = self
         
         sexPickerView.delegate = self
         collegePickerView.delegate = self
@@ -244,6 +245,7 @@ extension SignUpVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == mail {
             mail.resignFirstResponder()
+            nickName.resignFirstResponder()
             sex.becomeFirstResponder()
         }
         return true
