@@ -54,11 +54,11 @@ public class MeetingService {
       3. 같은 과인 미팅
       4. 나랑 성별이 같은 미팅
        */
-      Long ownerId = meeting.getOwnerId();
+      Long ownerId = meeting.getMemberId();
       Member owner_ = memberService.findOne(ownerId);
       JSONObject owner = memberService.setMemberInfo(owner_);
 
-      if (member.getId() == meeting.getOwnerId()
+      if (member.getId() == meeting.getMemberId()
           || meeting.getMeetingStatus() == MeetingStatus.CLOSE
           || member.getMajor().equals(owner_.getMajor())
           || member.getSex().equals(owner_.getSex())) {

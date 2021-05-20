@@ -8,6 +8,7 @@ import javax.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -110,6 +111,16 @@ public class MemberController {
     String accountId = object.get("account_id").toString();
     Member member = memberService.findOneByAccountId(accountId);
     retObject.put("result", member.getAuthStatus());
+    return retObject;
+  }
+
+  @DeleteMapping("members")
+  public JSONObject deleteMember(@RequestBody JSONObject object) {
+    JSONObject retObject = new JSONObject();
+
+    String accountId = object.get("account_id").toString();
+    retObject.put("result", "true");
+
     return retObject;
   }
 }

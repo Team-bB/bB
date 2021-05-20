@@ -44,7 +44,7 @@ public class ApplyService {
   }
 
   private void validateApply(Apply apply) {
-    String owner = memberRepository.findOne(apply.getMeeting().getOwnerId()).getAccount_id();
+    String owner = memberRepository.findOne(apply.getMeeting().getMemberId()).getAccount_id();
     String applier = apply.getMember().getAccount_id();
     if (owner.equals(applier)) {
       throw new IllegalStateException("본인에게 신청할 수 없습니다.");

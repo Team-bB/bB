@@ -43,7 +43,7 @@ public class ApplyServiceTest {
     Apply apply = applyService.findOne(applyId);
 
     assertEquals(apply.getMember().getId(), member2.getId());
-    assertEquals(apply.getMeeting().getOwnerId(), member1.getId());
+    assertEquals(apply.getMeeting().getMemberId(), member1.getId());
     assertEquals(apply.getMeeting().getId(), meeting.getId());
   }
 }

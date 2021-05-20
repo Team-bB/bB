@@ -85,7 +85,7 @@ public class ApplyController {
           }
         }
 
-        Member one = memberService.findOne(apply.getMeeting().getOwnerId());
+        Member one = memberService.findOne(apply.getMeeting().getMemberId());
         JSONObject meetingOwner = memberService.setMemberInfo(one);
         JSONObject meetingInfo = meetingService.setMeetingInfo(meetingOwner, apply.getMeeting());
         if (apply.getApplyStatus() == ApplyStatus.REJECT)
@@ -124,7 +124,7 @@ public class ApplyController {
     Long applyId = Long.parseLong(object.get("apply_id").toString());
     Apply apply = applyService.findOne(applyId);
     apply.applyAccept();
-    Long ownerId = apply.getMeeting().getOwnerId();
+    Long ownerId = apply.getMeeting().getMemberId();
     // 내 미팅
     Member owner = memberService.findOne(ownerId);
     owner.setMyMeetingId(null);
@@ -172,7 +172,7 @@ public class ApplyController {
     List<Apply> all = applyService.findAll();
     JSONArray jArray2 = new JSONArray();
     for (Apply apply : all) {
-      Long ownerId = apply.getMeeting().getOwnerId();
+      Long ownerId = apply.getMeeting().getMemberId();
       // 내가 수락한 경우
       if (ownerId == member.getId()) {
         Long applier = apply.getMember().getId();
