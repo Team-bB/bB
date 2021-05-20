@@ -19,7 +19,7 @@ class MyDoneMeetingVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
@@ -90,12 +90,7 @@ extension MyDoneMeetingVC: UITableViewDataSource {
         cell.collegeLabel.text = doneMeeting[indexPath.row].owner?.college
         cell.mbtiLabel.text = doneMeeting[indexPath.row].owner?.mbti
         cell.numberOfParticipants.text = doneMeeting[indexPath.row].player
-        
-        let bgView = UIView()
-        bgView.backgroundColor = .white
-        bgView.layer.borderWidth = 0.5
-        bgView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        cell.selectedBackgroundView = bgView
+        cell.selectionStyle = .none
         
         return cell
     }

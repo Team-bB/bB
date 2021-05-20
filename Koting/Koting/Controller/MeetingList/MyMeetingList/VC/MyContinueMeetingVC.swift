@@ -18,7 +18,7 @@ class MyContinueMeetingVC: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.showsVerticalScrollIndicator = false
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         
@@ -101,10 +101,11 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             cell.buttonReloadData = { [unowned self] in
                 FetchMeetings()
             }
+            cell.selectionStyle = .none
             
-            let bgView = UIView()
-            bgView.backgroundColor = .white
-            cell.selectedBackgroundView = bgView
+//            let bgView = UIView()
+//            bgView.backgroundColor = .white
+//            cell.selectedBackgroundView = bgView
             
             return cell
         }else {
@@ -117,15 +118,16 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             cell.mbtiLabel.text = myApplies[indexPath.row].owner?.mbti
             cell.numberOfParticipants.text = myApplies[indexPath.row].player
             cell.progressLabel.text = myApplies[indexPath.row].apply_status
+            cell.selectionStyle = .none
             if myApplies[indexPath.row].apply_status == "거절됨" {
                 cell.progressLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             } else { cell.progressLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)}
 
-            let bgView = UIView()
-            bgView.backgroundColor = .white
-            bgView.layer.borderWidth = 0.5
-            bgView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            cell.selectedBackgroundView = bgView
+//            let bgView = UIView()
+//            bgView.backgroundColor = .white
+//            bgView.layer.borderWidth = 0.5
+//            bgView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+//            cell.selectedBackgroundView = bgView
             
             return cell
         }
