@@ -30,9 +30,10 @@ class MeetingListVC: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tableView.showsVerticalScrollIndicator = false
         
         //tableView.separatorStyle = UITableViewCell.SeparatorStyle.none //테이블 뷰 셀 나누는 줄 없애는 코드
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.didDismissNotification(_:)), name: NSNotification.Name(rawValue: "DidDismissViewController"), object: nil)
@@ -114,7 +115,7 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.buttonCreateMyMeeting = { [unowned self] in
                     cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .touchUpInside)
                 }
-                cell.tableViewCellLayer.layer.cornerRadius = 20
+                cell.selectionStyle = .none
                 
                 return cell
             }else {
@@ -127,12 +128,7 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.animalShapeImage.layer.masksToBounds = true
                 cell.animalShapeImage.layer.borderWidth = 0
                 cell.mbtiLabel.text = myMeeting?.owner?.mbti
-                
-                let bgView = UIView()
-                bgView.backgroundColor = .white
-                bgView.layer.borderWidth = 0.5
-                bgView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-                cell.selectedBackgroundView = bgView
+                cell.selectionStyle = .none
                 
                 return cell
             }

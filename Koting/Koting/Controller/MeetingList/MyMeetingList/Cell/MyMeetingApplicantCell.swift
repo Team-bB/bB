@@ -101,25 +101,22 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         cell.collectionCellView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         
         var applyID: String?
-        var college: String?
+        //var college: String?
         
         acceptButtonTapped = { [unowned self] in
             if pageControl.currentPage == 0 {
                 applyID = myMeeting?.participant?[0].apply_id
-                college = myMeeting?.participant?[0].college
                 
             }
             else if pageControl.currentPage == 1 {
                 applyID = myMeeting?.participant?[1].apply_id
-                college = myMeeting?.participant?[1].college
                 
             }
             else {
                 applyID = myMeeting?.participant?[2].apply_id
-                college = myMeeting?.participant?[2].college
                 
             }
-            print(college ?? "단과대학")
+//            print(college ?? "단과대학")
             AcceptMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
 
                 switch result {
@@ -155,17 +152,14 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         self.rejectButtonTapped = { [unowned self] in
             if pageControl.currentPage == 0 {
                 applyID = myMeeting?.participant?[0].apply_id
-                college = myMeeting?.participant?[0].college
             }
             else if pageControl.currentPage == 1 {
                 applyID = myMeeting?.participant?[1].apply_id
-                college = myMeeting?.participant?[1].college
             }
             else {
                 applyID = myMeeting?.participant?[2].apply_id
-                college = myMeeting?.participant?[2].college
             }
-            print(college ?? "단과대학")
+            //print(college ?? "단과대학")
             RejectMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
 
                 switch result {
