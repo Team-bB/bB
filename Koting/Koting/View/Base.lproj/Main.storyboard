@@ -224,7 +224,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1d-Ca-Sav">
-                                <rect key="frame" x="82" y="540" width="211" height="36"/>
+                                <rect key="frame" x="82" y="574" width="211" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -252,7 +252,6 @@
                                 <rect key="frame" x="82" y="95" width="108.5" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="pop-vN-cj4"/>
-                                    <constraint firstAttribute="width" constant="108.5" id="wic-8o-ZHG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -266,40 +265,62 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="S0L-yk-fCB">
-                                <rect key="frame" x="82" y="176" width="211" height="314"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="S0L-yk-fCB">
+                                <rect key="frame" x="82" y="176" width="211" height="358"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="neZ-qm-6t0">
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="46"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L6h-Yd-Suq">
+                                                <rect key="frame" x="0.0" y="0.0" width="211" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="211" id="NL6-fn-Ty7"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12자 이하로 입력해주세요." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsy-k8-uM8">
+                                                <rect key="frame" x="0.0" y="34" width="103" height="12"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="10"/>
+                                                <color key="textColor" white="0.306985245269983" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="성별" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcS-2d-DPz">
-                                        <rect key="frame" x="0.0" y="0.0" width="211" height="34"/>
+                                        <rect key="frame" x="0.0" y="64" width="211" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="단과대학" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WDk-3O-XKa">
-                                        <rect key="frame" x="0.0" y="56" width="211" height="34"/>
+                                        <rect key="frame" x="0.0" y="116" width="211" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sbX-ig-pzT">
-                                        <rect key="frame" x="0.0" y="112" width="211" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="나이" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-KA-maC">
                                         <rect key="frame" x="0.0" y="168" width="211" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="나이" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-KA-maC">
+                                        <rect key="frame" x="0.0" y="220" width="211" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="키" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGk-Xd-I7P">
-                                        <rect key="frame" x="0.0" y="224" width="211" height="34"/>
+                                        <rect key="frame" x="0.0" y="272" width="211" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MBTI" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dCZ-FG-sCL">
-                                        <rect key="frame" x="0.0" y="280" width="211" height="34"/>
+                                        <rect key="frame" x="0.0" y="324" width="211" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="211" id="4nM-VC-OQ1"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KRe-Tm-Oyl"/>
@@ -312,13 +333,12 @@
                             <constraint firstItem="RgA-BA-B2z" firstAttribute="leading" secondItem="bSK-t8-0NF" secondAttribute="trailing" constant="20" id="FjO-fZ-zqn"/>
                             <constraint firstItem="clN-6T-JvM" firstAttribute="top" secondItem="KRe-Tm-Oyl" secondAttribute="top" constant="20" id="Lf9-OH-BTW"/>
                             <constraint firstItem="KRe-Tm-Oyl" firstAttribute="trailing" secondItem="o1d-Ca-Sav" secondAttribute="trailing" constant="82" id="Nbv-Sf-q3N"/>
-                            <constraint firstItem="S0L-yk-fCB" firstAttribute="leading" secondItem="KRe-Tm-Oyl" secondAttribute="leading" constant="82" id="cKg-dX-kyC"/>
+                            <constraint firstItem="S0L-yk-fCB" firstAttribute="centerX" secondItem="M16-55-J64" secondAttribute="centerX" id="Nun-yc-Jip"/>
                             <constraint firstItem="gOx-5K-u7s" firstAttribute="top" secondItem="bSK-t8-0NF" secondAttribute="bottom" constant="8" symbolic="YES" id="d9Y-yV-WJK"/>
-                            <constraint firstItem="KRe-Tm-Oyl" firstAttribute="trailing" secondItem="S0L-yk-fCB" secondAttribute="trailing" constant="82" id="epv-Yg-5Uf"/>
-                            <constraint firstItem="S0L-yk-fCB" firstAttribute="top" secondItem="gOx-5K-u7s" secondAttribute="bottom" constant="24.5" id="gn9-vr-r4n"/>
                             <constraint firstItem="gOx-5K-u7s" firstAttribute="leading" secondItem="KRe-Tm-Oyl" secondAttribute="leading" constant="10" id="hl0-n3-ZBL"/>
                             <constraint firstItem="KRe-Tm-Oyl" firstAttribute="trailing" secondItem="gOx-5K-u7s" secondAttribute="trailing" constant="10" id="hnd-wf-Vsa"/>
-                            <constraint firstItem="o1d-Ca-Sav" firstAttribute="top" secondItem="S0L-yk-fCB" secondAttribute="bottom" constant="50" id="rgB-ZY-NhD"/>
+                            <constraint firstItem="S0L-yk-fCB" firstAttribute="top" secondItem="gOx-5K-u7s" secondAttribute="bottom" constant="24.5" id="mmf-VP-y37"/>
+                            <constraint firstItem="o1d-Ca-Sav" firstAttribute="top" secondItem="S0L-yk-fCB" secondAttribute="bottom" constant="40" id="rgB-ZY-NhD"/>
                             <constraint firstItem="o1d-Ca-Sav" firstAttribute="leading" secondItem="KRe-Tm-Oyl" secondAttribute="leading" constant="82" id="thw-js-PyD"/>
                             <constraint firstItem="bSK-t8-0NF" firstAttribute="leading" secondItem="KRe-Tm-Oyl" secondAttribute="leading" constant="82" id="wzO-TL-vzU"/>
                         </constraints>
@@ -331,6 +351,7 @@
                         <outlet property="height" destination="bGk-Xd-I7P" id="z7K-Zz-Us6"/>
                         <outlet property="mail" destination="bSK-t8-0NF" id="2OR-I7-o5W"/>
                         <outlet property="major" destination="sbX-ig-pzT" id="42M-tX-Vpt"/>
+                        <outlet property="nickName" destination="L6h-Yd-Suq" id="9Bc-ad-X5e"/>
                         <outlet property="sex" destination="ZcS-2d-DPz" id="6OU-Uf-Kg7"/>
                         <outlet property="signUpButton" destination="o1d-Ca-Sav" id="Nud-HI-ad7"/>
                         <outletCollection property="infoArray" destination="ZcS-2d-DPz" collectionClass="NSMutableArray" id="noj-Pc-5PA"/>
