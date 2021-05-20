@@ -173,12 +173,17 @@ public class ApplyController {
     JSONArray jArray2 = new JSONArray();
     for (Apply apply : all) {
       Long ownerId = apply.getMeeting().getOwnerId();
-      if ((ownerId == member.getId())
-          || (apply.getMember().getId()) == member.getId()) {
-
+      // 내가 수락한 경우
+      if (ownerId == member.getId()) {
+        Long applier = apply.getMember().getId();
+        Member member1 = memberService.findOne(applier);
+        JSONObject meetingOwner = memberService.setMemberInfo(member1);
+        jArray2.add(meetingService.setMeetingInfo(meetingOwner, apply.getMeeting()));
+      }
+      // 내가 신청한 경우
+      else if ((apply.getMember().getId()) == member.getId()) {
         Member owner = memberService.findOne(ownerId);
         JSONObject meetingOwner = memberService.setMemberInfo(owner);
-
         jArray2.add(meetingService.setMeetingInfo(meetingOwner, apply.getMeeting()));
       }
 
