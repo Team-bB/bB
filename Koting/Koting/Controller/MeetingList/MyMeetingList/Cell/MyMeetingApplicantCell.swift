@@ -30,8 +30,6 @@ class MyMeetingApplicantCell: UITableViewCell {
         super.awakeFromNib()
         acceptBtn.setDefault()
         rejectBtn.setDefault()
-//        self.collectionView.delegate = self
-//        self.collectionView.dataSource = self
         pageControl.hidesForSinglePage = true
     }
     func setColleciontionViewWith(){
@@ -65,19 +63,19 @@ class MyMeetingApplicantCell: UITableViewCell {
         default: return "nil"
         }
     }
+    @IBAction func pageControlAction(_ sender: UIPageControl) {
+        let page:Int? = sender.currentPage
+        var frame: CGRect = self.collectionView.frame
+        frame.origin.x = frame.size.width * CGFloat(page ?? 0)
+        frame.origin.y = 0
+        self.collectionView.scrollRectToVisible(frame, animated: true)
+    }
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        pageControl.currentPage = indexPath.row
-//    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let pageWidth = scrollView.frame.width
-//        self.currentPage = Int((scrollView.contentOffset.x + pageWidth / 2) / pageWidth)
-//        self.pageControl.currentPage = self.currentPage
         let width = scrollView.frame.width - (scrollView.contentInset.left*2)
         let index = scrollView.contentOffset.x / width
         let roundedIndex = round(index)
         self.pageControl?.currentPage = Int(roundedIndex)
-        print("\(pageControl.currentPage)")
     }
 }
 
@@ -103,39 +101,36 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         cell.collectionCellView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         
         var applyID: String?
-        var college: String?
+        //var college: String?
         
         acceptButtonTapped = { [unowned self] in
             if pageControl.currentPage == 0 {
                 applyID = myMeeting?.participant?[0].apply_id
-                college = myMeeting?.participant?[0].college
                 
             }
             else if pageControl.currentPage == 1 {
                 applyID = myMeeting?.participant?[1].apply_id
-                college = myMeeting?.participant?[1].college
                 
             }
             else {
                 applyID = myMeeting?.participant?[2].apply_id
-                college = myMeeting?.participant?[2].college
                 
             }
-            print(college ?? "단과대학")
+//            print(college ?? "단과대학")
             AcceptMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
-                
+
                 switch result {
                 case .success(let finalResult):
 
                     /// 채팅방을 개설후 상대방에게 기본 메시지를 보냅니다.
                     if finalResult.result == "true" {
-                        
+
                         guard let targetUserEmail = finalResult.targetUserEmail else { return }
-                        
+
                         ConversationVC.createNewConversation(name: "상대닉네임", email: targetUserEmail)
-                        
+
                         DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인",handler: {(action: UIAlertAction!) in
+                            parentVC.makeAlertBox(title: "수락완료", message: "새로운 채팅이 개설되었습니다!!\n채팅탭에서 확인해주세요.", text: "확인",handler: {(action: UIAlertAction!) in
                                 buttonReloadData!()
                             })
                         }
@@ -157,17 +152,14 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         self.rejectButtonTapped = { [unowned self] in
             if pageControl.currentPage == 0 {
                 applyID = myMeeting?.participant?[0].apply_id
-                college = myMeeting?.participant?[0].college
             }
             else if pageControl.currentPage == 1 {
                 applyID = myMeeting?.participant?[1].apply_id
-                college = myMeeting?.participant?[1].college
             }
             else {
                 applyID = myMeeting?.participant?[2].apply_id
-                college = myMeeting?.participant?[2].college
             }
-            print(college ?? "단과대학")
+            //print(college ?? "단과대학")
             RejectMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
 
                 switch result {
@@ -197,8 +189,11 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
     
 }
 
-extension MyMeetingApplicantCell: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+extension MyMeetingApplicantCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: collectionView.frame.size.width  , height:  collectionView.frame.height)
     }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+            currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        }
 }
-

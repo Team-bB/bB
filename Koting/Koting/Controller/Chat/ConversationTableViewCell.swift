@@ -13,14 +13,14 @@ class ConversationTableViewCell: UITableViewCell {
     
     private let userNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 21, weight: .semibold)
+        label.font = .systemFont(ofSize: 21, weight: .bold)
         
         return label
     }()
     
     private let userMessageLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 19, weight: .semibold)
+        label.font = .systemFont(ofSize: 15, weight: .regular)
         label.numberOfLines = 0
         
         return label
@@ -41,13 +41,13 @@ class ConversationTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        userNameLabel.frame = CGRect(x: 10,
-                                     y: 10,
-                                     width: contentView.bounds.width - 20 - 100 ,
-                                     height: (contentView.bounds.height - 20) / 2)
-        
-        userMessageLabel.frame = CGRect(x: 10,
+        userNameLabel.frame = CGRect(x: 20,
                                      y: 20,
+                                     width: contentView.bounds.width - 20 - 100 ,
+                                     height: 20)
+        
+        userMessageLabel.frame = CGRect(x: 20,
+                                     y: contentView.bounds.height / 2,
                                      width: contentView.bounds.width - 20 - 100 ,
                                      height: (contentView.bounds.height - 20) / 2)
     }

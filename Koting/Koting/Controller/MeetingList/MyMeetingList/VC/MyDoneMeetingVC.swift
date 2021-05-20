@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 
 class MyDoneMeetingVC: UIViewController {
 
@@ -18,7 +19,7 @@ class MyDoneMeetingVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
@@ -89,6 +90,8 @@ extension MyDoneMeetingVC: UITableViewDataSource {
         cell.collegeLabel.text = doneMeeting[indexPath.row].owner?.college
         cell.mbtiLabel.text = doneMeeting[indexPath.row].owner?.mbti
         cell.numberOfParticipants.text = doneMeeting[indexPath.row].player
+        cell.selectionStyle = .none
+        
         return cell
     }
     
@@ -132,5 +135,10 @@ extension MyDoneMeetingVC: UITableViewDelegate {
         action.backgroundColor = .red
         
         return action
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let vc = UIStoryboard(name: "MyMeetingList", bundle: nil).instantiateViewController(withIdentifier: "SimpleMeetingInfo") as! SimpleMeetingInfoViewController
+            vc.meeting = doneMeeting[indexPath.row]
+            presentPanModal(vc)
     }
 }

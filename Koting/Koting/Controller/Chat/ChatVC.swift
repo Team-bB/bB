@@ -9,46 +9,6 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView
 
-struct Message: MessageType {
-    public var sender: SenderType
-    public var messageId: String
-    public var sentDate: Date
-    public var kind: MessageKind
-}
-
-extension MessageKind {
-    var messageKindString: String {
-        switch self {
-        
-        case .text(_):
-            return "text"
-        case .attributedText(_):
-            return "attributed_text"
-        case .photo(_):
-            return "photo"
-        case .video(_):
-            return "video"
-        case .location(_):
-            return "location"
-        case .emoji(_):
-            return "emoji"
-        case .audio(_):
-            return "audio"
-        case .contact(_):
-            return "contact"
-        case .linkPreview(_):
-            return  "link_preview"
-        case .custom(_):
-            return "custom"
-        }
-    }
-}
-struct Sender: SenderType {
-    public var photoURL: String
-    public var senderId: String
-    public var displayName: String
-}
-
 class ChatVC: MessagesViewController {
     
     public static let dateFormatter: DateFormatter = {
@@ -61,7 +21,7 @@ class ChatVC: MessagesViewController {
         return formatter
     }()
     
-    private let conversationId: String?
+    private var conversationId: String?
     public let otherUserEmail: String
     public var isNewConversation = false
     
@@ -91,8 +51,11 @@ class ChatVC: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.tintColor = .black
         
-        view.backgroundColor = .red
+        hideAvatar()
         
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -110,6 +73,7 @@ class ChatVC: MessagesViewController {
     }
     
     private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
+        
         DatabaseManager.shared.getAllMessagesForConversation(with: id) { [weak self] result in
             switch result {
             case .success(let messages):
@@ -121,7 +85,7 @@ class ChatVC: MessagesViewController {
                 DispatchQueue.main.async {
                     self?.messagesCollectionView.reloadDataAndKeepOffset()
                     if shouldScrollToBottom {
-                        self?.messagesCollectionView.scrollToBottom()
+                        self?.messagesCollectionView.scrollToLastItem(animated: false)
                     }
                 }
                 
@@ -131,6 +95,27 @@ class ChatVC: MessagesViewController {
         }
     }
     
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        let sender = message.sender
+        if sender.senderId == selfSender?.senderId {
+            return #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        }
+        return .secondarySystemBackground
+    }
+    
+    func hideAvatar() {
+        
+        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+        layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
+        layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+        }
+        
+    }
+    
+    func setSendButton() {
+        messageInputBar.sendButton.setTitleColor(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), for: .normal)
+        messageInputBar.sendButton.setTitle("전송", for: .normal)
+    }
 }
 
 extension ChatVC: InputBarAccessoryViewDelegate {
@@ -141,14 +126,17 @@ extension ChatVC: InputBarAccessoryViewDelegate {
         let mmessage = Message(sender: selfSender,
                                messageId: messageId ,
                                sentDate: Date(),
-                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요~\n- 코팅 운영진😃 -"))
+                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요!!\n⚠️채팅을 삭제하면 영구적으로 삭제됩니다.\n- 코팅 운영진😃 -"))
         
         // name: 받는 사람 닉네임
         DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage) { [weak self] success in
-            
             if success {
                 print("📝 메세지 전송 완료. 📝")
                 self?.isNewConversation = false
+                let newConversationId = "conversation_\(mmessage.messageId)"
+                self?.conversationId = newConversationId
+                self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
+                
             } else {
                 print("⛔️ 메세지 전송 실패 ⛔️")
             }
@@ -162,6 +150,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
               let messageId = createMessageId() else { return }
         
         print("Sending: \(text)")
+        messageInputBar.inputTextView.text = nil
         
         let mmessage = Message(sender: selfSender,
                                messageId: messageId ,
@@ -178,7 +167,9 @@ extension ChatVC: InputBarAccessoryViewDelegate {
                 if success {
                     print("📝 메세지 전송 완료. 📝")
                     self?.isNewConversation = false
-                    
+                    let newConversationId = "conversation_\(mmessage.messageId)"
+                    self?.conversationId = newConversationId
+                    self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
                 } else {
                     print("⛔️ 메세지 전송 실패 ⛔️")
                 }
@@ -189,11 +180,10 @@ extension ChatVC: InputBarAccessoryViewDelegate {
             guard let conversationId = conversationId else { return }
             let name = self.title ?? "User"
             
-            DatabaseManager.shared.sendMessage(to: conversationId, name: name, newMessage: mmessage) { success in
+            DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: mmessage) { [weak self] success in
                 
                 if success {
                     print("📝 메세지 전송 완료. 📝")
-                    
                 } else {
                     print("⛔️ 메세지 전송 실패 ⛔️")
                 }

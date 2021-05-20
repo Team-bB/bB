@@ -36,7 +36,7 @@ extension UIViewController {
         let okButton = UIAlertAction(title: text, style: .default, handler: handler)
         alertController.addAction(okButton)
         
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func setVisibleWithAnimation(_ v: UIView?, _ s: Bool) {
