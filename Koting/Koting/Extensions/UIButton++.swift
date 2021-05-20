@@ -15,8 +15,9 @@ extension UIButton {
         self.backgroundColor = backgroundColor
     }
 
-    func setDisable(enable: Bool? = false, `backgroundColor`: UIColor? = .opaqueSeparator) {
+    func setDisable(enable: Bool? = false, `backgroundColor`: UIColor? = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)) {
         self.isEnabled = enable!
+        self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         self.backgroundColor = `backgroundColor`
     }
     

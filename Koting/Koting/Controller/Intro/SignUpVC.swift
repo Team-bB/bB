@@ -45,6 +45,7 @@ class SignUpVC: UIViewController {
         age.delegate = self
         height.delegate = self
         mail.delegate = self
+        nickName.delegate = self
         
         sexPickerView.delegate = self
         collegePickerView.delegate = self
@@ -87,6 +88,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var height: UITextField!
     @IBOutlet weak var MBTI: UITextField!
     @IBOutlet weak var mail: UITextField!
+    @IBOutlet weak var nickName: UITextField!
     
     @IBOutlet var infoArray: Array<UITextField>!
     
@@ -179,7 +181,7 @@ extension SignUpVC {
     }
     
     func isNotEmptyTextFiled() -> Bool {
-        return sex.text != "" && college.text != "" && major.text != "" && age.text != "" && height.text != "" && MBTI.text != "" && mail.text != ""
+        return sex.text != "" && college.text != "" && major.text != "" && age.text != "" && height.text != "" && MBTI.text != "" && mail.text != "" && isValidNickname(nickName.text)
     }
     
     func isValidEmail(_ email: String) -> Bool {
@@ -187,6 +189,12 @@ extension SignUpVC {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         
         return emailPred.evaluate(with: email)
+    }
+    
+    func isValidNickname(_ nickName: String?) -> Bool {
+        guard let nickName = nickName else { return false }
+        if nickName.count <= 12 && nickName.count > 0 { return true }
+        else { return false }
     }
     
     // 채팅서버 createUser
@@ -237,6 +245,7 @@ extension SignUpVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == mail {
             mail.resignFirstResponder()
+            nickName.resignFirstResponder()
             sex.becomeFirstResponder()
         }
         return true
