@@ -47,13 +47,23 @@ public class MeetingService {
 
     List<Meeting> meetingList = findAll();
     for (Meeting meeting : meetingList) {
-      if (member.getId() == meeting.getOwnerId() || meeting.getMeetingStatus() == MeetingStatus.CLOSE) {
-        continue ;
-      }
+      /*
+      보이면 안되는 미팅들
+      1. 내 미팅
+      2. 닫힌 미팅(성사되었거나, 삭제한 미팅)
+      3. 같은 과인 미팅
+      4. 나랑 성별이 같은 미팅
+       */
       Long ownerId = meeting.getOwnerId();
       Member owner_ = memberService.findOne(ownerId);
       JSONObject owner = memberService.setMemberInfo(owner_);
 
+      if (member.getId() == meeting.getOwnerId()
+          || meeting.getMeetingStatus() == MeetingStatus.CLOSE
+          || member.getMajor().equals(owner_.getMajor())
+          || member.getSex().equals(owner_.getSex())) {
+        continue ;
+      }
       jArray.add(setMeetingInfo(owner, meeting));
     }
     return jArray;
