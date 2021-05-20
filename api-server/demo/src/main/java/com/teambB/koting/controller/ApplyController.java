@@ -8,6 +8,8 @@ import com.teambB.koting.domain.Member;
 import com.teambB.koting.service.ApplyService;
 import com.teambB.koting.service.MeetingService;
 import com.teambB.koting.service.MemberService;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
@@ -27,6 +29,7 @@ public class ApplyController {
   @Autowired private final MeetingService meetingService;
   @Autowired private final MemberService memberService;
   @Autowired private final ApplyService applyService;
+  private LocalDateTime localDateTime;
 
   @GetMapping("/applies")
   public JSONObject getMyMeetingInfo(@RequestParam("account_id") String accountId) {
@@ -74,6 +77,13 @@ public class ApplyController {
         // 대기 거절만 리턴
         if (apply.getApplyStatus() == ApplyStatus.ACCEPT)
           continue ;
+        if (apply.getApplyStatus() == ApplyStatus.REJECT) {
+          LocalDateTime createDate = apply.getCreateDate();
+          LocalDateTime now = LocalDateTime.now();
+          if (ChronoUnit.DAYS.between(createDate, now) >= 1) {
+            continue ;
+          }
+        }
 
         Member one = memberService.findOne(apply.getMeeting().getOwnerId());
         JSONObject meetingOwner = memberService.setMemberInfo(one);
