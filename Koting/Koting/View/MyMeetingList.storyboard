@@ -238,10 +238,9 @@
                                                     <rect key="frame" x="16" y="11" width="343" height="167"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="167" id="euo-6a-oJc"/>
-                                                        <constraint firstAttribute="width" constant="343" id="lIc-Kq-tVE"/>
+                                                        <constraint firstAttribute="height" constant="167" id="4He-Yk-BLB"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pj3-WY-Bo2">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pj3-WY-Bo2">
                                                         <size key="itemSize" width="342" height="167"/>
                                                         <size key="estimatedItemSize" width="342" height="167"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -252,7 +251,7 @@
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ApplicantCollectionViewCell" id="gVN-l3-o4m" customClass="ApplicantCollectionViewCell" customModule="Koting" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="342" height="167"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eZ4-oD-vKI">
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4JB-lJ-8kE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="167"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
@@ -325,6 +324,10 @@
                                                                                         </subviews>
                                                                                     </stackView>
                                                                                 </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="100" id="5Fs-k8-jbw"/>
+                                                                                    <constraint firstAttribute="width" constant="280" id="twe-gO-1tn"/>
+                                                                                </constraints>
                                                                             </stackView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOf-gf-XsL">
                                                                                 <rect key="frame" x="8" y="8" width="42" height="21"/>
@@ -333,24 +336,25 @@
                                                                                     <constraint firstAttribute="height" constant="21" id="iLu-r4-ZGH"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
+                                                                                <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
-                                                                            <constraint firstItem="6h7-e2-5TP" firstAttribute="centerX" secondItem="Pqz-GE-jeD" secondAttribute="centerX" id="3Dl-fq-dsd"/>
                                                                             <constraint firstItem="KOf-gf-XsL" firstAttribute="leading" secondItem="Pqz-GE-jeD" secondAttribute="leading" constant="8" id="L5E-kL-Itp"/>
+                                                                            <constraint firstItem="6h7-e2-5TP" firstAttribute="centerY" secondItem="Pqz-GE-jeD" secondAttribute="centerY" id="ZUW-Oi-6BS"/>
                                                                             <constraint firstItem="KOf-gf-XsL" firstAttribute="top" secondItem="Pqz-GE-jeD" secondAttribute="top" constant="8" id="pPt-9u-bzp"/>
-                                                                            <constraint firstItem="6h7-e2-5TP" firstAttribute="centerY" secondItem="Pqz-GE-jeD" secondAttribute="centerY" id="vrd-Ny-Co8"/>
+                                                                            <constraint firstItem="6h7-e2-5TP" firstAttribute="centerX" secondItem="Pqz-GE-jeD" secondAttribute="centerX" id="uRk-rd-30v"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="Pqz-GE-jeD" secondAttribute="trailing" id="3cD-Y6-MJC"/>
-                                                                    <constraint firstItem="Pqz-GE-jeD" firstAttribute="leading" secondItem="eZ4-oD-vKI" secondAttribute="leading" id="Llt-qi-Oln"/>
-                                                                    <constraint firstItem="Pqz-GE-jeD" firstAttribute="top" secondItem="eZ4-oD-vKI" secondAttribute="top" id="Rc6-gQ-vGD"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="Pqz-GE-jeD" secondAttribute="bottom" id="ch2-Lt-2Nm"/>
+                                                                    <constraint firstItem="Pqz-GE-jeD" firstAttribute="centerX" secondItem="4JB-lJ-8kE" secondAttribute="centerX" id="9Uf-HD-V8a"/>
+                                                                    <constraint firstItem="Pqz-GE-jeD" firstAttribute="leading" secondItem="4JB-lJ-8kE" secondAttribute="leading" id="C6U-ni-yJQ"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Pqz-GE-jeD" secondAttribute="trailing" id="Eib-Lg-I2g"/>
+                                                                    <constraint firstItem="Pqz-GE-jeD" firstAttribute="top" secondItem="4JB-lJ-8kE" secondAttribute="top" id="JgM-Vy-NJf"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Pqz-GE-jeD" secondAttribute="bottom" id="ZCc-0r-8o5"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
                                                             <size key="customSize" width="342" height="167"/>
@@ -377,24 +381,10 @@
                                                             </constraints>
                                                             <state key="normal">
                                                                 <attributedString key="attributedTitle">
-                                                                    <fragment content="수">
-                                                                        <attributes>
-                                                                            <color key="NSColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="11" name=".AppleSDGothicNeoI-Regular"/>
-                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                        </attributes>
-                                                                    </fragment>
-                                                                    <fragment content="  ">
+                                                                    <fragment content="수  락">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <font key="NSFont" metaFont="smallSystem"/>
-                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                        </attributes>
-                                                                    </fragment>
-                                                                    <fragment content="락">
-                                                                        <attributes>
-                                                                            <color key="NSColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="11" name=".AppleSDGothicNeoI-Regular"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
@@ -428,19 +418,23 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
-                                                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aPn-ff-Mgu">
-                                                    <rect key="frame" x="126" y="150" width="123" height="28"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="pageIndicatorTintColor" systemColor="systemGrayColor"/>
-                                                    <color key="currentPageIndicatorTintColor" red="0.60618412494659424" green="0.17688676714897156" blue="0.92973774671554565" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aPn-ff-Mgu">
+                                                    <rect key="frame" x="126.5" y="149.5" width="122.5" height="27.5"/>
+                                                    <color key="pageIndicatorTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="currentPageIndicatorTintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="pageControlAction:" destination="bU6-nl-F4o" eventType="valueChanged" id="ETG-kX-mY8"/>
+                                                    </connections>
                                                 </pageControl>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="E1T-zC-IdN" firstAttribute="centerX" secondItem="9VG-l4-yjF" secondAttribute="centerX" id="5De-le-7Ny"/>
-                                                <constraint firstItem="Q34-GO-cN4" firstAttribute="top" secondItem="9VG-l4-yjF" secondAttribute="topMargin" id="Som-LB-AKR"/>
+                                                <constraint firstAttribute="trailing" secondItem="Q34-GO-cN4" secondAttribute="trailing" constant="16" id="6U4-7v-x3F"/>
+                                                <constraint firstItem="aPn-ff-Mgu" firstAttribute="centerX" secondItem="9VG-l4-yjF" secondAttribute="centerX" id="TbF-qA-LTd"/>
                                                 <constraint firstItem="E1T-zC-IdN" firstAttribute="top" secondItem="Q34-GO-cN4" secondAttribute="bottom" constant="8" symbolic="YES" id="Tdu-jm-U6s"/>
-                                                <constraint firstItem="Q34-GO-cN4" firstAttribute="leading" secondItem="9VG-l4-yjF" secondAttribute="leadingMargin" id="oCl-4u-Zz9"/>
-                                                <constraint firstItem="Q34-GO-cN4" firstAttribute="trailing" secondItem="9VG-l4-yjF" secondAttribute="trailingMargin" id="yKw-ho-vFs"/>
+                                                <constraint firstItem="Q34-GO-cN4" firstAttribute="leading" secondItem="9VG-l4-yjF" secondAttribute="leading" constant="16" id="aME-Qv-LFh"/>
+                                                <constraint firstItem="Q34-GO-cN4" firstAttribute="top" secondItem="9VG-l4-yjF" secondAttribute="topMargin" id="dlC-IH-N7C"/>
+                                                <constraint firstItem="E1T-zC-IdN" firstAttribute="top" secondItem="aPn-ff-Mgu" secondAttribute="bottom" constant="9" id="q3I-Q1-ccW"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="E1T-zC-IdN" secondAttribute="bottom" constant="4.5" id="zuG-hQ-Whp"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -598,9 +592,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
