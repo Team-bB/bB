@@ -61,7 +61,7 @@ class ChatVC: MessagesViewController {
         return formatter
     }()
     
-    private let conversationId: String?
+    private var conversationId: String?
     public let otherUserEmail: String
     public var isNewConversation = false
     
@@ -131,6 +131,17 @@ class ChatVC: MessagesViewController {
         }
     }
     
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        let sender = message.sender
+        if sender.senderId == selfSender?.senderId {
+            return #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        }
+        return .secondarySystemBackground
+    }
+    
+//    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+//        <#code#>
+//    }
 }
 
 extension ChatVC: InputBarAccessoryViewDelegate {
@@ -141,14 +152,17 @@ extension ChatVC: InputBarAccessoryViewDelegate {
         let mmessage = Message(sender: selfSender,
                                messageId: messageId ,
                                sentDate: Date(),
-                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요~\n- 코팅 운영진😃 -"))
+                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 매너있게 대화를 나눠보세요!!\n⚠️채팅방을 나가면 영구적으로 삭제됩니다.⚠️- 코팅 운영진😃 -"))
         
         // name: 받는 사람 닉네임
         DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage) { [weak self] success in
-            
             if success {
                 print("📝 메세지 전송 완료. 📝")
                 self?.isNewConversation = false
+                let newConversationId = "conversation_\(mmessage.messageId)"
+                self?.conversationId = newConversationId
+                self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
+                
             } else {
                 print("⛔️ 메세지 전송 실패 ⛔️")
             }
@@ -162,6 +176,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
               let messageId = createMessageId() else { return }
         
         print("Sending: \(text)")
+        messageInputBar.inputTextView.text = nil
         
         let mmessage = Message(sender: selfSender,
                                messageId: messageId ,
@@ -178,7 +193,9 @@ extension ChatVC: InputBarAccessoryViewDelegate {
                 if success {
                     print("📝 메세지 전송 완료. 📝")
                     self?.isNewConversation = false
-                    
+                    let newConversationId = "conversation_\(mmessage.messageId)"
+                    self?.conversationId = newConversationId
+                    self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
                 } else {
                     print("⛔️ 메세지 전송 실패 ⛔️")
                 }
@@ -189,11 +206,10 @@ extension ChatVC: InputBarAccessoryViewDelegate {
             guard let conversationId = conversationId else { return }
             let name = self.title ?? "User"
             
-            DatabaseManager.shared.sendMessage(to: conversationId, name: name, newMessage: mmessage) { success in
+            DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: mmessage) { [weak self] success in
                 
                 if success {
                     print("📝 메세지 전송 완료. 📝")
-                    
                 } else {
                     print("⛔️ 메세지 전송 실패 ⛔️")
                 }
