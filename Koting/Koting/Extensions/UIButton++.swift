@@ -10,22 +10,22 @@ import UIKit
 extension UIButton {
     
     func setEnable(enable: Bool? = true, backgroundColor: UIColor? = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)) {
-        self.isEnabled = enable!
-        self.setTitleColor(#colorLiteral(red: 0.5818830132, green: 0.2156915367, blue: 1, alpha: 1), for: .normal)
+        isEnabled = enable!
+        setTitleColor(#colorLiteral(red: 0.5818830132, green: 0.2156915367, blue: 1, alpha: 1), for: .normal)
         self.backgroundColor = backgroundColor
     }
 
     func setDisable(enable: Bool? = false, `backgroundColor`: UIColor? = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)) {
-        self.isEnabled = enable!
-        self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        isEnabled = enable!
+        setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         self.backgroundColor = `backgroundColor`
     }
     
     func setDefault(value: CGFloat? = 0.3, bool: Bool? = true) {
         //self.layer.cornerRadius = value!
-        self.layer.masksToBounds = bool!
-        self.layer.borderWidth = value!
-        self.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        layer.masksToBounds = bool!
+        layer.borderWidth = value!
+        layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
 }
 

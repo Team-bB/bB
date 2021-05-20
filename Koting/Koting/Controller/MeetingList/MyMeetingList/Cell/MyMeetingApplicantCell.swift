@@ -133,7 +133,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
                         ConversationVC.createNewConversation(name: "상대닉네임", email: targetUserEmail)
 
                         DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "수락 완료", text: "확인",handler: {(action: UIAlertAction!) in
+                            parentVC.makeAlertBox(title: "수락완료", message: "새로운 채팅이 개설되었습니다!!\n채팅탭에서 확인해주세요.", text: "확인",handler: {(action: UIAlertAction!) in
                                 buttonReloadData!()
                             })
                         }

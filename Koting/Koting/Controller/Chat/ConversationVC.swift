@@ -7,20 +7,6 @@
 
 import UIKit
 
-struct Conversation {
-    let id: String
-    let name: String
-    let otherUserEmail: String
-    let latestMessage: LatestMessage
-}
-
-struct LatestMessage {
-    let date: String
-    let text: String
-    let isRead: Bool
-}
-
-
 class ConversationVC: UIViewController {
     
     private let indicator = CustomIndicator()
@@ -51,7 +37,7 @@ class ConversationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.largeTitleDisplayMode = .never
         view.addSubview(tableView)
         view.addSubview(noConversationsLabel)
         
