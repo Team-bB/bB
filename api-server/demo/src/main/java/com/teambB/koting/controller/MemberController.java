@@ -114,13 +114,13 @@ public class MemberController {
     return retObject;
   }
 
-  @DeleteMapping("members")
+  @DeleteMapping("/members")
   public JSONObject deleteMember(@RequestBody JSONObject object) {
     JSONObject retObject = new JSONObject();
 
     String accountId = object.get("account_id").toString();
     retObject.put("result", "true");
-
+    memberService.deleteMember(accountId);
     return retObject;
   }
 }

@@ -57,6 +57,11 @@ public class ApplyService {
   }
 
   @Transactional(readOnly = true)
+  public List<Apply> findAllAccept() {
+    return applyRepository.findAllAccept();
+  }
+
+  @Transactional(readOnly = true)
   public List<Apply> findAll() {
     return applyRepository.findAll();
   }

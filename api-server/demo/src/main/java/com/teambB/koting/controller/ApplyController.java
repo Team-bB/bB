@@ -169,7 +169,7 @@ public class ApplyController {
     JSONObject retObject = new JSONObject();
 
     Member member = memberService.findOneByAccountId(accountId);
-    List<Apply> all = applyService.findAll();
+    List<Apply> all = applyService.findAllAccept();
     JSONArray jArray2 = new JSONArray();
     for (Apply apply : all) {
       Long ownerId = apply.getMeeting().getMemberId();

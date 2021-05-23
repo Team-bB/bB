@@ -4,6 +4,7 @@ import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
+import com.teambB.koting.repository.ApplyRepository;
 import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
 import java.io.UnsupportedEncodingException;
@@ -28,6 +29,7 @@ public class MemberService {
   private final MemberRepository memberRepository;
   private final MeetingRepository meetingRepository;
   private final ApplyService applyService;
+  private final ApplyRepository applyRepository;
 
   public Long join(Member member) {
     if (member.getId() == null) {
@@ -42,6 +44,16 @@ public class MemberService {
     List<Member> findByEmail = memberRepository.findByEmailList(member.getEmail());
     if (!findByNumber.isEmpty() || !findByEmail.isEmpty()) {
         throw new IllegalStateException("이미 존재하는 회원입니다.");
+    }
+  }
+
+  public void deleteMember(String accountId) {
+    Member member = memberRepository.findByAccountId(accountId);
+    memberRepository.delete(member);
+
+    List<Meeting> meetingList = meetingRepository.findByMemberId(member.getId());
+    for (Meeting meeting : meetingList) {
+      meetingRepository.delete(meeting);
     }
   }
 
@@ -81,6 +93,7 @@ public class MemberService {
     retObject.put("animal_idx", member.getAnimalIdx());
     retObject.put("height", member.getHeight());
     retObject.put("college", member.getCollege());
+    retObject.put("nickname", member.getNickname());
     retObject.put("major", member.getMajor());
     retObject.put("sex", member.getSex());
     retObject.put("mbti", member.getMbti());
