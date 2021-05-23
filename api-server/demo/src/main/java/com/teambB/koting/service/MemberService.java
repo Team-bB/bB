@@ -100,19 +100,6 @@ public class MemberService {
     return memberRepository.findByAccountId(accountId);
   }
 
-  public void clearMyMeetingId(String accountId) {
-    Member member = memberRepository.findByAccountId(accountId);
-
-    // 삭제 말고 전체 거절처리
-    Meeting myMeeting = meetingRepository.findById(member.getMyMeetingId());
-    for (Apply apply_ : myMeeting.getParticipants()) {
-      Apply one = applyService.findOne(apply_.getId());
-      one.rejectAccept();
-    }
-    myMeeting.setMeetingStatus(MeetingStatus.CLOSE);
-    member.setMyMeetingId(null);
-  }
-
   public JSONObject setMemberInfo(Member member) {
     JSONObject retObject = new JSONObject();
 

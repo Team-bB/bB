@@ -68,7 +68,7 @@ public class MeetController {
     JSONObject retObject = new JSONObject();
 
     String accountId = object.get("account_id").toString();
-    memberService.clearMyMeetingId(accountId);
+    meetingService.deleteMeeting(accountId);
     retObject.put("result", "true");
     return retObject;
   }

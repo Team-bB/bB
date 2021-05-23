@@ -1,9 +1,11 @@
 package com.teambB.koting.service;
 
+import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MeetingRepository;
+import com.teambB.koting.repository.MemberRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
@@ -17,7 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class MeetingService {
 
   private final MeetingRepository meetingRepository;
+  private final MemberRepository memberRepository;
   private final MemberService memberService;
+  private final ApplyService applyService;
 
   public Long join(Meeting meeting) {
     meetingRepository.save(meeting);
@@ -42,6 +46,7 @@ public class MeetingService {
     retObject.put("applierCnt", meeting.getApplierCnt());
     return retObject;
   }
+
   public JSONArray getMeetingList(Member member) {
     JSONArray jArray = new JSONArray();
 
@@ -67,5 +72,18 @@ public class MeetingService {
       jArray.add(setMeetingInfo(owner, meeting));
     }
     return jArray;
+  }
+
+  public void deleteMeeting(String accountId) {
+    Member member = memberRepository.findByAccountId(accountId);
+
+    // 삭제 말고 전체 거절처리
+    Meeting myMeeting = meetingRepository.findById(member.getMyMeetingId());
+    for (Apply apply_ : myMeeting.getParticipants()) {
+      Apply one = applyService.findOne(apply_.getId());
+      one.rejectAccept();
+    }
+    myMeeting.setMeetingStatus(MeetingStatus.CLOSE);
+    member.setMyMeetingId(null);
   }
 }
