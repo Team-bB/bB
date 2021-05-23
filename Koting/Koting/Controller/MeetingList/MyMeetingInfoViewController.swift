@@ -48,6 +48,7 @@ class MyMeetingInfoViewController: UIViewController {
             numberOfParticipant.text = "\(meeting.player)"
             deleteBtn.layer.borderWidth = 0.3
             deleteBtn.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            contentLabel.text = meeting.link
         }
     }
     
@@ -124,5 +125,13 @@ extension MyMeetingInfoViewController: PanModalPresentable {
 
     var anchorModalToLongForm: Bool {
         return true
+    }
+    
+    var cornerRadius: CGFloat {
+        get { return 0 }
+    }
+    
+    var showDragIndicator: Bool {
+        return false
     }
 }

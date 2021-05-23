@@ -11,11 +11,10 @@ import PanModal
 class MeetingDetailInfoViewController: UIViewController {
     
     var meeting: Meeting?
-    @IBOutlet weak var meetingInfoView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var applyBtnTapped: UIButton!
     
-    //@IBOutlet weak var animalLabel: UILabel!
+
     @IBOutlet weak var collegeLabel: UILabel!
     @IBOutlet weak var mbtiLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
@@ -88,6 +87,7 @@ class MeetingDetailInfoViewController: UIViewController {
             numberOfParticipant.text = "\(meeting.player)"
             applyBtnTapped.layer.borderWidth = 0.3
             applyBtnTapped.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            contentLabel.text = meeting.link
         }
     }
     
@@ -133,5 +133,13 @@ extension MeetingDetailInfoViewController: PanModalPresentable {
 
     var anchorModalToLongForm: Bool {
         return true
+    }
+    
+    var cornerRadius: CGFloat {
+        get { return 0 }
+    }
+    
+    var showDragIndicator: Bool {
+        return false
     }
 }

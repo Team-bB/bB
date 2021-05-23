@@ -12,10 +12,8 @@ import PanModal
 class CreateMeetingRoomVC: UIViewController {
     //MARK: Outlet설정
     @IBOutlet weak var participantsNumber: UITextField!
-    @IBOutlet weak var openKakaoTalkLink: UITextField!
+    @IBOutlet weak var shortComment: UITextView!
     @IBOutlet weak var createMeetingRoomBtn: UIButton!
-    @IBOutlet var MeetingRoomInfo: [UITextField]!
-    
     
     let participantsPicker = UIPickerView()
     let participantsArray: [String] = {
@@ -28,8 +26,11 @@ class CreateMeetingRoomVC: UIViewController {
         
         participantsNumber.tintColor = UIColor.clear
         participantsNumber.delegate = self
-        openKakaoTalkLink.delegate = self
+        shortComment.delegate = self
         participantsNumber.becomeFirstResponder()
+        shortComment.layer.borderWidth = 0.5
+        shortComment.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        shortComment.layer.cornerRadius = 10
         
         createPicker()
     }
@@ -37,7 +38,7 @@ class CreateMeetingRoomVC: UIViewController {
     
     @IBAction func createMeetingRoomBtnTapped(_ sender: Any) {
         guard checkTextFiled() == true else {
-            self.makeAlertBox(title: "알림", message: "인원과 오픈 카카오톡 링크를 작성해 주세요.", text: "확인")
+            self.makeAlertBox(title: "알림", message: "인원과 한 마디를 작성해 주세요.", text: "확인")
             return
         }
         createMeeting()
@@ -47,7 +48,7 @@ class CreateMeetingRoomVC: UIViewController {
     }
     
     func createMeeting() {
-        CreateMeetingRoomAPI.shared.post(paramArray: MeetingRoomInfo) { [weak self] result in
+        CreateMeetingRoomAPI.shared.post(numberOfParticipants: participantsNumber, shortComment: shortComment) { [weak self] result in
             
             guard let strongSelf = self else { return }
             
@@ -105,21 +106,58 @@ extension CreateMeetingRoomVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func createToolBar() {
         let toolBar = UIToolbar()
         let doneBtn = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(buttonAction))
+        doneBtn.tintColor = .black
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         toolBar.sizeToFit()
         toolBar.setItems([flexibleSpace,doneBtn], animated: true)
         toolBar.isUserInteractionEnabled = true
         
         participantsNumber.inputAccessoryView = toolBar
+        shortComment.inputAccessoryView = toolBar
+    }
+    //화면 클릭시 입력창 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
     }
     
     @objc func buttonAction() {
         participantsNumber.resignFirstResponder()
+        shortComment.resignFirstResponder()
     }
+    
+//    //MARK:- KEY BOARD 관련
+//    func addKeyboardNotifications(){
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//    func removeKeyboardNotifications(){
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//    @objc func keyboardWillShow(_ noti: NSNotification){
+//        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let keyboardHeight = keyboardRectangle.height
+//            self.view.frame.origin.y -= keyboardHeight
+//        }
+//    }
+//    @objc func keyboardWillHide(_ noti: NSNotification){
+//        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let keyboardHeight = keyboardRectangle.height
+//            self.view.frame.origin.y += keyboardHeight
+//        }
+//    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.addKeyboardNotifications()
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.removeKeyboardNotifications()
+//    }
 }
 
 // MARK:- TextFiled 관련
-extension CreateMeetingRoomVC: UITextFieldDelegate {
+extension CreateMeetingRoomVC: UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -141,22 +179,30 @@ extension CreateMeetingRoomVC: PanModalPresentable {
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(500)
+        return .contentHeight(400)
     }
     
     var longFormHeight: PanModalHeight {
-        return .contentHeight(500)
+        return .contentHeight(550)
     }
     
     var anchorModalToLongForm: Bool {
         return true
+    }
+    
+    var cornerRadius: CGFloat {
+        get { return 0 }
+    }
+    
+    var showDragIndicator: Bool {
+        return false
     }
 }
 
 // MARK:- 추가구현 함수
 extension CreateMeetingRoomVC {
     private func checkTextFiled() -> Bool {
-        if participantsNumber.text == "" || openKakaoTalkLink.text == "" {
+        if participantsNumber.text == "" || shortComment.text == "" {
             return false
         }
         

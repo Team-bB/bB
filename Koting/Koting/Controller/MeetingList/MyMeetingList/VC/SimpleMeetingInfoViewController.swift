@@ -44,6 +44,7 @@ class SimpleMeetingInfoViewController: UIViewController {
             heightLabel.text = "\(height)cm"
             imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
             numberOfParticipant.text = "\(meeting.player)"
+            contentLabel.text = meeting.link
         }
     }
     private func transAnimal(index: Int, isImage: Bool) -> String {
