@@ -31,6 +31,7 @@ public class Member {
   private int height;
   private int age;
   private String mbti;
+  private String nickname;
   private String email;
   private String number;
   private int animalIdx;
@@ -49,6 +50,7 @@ public class Member {
     member.setMajor(object.get("major").toString());
     member.setHeight(Integer.parseInt(object.get("height").toString()));
     member.setAge(Integer.parseInt(object.get("age").toString()));
+    member.setNickname(object.get("nickname").toString());
     member.setMbti(object.get("mbti").toString());
     member.setEmail(object.get("email").toString());
     member.setNumber(object.get("phoneNumber").toString());
