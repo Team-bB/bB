@@ -22,10 +22,6 @@ public class MeetingRepository {
     }
   }
 
-  public void delete(Meeting meeting) {
-    em.remove(meeting);
-  }
-
   public Meeting findById(Long id) {
     return em.find(Meeting.class, id);
   }
