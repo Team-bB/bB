@@ -39,9 +39,9 @@ public class MeetingService {
     retObject.put("meeting_id", meeting.getId());
     retObject.put("player", meeting.getPlayer());
     retObject.put("link", meeting.getLink());
+    retObject.put("applierCnt", meeting.getApplierCnt());
     return retObject;
   }
-
   public JSONArray getMeetingList(Member member) {
     JSONArray jArray = new JSONArray();
 

@@ -159,6 +159,9 @@ public class ApplyController {
     Long applyId = Long.parseLong(object.get("apply_id").toString());
     Apply apply = applyService.findOne(applyId);
     apply.rejectAccept();
+    Long meetingId = apply.getMeeting().getId();
+    Meeting meeting = meetingService.findOne(meetingId);
+    meeting.setApplierCnt(meeting.getApplierCnt() - 1);
 
     retObject.put("result", "true");
     return retObject;

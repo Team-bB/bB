@@ -38,6 +38,8 @@ public class ApplyService {
         return null;
       }
     }
+    if (meeting.getApplierCnt() >= 3)
+      return null;
     Apply apply = Apply.createApply(member, meeting);
     Long applyId = join(apply);
     return applyId;

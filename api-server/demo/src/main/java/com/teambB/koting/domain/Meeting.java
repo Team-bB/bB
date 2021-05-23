@@ -24,6 +24,7 @@ public class Meeting {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "meeting_id")
   private Long id;
+  private Integer applierCnt;
   private Long memberId;
   private LocalDateTime createDate;
   private String player;
@@ -38,6 +39,7 @@ public class Meeting {
   public static Meeting createMeeting(Member member, String player, String link) {
     Meeting meeting = new Meeting();
     meeting.setPlayer(player);
+    meeting.setApplierCnt(0);
     meeting.setMeetingStatus(MeetingStatus.OPEN);
     meeting.setCreateDate(LocalDateTime.now());
     meeting.setLink(link);

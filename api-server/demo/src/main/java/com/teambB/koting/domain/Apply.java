@@ -47,6 +47,7 @@ public class Apply {
   public void setMeeting(Meeting meeting) {
     this.meeting = meeting;
     meeting.getParticipants().add(this);
+    meeting.setApplierCnt(meeting.getApplierCnt() + 1);
   }
 
   public static Apply createApply(Member member, Meeting meeting) {
