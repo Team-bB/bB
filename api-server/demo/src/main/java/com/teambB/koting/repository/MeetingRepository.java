@@ -34,4 +34,10 @@ public class MeetingRepository {
     return em.createQuery("select m from Meeting m", Meeting.class)
         .getResultList();
   }
+
+  public List<Meeting> findByMemberId(Long memberId) {
+    return em.createQuery("select m from Meeting m where m.memberId = :id", Meeting.class)
+        .setParameter("id", memberId)
+        .getResultList();
+  }
 }

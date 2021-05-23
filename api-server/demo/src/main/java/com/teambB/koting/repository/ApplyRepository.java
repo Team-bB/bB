@@ -27,9 +27,14 @@ public class ApplyRepository {
     return em.find(Apply.class, id);
   }
 
-  public List<Apply> findAll() {
+  public List<Apply> findAllAccept() {
     return em.createQuery("select a from Apply a where a.applyStatus = :ACCEPT", Apply.class)
         .setParameter("ACCEPT", ApplyStatus.ACCEPT)
+        .getResultList();
+  }
+
+  public List<Apply> findAll() {
+    return em.createQuery("select a from Apply a", Apply.class)
         .getResultList();
   }
 }
