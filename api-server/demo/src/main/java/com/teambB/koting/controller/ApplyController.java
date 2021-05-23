@@ -161,7 +161,8 @@ public class ApplyController {
     apply.rejectAccept();
     Long meetingId = apply.getMeeting().getId();
     Meeting meeting = meetingService.findOne(meetingId);
-    meeting.setApplierCnt(meeting.getApplierCnt() - 1);
+    meeting.minusApplierCnt();
+//    meeting.setApplierCnt(meeting.getApplierCnt() - 1);
 
     retObject.put("result", "true");
     return retObject;
