@@ -36,6 +36,14 @@ public class Meeting {
   @OneToMany(mappedBy = "meeting")
   private List<Apply> participants = new ArrayList<>();
 
+  public void addApplierCnt() {
+    this.applierCnt += 1;
+  }
+
+  public void minusApplierCnt() {
+    this.applierCnt -= 1;
+  }
+
   public static Meeting createMeeting(Member member, String player, String link) {
     Meeting meeting = new Meeting();
     meeting.setPlayer(player);
