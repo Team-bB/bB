@@ -27,12 +27,18 @@ class CreateMeetingRoomVC: UIViewController {
         participantsNumber.tintColor = UIColor.clear
         participantsNumber.delegate = self
         shortComment.delegate = self
-        participantsNumber.becomeFirstResponder()
+        //participantsNumber.becomeFirstResponder()
         shortComment.layer.borderWidth = 0.5
         shortComment.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         shortComment.layer.cornerRadius = 10
         
         createPicker()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.addKeyboardNotifications()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.removeKeyboardNotifications()
     }
     
     
@@ -42,9 +48,6 @@ class CreateMeetingRoomVC: UIViewController {
             return
         }
         createMeeting()
-        
-        // 여기서 나의 진행중인 미팅에 넘겨줘야함
-        
     }
     
     func createMeeting() {
@@ -113,56 +116,40 @@ extension CreateMeetingRoomVC: UIPickerViewDelegate, UIPickerViewDataSource {
         toolBar.isUserInteractionEnabled = true
         
         participantsNumber.inputAccessoryView = toolBar
-        shortComment.inputAccessoryView = toolBar
     }
     //화면 클릭시 입력창 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-          self.view.endEditing(true)
+        self.view.endEditing(true)
     }
     
     @objc func buttonAction() {
         participantsNumber.resignFirstResponder()
-        shortComment.resignFirstResponder()
     }
     
-//    //MARK:- KEY BOARD 관련
-//    func addKeyboardNotifications(){
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-//    func removeKeyboardNotifications(){
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-//    @objc func keyboardWillShow(_ noti: NSNotification){
-//        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let keyboardHeight = keyboardRectangle.height
-//            self.view.frame.origin.y -= keyboardHeight
-//        }
-//    }
-//    @objc func keyboardWillHide(_ noti: NSNotification){
-//        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let keyboardHeight = keyboardRectangle.height
-//            self.view.frame.origin.y += keyboardHeight
-//        }
-//    }
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.addKeyboardNotifications()
-//    }
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.removeKeyboardNotifications()
-//    }
+    //MARK:- KEY BOARD 관련
+    func addKeyboardNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    func removeKeyboardNotifications(){
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc func keyboardWillShow(_ noti: NSNotification){
+            panModalTransition(to: .longForm)
+    }
+    @objc func keyboardWillHide(_ noti: NSNotification){
+            panModalTransition(to: .shortForm)
+    }
 }
 
 // MARK:- TextFiled 관련
 extension CreateMeetingRoomVC: UITextFieldDelegate, UITextViewDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == participantsNumber {
             participantsNumber.text = participantsArray[participantsPicker.selectedRow(inComponent: 0)]
@@ -179,11 +166,11 @@ extension CreateMeetingRoomVC: PanModalPresentable {
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(400)
+        return .contentHeight(350)
     }
     
     var longFormHeight: PanModalHeight {
-        return .contentHeight(550)
+        return .contentHeight(600)
     }
     
     var anchorModalToLongForm: Bool {

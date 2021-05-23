@@ -89,4 +89,12 @@ extension SimpleMeetingInfoViewController: PanModalPresentable {
     var anchorModalToLongForm: Bool {
         return true
     }
+    
+    var cornerRadius: CGFloat {
+        get { return 0 }
+    }
+    
+    var showDragIndicator: Bool {
+        return false
+    }
 }
