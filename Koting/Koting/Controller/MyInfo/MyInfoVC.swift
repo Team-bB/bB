@@ -177,6 +177,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
                     
                     if isTrue == "true" {
                         
+                        print("회원탈퇴 완료")
                         DispatchQueue.main.async {
                             
                             self.indicator.stopAnimating()

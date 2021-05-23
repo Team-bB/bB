@@ -16,9 +16,9 @@ class WithdrawalAPI {
     
     func delete(completion: @escaping (Result<WithdrawalAPIResponse, Error>) -> (Void)) {
         
-        let url = API.shared.BASE_URL + "/member"
+        let url = API.shared.BASE_URL + "/members"
         var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
+        request.httpMethod = "DELETE"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
