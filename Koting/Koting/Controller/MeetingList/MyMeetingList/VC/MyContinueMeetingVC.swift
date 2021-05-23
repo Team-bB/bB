@@ -89,11 +89,20 @@ extension MyContinueMeetingVC: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingApplicantCell", for: indexPath) as! MyMeetingApplicantCell
-            guard let participant = myMeeting?.participant else { return UITableViewCell() }
-            if participant.count == 0 {
-                return UITableViewCell()
+            guard (myMeeting?.participant) != nil else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "NoAppliesCell", for: indexPath) as! NoAppliesCell
+                cell.noAppliesLabel.text = "받은 신청이 없습니다."
+                cell.selectionStyle = .none
+                
+                return cell
             }
+//            if participant.count == 0 {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "NoAppliesCell", for: indexPath) as! NoAppliesCell
+//                cell.noAppliesLabel.text = "지원받은 신청이 없습니다."
+//
+//                return cell
+//            } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyMeetingApplicantCell", for: indexPath) as! MyMeetingApplicantCell
             cell.collectionView.tag = indexPath.row
             cell.myMeeting = myMeeting
             cell.setColleciontionViewWith()
@@ -103,11 +112,8 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             }
             cell.selectionStyle = .none
             
-//            let bgView = UIView()
-//            bgView.backgroundColor = .white
-//            cell.selectedBackgroundView = bgView
-            
             return cell
+            //}
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyApplyCell", for: indexPath) as! MyApplyCell
             cell.animalShapeImage.image = UIImage(named: transImage(index: myApplies[indexPath.row].owner?.animal_idx ?? 0))
@@ -122,12 +128,6 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             if myApplies[indexPath.row].apply_status == "거절됨" {
                 cell.progressLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             } else { cell.progressLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)}
-
-//            let bgView = UIView()
-//            bgView.backgroundColor = .white
-//            bgView.layer.borderWidth = 0.5
-//            bgView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-//            cell.selectedBackgroundView = bgView
             
             return cell
         }

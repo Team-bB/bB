@@ -99,6 +99,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         cell.mbtiLabel.text = myMeeting?.participant?[indexPath.row].mbti
         cell.collectionCellView.layer.borderWidth = 0.3
         cell.collectionCellView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        cell.numberOfParticipants.text = myMeeting?.myMeeting.player
         
         var applyID: String?
         //var college: String?

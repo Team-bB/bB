@@ -569,6 +569,49 @@
                                             <outlet property="progressLabel" destination="jfU-MO-zjN" id="62v-Om-9Lu"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="noAppliesCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoAppliesCell" rowHeight="100" id="mUM-aW-LeB" customClass="NoAppliesCell" customModule="Koting" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="387" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mUM-aW-LeB" id="yoi-sV-8Ct">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhm-gg-8tm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0d2-iX-ymK">
+                                                            <rect key="frame" x="123.5" y="41" width="128" height="18"/>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="받은 신청이 없습니다.">
+                                                                    <attributes>
+                                                                        <color key="NSColor" white="0.60253854349356928" alpha="0.89803921568627454" colorSpace="calibratedWhite"/>
+                                                                        <font key="NSFont" size="15" name="AppleSDGothicNeo-Light"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="AAT-Kf-n2j"/>
+                                                        <constraint firstItem="0d2-iX-ymK" firstAttribute="centerY" secondItem="Lhm-gg-8tm" secondAttribute="centerY" id="pfg-Sg-Uqt"/>
+                                                        <constraint firstItem="0d2-iX-ymK" firstAttribute="centerX" secondItem="Lhm-gg-8tm" secondAttribute="centerX" id="uYB-8v-112"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Lhm-gg-8tm" secondAttribute="bottom" id="HDq-Hk-RQW"/>
+                                                <constraint firstItem="Lhm-gg-8tm" firstAttribute="top" secondItem="yoi-sV-8Ct" secondAttribute="top" id="LK3-OT-Nsa"/>
+                                                <constraint firstItem="Lhm-gg-8tm" firstAttribute="leading" secondItem="yoi-sV-8Ct" secondAttribute="leading" id="Mso-vm-QHe"/>
+                                                <constraint firstAttribute="trailing" secondItem="Lhm-gg-8tm" secondAttribute="trailing" id="ywY-3o-d1L"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="noAppliesLabel" destination="0d2-iX-ymK" id="EVq-h0-Jus"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
