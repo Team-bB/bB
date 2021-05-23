@@ -1,6 +1,7 @@
 package com.teambB.koting.service;
 
 import com.teambB.koting.domain.Apply;
+import com.teambB.koting.domain.ApplyStatus;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
@@ -49,12 +50,38 @@ public class MemberService {
 
   public void deleteMember(String accountId) {
     Member member = memberRepository.findByAccountId(accountId);
-    memberRepository.delete(member);
 
-    List<Meeting> meetingList = meetingRepository.findByMemberId(member.getId());
-    for (Meeting meeting : meetingList) {
-      meetingRepository.delete(meeting);
+    // 내 미팅이 있으면
+    Long myMeetingId = member.getMyMeetingId();
+    if (myMeetingId != null) {
+      //  폐쇄 처리
+      Meeting meeting = meetingRepository.findById(myMeetingId);
+      meeting.setMeetingStatus(MeetingStatus.CLOSE);
+
+      // 신청들이 있었으면 다 거절처리
+      List<Apply> myMeetingApplies = applyRepository.findAllByMeetingId(myMeetingId);
+      for (Apply apply : myMeetingApplies) {
+        apply.setApplyStatus(ApplyStatus.REJECT);
+      }
     }
+
+    // 내가 신청했던 것들이 있으면 다 거절
+    List<Apply> myApplies = applyRepository.findAllByMemberId(member.getId());
+    for (Apply apply : myApplies) {
+      apply.setApplyStatus(ApplyStatus.REJECT);
+      // 신청했던 미팅들 참여자 감소
+      Meeting applied = meetingRepository.findById(apply.getMeeting().getId());
+      applied.minusApplierCnt();
+    }
+    /*
+     삭제되는게 맞으나, Apply에 Member가 걸려있어서 삭제가 안됨. 추후 연관관계 제거해주고 삭제처리되게 변경 예정
+     https://m.blog.naver.com/PostView.naver?blogId=rorean&logNo=221466846173&proxyReferer=https:%2F%2Fwww.google.com%2F
+     */
+//    memberRepository.delete(member);
+
+    member.setEmail(null);
+    member.setNumber(null);
+    member.setMyMeetingId(null);
   }
 
   public Member findOne(Long id) {
