@@ -6,6 +6,7 @@ import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
@@ -44,6 +45,7 @@ public class MeetingService {
     retObject.put("player", meeting.getPlayer());
     retObject.put("link", meeting.getLink());
     retObject.put("applierCnt", meeting.getApplierCnt());
+    retObject.put("date", meeting.getCreateDate().format(DateTimeFormatter.ISO_DATE));
     return retObject;
   }
 
