@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,13 +28,15 @@ public class Notice {
   @Column(columnDefinition = "LONGTEXT")
   private String content;
 
-  private LocalDate createDate;
+  private LocalDateTime createDatetime;
 
   public static Notice createNotice(String title, String content) {
     Notice notice = new Notice();
     notice.setTitle(title);
     notice.setContent(content);
-    notice.setCreateDate(LocalDate.now());
+    ZonedDateTime nowUTC = ZonedDateTime.now(ZoneId.of("UTC"));
+    LocalDateTime nowSeoul = nowUTC.withZoneSameInstant(ZoneId.of("Asia/Seoul")).toLocalDateTime();
+    notice.setCreateDatetime(nowSeoul);
     return notice;
   }
 }

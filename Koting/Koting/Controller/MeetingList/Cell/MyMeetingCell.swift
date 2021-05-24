@@ -15,4 +15,6 @@ class MyMeetingCell: UITableViewCell {
     @IBOutlet weak var collegeName: UILabel!
     @IBOutlet weak var tableViewCellLayer: UIView!
     @IBOutlet weak var mbtiLabel: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 }

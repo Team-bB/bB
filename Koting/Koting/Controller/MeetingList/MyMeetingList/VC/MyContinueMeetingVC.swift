@@ -124,6 +124,10 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             cell.mbtiLabel.text = myApplies[indexPath.row].owner?.mbti
             cell.numberOfParticipants.text = myApplies[indexPath.row].player
             cell.progressLabel.text = myApplies[indexPath.row].apply_status
+            cell.nickNameLabel.text = myApplies[indexPath.row].owner?.nickname
+            let createdDate = myMeeting?.date
+            let dateArr = createdDate?.components(separatedBy: "-")
+            cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
             cell.selectionStyle = .none
             if myApplies[indexPath.row].apply_status == "거절됨" {
                 cell.progressLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
