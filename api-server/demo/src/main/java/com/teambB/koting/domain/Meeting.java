@@ -1,6 +1,8 @@
 package com.teambB.koting.domain;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -49,7 +51,9 @@ public class Meeting {
     meeting.setPlayer(player);
     meeting.setApplierCnt(0);
     meeting.setMeetingStatus(MeetingStatus.OPEN);
-    meeting.setCreateDate(LocalDateTime.now());
+    ZonedDateTime nowUTC = ZonedDateTime.now(ZoneId.of("UTC"));
+    LocalDateTime nowSeoul = nowUTC.withZoneSameInstant(ZoneId.of("Asia/Seoul")).toLocalDateTime();
+    meeting.setCreateDate(nowSeoul);
     meeting.setLink(link);
     meeting.setMemberId(member.getId());
     return meeting;

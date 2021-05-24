@@ -361,6 +361,7 @@
                         <outletCollection property="infoArray" destination="bGk-Xd-I7P" collectionClass="NSMutableArray" id="Cce-K4-ijB"/>
                         <outletCollection property="infoArray" destination="dCZ-FG-sCL" collectionClass="NSMutableArray" id="Pu3-Ag-j5o"/>
                         <outletCollection property="infoArray" destination="bSK-t8-0NF" collectionClass="NSMutableArray" id="8MB-Fd-hkX"/>
+                        <outletCollection property="infoArray" destination="L6h-Yd-Suq" collectionClass="NSMutableArray" id="JdY-YY-ZpT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3T-Of-cic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -27,6 +27,7 @@ struct Owner: Codable {
     let animal_idx: Int?
     let age: Int?
     let height: Int?
+    let nickname: String?
 }
 
 struct Meeting: Codable {
