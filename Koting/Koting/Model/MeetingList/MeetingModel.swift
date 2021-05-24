@@ -90,6 +90,7 @@ struct DoneMeetingListAPIResponse: Codable {
 struct AcceptMeetingApplicantAPIResponse: Codable {
     let result: String
     let targetUserEmail: String?
+    let nickname: String?
 }
 
 struct RejectMeetingApplicantAPIResponse: Codable {

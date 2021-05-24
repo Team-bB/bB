@@ -127,9 +127,9 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
                     /// 채팅방을 개설후 상대방에게 기본 메시지를 보냅니다.
                     if finalResult.result == "true" {
 
-                        guard let targetUserEmail = finalResult.targetUserEmail else { return }
-
-                        ConversationVC.createNewConversation(name: "상대닉네임", email: targetUserEmail)
+                        guard let targetUserEmail = finalResult.targetUserEmail, let targetUserNickname = finalResult.nickname else { return }
+                        
+                        ConversationVC.createNewConversation(name: targetUserNickname, email: targetUserEmail)
 
                         DispatchQueue.main.async {
                             parentVC.makeAlertBox(title: "수락완료", message: "새로운 채팅이 개설되었습니다!!\n채팅탭에서 확인해주세요.", text: "확인",handler: {(action: UIAlertAction!) in
