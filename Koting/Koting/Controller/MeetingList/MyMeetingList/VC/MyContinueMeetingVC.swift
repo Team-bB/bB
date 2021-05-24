@@ -127,7 +127,7 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             cell.nickNameLabel.text = myApplies[indexPath.row].owner?.nickname
             let createdDate = myApplies[indexPath.row].date
             let dateArr = createdDate?.components(separatedBy: "-")
-            cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
+            cell.dateLabel.text = (dateArr?[1] ?? "")+"/"+(dateArr?[2] ?? "")
             cell.selectionStyle = .none
             if myApplies[indexPath.row].apply_status == "거절됨" {
                 cell.progressLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
