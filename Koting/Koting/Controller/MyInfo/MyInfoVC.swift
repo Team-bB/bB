@@ -175,17 +175,29 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
                         
                         DatabaseManager.shared.withdrawal { res in
                             if res {
-                                print("회원탈퇴 완료")
-                                
-                                DispatchQueue.main.async {
-                                    
-                                    strongSelf.indicator.stopAnimating()
-                                    strongSelf.makeAlertBox(title: "탈퇴완료", message: "메인으로 돌아갑니다.", text: "확인") { action in
+                                strongSelf.deleteFirebaseAuth { deleteTrue in
+                                    if deleteTrue {
                                         
-                                        strongSelf.logOut()
+                                        print("회원탈퇴 완료")
+
+                                        DispatchQueue.main.async {
+                                            
+                                            strongSelf.indicator.stopAnimating()
+                                            strongSelf.makeAlertBox(title: "탈퇴완료", message: "메인으로 돌아갑니다.", text: "확인") { action in
+                                                
+                                                strongSelf.logOut()
+                                            }
+                                            
+                                        }
+                                    } else {
+                                        DispatchQueue.main.async {
+                                            
+                                            strongSelf.indicator.stopAnimating()
+                                            strongSelf.makeAlertBox(title: "오류", message: "파베 탈퇴 실패임", text: "확인")
+                                        }
                                     }
-                                    
                                 }
+
                             }
                             else {
                                 DispatchQueue.main.async {
@@ -274,6 +286,30 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         UserDefaults.standard.removeObject(forKey: "myInfo")
         UserDefaults.standard.removeObject(forKey: "mailAuthChecked")
         
+    }
+    
+    fileprivate func deleteFirebaseAuth(completion: @escaping (Bool) -> Void) {
+        
+        let user = Auth.auth().currentUser
+        let myEmail = UserDefaults.standard.value(forKey: "email") as! String
+        let credential = EmailAuthProvider.credential(withEmail: myEmail, password: "koting0000")
+        
+        user?.reauthenticate(with: credential, completion: { _, error in
+            guard error != nil
+            else {
+                print("🙍‍♂️❌ 사용자 재인증 에러")
+                completion(false)
+                return
+            }
+            
+            user?.delete(completion: { error in
+                guard error != nil else {
+                    completion(false)
+                    return
+                }
+                completion(true)
+            })
+        })
     }
 }
 
