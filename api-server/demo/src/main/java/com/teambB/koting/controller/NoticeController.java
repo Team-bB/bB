@@ -2,6 +2,7 @@ package com.teambB.koting.controller;
 
 import com.teambB.koting.domain.Notice;
 import com.teambB.koting.service.NoticeService;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
@@ -29,7 +30,7 @@ public class NoticeController {
       temp.put("id", all.get(i).getId());
       temp.put("title", all.get(i).getTitle());
       temp.put("content", all.get(i).getContent());
-      temp.put("date", all.get(i).getCreateDate());
+      temp.put("date", all.get(i).getCreateDatetime().format(DateTimeFormatter.ISO_DATE));
       array.add(temp);
     }
     retObect.put("notice", array);
