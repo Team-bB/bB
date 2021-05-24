@@ -125,7 +125,7 @@ extension MyContinueMeetingVC: UITableViewDataSource{
             cell.numberOfParticipants.text = myApplies[indexPath.row].player
             cell.progressLabel.text = myApplies[indexPath.row].apply_status
             cell.nickNameLabel.text = myApplies[indexPath.row].owner?.nickname
-            let createdDate = myMeeting?.date
+            let createdDate = myApplies[indexPath.row].date
             let dateArr = createdDate?.components(separatedBy: "-")
             cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
             cell.selectionStyle = .none

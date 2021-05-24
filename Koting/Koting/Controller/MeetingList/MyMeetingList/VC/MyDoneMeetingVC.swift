@@ -91,7 +91,7 @@ extension MyDoneMeetingVC: UITableViewDataSource {
         cell.mbtiLabel.text = doneMeeting[indexPath.row].owner?.mbti
         cell.numberOfParticipants.text = doneMeeting[indexPath.row].player
         cell.nickNameLabel.text = doneMeeting[indexPath.row].owner?.nickname
-        let createdDate = myMeeting?.date
+        let createdDate = doneMeeting[indexPath.row].date
         let dateArr = createdDate?.components(separatedBy: "-")
         cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
         cell.selectionStyle = .none

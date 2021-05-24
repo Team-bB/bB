@@ -120,9 +120,9 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wD1-l9-DVL">
-                                                            <rect key="frame" x="248" y="75" width="40" height="15"/>
+                                                            <rect key="frame" x="238" y="75" width="50" height="15"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="QJa-P1-ymc"/>
+                                                                <constraint firstAttribute="width" constant="50" id="QJa-P1-ymc"/>
                                                                 <constraint firstAttribute="height" constant="15" id="YSJ-yC-VOy"/>
                                                             </constraints>
                                                             <attributedString key="attributedText">
@@ -264,10 +264,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR9-Et-ec9">
-                                                            <rect key="frame" x="248" y="75" width="40" height="15"/>
+                                                            <rect key="frame" x="238" y="75" width="50" height="15"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="6pg-PF-NUd"/>
-                                                                <constraint firstAttribute="width" constant="40" id="bW0-UH-4Mh"/>
+                                                                <constraint firstAttribute="width" constant="50" id="bW0-UH-4Mh"/>
                                                             </constraints>
                                                             <attributedString key="attributedText">
                                                                 <fragment content="Label">
