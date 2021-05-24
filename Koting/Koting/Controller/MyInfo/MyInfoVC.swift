@@ -295,7 +295,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         let credential = EmailAuthProvider.credential(withEmail: myEmail, password: "koting0000")
         
         user?.reauthenticate(with: credential, completion: { _, error in
-            guard error != nil
+            guard error == nil
             else {
                 print("🙍‍♂️❌ 사용자 재인증 에러")
                 completion(false)
@@ -303,7 +303,8 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
             }
             
             user?.delete(completion: { error in
-                guard error != nil else {
+                guard error == nil else {
+                    print("🙍‍♂️❌ 삭제실패")
                     completion(false)
                     return
                 }

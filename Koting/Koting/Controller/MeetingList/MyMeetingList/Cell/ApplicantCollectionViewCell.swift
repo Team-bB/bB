@@ -16,4 +16,5 @@ class ApplicantCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var mbtiLabel: UILabel!
     @IBOutlet weak var numberOfParticipants: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
 }

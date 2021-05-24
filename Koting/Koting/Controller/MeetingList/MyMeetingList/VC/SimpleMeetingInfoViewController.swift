@@ -19,6 +19,7 @@ class SimpleMeetingInfoViewController: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var numberOfParticipant: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +46,7 @@ class SimpleMeetingInfoViewController: UIViewController {
             imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
             numberOfParticipant.text = "\(meeting.player)"
             contentLabel.text = meeting.link
+            nickNameLabel.text = owner.nickname
         }
     }
     private func transAnimal(index: Int, isImage: Bool) -> String {
@@ -83,7 +85,7 @@ extension SimpleMeetingInfoViewController: PanModalPresentable {
     }
 
     var longFormHeight: PanModalHeight {
-        return .contentHeight(300)
+        return .contentHeight(200)
     }
 
     var anchorModalToLongForm: Bool {

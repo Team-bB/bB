@@ -25,7 +25,7 @@ class MyMeetingApplicantCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var rejectBtn: UIButton!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         acceptBtn.setDefault()
@@ -100,6 +100,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         cell.collectionCellView.layer.borderWidth = 0.3
         cell.collectionCellView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         cell.numberOfParticipants.text = myMeeting?.myMeeting.player
+        cell.nickNameLabel.text = myMeeting?.participant?[indexPath.row].nickname
         
         var applyID: String?
         //var college: String?

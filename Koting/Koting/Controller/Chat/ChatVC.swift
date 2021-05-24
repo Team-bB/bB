@@ -63,7 +63,6 @@ class ChatVC: MessagesViewController {
         messageInputBar.delegate = self
         
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messageInputBar.inputTextView.becomeFirstResponder()
@@ -290,7 +289,7 @@ extension ChatVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
 //        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
 //            let keyboardRectangle = keyboardFrame.cgRectValue
 //            let keyboardHeight = keyboardRectangle.height
-//            self.view.frame.origin.y -= keyboardHeight
+//            self.messagesCollectionView.frame.origin.y -= keyboardHeight
 //        }
 //    }
 //
@@ -298,7 +297,7 @@ extension ChatVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
 //        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
 //            let keyboardRectangle = keyboardFrame.cgRectValue
 //            let keyboardHeight = keyboardRectangle.height
-//            self.view.frame.origin.y += keyboardHeight
+//            self.messagesCollectionView.frame.origin.y += keyboardHeight
 //        }
 //    }
 //}
