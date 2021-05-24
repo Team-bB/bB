@@ -1,6 +1,8 @@
 package com.teambB.koting.domain;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -55,7 +57,9 @@ public class Member {
     member.setEmail(object.get("email").toString());
     member.setNumber(object.get("phoneNumber").toString());
     member.setAnimalIdx(Integer.parseInt(object.get("animalIdx").toString()));
-    member.setCreateDate(LocalDateTime.now());
+    ZonedDateTime nowUTC = ZonedDateTime.now(ZoneId.of("UTC"));
+    LocalDateTime nowSeoul = nowUTC.withZoneSameInstant(ZoneId.of("Asia/Seoul")).toLocalDateTime();
+    member.setCreateDate(nowSeoul);
     member.setAuthKey(makeRandomString(8));
     member.setAuthStatus(false);
     return member;
