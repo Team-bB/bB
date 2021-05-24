@@ -30,12 +30,13 @@ class ChatVC: MessagesViewController {
     
     private var selfSender: Sender? = {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return nil }
+        guard let myNickname = DatabaseManager.shared.getUserInfo()?.nickname else { return nil }
         
         let safeEmail = DatabaseManager.safeEmail(email: email)
         
         return Sender(photoURL: "",
                       senderId: safeEmail,
-                      displayName: "닉네임") // 닉네임 변경해야함
+                      displayName: myNickname) // 닉네임 변경해야함
     }()
     
     init(with email: String, id: String?) {
@@ -134,7 +135,7 @@ class ChatVC: MessagesViewController {
 
 extension ChatVC: InputBarAccessoryViewDelegate {
     
-    func sendDefaultMesaage() {
+    func sendDefaultMesaage(otherNickname: String) {
         guard let selfSender = self.selfSender, let messageId = createMessageId() else { return }
         
         let mmessage = Message(sender: selfSender,
@@ -143,7 +144,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
                                kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요!!\n⚠️채팅을 삭제하면 영구적으로 삭제됩니다.\n- 코팅 운영진😃 -"))
         
         // name: 받는 사람 닉네임
-        DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage) { [weak self] success in
+        DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: otherNickname, firstMessage: mmessage) { [weak self] success in
             
             guard let strongSelf = self else { return }
             

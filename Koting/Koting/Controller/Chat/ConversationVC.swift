@@ -102,8 +102,8 @@ class ConversationVC: UIViewController {
         
         let vc = ChatVC(with: email, id: nil)
         vc.isNewConversation = true
-        vc.sendDefaultMesaage()
         vc.title = name
+        vc.sendDefaultMesaage(otherNickname: name)
     }
 }
 
