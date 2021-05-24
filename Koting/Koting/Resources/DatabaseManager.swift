@@ -154,6 +154,8 @@ extension DatabaseManager {
         guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String else { return }
         
         let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
+        let otherSafeEmail = DatabaseManager.safeEmail(email: otherUserEmail)
+        
         let ref = database.child("\(safeEmail)")
 
         ref.observeSingleEvent(of: .value) { [weak self] snapshot in
