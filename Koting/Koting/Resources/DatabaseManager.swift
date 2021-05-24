@@ -642,13 +642,79 @@ extension DatabaseManager {
         }
     }
     
-//    public func conversationExists(with targetRecipientEmail: String, completion: @escaping (Result<String, Error>) -> Void) {
-//        guard let senderEmail = UserDefaults.standard.value(forKey: "email") as? String else { return }
-//
-//        let safeRecipientEmail = DatabaseManager.safeEmail(email: targetRecipientEmail)
-//        let safeSenderEmail = DatabaseManager.safeEmail(email: senderEmail)
-//
-//    }
+    public func withdrawal(completion: @escaping (Bool) -> Void) {
+        guard let myEmail = UserDefaults.standard.value(forKey: "email") as? String else { return }
+        
+        let safeEmail = DatabaseManager.safeEmail(email: myEmail)
+        let ref = database.child("\(safeEmail)/conversations")
+        
+        ref.observeSingleEvent(of: .value) { [weak self] snapshot in
+            
+            guard let strongSelf = self else { return }
+            
+            if let conversations = snapshot.value as? [[String: Any]] {
+                
+                // 나와 연관된 대화 모두 삭제
+                for conversation in conversations {
+                    
+                    guard let id = conversation["id"] as? String,
+                          let other = conversation["other_user_email"] as? String else { return }
+                    
+                    let otherRef = strongSelf.database.child("\(other)/conversations")
+                    
+                    otherRef.observeSingleEvent(of: .value) { otherSnapshot in
+                        if var otherConversations = otherSnapshot.value as? [[String: Any]] {
+                            var positionToRemove = 0
+                            for conv in otherConversations {
+                                if let convId = conv["id"] as? String, convId == id {
+                                    break
+                                }
+                                positionToRemove += 1
+                            }
+                            otherConversations.remove(at: positionToRemove)
+                            
+                            otherRef.setValue(otherConversations) { error, _ in
+                                guard error == nil else {
+                                    print("❌ 새로운 대화 Array를 Update 실패 ❌")
+                                    return
+                                }
+                                print("✅ 상대방 대화를 삭제했습니다 ✅")
+                            }
+                        }
+                    }
+                    
+                    strongSelf.database.child(id).removeValue()
+                }
+            }
+            
+        }
+        database.child("users").observeSingleEvent(of: .value) { [weak self] snapshot in
+            
+            guard let strongSelf = self else { return }
+            if var users = snapshot.value as? [[String: Any]] {
+                var positionToRemove = 0
+                for user in users {
+                    if let email = user["email"] as? String, email == safeEmail {
+                        print("🔍 탈퇴할 내 정보를 찾음 🔍")
+                        break
+                    }
+                    positionToRemove += 1
+                }
+                
+                users.remove(at: positionToRemove)
+                strongSelf.database.child("users").setValue(users) { error, _ in
+                    guard error == nil else {
+                        print("❌ 유저 삭제 실패❌")
+                        completion(false)
+                        return
+                    }
+                    print("✅ 유저를 삭제했습니다 ✅")
+                }
+            }
+        }
+        database.child(safeEmail).removeValue()
+        completion(true)
+    }
 }
 
 struct ChatAppUser {

@@ -8,6 +8,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import FirebaseAuth
 
 class ChatVC: MessagesViewController {
     
@@ -75,22 +76,37 @@ class ChatVC: MessagesViewController {
     private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
         
         DatabaseManager.shared.getAllMessagesForConversation(with: id) { [weak self] result in
+            
+            guard let strongSelf = self else { return }
+            
             switch result {
             case .success(let messages):
                 print("✉️✅ 메세지를 가져오는데 성공했습니다 ✉️✅")
                 guard !messages.isEmpty else { return }
                 
-                self?.messages = messages
+                strongSelf.messages = messages
                 
                 DispatchQueue.main.async {
-                    self?.messagesCollectionView.reloadDataAndKeepOffset()
+                    strongSelf.messagesCollectionView.reloadDataAndKeepOffset()
                     if shouldScrollToBottom {
-                        self?.messagesCollectionView.scrollToLastItem(animated: false)
+                        strongSelf.messagesCollectionView.scrollToLastItem(animated: false)
                     }
                 }
                 
             case .failure(let error):
+                
                 print("✉️❌ 메세지를 가져오는데 실패했습니다 ✉️❌: \(error)")
+                
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: "알림", message: "상대방이 대화방을 나갔습니다.", preferredStyle: .alert)
+                    let okButton = UIAlertAction(title: "확인", style: .default) { action in
+                    
+                        strongSelf.navigationController?.popViewController(animated: true)
+                    }
+                    alertController.addAction(okButton)
+                    
+                    strongSelf.present(alertController, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -130,18 +146,33 @@ extension ChatVC: InputBarAccessoryViewDelegate {
         
         // name: 받는 사람 닉네임
         DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage) { [weak self] success in
+            
+            guard let strongSelf = self else { return }
+            
             if success {
                 print("📝 메세지 전송 완료. 📝")
-                self?.isNewConversation = false
+                strongSelf.isNewConversation = false
                 let newConversationId = "conversation_\(mmessage.messageId)"
-                self?.conversationId = newConversationId
-                self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
+                strongSelf.conversationId = newConversationId
+                strongSelf.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
                 
             } else {
                 print("⛔️ 메세지 전송 실패 ⛔️")
+                
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: "알림", message: "탈퇴한 회원입니다.", preferredStyle: .alert)
+                    let okButton = UIAlertAction(title: "확인", style: .default) { action in
+                    
+                        strongSelf.navigationController?.popViewController(animated: true)
+                    }
+                    alertController.addAction(okButton)
+                    
+                    strongSelf.present(alertController, animated: true, completion: nil)
+                }
             }
         }
     }
+
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
@@ -182,10 +213,24 @@ extension ChatVC: InputBarAccessoryViewDelegate {
             
             DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: mmessage) { [weak self] success in
                 
+                guard let strongSelf = self else { return }
+                
                 if success {
                     print("📝 메세지 전송 완료. 📝")
                 } else {
                     print("⛔️ 메세지 전송 실패 ⛔️")
+                    
+                    DispatchQueue.main.async {
+                        let alertController = UIAlertController(title: "알림", message: "상대방이 대화방을 나갔습니다.", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "확인", style: .default) { action in
+                        
+                            strongSelf.navigationController?.popViewController(animated: true)
+                        }
+                        alertController.addAction(okButton)
+                        
+                        strongSelf.present(alertController, animated: true, completion: nil)
+                    }
+                    
                 }
             }
         }

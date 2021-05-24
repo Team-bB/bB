@@ -22,11 +22,7 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
         
         return tableView
     }()
-    
-    private var headerViewHeight = NSLayoutConstraint()
-    private var headerViewBottom = NSLayoutConstraint()
-    private var tableHeaderViewHeight = NSLayoutConstraint()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -166,9 +162,9 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         let alertController = UIAlertController(title: "회원탈퇴", message: "탈퇴 하시겠습니까?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "확인", style: .default) { [weak self] action in
             
-            guard let self = self else { return }
+            guard let strongSelf = self else { return }
             
-            self.indicator.startAnimating(superView: self.view)
+            strongSelf.indicator.startAnimating(superView: strongSelf.view)
             
             WithdrawalAPI.shared.delete { result in
                 switch result {
@@ -177,22 +173,34 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
                     
                     if isTrue == "true" {
                         
-                        DispatchQueue.main.async {
-                            
-                            self.indicator.stopAnimating()
-                            self.makeAlertBox(title: "탈퇴완료", message: "메인으로 돌아갑니다.", text: "확인") { action in
+                        DatabaseManager.shared.withdrawal { res in
+                            if res {
+                                print("회원탈퇴 완료")
                                 
-                                self.logOut()
+                                DispatchQueue.main.async {
+                                    
+                                    strongSelf.indicator.stopAnimating()
+                                    strongSelf.makeAlertBox(title: "탈퇴완료", message: "메인으로 돌아갑니다.", text: "확인") { action in
+                                        
+                                        strongSelf.logOut()
+                                    }
+                                    
+                                }
                             }
-                            
+                            else {
+                                DispatchQueue.main.async {
+                                    
+                                    strongSelf.indicator.stopAnimating()
+                                    strongSelf.makeAlertBox(title: "오류", message: "파베 탈퇴 실패임", text: "확인")
+                                }
+                            }
                         }
-                        
                     } else {
                         
                         DispatchQueue.main.async {
                             
-                            self.indicator.stopAnimating()
-                            self.makeAlertBox(title: "오류", message: "에러가 발생했습니다.\n다시시도 해주세요.", text: "확인")
+                            strongSelf.indicator.stopAnimating()
+                            strongSelf.makeAlertBox(title: "오류", message: "에러가 발생했습니다.\n다시시도 해주세요.", text: "확인")
                         }
 
                     }
@@ -202,8 +210,8 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
                     
                     DispatchQueue.main.async {
                         
-                        self.indicator.stopAnimating()
-                        self.makeAlertBox(title: "실패", message: "회원탈퇴를 실패했습니다.", text: "확인")
+                        strongSelf.indicator.stopAnimating()
+                        strongSelf.makeAlertBox(title: "실패", message: "회원탈퇴를 실패했습니다.", text: "확인")
                         
                     }
                 }
