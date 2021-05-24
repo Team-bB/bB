@@ -52,7 +52,7 @@ public class Member {
     member.setMajor(object.get("major").toString());
     member.setHeight(Integer.parseInt(object.get("height").toString()));
     member.setAge(Integer.parseInt(object.get("age").toString()));
-    member.setNickname(null);
+    member.setNickname(object.get("nickname").toString());
     member.setMbti(object.get("mbti").toString());
     member.setEmail(object.get("email").toString());
     member.setNumber(object.get("phoneNumber").toString());
