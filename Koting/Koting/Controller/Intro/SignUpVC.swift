@@ -193,7 +193,7 @@ extension SignUpVC {
     
     func isValidNickname(_ nickName: String?) -> Bool {
         guard let nickName = nickName else { return false }
-        if nickName.count <= 12 && nickName.count > 0 { return true }
+        if nickName.count <= 8 && nickName.count > 0 { return true }
         else { return false }
     }
     
