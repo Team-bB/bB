@@ -205,7 +205,7 @@ extension SignUpVC {
                 return
             }
             
-            let chatUser = ChatAppUser(nickName: "테스트",
+            let chatUser = ChatAppUser(nickName: "\(userInfo.nickname!)",
                                        emailAddress: email,
                                        age: "\(userInfo.age!)살",
                                        college: userInfo.college!,

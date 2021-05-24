@@ -715,6 +715,15 @@ extension DatabaseManager {
         database.child(safeEmail).removeValue()
         completion(true)
     }
+    
+    public func getUserInfo() -> Owner? {
+        if let data = UserDefaults.standard.value(forKey:"myInfo") as? Data {
+            let infoData = try! PropertyListDecoder().decode(Owner.self, from: data)
+            
+            return infoData
+        }
+        return nil
+    }
 }
 
 struct ChatAppUser {

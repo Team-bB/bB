@@ -150,6 +150,7 @@ public class ApplyController {
     meeting.setMeetingStatus(MeetingStatus.CLOSE);
 
     String ApplierEmail = apply.getMember().getAccount_id() + "@dgu.ac.kr";
+    retObject.put("nickname", apply.getMember().getNickname());
     retObject.put("result", "true");
     retObject.put("targetUserEmail", ApplierEmail);
     return retObject;

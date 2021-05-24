@@ -35,6 +35,7 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
             print(infoData.height!)
             print(infoData.college!)
             print(infoData.major!)
+            print(infoData.nickname!)
         }
         
 //        indicator.startAnimating(superView: view)
