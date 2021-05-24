@@ -3,6 +3,8 @@ package com.teambB.koting.domain;
 import static com.teambB.koting.domain.ApplyStatus.*;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,7 +57,9 @@ public class Apply {
     apply.setMeeting(meeting);
     apply.setMember(member);
     apply.setApplyStatus(WAIT);
-    apply.setCreateDate(LocalDateTime.now());
+    ZonedDateTime nowUTC = ZonedDateTime.now(ZoneId.of("UTC"));
+    LocalDateTime nowSeoul = nowUTC.withZoneSameInstant(ZoneId.of("Asia/Seoul")).toLocalDateTime();
+    apply.setCreateDate(nowSeoul);
     return apply;
   }
 

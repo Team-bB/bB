@@ -1,6 +1,8 @@
 package com.teambB.koting.domain;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -50,12 +52,14 @@ public class Member {
     member.setMajor(object.get("major").toString());
     member.setHeight(Integer.parseInt(object.get("height").toString()));
     member.setAge(Integer.parseInt(object.get("age").toString()));
-    member.setNickname(null);
+    member.setNickname(object.get("nickname").toString());
     member.setMbti(object.get("mbti").toString());
     member.setEmail(object.get("email").toString());
     member.setNumber(object.get("phoneNumber").toString());
     member.setAnimalIdx(Integer.parseInt(object.get("animalIdx").toString()));
-    member.setCreateDate(LocalDateTime.now());
+    ZonedDateTime nowUTC = ZonedDateTime.now(ZoneId.of("UTC"));
+    LocalDateTime nowSeoul = nowUTC.withZoneSameInstant(ZoneId.of("Asia/Seoul")).toLocalDateTime();
+    member.setCreateDate(nowSeoul);
     member.setAuthKey(makeRandomString(8));
     member.setAuthStatus(false);
     return member;
