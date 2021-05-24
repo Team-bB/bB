@@ -7,6 +7,8 @@ import com.teambB.koting.domain.Member;
 import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
@@ -53,6 +55,7 @@ public class MeetingService {
     JSONArray jArray = new JSONArray();
 
     List<Meeting> meetingList = findAll();
+    Collections.reverse(meetingList);
     for (Meeting meeting : meetingList) {
       /*
       보이면 안되는 미팅들

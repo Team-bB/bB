@@ -10,6 +10,7 @@ import com.teambB.koting.service.MeetingService;
 import com.teambB.koting.service.MemberService;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
@@ -47,6 +48,7 @@ public class ApplyController {
       // 내 미팅에 신청한 사람이 존재하면
       if (myMeeting.getParticipants() != null) {
         List<Apply> participants = myMeeting.getParticipants();
+        Collections.reverse(participants);
 
         JSONArray jArray = new JSONArray();
         for (Apply apply : participants) {
@@ -72,6 +74,8 @@ public class ApplyController {
     // 내가 신청한 미팅이 존재하면
     if (member.getApplies() != null) {
       List<Apply> applies = member.getApplies();
+      Collections.reverse(applies);
+
       JSONArray jArray2 = new JSONArray();
       for (Apply apply : applies) {
         // 대기 거절만 리턴

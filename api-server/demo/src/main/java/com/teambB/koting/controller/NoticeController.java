@@ -3,6 +3,7 @@ package com.teambB.koting.controller;
 import com.teambB.koting.domain.Notice;
 import com.teambB.koting.service.NoticeService;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
@@ -25,12 +26,13 @@ public class NoticeController {
     JSONArray array = new JSONArray();
 
     List<Notice> all = noticeService.findAll();
-    for (int i = all.size() - 1; i >= 0; i--) {
+    Collections.reverse(all);
+    for (Notice notice : all) {
       JSONObject temp = new JSONObject();
-      temp.put("id", all.get(i).getId());
-      temp.put("title", all.get(i).getTitle());
-      temp.put("content", all.get(i).getContent());
-      temp.put("date", all.get(i).getCreateDatetime().format(DateTimeFormatter.ISO_DATE));
+      temp.put("id", notice.getId());
+      temp.put("title", notice.getTitle());
+      temp.put("content", notice.getContent());
+      temp.put("date", notice.getCreateDatetime().format(DateTimeFormatter.ISO_DATE));
       array.add(temp);
     }
     retObect.put("notice", array);
