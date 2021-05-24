@@ -151,11 +151,12 @@ extension DatabaseManager {
 //        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
 //              let currentName = UserDefaults.standard.value(forKey: "nickName") as? String else { return }
         
-        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String else { return }
+        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
+              let currentNickname = DatabaseManager.shared.getUserInfo()?.nickname else { return }
         
         let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
         let otherSafeEmail = DatabaseManager.safeEmail(email: otherUserEmail)
-        
+    
         let ref = database.child("\(safeEmail)")
 
         ref.observeSingleEvent(of: .value) { [weak self] snapshot in
@@ -211,8 +212,7 @@ extension DatabaseManager {
             let recipient_newConversationData: [String: Any] = [
                 "id": conversationId,
                 "other_user_email": safeEmail,
-                "name": "나",
-//                ⚠️"name": currentName,
+                "name": currentNickname,
                 "latest_message": [
                     "date": dateString,
                     "message": message,
