@@ -23,15 +23,16 @@ class SignUpAPI {
         
         //POST로 보낼 정보
         let params = [
-                        "sex" : paramArray[0].text!,
-                        "phoneNumber" : UserAPI.shared.phoneNumber!,
-                        "college": paramArray[1].text!,
-                        "major": paramArray[2].text!,
-                        "age": paramArray[3].text!,
-                        "height": paramArray[4].text!,
-                        "mbti": paramArray[5].text!,
-                        "email": paramArray[6].text! + "@dgu.ac.kr",
-                        "animalIdx":"1"
+            "sex" : paramArray[0].text!,
+            "phoneNumber" : UserAPI.shared.phoneNumber!,
+            "college": paramArray[1].text!,
+            "major": paramArray[2].text!,
+            "age": paramArray[3].text!,
+            "height": paramArray[4].text!,
+            "mbti": paramArray[5].text!,
+            "email": paramArray[6].text! + "@dgu.ac.kr",
+            "animalIdx":"1",
+            "nickname":paramArray[7].text!
                     ] as Dictionary
         
         // httpBody에 parameters 추가
