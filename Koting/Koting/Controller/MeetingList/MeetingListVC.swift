@@ -21,7 +21,7 @@ class MeetingListVC: UIViewController {
         super.viewDidLoad()
         
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 44))
-        lbl.text = "코 팅"
+        lbl.text = "코팅"
         lbl.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         lbl.textAlignment = .left
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
@@ -131,7 +131,7 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.nickNameLabel.text = myMeeting?.owner?.nickname
                 let createdDate = myMeeting?.date
                 let dateArr = createdDate?.components(separatedBy: "-")
-                cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
+                cell.dateLabel.text = (dateArr?[1] ?? "")+"/"+(dateArr?[2] ?? "")
                 cell.selectionStyle = .none
                 
                 return cell
@@ -146,9 +146,10 @@ extension MeetingListVC: UITableViewDataSource {
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
             cell.mbtiLabel.text = meetings[indexPath.row].owner?.mbti
-            let createdDate = myMeeting?.date
+            cell.nickNameLabel.text = meetings[indexPath.row].owner?.nickname
+            let createdDate = meetings[indexPath.row].date
             let dateArr = createdDate?.components(separatedBy: "-")
-            cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
+            cell.dateLabel.text = (dateArr?[1] ?? "")+"/"+(dateArr?[2] ?? "")
 
             return cell
         }

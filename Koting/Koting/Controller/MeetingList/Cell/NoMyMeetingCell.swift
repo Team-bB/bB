@@ -13,7 +13,6 @@ class NoMyMeetingCell: UITableViewCell {
     var buttonCreateMyMeeting: (() -> ())?
     
     @IBOutlet weak var noMyMeeting: UIButton!
-    @IBOutlet weak var tableViewCellLayer: UIView!
     @IBAction func noMyMeetingBtnTapped(_ sender: Any) {
         buttonCreateMyMeeting?()
     }

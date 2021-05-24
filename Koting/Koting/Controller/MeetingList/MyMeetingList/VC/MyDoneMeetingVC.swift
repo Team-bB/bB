@@ -93,7 +93,7 @@ extension MyDoneMeetingVC: UITableViewDataSource {
         cell.nickNameLabel.text = doneMeeting[indexPath.row].owner?.nickname
         let createdDate = doneMeeting[indexPath.row].date
         let dateArr = createdDate?.components(separatedBy: "-")
-        cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
+        cell.dateLabel.text = (dateArr?[1] ?? "")+"/"+(dateArr?[2] ?? "")
         cell.selectionStyle = .none
         
         return cell

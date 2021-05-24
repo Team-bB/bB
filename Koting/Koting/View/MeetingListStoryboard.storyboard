@@ -130,7 +130,7 @@
                                                                     <attributes>
                                                                         <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                         <font key="NSFont" size="12" name="AppleSDGothicNeo-Light"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                     </attributes>
                                                                 </fragment>
                                                             </attributedString>
@@ -274,7 +274,7 @@
                                                                     <attributes>
                                                                         <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                         <font key="NSFont" size="12" name="AppleSDGothicNeo-Light"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                     </attributes>
                                                                 </fragment>
                                                             </attributedString>
@@ -320,43 +320,30 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8O-9e-Vfc">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZF-W7-lfd">
                                                     <rect key="frame" x="16" y="5" width="288" height="90"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZF-W7-lfd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="90"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="90" id="XLp-Cg-HVK"/>
-                                                            </constraints>
-                                                            <color key="tintColor" red="0.53387361764907837" green="0.06793946772813797" blue="0.96206063032150269" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal">
-                                                                <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" weight="regular"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="noMyMeetingBtnTapped:" destination="wmL-kn-Khg" eventType="touchUpInside" id="ug6-Ds-oqe"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="7ZF-W7-lfd" secondAttribute="trailing" id="DpM-W5-FDb"/>
-                                                        <constraint firstItem="7ZF-W7-lfd" firstAttribute="leading" secondItem="n8O-9e-Vfc" secondAttribute="leading" id="QZg-F7-kPF"/>
-                                                        <constraint firstItem="7ZF-W7-lfd" firstAttribute="top" secondItem="n8O-9e-Vfc" secondAttribute="top" id="bU9-aC-Y74"/>
-                                                        <constraint firstAttribute="bottom" secondItem="7ZF-W7-lfd" secondAttribute="bottom" id="buB-X4-gCo"/>
+                                                        <constraint firstAttribute="height" constant="90" id="XLp-Cg-HVK"/>
                                                     </constraints>
-                                                </view>
+                                                    <color key="tintColor" red="0.53387361764907837" green="0.06793946772813797" blue="0.96206063032150269" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" weight="regular"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="noMyMeetingBtnTapped:" destination="wmL-kn-Khg" eventType="touchUpInside" id="ug6-Ds-oqe"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="n8O-9e-Vfc" secondAttribute="trailing" constant="16" id="MM7-uB-bfo"/>
-                                                <constraint firstItem="n8O-9e-Vfc" firstAttribute="top" secondItem="Jsd-cU-NZA" secondAttribute="top" constant="5" id="Mp3-RT-PRj"/>
-                                                <constraint firstAttribute="bottom" secondItem="n8O-9e-Vfc" secondAttribute="bottom" constant="5" id="dPw-ji-NT1"/>
-                                                <constraint firstItem="n8O-9e-Vfc" firstAttribute="leading" secondItem="Jsd-cU-NZA" secondAttribute="leading" constant="16" id="y4i-Ax-QMG"/>
+                                                <constraint firstItem="7ZF-W7-lfd" firstAttribute="top" secondItem="Jsd-cU-NZA" secondAttribute="top" constant="5" id="1zC-Kf-ni6"/>
+                                                <constraint firstItem="7ZF-W7-lfd" firstAttribute="leading" secondItem="Jsd-cU-NZA" secondAttribute="leading" constant="16" id="9Ra-iz-elb"/>
+                                                <constraint firstAttribute="trailing" secondItem="7ZF-W7-lfd" secondAttribute="trailing" constant="16" id="Nry-Br-cPI"/>
+                                                <constraint firstAttribute="bottom" secondItem="7ZF-W7-lfd" secondAttribute="bottom" constant="5" id="pdV-nc-ALr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="noMyMeeting" destination="7ZF-W7-lfd" id="Bni-3l-tgv"/>
-                                            <outlet property="tableViewCellLayer" destination="n8O-9e-Vfc" id="au5-Vq-ia7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
