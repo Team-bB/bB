@@ -8,6 +8,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import FirebaseAuth
 
 class ChatVC: MessagesViewController {
     

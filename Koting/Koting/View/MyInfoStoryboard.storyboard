@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="-4182" y="-1892"/>
         </scene>
-        <!--Info-->
+        <!--My InfoVC-->
         <scene sceneID="DGi-LN-SgD">
             <objects>
                 <viewController storyboardIdentifier="MyInfo" id="HMd-6q-fG5" customClass="MyInfoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,7 +75,7 @@
                         <viewLayoutGuide key="safeArea" id="mGq-oD-IS0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info" image="person.crop.circle" catalog="system" selectedImage="person.crop.circle" id="Y0N-Xt-aIf"/>
+                    <tabBarItem key="tabBarItem" title="" image="person.crop.circle" catalog="system" selectedImage="person.crop.circle" id="Y0N-Xt-aIf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S1v-mQ-h6S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
