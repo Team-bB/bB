@@ -108,18 +108,15 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         acceptButtonTapped = { [unowned self] in
             if pageControl.currentPage == 0 {
                 applyID = myMeeting?.participant?[0].apply_id
-                
             }
             else if pageControl.currentPage == 1 {
                 applyID = myMeeting?.participant?[1].apply_id
-                
             }
             else {
                 applyID = myMeeting?.participant?[2].apply_id
-                
             }
-//            print(college ?? "단과대학")
-            AcceptMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
+            //print(college ?? "단과대학")
+            AcceptMeetingAPI.shared.post(applyID: applyID) { result in
 
                 switch result {
                 case .success(let finalResult):
