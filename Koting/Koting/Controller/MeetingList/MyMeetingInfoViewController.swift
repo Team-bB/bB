@@ -19,6 +19,7 @@ class MyMeetingInfoViewController: UIViewController {
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var numberOfParticipant: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
     var meeting: Meeting?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class MyMeetingInfoViewController: UIViewController {
             deleteBtn.layer.borderWidth = 0.3
             deleteBtn.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
             contentLabel.text = meeting.link
+            nickNameLabel.text = owner.nickname
         }
     }
     
@@ -120,7 +122,7 @@ extension MyMeetingInfoViewController: PanModalPresentable {
     }
 
     var longFormHeight: PanModalHeight {
-        return .contentHeight(350)
+        return .contentHeight(230)
     }
 
     var anchorModalToLongForm: Bool {

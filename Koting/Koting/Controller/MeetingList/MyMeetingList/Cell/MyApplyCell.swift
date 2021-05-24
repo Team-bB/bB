@@ -15,4 +15,6 @@ class MyApplyCell: UITableViewCell {
     @IBOutlet weak var collegeLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var numberOfParticipants: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 }

@@ -21,6 +21,7 @@ class MeetingDetailInfoViewController: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var numberOfParticipant: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,7 @@ class MeetingDetailInfoViewController: UIViewController {
             applyBtnTapped.layer.borderWidth = 0.3
             applyBtnTapped.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
             contentLabel.text = meeting.link
+            nickNameLabel.text = owner.nickname
         }
     }
     
@@ -128,7 +130,7 @@ extension MeetingDetailInfoViewController: PanModalPresentable {
     }
 
     var longFormHeight: PanModalHeight {
-        return .contentHeight(350)
+        return .contentHeight(230)
     }
 
     var anchorModalToLongForm: Bool {

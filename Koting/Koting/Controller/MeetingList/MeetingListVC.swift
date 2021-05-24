@@ -128,6 +128,10 @@ extension MeetingListVC: UITableViewDataSource {
                 cell.animalShapeImage.layer.masksToBounds = true
                 cell.animalShapeImage.layer.borderWidth = 0
                 cell.mbtiLabel.text = myMeeting?.owner?.mbti
+                cell.nickNameLabel.text = myMeeting?.owner?.nickname
+                let createdDate = myMeeting?.date
+                let dateArr = createdDate?.components(separatedBy: "-")
+                cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
                 cell.selectionStyle = .none
                 
                 return cell
@@ -142,6 +146,9 @@ extension MeetingListVC: UITableViewDataSource {
             cell.animalShapeImage.layer.masksToBounds = true
             cell.animalShapeImage.layer.borderWidth = 0
             cell.mbtiLabel.text = meetings[indexPath.row].owner?.mbti
+            let createdDate = myMeeting?.date
+            let dateArr = createdDate?.components(separatedBy: "-")
+            cell.dateLabel.text = (dateArr?[1] ?? "")+"월"+(dateArr?[2] ?? "")+"일"
 
             return cell
         }
