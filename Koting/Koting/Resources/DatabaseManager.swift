@@ -742,7 +742,6 @@ struct ChatAppUser {
         
         return safeEmail
     }
-//    let profilePictureURL: String
 }
 
 
