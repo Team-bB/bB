@@ -32,12 +32,13 @@ public class ApplyService {
     Member member = memberRepository.findByAccountId(accountId);
     Meeting meeting = meetingRepository.findById(meetingId);
 
-    // 중복신청 안되게
+    // 중복신청 안되게 or 거절당한 미팅 3가지 경우나누기
     for (Apply myApply : member.getApplies()) {
       if (myApply.getMeeting().getId() == meetingId) {
         return null;
       }
     }
+    // 3명 이상
     if (meeting.getApplierCnt() >= 3)
       return null;
     Apply apply = Apply.createApply(member, meeting);
