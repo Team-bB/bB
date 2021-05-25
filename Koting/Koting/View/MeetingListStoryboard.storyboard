@@ -120,7 +120,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wD1-l9-DVL">
-                                                            <rect key="frame" x="238" y="75" width="50" height="15"/>
+                                                            <rect key="frame" x="238" y="72" width="50" height="15"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="QJa-P1-ymc"/>
                                                                 <constraint firstAttribute="height" constant="15" id="YSJ-yC-VOy"/>
@@ -136,18 +136,54 @@
                                                             </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dfR-8a-8GS">
+                                                            <rect key="frame" x="230" y="41" width="28" height="8"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znd-Ga-ZPA">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="8" id="YX0-d8-EiE"/>
+                                                                        <constraint firstAttribute="width" constant="8" id="luY-i7-83d"/>
+                                                                    </constraints>
+                                                                    <state key="normal" title="Button" image="applyCount_empty"/>
+                                                                    <state key="selected" image="applyCount_full"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Lw-jd-dl5">
+                                                                    <rect key="frame" x="10" y="0.0" width="8" height="8"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="8" id="8w4-lZ-6lH"/>
+                                                                        <constraint firstAttribute="width" constant="8" id="jML-er-fxN"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <state key="normal" title="Button" image="applyCount_empty"/>
+                                                                    <state key="selected" image="applyCount_full"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjq-Bn-FOM">
+                                                                    <rect key="frame" x="20" y="0.0" width="8" height="8"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="8" id="Waw-7Q-X80"/>
+                                                                        <constraint firstAttribute="width" constant="8" id="mH2-gs-KFk"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <state key="normal" title="Button" image="applyCount_empty"/>
+                                                                    <state key="selected" image="applyCount_full"/>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="cjK-a9-NCZ" firstAttribute="top" secondItem="pll-AO-NiL" secondAttribute="top" constant="20" id="69Y-zS-tvM"/>
                                                         <constraint firstAttribute="width" constant="288" id="7yh-NX-uim"/>
-                                                        <constraint firstAttribute="bottom" secondItem="wD1-l9-DVL" secondAttribute="bottom" id="8hP-6L-Pe5"/>
                                                         <constraint firstItem="HVS-fj-2r5" firstAttribute="leading" secondItem="pll-AO-NiL" secondAttribute="leading" constant="14" id="GTd-nU-iFC"/>
+                                                        <constraint firstItem="dfR-8a-8GS" firstAttribute="centerY" secondItem="pll-AO-NiL" secondAttribute="centerY" id="IeD-qB-USF"/>
                                                         <constraint firstAttribute="height" constant="90" id="Me9-fV-BzB"/>
+                                                        <constraint firstItem="dfR-8a-8GS" firstAttribute="centerX" secondItem="pll-AO-NiL" secondAttribute="centerX" constant="100" id="MjC-zL-InE"/>
                                                         <constraint firstItem="cjK-a9-NCZ" firstAttribute="leading" secondItem="u2q-gc-OFH" secondAttribute="trailing" constant="24" id="XZ3-4c-E0M"/>
                                                         <constraint firstItem="u2q-gc-OFH" firstAttribute="top" secondItem="pll-AO-NiL" secondAttribute="top" constant="3" id="Zxo-wA-gmA"/>
                                                         <constraint firstItem="u2q-gc-OFH" firstAttribute="leading" secondItem="pll-AO-NiL" secondAttribute="leading" constant="14" id="duX-9G-mPB"/>
                                                         <constraint firstItem="HVS-fj-2r5" firstAttribute="top" secondItem="pll-AO-NiL" secondAttribute="top" constant="72" id="lMp-C0-5l0"/>
+                                                        <constraint firstItem="wD1-l9-DVL" firstAttribute="top" secondItem="pll-AO-NiL" secondAttribute="top" constant="72" id="rnv-C3-scl"/>
                                                         <constraint firstAttribute="trailing" secondItem="wD1-l9-DVL" secondAttribute="trailing" id="yoD-5M-dN5"/>
                                                     </constraints>
                                                 </view>
@@ -167,6 +203,9 @@
                                             <outlet property="nickNameLabel" destination="HVS-fj-2r5" id="L8e-YV-6ej"/>
                                             <outlet property="numberOfParticipants" destination="HGQ-VL-JJo" id="zqI-wE-0de"/>
                                             <outlet property="tableViewCellLayer" destination="pll-AO-NiL" id="Oz7-2g-Yuv"/>
+                                            <outletCollection property="applyCount" destination="znd-Ga-ZPA" collectionClass="NSMutableArray" id="zqJ-nr-U7T"/>
+                                            <outletCollection property="applyCount" destination="5Lw-jd-dl5" collectionClass="NSMutableArray" id="3Z9-uz-whK"/>
+                                            <outletCollection property="applyCount" destination="wjq-Bn-FOM" collectionClass="NSMutableArray" id="FL6-RP-lhR"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MeetingListTableViewCell" rowHeight="100" id="hdB-I3-qr9" customClass="MeetingListTableViewCell" customModule="Koting" customModuleProvider="target">
@@ -263,8 +302,42 @@
                                                             </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UZ0-VU-drV">
+                                                            <rect key="frame" x="230" y="41" width="28" height="8"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbq-aj-C1H">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="8" id="Udo-e7-0eb"/>
+                                                                        <constraint firstAttribute="height" constant="8" id="VOI-hJ-PSh"/>
+                                                                    </constraints>
+                                                                    <state key="normal" title="Button" image="applyCount_empty"/>
+                                                                    <state key="selected" image="applyCount_full"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7f9-Od-WWi">
+                                                                    <rect key="frame" x="10" y="0.0" width="8" height="8"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="8" id="3Gu-2J-yM0"/>
+                                                                        <constraint firstAttribute="width" constant="8" id="vU2-Z2-ZIT"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <state key="normal" title="Button" image="applyCount_empty"/>
+                                                                    <state key="selected" image="applyCount_full"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IE6-fd-x00">
+                                                                    <rect key="frame" x="20" y="0.0" width="8" height="8"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="8" id="cpO-J0-GHP"/>
+                                                                        <constraint firstAttribute="height" constant="8" id="m19-7R-5Ub"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <state key="normal" title="Button" image="applyCount_empty"/>
+                                                                    <state key="selected" image="applyCount_full"/>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR9-Et-ec9">
-                                                            <rect key="frame" x="238" y="75" width="50" height="15"/>
+                                                            <rect key="frame" x="238" y="72" width="50" height="15"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="6pg-PF-NUd"/>
                                                                 <constraint firstAttribute="width" constant="50" id="bW0-UH-4Mh"/>
@@ -287,12 +360,14 @@
                                                         <constraint firstAttribute="width" constant="288" id="B7j-jV-54O"/>
                                                         <constraint firstAttribute="trailing" secondItem="vR9-Et-ec9" secondAttribute="trailing" id="HDZ-81-VR3"/>
                                                         <constraint firstAttribute="height" constant="90" id="Pq2-kM-iRs"/>
+                                                        <constraint firstItem="vR9-Et-ec9" firstAttribute="top" secondItem="Ai9-yx-uGO" secondAttribute="top" constant="72" id="SCJ-KZ-jaO"/>
+                                                        <constraint firstItem="UZ0-VU-drV" firstAttribute="centerX" secondItem="Ai9-yx-uGO" secondAttribute="centerX" constant="100" id="Tla-0u-E3w"/>
                                                         <constraint firstItem="5Nd-v9-iI0" firstAttribute="leading" secondItem="Ai9-yx-uGO" secondAttribute="leading" constant="14" id="Z1t-WE-Rcx"/>
                                                         <constraint firstItem="jNq-3P-r7i" firstAttribute="top" secondItem="Ai9-yx-uGO" secondAttribute="top" constant="5" id="c1l-Wd-VJC"/>
                                                         <constraint firstItem="qRu-WZ-vwt" firstAttribute="top" secondItem="Ai9-yx-uGO" secondAttribute="top" constant="20" id="cJX-Q1-ESe"/>
                                                         <constraint firstItem="jNq-3P-r7i" firstAttribute="leading" secondItem="Ai9-yx-uGO" secondAttribute="leading" constant="14" id="mBm-nB-9zE"/>
-                                                        <constraint firstAttribute="bottom" secondItem="vR9-Et-ec9" secondAttribute="bottom" id="qct-2A-1m7"/>
                                                         <constraint firstItem="5Nd-v9-iI0" firstAttribute="top" secondItem="Ai9-yx-uGO" secondAttribute="top" constant="72" id="qvO-Tj-TFH"/>
+                                                        <constraint firstItem="UZ0-VU-drV" firstAttribute="centerY" secondItem="Ai9-yx-uGO" secondAttribute="centerY" id="srx-bf-nb7"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -311,6 +386,9 @@
                                             <outlet property="nickNameLabel" destination="5Nd-v9-iI0" id="Hn3-SM-eLs"/>
                                             <outlet property="numberOfParticipants" destination="N6K-eK-pMF" id="dZS-vD-kBo"/>
                                             <outlet property="tableViewCellLayer" destination="Ai9-yx-uGO" id="hx1-Kf-aki"/>
+                                            <outletCollection property="applyCount" destination="wbq-aj-C1H" collectionClass="NSMutableArray" id="Un6-ho-s2q"/>
+                                            <outletCollection property="applyCount" destination="7f9-Od-WWi" collectionClass="NSMutableArray" id="SW3-CB-guS"/>
+                                            <outletCollection property="applyCount" destination="IE6-fd-x00" collectionClass="NSMutableArray" id="S1Z-a8-5tJ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoMyMeetingCell" rowHeight="100" id="wmL-kn-Khg" customClass="NoMyMeetingCell" customModule="Koting" customModuleProvider="target">
@@ -945,6 +1023,8 @@
     </scenes>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="applyCount_empty" width="50" height="50"/>
+        <image name="applyCount_full" width="50" height="50"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="list.star" catalog="system" width="128" height="94"/>

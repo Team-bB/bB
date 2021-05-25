@@ -37,6 +37,7 @@ struct Meeting: Codable {
     let player: String
     let apply_status: String?
     let date: String?
+    let applierCnt: Int?
 }
 struct Applicant: Codable {
     let college: String?

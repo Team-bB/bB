@@ -16,6 +16,7 @@ class MeetingListTableViewCell: UITableViewCell {
     @IBOutlet weak var mbtiLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet var applyCount: [UIButton]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
