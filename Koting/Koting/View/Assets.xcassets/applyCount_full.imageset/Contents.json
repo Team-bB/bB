@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "applyCount_full.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "launchScreenImage.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

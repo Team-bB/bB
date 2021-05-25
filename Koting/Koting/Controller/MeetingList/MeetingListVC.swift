@@ -133,6 +133,23 @@ extension MeetingListVC: UITableViewDataSource {
                 let dateArr = createdDate?.components(separatedBy: "-")
                 cell.dateLabel.text = (dateArr?[1] ?? "")+"/"+(dateArr?[2] ?? "")
                 cell.selectionStyle = .none
+                if myMeeting?.applierCnt == 1 {
+                    cell.applyCount[0].isSelected = true
+                    cell.applyCount[1].isSelected = false
+                    cell.applyCount[2].isSelected = false
+                }else if myMeeting?.applierCnt == 2 {
+                    cell.applyCount[0].isSelected = true
+                    cell.applyCount[1].isSelected = true
+                    cell.applyCount[2].isSelected = false
+                }else if myMeeting?.applierCnt == 3 {
+                    cell.applyCount[0].isSelected = true
+                    cell.applyCount[1].isSelected = true
+                    cell.applyCount[2].isSelected = true
+                }else {
+                    cell.applyCount[0].isSelected = false
+                    cell.applyCount[1].isSelected = false
+                    cell.applyCount[2].isSelected = false
+                }
                 
                 return cell
             }
@@ -150,6 +167,23 @@ extension MeetingListVC: UITableViewDataSource {
             let createdDate = meetings[indexPath.row].date
             let dateArr = createdDate?.components(separatedBy: "-")
             cell.dateLabel.text = (dateArr?[1] ?? "")+"/"+(dateArr?[2] ?? "")
+            if meetings[indexPath.row].applierCnt == 1 {
+                cell.applyCount[0].isSelected = true
+                cell.applyCount[1].isSelected = false
+                cell.applyCount[2].isSelected = false
+            }else if meetings[indexPath.row].applierCnt == 2 {
+                cell.applyCount[0].isSelected = true
+                cell.applyCount[1].isSelected = true
+                cell.applyCount[2].isSelected = false
+            }else if meetings[indexPath.row].applierCnt == 3 {
+                cell.applyCount[0].isSelected = true
+                cell.applyCount[1].isSelected = true
+                cell.applyCount[2].isSelected = true
+            }else {
+                cell.applyCount[0].isSelected = false
+                cell.applyCount[1].isSelected = false
+                cell.applyCount[2].isSelected = false
+            }
 
             return cell
         }

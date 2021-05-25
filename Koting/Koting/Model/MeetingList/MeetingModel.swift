@@ -37,6 +37,7 @@ struct Meeting: Codable {
     let player: String
     let apply_status: String?
     let date: String?
+    let applierCnt: Int?
 }
 struct Applicant: Codable {
     let college: String?
@@ -90,6 +91,7 @@ struct DoneMeetingListAPIResponse: Codable {
 struct AcceptMeetingApplicantAPIResponse: Codable {
     let result: String
     let targetUserEmail: String?
+    let nickname: String?
 }
 
 struct RejectMeetingApplicantAPIResponse: Codable {
