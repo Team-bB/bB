@@ -32,8 +32,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qXF-tb-ad9">
-                                <rect key="frame" x="15" y="679" width="384" height="103"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qXF-tb-ad9">
+                                <rect key="frame" x="15" y="665" width="384" height="103"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMo-Dv-z8X">
                                         <rect key="frame" x="41.5" y="0.0" width="301.5" height="20.5"/>
@@ -93,8 +93,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="agepredictLabel" destination="Hhf-1G-N7B" id="Okn-sK-fcG"/>
+                        <outlet property="emotionLabel" destination="AYZ-N4-Ah6" id="enf-1Y-e0e"/>
                         <outlet property="imageView" destination="peN-kE-LzO" id="WDw-5E-2xJ"/>
-                        <outlet property="predictLabel" destination="Hhf-1G-N7B" id="MDr-jN-c0Z"/>
+                        <outlet property="predictLabel" destination="dMo-Dv-z8X" id="BKq-bj-IaG"/>
                         <outlet property="recheckButton" destination="GGP-6o-NC0" id="EAc-jP-Ti7"/>
                     </connections>
                 </viewController>
