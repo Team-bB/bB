@@ -106,7 +106,6 @@ class GetUserPhotoVC: UIViewController {
     
     // MARK: -Connect ML
     @IBOutlet weak var predictLabel : UILabel!
-    @IBOutlet weak var agepredictLabel : UILabel!
     @IBOutlet weak var emotionLabel : UILabel!
     @IBOutlet weak var recheckButton: UIButton!
     
@@ -353,45 +352,6 @@ class GetUserPhotoVC: UIViewController {
         }
         
     }
-    func agePredict(image: CIImage){
-        guard let model = try? VNCoreMLModel(for: AgeNet(configuration: MLModelConfiguration.init()).model) else {
-            fatalError("load error")
-            
-        }
-        
-        let request = VNCoreMLRequest (model: model) { (req, error) in
-            guard let results = req.results as? [VNClassificationObservation] else{
-                fatalError ("ML fail")
-            }
-            print ("나이대는?: ")
-            
-            if let firstResult = results.first{
-                
-                print(firstResult)
-                switch firstResult.identifier {
-                case "0-2" , "4-6":
-                    self.agepredictLabel.text="엄청난 동안이시네요!"
-                case "8-12", "15-20":
-                    self.agepredictLabel.text="동안이시네요!"
-                case "25-32","38-43":
-                    self.agepredictLabel.text="성숙한 얼굴이시네요!"
-                case "48-53","60-100":
-                    self.agepredictLabel.text="나이에 비해 성숙하시네요!"
-                default:
-                    print("나이 결과를 얻지 못했습니다.")
-                }
-                
-            }
-            
-        }
-        let handler = VNImageRequestHandler(ciImage: image)
-           
-        do{
-            try handler.perform([request])
-        }catch{
-            print(error)
-        }
-    }
 
     func emotionPredict(image: CIImage){
         guard let model = try? VNCoreMLModel(for: emotion(configuration: MLModelConfiguration.init()).model) else {
@@ -429,7 +389,6 @@ extension GetUserPhotoVC: UIImagePickerControllerDelegate, UINavigationControlle
                 guard let ciimage = CIImage(image: originalImage) else{
                     fatalError("CIImage error")
         }
-            agePredict(image: ciimage)
             emotionPredict(image: ciimage)
         
             switch emotionLabel.text {
