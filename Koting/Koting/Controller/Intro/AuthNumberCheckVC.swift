@@ -49,8 +49,11 @@ class AuthNumberCheckVC: UIViewController {
                     // MARK:- 여기서 알러트 띄우고 하던가 진동을 울리게 해야함.
                     DispatchQueue.main.async {
                         strongSelf.indicator.stopAnimating()
+                        strongSelf.makeAlertBox(title: "실패", message: "인증번호가 일치하지 않습니다.\n다시시도 바랍니다.", text: "확인") { _ in
+                            strongSelf.navigationController?.popViewController(animated: true)
+                        }
                     }
-                    strongSelf.asyncDismissView()
+                    
                 } else if message.result == register {
                     DispatchQueue.main.async {
                         strongSelf.indicator.stopAnimating()

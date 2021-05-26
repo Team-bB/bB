@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EJp-pA-Hcb">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -11,13 +11,13 @@
         <!--Getting StartedVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="GettingStarted" id="BYZ-38-t0r" customClass="GettingStartedVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GettingStartedVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Koting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNe-jZ-qmj">
-                                <rect key="frame" x="0.0" y="150" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="194" width="375" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,13 +54,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GT8-Ux-cYz" secondAttribute="bottom" constant="200" id="qEE-Wj-jyg"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jkb-he-wzJ"/>
                     <connections>
                         <segue destination="dgF-sK-ccm" kind="presentation" identifier="MeetingList" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="BRj-FX-Gx7"/>
+                        <segue destination="Xof-cP-A9j" kind="show" identifier="PhoneAuth" id="5ym-hH-PON"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-214" y="89"/>
+            <point key="canvasLocation" x="724" y="88.605697151424295"/>
         </scene>
         <!--MeetingList-->
         <scene sceneID="dr4-NI-oWo">
@@ -80,7 +82,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsh-aF-22g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2184" y="88"/>
+            <point key="canvasLocation" x="3123.1999999999998" y="87.256371814092958"/>
         </scene>
         <!--Input Phone NumberVC-->
         <scene sceneID="D6u-qW-Weo">
@@ -91,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgR-gE-LS7">
-                                <rect key="frame" x="120" y="264" width="135" height="36"/>
+                                <rect key="frame" x="120" y="308" width="135" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,13 +112,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="본인 인증을 위한 전화번호를 입력하세요. " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZr-Us-djD">
-                                <rect key="frame" x="0.0" y="138" width="375" height="24"/>
+                                <rect key="frame" x="0.0" y="182" width="375" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-jS-YjS">
-                                <rect key="frame" x="120" y="213" width="135" height="34"/>
+                                <rect key="frame" x="120" y="257" width="135" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -139,11 +141,12 @@
                     <connections>
                         <outlet property="phoneNumberTextField" destination="WhW-jS-YjS" id="3jd-ka-Y6E"/>
                         <outlet property="sendButton" destination="dgR-gE-LS7" id="9u7-nq-tdL"/>
+                        <segue destination="2r8-5M-CvO" kind="show" identifier="AuthNumberCheck" id="FyN-DD-Chw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2E0-ZG-6mA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="89"/>
+            <point key="canvasLocation" x="1640.8" y="88.605697151424295"/>
         </scene>
         <!--Auth Number CheckVC-->
         <scene sceneID="8Wd-nY-Nmu">
@@ -154,7 +157,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88e-KR-YA7">
-                                <rect key="frame" x="120" y="264" width="135" height="36"/>
+                                <rect key="frame" x="120" y="308" width="135" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -173,12 +176,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEw-zk-d1c">
-                                <rect key="frame" x="120" y="213" width="135" height="34"/>
+                                <rect key="frame" x="120" y="257" width="135" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증번호 4자리를 입력하세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5L-zq-aXf">
-                                <rect key="frame" x="0.0" y="138" width="375" height="24"/>
+                                <rect key="frame" x="0.0" y="182" width="375" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -207,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f05-3Q-fOR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1599" y="89"/>
+            <point key="canvasLocation" x="2536.8000000000002" y="88.605697151424295"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="KhB-6Z-wra">
@@ -367,6 +370,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3T-Of-cic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1598" y="800"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gpj-TW-lD0">
+            <objects>
+                <navigationController storyboardIdentifier="GettingStarted" automaticallyAdjustsScrollViewInsets="NO" id="EJp-pA-Hcb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6hN-eJ-etV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FEv-mb-AJQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7rR-PK-Ryx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbZ-Wx-KJB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-215.19999999999999" y="88.605697151424295"/>
         </scene>
     </scenes>
     <resources>

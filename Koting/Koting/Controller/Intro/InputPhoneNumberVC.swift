@@ -11,6 +11,7 @@ class InputPhoneNumberVC: UIViewController {
     
     // MARK:- 변수
     let maxLength = 11
+    let indicator = CustomIndicator()
     
     // MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -22,6 +23,8 @@ class InputPhoneNumberVC: UIViewController {
         phoneNumberTextField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: phoneNumberTextField)
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     
@@ -32,36 +35,43 @@ class InputPhoneNumberVC: UIViewController {
     // MARK:- @IBAction func
     @IBAction func buttonTapped(_ sender: Any) {
         
-            if self.phoneNumberTextField.text != "" {
-                let phoneNumber = self.phoneNumberTextField.text!
-                let isValid = self.isValidPhoneNumber(phoneNumber)
+        indicator.startAnimating(superView: view)
+        
+        if self.phoneNumberTextField.text != "" {
+            let phoneNumber = self.phoneNumberTextField.text!
+            let isValid = self.isValidPhoneNumber(phoneNumber)
+            
+            if isValid {
                 
-                
-                DispatchQueue.global().async {
-                    if isValid {
-                        self.asyncPresentView(identifier: "AuthNumberCheck")
+                UserAPI.shared.phoneNumber = phoneNumber
+                RequestAuthNumberAPI.shared.get(phoneNumber: phoneNumber) { [weak self]result in
+                    guard let strongSelf = self else { return }
+                    
+                    switch result {
+                    case .success(let message):
+                        print(message)
                         
-                        UserAPI.shared.phoneNumber = phoneNumber
-                        RequestAuthNumberAPI.shared.get(phoneNumber: phoneNumber) { [weak self]result in
-                            guard let strongSelf = self else { return }
-                            switch result {
-                            case .success(let message):
-                                print(message)
-                                strongSelf.asyncPresentView(identifier: "AuthNumberCheck")
-                                
-                            case .failure(let error):
-                                print(error)
-//                                DispatchQueue.main.async {
-//                                    self.makeAlertBox(title: "실패", message: "잠시후 다시시도 하세요.", text: "확인")
-//                                }
-                            }
+                        DispatchQueue.main.async {
+                            strongSelf.indicator.stopAnimating()
+                            strongSelf.performSegue(withIdentifier: "AuthNumberCheck", sender: nil)
                         }
-                    } else {
-                        self.makeAlertBox(title: "실패", message: "올바른 전화번호를 입력하세요.", text: "확인")
+
+                        
+                    case .failure(let error):
+                        print(error)
+                        DispatchQueue.main.async {
+                            strongSelf.indicator.stopAnimating()
+                            strongSelf.makeAlertBox(title: "알림", message: "잠시후 다시시도 하세요.", text: "확인")
+                        }
                     }
                 }
-
+            } else {
+                indicator.stopAnimating()
+                self.makeAlertBox(title: "실패", message: "올바른 전화번호를 입력하세요.", text: "확인")
             }
+            
+            
+        }
     }
     
     // MARK:- 구현한 함수

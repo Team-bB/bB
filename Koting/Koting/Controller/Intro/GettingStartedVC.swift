@@ -16,19 +16,27 @@ class GettingStartedVC: UIViewController {
     // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barTintColor = view.backgroundColor
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+
+        
 
     }
 
     // MARK:- @IBAction func
     @IBAction func startButtonTapped(_ sender: Any) {
         
-        
+        // 토큰 확인
         if checkAccountId() == false {
             
-            self.asyncPresentView(identifier: "PhoneAuth")
+            performSegue(withIdentifier: "PhoneAuth", sender: nil)
             
         } else {
             
+            // 메일 인증여부 확인
             indicator.startAnimating(superView: view)
             MailAuthCheckAPI.shared.post() { [weak self] result in
                 
@@ -42,7 +50,9 @@ class GettingStartedVC: UIViewController {
                     UserDefaults.standard.set(authCheck, forKey: "mailAuthChecked")
                     
                     if authCheck {
+                        // 메일 인증자 O
                         guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+                        
                         strongSelf.loginFirebaseUser(email: email)
                         
                         DispatchQueue.main.async {
@@ -50,12 +60,15 @@ class GettingStartedVC: UIViewController {
                             strongSelf.performSegue(withIdentifier: "MeetingList", sender: nil)
                         }
                     } else {
+                        // 메일 인증 X
                         DispatchQueue.main.async {
                             strongSelf.indicator.stopAnimating()
                             strongSelf.makeAlertBox(title: "알림", message: "메일 인증을 완료하세요.", text: "확인")
                         }
                     }
+                    
                 case .failure(let error):
+                    print("서버 꺼짐: \(error)")
                     DispatchQueue.main.async {
                         strongSelf.indicator.stopAnimating()
                     }
