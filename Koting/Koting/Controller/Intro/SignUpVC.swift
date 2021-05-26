@@ -39,13 +39,21 @@ class SignUpVC: UIViewController {
         height.inputView = heightPickerView
         
         sex.delegate = self
+        sex.tintColor = .clear
         college.delegate = self
+        college.tintColor = .clear
         major.delegate = self
+        major.tintColor = .clear
         MBTI.delegate = self
+        MBTI.tintColor = .clear
         age.delegate = self
+        age.tintColor = .clear
         height.delegate = self
+        height.tintColor = .clear
+        
         mail.delegate = self
         nickName.delegate = self
+        
         
         sexPickerView.delegate = self
         collegePickerView.delegate = self
@@ -193,8 +201,8 @@ extension SignUpVC {
     
     func isValidNickname(_ nickName: String?) -> Bool {
         guard let nickName = nickName else { return false }
-        if nickName.count <= 8 && nickName.count > 0 { return true }
-        else { return false }
+        
+        return nickName.count <= 8 && nickName.count > 0
     }
     
     // 채팅서버 createUser
@@ -245,6 +253,8 @@ extension SignUpVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == mail {
             mail.resignFirstResponder()
+            nickName.becomeFirstResponder()
+        } else if textField == nickName {
             nickName.resignFirstResponder()
             sex.becomeFirstResponder()
         }

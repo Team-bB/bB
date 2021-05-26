@@ -42,6 +42,7 @@
 		88849D612644367000E2B1AF /* StrechyHeaderLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88849D602644367000E2B1AF /* StrechyHeaderLayout.swift */; };
 		88869F1926429C0C0078A74F /* MyInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */; };
 		88869F1A26429C0C0078A74F /* MyInfoHeaderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */; };
+		88902EF2265E78BA00B98DB3 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88902EF1265E78BA00B98DB3 /* CustomUITextField.swift */; };
 		88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88984E56264444B200997ED2 /* MyInfoModel.swift */; };
 		88984E5A26444C9B00997ED2 /* StrechyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88984E5926444C9B00997ED2 /* StrechyHeader.swift */; };
 		88984E5D2644614400997ED2 /* UIView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88984E5C2644614400997ED2 /* UIView++.swift */; };
@@ -127,6 +128,7 @@
 		88849D602644367000E2B1AF /* StrechyHeaderLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrechyHeaderLayout.swift; sourceTree = "<group>"; };
 		88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoHeaderVC.swift; sourceTree = "<group>"; };
 		88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyInfoHeaderVC.xib; sourceTree = "<group>"; };
+		88902EF1265E78BA00B98DB3 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		88984E56264444B200997ED2 /* MyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
 		88984E5926444C9B00997ED2 /* StrechyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrechyHeader.swift; sourceTree = "<group>"; };
 		88984E5C2644614400997ED2 /* UIView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++.swift"; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				88984E5C2644614400997ED2 /* UIView++.swift */,
 				88B51DC426496ADD00E460FA /* CustomIndicator.swift */,
 				88000B5A26567F4C008671D2 /* UINavigationBar++.swift */,
+				88902EF1265E78BA00B98DB3 /* CustomUITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
 				88A3AFA42651243100FFF90F /* ConversationVC.swift in Sources */,
+				88902EF2265E78BA00B98DB3 /* CustomUITextField.swift in Sources */,
 				D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */,
 				D392E151264574B500938E85 /* MyMeetingApplicantCell.swift in Sources */,
 				D392E13E264565A300938E85 /* MenuCell.swift in Sources */,

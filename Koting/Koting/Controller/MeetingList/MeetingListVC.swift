@@ -217,19 +217,3 @@ extension MeetingListVC: UITableViewDelegate {
         }
     }
 }
-
-// MARK: - Chat
-//extension MeetingListVC {
-//    func setChatButton() {
-//
-//        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(barButtonSystemItem: .organize,
-//                                                                   target: self,
-//                                                                   action: #selector(didTapChatButton)))
-//    }
-//
-//    @objc func didTapChatButton() {
-//
-//        let nextVC = ConversationVC()
-//        navigationController?.pushViewController(nextVC, animated: true)
-//    }
-//}
