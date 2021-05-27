@@ -12,74 +12,8 @@ import FirebaseAuth
 class SignUpVC: UIViewController {
     
     let form: SignUpForm = SignUpForm()
-    
     let indicator = CustomIndicator()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
 
-        signUpButton.setDefault()
-        signUpButton.setDisable()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: sex)
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: college)
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: major)
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: age)
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: height)
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: MBTI)
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: mail)
-        
-        // MARK:- PickerView 관련
-        sex.inputView = sexPickerView
-        college.inputView = collegePickerView
-        major.inputView = majorPickerView
-        MBTI.inputView = mbtiPikcerView
-        age.inputView = agePickerView
-        height.inputView = heightPickerView
-        
-        sex.delegate = self
-        sex.tintColor = .clear
-        college.delegate = self
-        college.tintColor = .clear
-        major.delegate = self
-        major.tintColor = .clear
-        MBTI.delegate = self
-        MBTI.tintColor = .clear
-        age.delegate = self
-        age.tintColor = .clear
-        height.delegate = self
-        height.tintColor = .clear
-        
-        mail.delegate = self
-        nickName.delegate = self
-        
-        
-        sexPickerView.delegate = self
-        collegePickerView.delegate = self
-        majorPickerView.delegate = self
-        mbtiPikcerView.delegate = self
-        agePickerView.delegate = self
-        heightPickerView.delegate = self
-        
-        sexPickerView.dataSource = self
-        collegePickerView.dataSource = self
-        majorPickerView.dataSource = self
-        mbtiPikcerView.dataSource = self
-        agePickerView.dataSource = self
-        heightPickerView.dataSource = self
-        
-        sexPickerView.tag = 1
-        collegePickerView.tag = 2
-        majorPickerView.tag = 3
-        mbtiPikcerView.tag = 4
-        agePickerView.tag = 5
-        heightPickerView.tag = 6
-        
-        createToolBar()
-    }
-    
-    
     // MARK:- PickerView 선언
     var sexPickerView = UIPickerView()
     var collegePickerView = UIPickerView()
@@ -99,10 +33,23 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var nickName: UITextField!
     
     @IBOutlet var infoArray: Array<UITextField>!
-    
     @IBOutlet weak var signUpButton: UIButton!
     
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        signUpButton.setDefault()
+        signUpButton.setDisable()
+        
+        registerForTextField()
+        registerForKeyboardNotification()
+        setPickerView()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     // MARK:- @IBAction func
     @IBAction func signUpButtonTapped(_ sender: Any) {
@@ -159,6 +106,93 @@ class SignUpVC: UIViewController {
 
 // MARK:- 추가 구현 함수들
 extension SignUpVC {
+    
+    func setPickerView() {
+        sex.inputView = sexPickerView
+        college.inputView = collegePickerView
+        major.inputView = majorPickerView
+        MBTI.inputView = mbtiPikcerView
+        age.inputView = agePickerView
+        height.inputView = heightPickerView
+        
+        sex.delegate = self
+        sex.tintColor = .clear
+        college.delegate = self
+        college.tintColor = .clear
+        major.delegate = self
+        major.tintColor = .clear
+        MBTI.delegate = self
+        MBTI.tintColor = .clear
+        age.delegate = self
+        age.tintColor = .clear
+        height.delegate = self
+        height.tintColor = .clear
+        
+        mail.delegate = self
+        nickName.delegate = self
+        
+        
+        sexPickerView.delegate = self
+        collegePickerView.delegate = self
+        majorPickerView.delegate = self
+        mbtiPikcerView.delegate = self
+        agePickerView.delegate = self
+        heightPickerView.delegate = self
+        
+        sexPickerView.dataSource = self
+        collegePickerView.dataSource = self
+        majorPickerView.dataSource = self
+        mbtiPikcerView.dataSource = self
+        agePickerView.dataSource = self
+        heightPickerView.dataSource = self
+        
+        sexPickerView.tag = 1
+        collegePickerView.tag = 2
+        majorPickerView.tag = 3
+        mbtiPikcerView.tag = 4
+        agePickerView.tag = 5
+        heightPickerView.tag = 6
+        
+        createToolBar()
+    }
+    
+    func registerForTextField() {
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: sex)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: college)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: major)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: age)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: height)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidEndEditingNotification, object: MBTI)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: mail)
+    }
+    
+    func registerForKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardHide(_ notification: Notification) {
+            self.view.transform = .identity
+    }
+    
+    @objc func keyBoardShow(notification: NSNotification) {
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardFrame: NSValue = userInfo.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        
+        if major.isEditing == true {
+            keyboardAnimate(keyboardRectangle: keyboardRectangle, textField: major)
+        }
+    }
+    
+    func keyboardAnimate(keyboardRectangle: CGRect ,textField: UITextField) {
+        
+        guard let textFieldMaxY = textField.superview?.superview?.frame.maxY else { return }
+        
+        if keyboardRectangle.height > (self.view.frame.height - textFieldMaxY) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: (self.view.frame.height - keyboardRectangle.height - textFieldMaxY))
+        }
+    }
     
     private func createToolBar() {
         

@@ -19,6 +19,7 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.isScrollEnabled = false
         
         return tableView
     }()
@@ -264,7 +265,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
             deleteUserDefaults()
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "GettingStarted") as! GettingStartedVC
+            let vc = storyboard.instantiateViewController(withIdentifier: "GettingStarted")
             
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(vc, animated: true)
             

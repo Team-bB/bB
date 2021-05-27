@@ -146,7 +146,7 @@ class GetUserPhotoVC: UIViewController {
             if let firstResult = results.first{
                 self.navigationItem.title = firstResult.identifier
                 print(firstResult)
-                self.predictLabel.text = "\(round((firstResult.confidence)*1000)/10) %의 확률로 \(firstResult.identifier)상 이시네 >____<"
+                self.predictLabel.text = "\(round((firstResult.confidence)*1000)/10) %의 확률로 \(firstResult.identifier)상 이시네요 😆"
                 
                 switch firstResult.identifier {
                 case "강아지":
