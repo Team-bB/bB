@@ -9,11 +9,13 @@ import UIKit
 
 class MyInfoHeaderVC: UIViewController {
 
-    @IBOutlet weak var matchPercentLabel: UILabel!
-    @IBOutlet weak var myAnimalFaceLabel: UILabel!
+
     @IBOutlet weak var myAnimalFaceImage: UIImageView!
+    
+    @IBOutlet weak var myAnimalFace: UILabel!
+    @IBOutlet weak var myMajorAndMBTI: UILabel!
+    @IBOutlet weak var myNickname: UILabel!
     @IBOutlet weak var subHeader: UIView!
-    @IBOutlet weak var nickName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +44,12 @@ class MyInfoHeaderVC: UIViewController {
 
         // 고칠준비
         myAnimalFaceImage.image = UIImage(named: transImage(index: userInfo.animal_idx ?? 1))
-        myAnimalFaceLabel.text = transString(index: userInfo.animal_idx ?? 1)
+        myAnimalFace.text = transString(index: userInfo.animal_idx ?? 1)
         
-        nickName.text = userInfo.nickname
-        nickName.textColor = UIColor(cgColor: tintColor)
-        myAnimalFaceLabel.textColor = .gray
+        myNickname.text = userInfo.nickname
+        myMajorAndMBTI.text = "\(userInfo.major!) | \(userInfo.mbti!)"
+        myAnimalFace.textColor = UIColor(cgColor: tintColor)
+        myMajorAndMBTI.textColor = .gray
 
     }
     

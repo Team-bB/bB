@@ -14,7 +14,7 @@ fileprivate let reuseIdentifier = "cell"
 class MyInfoVC: UIViewController, UINavigationControllerDelegate {
     fileprivate let infoList = MyInfo()
     let indicator = CustomIndicator()
-    
+    let version = "1.0.0"
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
@@ -37,8 +37,6 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
             print(infoData.major!)
             print(infoData.nickname!)
         }
-        
-//        indicator.startAnimating(superView: view)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -87,9 +85,22 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        let cellName = infoList.list[indexPath.section]?[indexPath.row]
         
-        cell.textLabel?.text = infoList.list[indexPath.section]?[indexPath.row]
+        cell.textLabel?.text = cellName
         cell.selectionStyle = .none // 클릭효과 X
+        
+        if cellName == "회원탈퇴" {
+            cell.textLabel?.textColor = #colorLiteral(red: 0.9205395579, green: 0, blue: 0, alpha: 1)
+        } else if cellName == "앱 정보" {
+            let versionLabel = UILabel()
+            versionLabel.frame = CGRect(x: 0, y: 0, width: 50, height: 15)
+            versionLabel.text = version
+            versionLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            
+            cell.accessoryView = versionLabel
+        }
+        
         
         return cell
     }
@@ -125,9 +136,6 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
             
         case "문의하기":
             showMessageView(email: "ghdghkgud@naver.com", subject: "[Koting] 문의사항", body: "Content")
-            break
-            
-        case "동물상 재측정":
             break
             
         case "로그아웃":
