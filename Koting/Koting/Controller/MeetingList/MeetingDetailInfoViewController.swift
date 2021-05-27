@@ -48,13 +48,19 @@ class MeetingDetailInfoViewController: UIViewController {
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
-                }else if finalResult.result == "applyMeetingFailed" {
+                }else if finalResult.result == "applyMeetingApplied" {
                     DispatchQueue.main.async {
-                        strongSelf.makeAlertBox(title: "실패", message: "이미 신청된 미팅입니다.", text: "확인") { (action) in
+                        strongSelf.makeAlertBox(title: "실패", message: "이미 신청한 미팅입니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
-                } else {
+                }else if finalResult.result == "applyMeetingRejected" {
+                    DispatchQueue.main.async {
+                        strongSelf.makeAlertBox(title: "실패", message: "거절된 미팅입니다.", text: "확인") { (action) in
+                            strongSelf.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }else {
                     DispatchQueue.main.async {
                         strongSelf.makeAlertBox(title: "실패", message: "신청이 마감되었습니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
