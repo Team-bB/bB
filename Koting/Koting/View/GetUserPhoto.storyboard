@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Get User PhotoVC-->
+        <!--View Controller-->
         <scene sceneID="BpW-e8-IkK">
             <objects>
-                <viewController storyboardIdentifier="GetUserPhoto" id="oxL-IE-BBd" customClass="GetUserPhotoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GetUserPhoto" id="oxL-IE-BBd" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kh9-OP-GvK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,9 +37,6 @@
                                         <state key="normal" title="재측정" image="camera.badge.ellipsis" catalog="system">
                                             <color key="titleColor" name="AccentColor"/>
                                         </state>
-                                        <connections>
-                                            <action selector="tappedRecheck:" destination="oxL-IE-BBd" eventType="touchUpInside" id="bry-qn-YKV"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -77,11 +74,6 @@
                             <constraint firstItem="mgU-N5-mj2" firstAttribute="leading" secondItem="Usr-09-awS" secondAttribute="leading" constant="15" id="pgw-bO-VQX"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="imageView" destination="j3q-G2-WZJ" id="sU4-a4-LCv"/>
-                        <outlet property="predictLabel" destination="ApW-4M-pZA" id="QE2-GZ-Zkl"/>
-                        <outlet property="recheckButton" destination="R5V-Ue-pTf" id="Lss-kd-5vv"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJD-2B-aF8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

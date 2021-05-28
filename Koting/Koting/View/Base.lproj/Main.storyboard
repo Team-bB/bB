@@ -221,7 +221,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1d-Ca-Sav">
-                                <rect key="frame" x="77.5" y="550.5" width="220" height="36"/>
+                                <rect key="frame" x="77.5" y="506.5" width="220" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="YDi-DL-oKr"/>
@@ -243,13 +243,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="웹 메일 인증 완료후 서비스 이용이 가능합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOx-5K-u7s">
-                                <rect key="frame" x="10" y="130" width="355" height="13.5"/>
+                                <rect key="frame" x="10" y="86" width="355" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="S0L-yk-fCB">
-                                <rect key="frame" x="77.5" y="158.5" width="220" height="352"/>
+                                <rect key="frame" x="77.5" y="114.5" width="220" height="352"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="neZ-qm-6t0">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="68"/>
@@ -397,7 +397,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="zxx-Go-A8g">
-                                <rect key="frame" x="77.5" y="74" width="220" height="53"/>
+                                <rect key="frame" x="77.5" y="30" width="220" height="53"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 웹 메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peJ-7x-fmo">
                                         <rect key="frame" x="0.0" y="0.0" width="41" height="16"/>
@@ -470,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3T-Of-cic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="845"/>
+            <point key="canvasLocation" x="4625" y="842"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gpj-TW-lD0">
@@ -504,12 +504,132 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BX9-UJ-yV5" kind="relationship" relationship="rootViewController" id="at5-P7-XuH"/>
+                        <segue destination="6sB-jP-twZ" kind="relationship" relationship="rootViewController" id="qV7-A8-B7t"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Wy-BF-CVP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="845"/>
+            <point key="canvasLocation" x="1641" y="843"/>
+        </scene>
+        <!--동물상 측정-->
+        <scene sceneID="BSD-RE-dP5">
+            <objects>
+                <viewController storyboardIdentifier="GetUserPhoto" id="6sB-jP-twZ" customClass="GetUserPhotoVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CTM-HA-X7v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH3-Yb-IMH">
+                                <rect key="frame" x="0.0" y="104" width="375" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-bZ-4wE">
+                                <rect key="frame" x="57.5" y="165.5" width="260" height="260"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="Avb-C5-52X"/>
+                                    <constraint firstAttribute="height" constant="260" id="Jaw-oA-EdP"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-ji-5WY">
+                                <rect key="frame" x="57.5" y="480.5" width="260" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="6ie-Ob-2Oq"/>
+                                    <constraint firstAttribute="height" constant="50" id="fdO-AB-c4W"/>
+                                </constraints>
+                                <state key="normal" title="동물상 측정하기"/>
+                                <connections>
+                                    <action selector="measureButtonTapped:" destination="6sB-jP-twZ" eventType="touchUpInside" id="eSK-wG-jja"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5fA-71-dOb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aH3-Yb-IMH" firstAttribute="top" secondItem="5fA-71-dOb" secondAttribute="top" constant="60" id="7Kx-9l-RL5"/>
+                            <constraint firstItem="b7s-bZ-4wE" firstAttribute="centerX" secondItem="CTM-HA-X7v" secondAttribute="centerX" id="CiE-41-p3o"/>
+                            <constraint firstItem="5fA-71-dOb" firstAttribute="trailing" secondItem="aH3-Yb-IMH" secondAttribute="trailing" id="LjY-oO-OjZ"/>
+                            <constraint firstItem="b7s-bZ-4wE" firstAttribute="top" secondItem="aH3-Yb-IMH" secondAttribute="bottom" constant="40" id="Orw-5o-wmI"/>
+                            <constraint firstItem="Kmd-ji-5WY" firstAttribute="top" secondItem="b7s-bZ-4wE" secondAttribute="bottom" constant="55" id="ecu-vd-nIx"/>
+                            <constraint firstItem="Kmd-ji-5WY" firstAttribute="centerX" secondItem="CTM-HA-X7v" secondAttribute="centerX" id="leW-Ak-gDw"/>
+                            <constraint firstItem="aH3-Yb-IMH" firstAttribute="leading" secondItem="5fA-71-dOb" secondAttribute="leading" id="mWj-3A-s5i"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="동물상 측정" id="OHk-sE-bMk"/>
+                    <connections>
+                        <outlet property="imageView" destination="b7s-bZ-4wE" id="6hw-0l-CEe"/>
+                        <outlet property="measureButton" destination="Kmd-ji-5WY" id="vgl-Bh-aqM"/>
+                        <segue destination="nMR-kv-qZ7" kind="show" identifier="MeasureResult" id="Hao-hH-Agg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2U-B8-8Oq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2537" y="844"/>
+        </scene>
+        <!--측정결과-->
+        <scene sceneID="k5N-ep-LPI">
+            <objects>
+                <viewController id="nMR-kv-qZ7" customClass="MeasureResultVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Da-Zi-rrG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4p1-u8-zKn">
+                                <rect key="frame" x="0.0" y="104" width="375" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HND-u6-BmV">
+                                <rect key="frame" x="57.5" y="165.5" width="260" height="260"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="BQE-mA-boS"/>
+                                    <constraint firstAttribute="height" constant="260" id="dIi-ta-jiP"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hS7-x2-KNK">
+                                <rect key="frame" x="57.5" y="480.5" width="260" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LgH-Mi-51C"/>
+                                    <constraint firstAttribute="width" constant="260" id="ojK-EY-b76"/>
+                                </constraints>
+                                <state key="normal" title="다시 측정하기"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gs-Qn-Kdb">
+                                <rect key="frame" x="57.5" y="550.5" width="260" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="AwV-Pr-C1i"/>
+                                    <constraint firstAttribute="height" constant="50" id="pCA-u1-fgi"/>
+                                </constraints>
+                                <state key="normal" title="동물상 사용하기"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BdU-eM-PpS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3gs-Qn-Kdb" firstAttribute="centerX" secondItem="1Da-Zi-rrG" secondAttribute="centerX" id="4yN-zy-hm9"/>
+                            <constraint firstItem="3gs-Qn-Kdb" firstAttribute="top" secondItem="hS7-x2-KNK" secondAttribute="bottom" constant="20" id="GjH-4e-5Ux"/>
+                            <constraint firstItem="4p1-u8-zKn" firstAttribute="top" secondItem="BdU-eM-PpS" secondAttribute="top" constant="60" id="IBF-qv-NBC"/>
+                            <constraint firstItem="4p1-u8-zKn" firstAttribute="leading" secondItem="BdU-eM-PpS" secondAttribute="leading" id="Z3t-Ss-eeA"/>
+                            <constraint firstItem="hS7-x2-KNK" firstAttribute="centerX" secondItem="1Da-Zi-rrG" secondAttribute="centerX" id="faX-Kl-2he"/>
+                            <constraint firstItem="HND-u6-BmV" firstAttribute="top" secondItem="4p1-u8-zKn" secondAttribute="bottom" constant="40" id="oTg-LA-pje"/>
+                            <constraint firstItem="hS7-x2-KNK" firstAttribute="top" secondItem="HND-u6-BmV" secondAttribute="bottom" constant="55" id="wnv-X7-vml"/>
+                            <constraint firstItem="BdU-eM-PpS" firstAttribute="trailing" secondItem="4p1-u8-zKn" secondAttribute="trailing" id="xcq-lo-ege"/>
+                            <constraint firstItem="HND-u6-BmV" firstAttribute="centerX" secondItem="1Da-Zi-rrG" secondAttribute="centerX" id="zLF-yV-J1g"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="측정결과" id="6gX-Zh-pRc"/>
+                    <connections>
+                        <outlet property="imageView" destination="HND-u6-BmV" id="arQ-kW-V69"/>
+                        <outlet property="nextButton" destination="3gs-Qn-Kdb" id="wrv-Dh-btO"/>
+                        <outlet property="remeasureButton" destination="hS7-x2-KNK" id="5Mx-Xh-QR0"/>
+                        <outlet property="resultLabel" destination="4p1-u8-zKn" id="hC5-p1-D28"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGt-wn-U5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3505" y="843"/>
         </scene>
     </scenes>
     <resources>

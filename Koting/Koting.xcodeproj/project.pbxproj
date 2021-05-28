@@ -16,12 +16,14 @@
 		8807147E2660CC5300FD21AA /* FaqDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807147D2660CC5300FD21AA /* FaqDetailVC.swift */; };
 		880714802660CC6600FD21AA /* FaqCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807147F2660CC6600FD21AA /* FaqCell.swift */; };
 		880714822660D49800FD21AA /* GetFaQAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880714812660D49800FD21AA /* GetFaQAPI.swift */; };
+		88199DAB26615D49004FD856 /* GetUserPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88199DAA26615D49004FD856 /* GetUserPhotoVC.swift */; };
+		88199DAD2661691D004FD856 /* MeasureResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88199DAC2661691D004FD856 /* MeasureResultVC.swift */; };
 		881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */; };
 		883B4196264A8B3E007EB33C /* NoticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4195264A8B3E007EB33C /* NoticeVC.swift */; };
 		883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4197264A8DDE007EB33C /* NoticeCell.swift */; };
 		883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4199264AC298007EB33C /* NoticeDetailVC.swift */; };
 		884FB1F52619A37700448B83 /* GetUserPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */; };
-		884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */; };
+		884FB1F92619A3FC00448B83 /* GetUserPhotoVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FB1F82619A3FC00448B83 /* GetUserPhotoVC2.swift */; };
 		88533C2B265B7441009B4668 /* WithdrawalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88533C2A265B7441009B4668 /* WithdrawalDelegate.swift */; };
 		88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA12609D8B500CF7CAC /* UIViewController++.swift */; };
 		88556CA42609D8B500CF7CAC /* UIButton++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CA22609D8B500CF7CAC /* UIButton++.swift */; };
@@ -106,12 +108,14 @@
 		8807147D2660CC5300FD21AA /* FaqDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqDetailVC.swift; sourceTree = "<group>"; };
 		8807147F2660CC6600FD21AA /* FaqCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqCell.swift; sourceTree = "<group>"; };
 		880714812660D49800FD21AA /* GetFaQAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFaQAPI.swift; sourceTree = "<group>"; };
+		88199DAA26615D49004FD856 /* GetUserPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC.swift; sourceTree = "<group>"; };
+		88199DAC2661691D004FD856 /* MeasureResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureResultVC.swift; sourceTree = "<group>"; };
 		881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeetingRoomsAPI.swift; sourceTree = "<group>"; };
 		883B4195264A8B3E007EB33C /* NoticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeVC.swift; sourceTree = "<group>"; };
 		883B4197264A8DDE007EB33C /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 		883B4199264AC298007EB33C /* NoticeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailVC.swift; sourceTree = "<group>"; };
 		884FB1F42619A37700448B83 /* GetUserPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetUserPhoto.storyboard; sourceTree = "<group>"; };
-		884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC.swift; sourceTree = "<group>"; };
+		884FB1F82619A3FC00448B83 /* GetUserPhotoVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC2.swift; sourceTree = "<group>"; };
 		88533C2A265B7441009B4668 /* WithdrawalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalDelegate.swift; sourceTree = "<group>"; };
 		88556CA12609D8B500CF7CAC /* UIViewController++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController++.swift"; sourceTree = "<group>"; };
 		88556CA22609D8B500CF7CAC /* UIButton++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton++.swift"; sourceTree = "<group>"; };
@@ -407,8 +411,10 @@
 				887C404B2608C3F100A641DA /* InputPhoneNumberVC.swift */,
 				887C40552608CC9800A641DA /* AuthNumberCheckVC.swift */,
 				886D82D0260A514C00EE411C /* SignUpVC.swift */,
-				884FB1F82619A3FC00448B83 /* GetUserPhotoVC.swift */,
+				884FB1F82619A3FC00448B83 /* GetUserPhotoVC2.swift */,
 				D328BBEA26554208001502D7 /* animalFaceML.mlmodel */,
+				88199DAA26615D49004FD856 /* GetUserPhotoVC.swift */,
+				88199DAC2661691D004FD856 /* MeasureResultVC.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -646,7 +652,7 @@
 				880714802660CC6600FD21AA /* FaqCell.swift in Sources */,
 				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
 				88000B542653F312008671D2 /* ConversationTableViewCell.swift in Sources */,
-				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
+				884FB1F92619A3FC00448B83 /* GetUserPhotoVC2.swift in Sources */,
 				D328BBED26564753001502D7 /* SimpleMeetingInfoViewController.swift in Sources */,
 				88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */,
 				883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */,
@@ -654,6 +660,7 @@
 				883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */,
 				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				D392E15A26459F5300938E85 /* ApplicantCollectionViewCell.swift in Sources */,
+				88199DAB26615D49004FD856 /* GetUserPhotoVC.swift in Sources */,
 				88A3AFA62651244000FFF90F /* ChatVC.swift in Sources */,
 				889F7F86260890B200B3DA62 /* MyInfoVC.swift in Sources */,
 				88869F1926429C0C0078A74F /* MyInfoHeaderVC.swift in Sources */,
@@ -673,6 +680,7 @@
 				880714822660D49800FD21AA /* GetFaQAPI.swift in Sources */,
 				8807147E2660CC5300FD21AA /* FaqDetailVC.swift in Sources */,
 				88556CB22609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift in Sources */,
+				88199DAD2661691D004FD856 /* MeasureResultVC.swift in Sources */,
 				88556CA42609D8B500CF7CAC /* UIButton++.swift in Sources */,
 				88849D612644367000E2B1AF /* StrechyHeaderLayout.swift in Sources */,
 				8807147C2660CC4600FD21AA /* FaqVC.swift in Sources */,
