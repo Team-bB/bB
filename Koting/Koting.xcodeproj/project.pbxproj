@@ -12,6 +12,10 @@
 		88000B5726567581008671D2 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88000B5626567581008671D2 /* ConversationModel.swift */; };
 		88000B5926567589008671D2 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88000B5826567589008671D2 /* ChatModel.swift */; };
 		88000B5B26567F4C008671D2 /* UINavigationBar++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88000B5A26567F4C008671D2 /* UINavigationBar++.swift */; };
+		8807147C2660CC4600FD21AA /* FaqVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807147B2660CC4600FD21AA /* FaqVC.swift */; };
+		8807147E2660CC5300FD21AA /* FaqDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807147D2660CC5300FD21AA /* FaqDetailVC.swift */; };
+		880714802660CC6600FD21AA /* FaqCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807147F2660CC6600FD21AA /* FaqCell.swift */; };
+		880714822660D49800FD21AA /* GetFaQAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880714812660D49800FD21AA /* GetFaQAPI.swift */; };
 		881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */; };
 		883B4196264A8B3E007EB33C /* NoticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4195264A8B3E007EB33C /* NoticeVC.swift */; };
 		883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4197264A8DDE007EB33C /* NoticeCell.swift */; };
@@ -98,6 +102,10 @@
 		88000B5626567581008671D2 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		88000B5826567589008671D2 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		88000B5A26567F4C008671D2 /* UINavigationBar++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar++.swift"; sourceTree = "<group>"; };
+		8807147B2660CC4600FD21AA /* FaqVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqVC.swift; sourceTree = "<group>"; };
+		8807147D2660CC5300FD21AA /* FaqDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqDetailVC.swift; sourceTree = "<group>"; };
+		8807147F2660CC6600FD21AA /* FaqCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqCell.swift; sourceTree = "<group>"; };
+		880714812660D49800FD21AA /* GetFaQAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFaQAPI.swift; sourceTree = "<group>"; };
 		881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeetingRoomsAPI.swift; sourceTree = "<group>"; };
 		883B4195264A8B3E007EB33C /* NoticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeVC.swift; sourceTree = "<group>"; };
 		883B4197264A8DDE007EB33C /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
@@ -201,6 +209,16 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		8807147A2660CC1800FD21AA /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				8807147B2660CC4600FD21AA /* FaqVC.swift */,
+				8807147F2660CC6600FD21AA /* FaqCell.swift */,
+				8807147D2660CC5300FD21AA /* FaqDetailVC.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
 		883B4194264A8B29007EB33C /* Notice */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +248,7 @@
 				D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */,
 				885BFC28264B84CA0020A210 /* GetNoticeAPI.swift */,
 				885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */,
+				880714812660D49800FD21AA /* GetFaQAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -357,6 +376,7 @@
 		889F7F782608900300B3DA62 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				8807147A2660CC1800FD21AA /* FAQ */,
 				883B4194264A8B29007EB33C /* Notice */,
 				88849D5F2644364600E2B1AF /* ColletionView */,
 				889F7F85260890B200B3DA62 /* MyInfoVC.swift */,
@@ -623,6 +643,7 @@
 				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
 				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
+				880714802660CC6600FD21AA /* FaqCell.swift in Sources */,
 				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
 				88000B542653F312008671D2 /* ConversationTableViewCell.swift in Sources */,
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC.swift in Sources */,
@@ -649,9 +670,12 @@
 				88984E5D2644614400997ED2 /* UIView++.swift in Sources */,
 				889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */,
 				D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */,
+				880714822660D49800FD21AA /* GetFaQAPI.swift in Sources */,
+				8807147E2660CC5300FD21AA /* FaqDetailVC.swift in Sources */,
 				88556CB22609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift in Sources */,
 				88556CA42609D8B500CF7CAC /* UIButton++.swift in Sources */,
 				88849D612644367000E2B1AF /* StrechyHeaderLayout.swift in Sources */,
+				8807147C2660CC4600FD21AA /* FaqVC.swift in Sources */,
 				886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */,
 				88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,

@@ -131,7 +131,8 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         case "공지사항":
             self.asyncPresentView(identifier: "NoticeVC")
             break
-            
+        case "자주 묻는 질문":
+            self.asyncPresentView(identifier: "FAQ")
         case "앱 정보":
             break
             

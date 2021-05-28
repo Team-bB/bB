@@ -1,78 +1,54 @@
 //
-//  NoticeVC.swift
+//  FaqVC.swift
 //  Koting
 //
-//  Created by 임정우 on 2021/05/11.
+//  Created by 임정우 on 2021/05/28.
 //
 
 import UIKit
 
 fileprivate let reuseIdentifier = "cell"
 
-class NoticeVC: UIViewController {
+class FaqVC: UIViewController {
     
     let indicator = CustomIndicator()
     let cellHeight: CGFloat = 80
-    var noticeList: [Notice] = []
-   
+    var faqList: [FaQ] = []
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setTableView()
-        FetchNotices()
+        FetchFaQs()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let noticeDetailVC = segue.destination as? NoticeDetailVC,
+        guard let faqDetailVC = segue.destination as? FaqDetailVC,
               let index = sender as? Int
         else {
             return
         }
-        
-        noticeDetailVC.receivedNotice = noticeList[index]
+        faqDetailVC.receivedFaQ = faqList[index]
     }
     
-    @IBAction func closeButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    fileprivate func setTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = cellHeight
-        
-        tableView.separatorInset.left = 20
-        tableView.separatorInset.right = 20
-        tableView.tableFooterView = UIView()
-        
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-//        tableView.reloadData()
-    }
-    
-    
-    @objc private func didPullToRefresh() {
-        print("Start Refresh")
-        FetchNotices()
-    }
     // MARK: FetchMeetings
-    func FetchNotices() {
+    func FetchFaQs() {
         
         if tableView.refreshControl?.isRefreshing == true {
-            print("-----Refreshing Meetings-----\n")
+            print("-----Refreshing -----\n")
         } else {
             indicator.startAnimating(superView: view)
-            print("-----Fetching Meetings-----\n")
+            print("-----Fetching -----\n")
         }
         
-        GetNoticeAPI.shared.get { [weak self] result in
+        GetFaQAPI.shared.get { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let finalResult):
-                strongSelf.noticeList = finalResult.notice
+                strongSelf.faqList = finalResult.faq
                 
                 DispatchQueue.main.async {
                     strongSelf.indicator.stopAnimating()
@@ -89,19 +65,42 @@ class NoticeVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func setTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = cellHeight
+        
+        tableView.separatorInset.left = 20
+        tableView.separatorInset.right = 20
+        tableView.tableFooterView = UIView()
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+//        tableView.reloadData()
+    }
+    
+    @objc private func didPullToRefresh() {
+        print("Start Refresh")
+        FetchFaQs()
+    }
 }
 
-extension NoticeVC: UITableViewDataSource, UITableViewDelegate {
+extension FaqVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return noticeList.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! NoticeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! FaqCell
         
-        cell.date.textColor = .lightGray
-        cell.title.text = noticeList[indexPath.row].title
-        cell.date.text = noticeList[indexPath.row].date
+//        cell.date.textColor = .lightGray
+//        cell.title.text = noticeList[indexPath.row].title
+//        cell.date.text = noticeList[indexPath.row].date
 
 
         return cell
@@ -114,6 +113,6 @@ extension NoticeVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "NoticeDetail", sender: indexPath.row)
+        performSegue(withIdentifier: "FaqDetail", sender: indexPath.row)
     }
 }

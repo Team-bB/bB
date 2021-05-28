@@ -27,8 +27,18 @@ struct Notice: Codable {
     let date: String
 }
 
+struct FaQ: Codable {
+    let id: Int
+    let title: String
+    let content: String
+}
+
 struct GetNoticeAPIResponse: Codable {
     let notice: [Notice]
+}
+
+struct GetFaQAPIResponse: Codable {
+    let faq: [FaQ]
 }
 
 struct WithdrawalAPIResponse: Codable {
