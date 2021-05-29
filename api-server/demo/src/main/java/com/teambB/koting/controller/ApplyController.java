@@ -111,11 +111,19 @@ public class ApplyController {
     String accountId = object.get("account_id").toString();
     Long meetingId = Long.parseLong(object.get("meeting_id").toString());
 
-    if (applyService.Apply(accountId, meetingId) != null) {
+    Integer result = applyService.applyNotAvailable(accountId, meetingId);
+    if (result == 0) {
+      applyService.Apply(accountId, meetingId);
       retObject.put("result", "applyMeetingSuccess");
     }
-    else {
-      retObject.put("result", "applyMeetingFailed");
+    else if (result == 1) {
+      retObject.put("result", "applyMeetingRejected");
+    }
+    else if (result == 2) {
+      retObject.put("result", "applyMeetingApplied");
+    }
+    else if (result == 3) {
+      retObject.put("result", "applyMeetingFull");
     }
     return retObject;
   }

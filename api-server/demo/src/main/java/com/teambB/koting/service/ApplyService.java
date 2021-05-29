@@ -9,6 +9,7 @@ import com.teambB.koting.repository.ApplyRepository;
 import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,10 +29,31 @@ public class ApplyService {
     return apply.getId();
   }
 
-  public Long Apply(String accountId, Long meetingId) {
+  public Integer applyNotAvailable(String accountId, Long meetingId) {
     Member member = memberRepository.findByAccountId(accountId);
     Meeting meeting = meetingRepository.findById(meetingId);
 
+    // 거절된 미팅
+    List<Apply> apply = applyRepository.findByMemberId(meetingId, member.getId());
+    if (!apply.isEmpty()) {
+      return 1;
+    }
+    // 이미 신청한 미청
+    for (Apply myApply : member.getApplies()) {
+      if (myApply.getMeeting().getId() == meetingId) {
+        return 2;
+      }
+    }
+    // 3명 이상 찼을 경우
+    if (meeting.getApplierCnt() >= 3)
+      return 3;
+    return 0;
+  }
+
+  public Long Apply(String accountId, Long meetingId) {
+    Member member = memberRepository.findByAccountId(accountId);
+    Meeting meeting = meetingRepository.findById(meetingId);
+/*
     // 중복신청 안되게 or 거절당한 미팅 3가지 경우나누기
     for (Apply myApply : member.getApplies()) {
       if (myApply.getMeeting().getId() == meetingId) {
@@ -41,6 +63,8 @@ public class ApplyService {
     // 3명 이상
     if (meeting.getApplierCnt() >= 3)
       return null;
+
+ */
     Apply apply = Apply.createApply(member, meeting);
     Long applyId = join(apply);
     return applyId;
