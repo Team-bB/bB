@@ -4,6 +4,7 @@ import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.ApplyStatus;
 import com.teambB.koting.domain.Member;
 import java.util.List;
+import java.util.Optional;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -39,15 +40,13 @@ public class ApplyRepository {
         .getResultList();
   }
 
-  /*
-  public List<Apply> findAllByMemberId(Long memberId) {
-    return em.createQuery("select a from Apply a where a.meeting.id in ("
-        + "select me from Meeting me where me.memberId in ("
-        + "select m from Member m where m.id = :memberId))", Apply.class)
+  public List<Apply> findByMemberId(Long meetingId, Long memberId) {
+    return em.createQuery("select a from Apply a where a.meeting.id = :meetingId and a.member.id = :memberId and a.applyStatus = :status", Apply.class)
+        .setParameter("meetingId", meetingId)
         .setParameter("memberId", memberId)
+        .setParameter("status", ApplyStatus.REJECT)
         .getResultList();
   }
-*/
 
   public List<Apply> findAllByMemberId(Long memberId) {
     return em.createQuery("select a from Apply a where a.member.id = :memberId", Apply.class)
