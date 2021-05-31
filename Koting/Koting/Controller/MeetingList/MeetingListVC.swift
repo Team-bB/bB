@@ -113,7 +113,7 @@ extension MeetingListVC: UITableViewDataSource {
             if myMeeting == nil {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "NoMyMeetingCell", for: indexPath) as! NoMyMeetingCell
                 cell.buttonCreateMyMeeting = { [unowned self] in
-                    cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .touchUpInside)
+                    cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .primaryActionTriggered)
                 }
                 cell.selectionStyle = .none
                 
