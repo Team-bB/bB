@@ -48,7 +48,7 @@ class MyDoneMeetingVC: UIViewController {
                 strongSelf.doneMeeting = finalResult.result ?? []
 
                 DispatchQueue.main.async {
-                    print(self?.doneMeeting)
+                    print(strongSelf.doneMeeting)
                     strongSelf.tableView.refreshControl?.endRefreshing()
                     strongSelf.tableView.reloadData()
                 }
@@ -113,10 +113,8 @@ extension MyDoneMeetingVC: UITableViewDelegate {
             success(true)
         }
         self.deleteButtonTapped = { [unowned self] in
-            DeleteCompleteMeetingAPI.shared.post(meetingId: doneMeeting[indexPath.row].meeting_id) { [weak self] result in
-                
-                guard let strongSelf = self else { return }
-                
+            DeleteCompleteMeetingAPI.shared.post(meetingId: doneMeeting[indexPath.row].meeting_id) { result in
+
                 switch result {
                 case .success(let finalResult):
                     let result = finalResult.result

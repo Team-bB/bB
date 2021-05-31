@@ -7,7 +7,6 @@
 
 import UIKit
 import Alamofire
-import MaterialComponents.MaterialButtons
 import PanModal
 
 class MeetingListVC: UIViewController {
@@ -20,12 +19,15 @@ class MeetingListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 44))
-        lbl.text = "코팅"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        
+        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        lbl.text = "   동마담"
         lbl.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         lbl.textAlignment = .left
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
         navigationItem.titleView = lbl
+        
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

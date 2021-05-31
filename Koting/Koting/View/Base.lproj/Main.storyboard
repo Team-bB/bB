@@ -26,7 +26,7 @@
                                 <rect key="frame" x="57.5" y="417" width="260" height="50"/>
                                 <color key="backgroundColor" red="0.9428533912" green="0.56377393009999999" blue="0.30973362920000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="HBW-YU-Qfe"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="HBW-YU-Qfe"/>
                                     <constraint firstAttribute="height" constant="50" id="VpZ-ii-TGH"/>
                                 </constraints>
                                 <state key="normal" title="시작하기">
@@ -200,7 +200,7 @@
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1d-Ca-Sav">
                                 <rect key="frame" x="77.5" y="550.5" width="220" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="YDi-DL-oKr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="YDi-DL-oKr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="가입하기"/>
@@ -238,7 +238,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex) 파브로" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L6h-Yd-Suq">
                                                 <rect key="frame" x="0.0" y="19" width="220" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="220" id="NL6-fn-Ty7"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="NL6-fn-Ty7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -383,7 +383,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-sg-g8g">
                                         <rect key="frame" x="0.0" y="19" width="220" height="34"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동국대 웹 메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-t8-0NF">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동국대 웹 메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-t8-0NF">
                                                 <rect key="frame" x="0.0" y="0.0" width="126" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="pop-vN-cj4"/>
@@ -394,7 +394,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text=" @dgu.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-BA-B2z">
                                                 <rect key="frame" x="134" y="0.0" width="86" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="86" id="51q-W9-70Z"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="do2-zl-1tq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -406,6 +406,9 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="Bed-La-CIe"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KRe-Tm-Oyl"/>
@@ -510,7 +513,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-ji-5WY">
                                 <rect key="frame" x="57.5" y="483.5" width="260" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="6ie-Ob-2Oq"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="6ie-Ob-2Oq"/>
                                     <constraint firstAttribute="height" constant="50" id="fdO-AB-c4W"/>
                                 </constraints>
                                 <state key="normal" title="동물상 측정하기"/>
@@ -576,7 +579,7 @@
                                 <rect key="frame" x="57.5" y="483.5" width="260" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LgH-Mi-51C"/>
-                                    <constraint firstAttribute="width" constant="260" id="ojK-EY-b76"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="ojK-EY-b76"/>
                                 </constraints>
                                 <state key="normal" title="다시 측정하기"/>
                                 <connections>
@@ -586,7 +589,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gs-Qn-Kdb">
                                 <rect key="frame" x="57.5" y="553.5" width="260" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="AwV-Pr-C1i"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="AwV-Pr-C1i"/>
                                     <constraint firstAttribute="height" constant="50" id="pCA-u1-fgi"/>
                                 </constraints>
                                 <state key="normal" title="동물상 사용하기"/>

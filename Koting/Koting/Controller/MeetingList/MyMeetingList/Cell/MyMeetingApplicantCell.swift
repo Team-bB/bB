@@ -19,7 +19,7 @@ class MyMeetingApplicantCell: UITableViewCell {
     }
     var currentPage:Int = 0
     
-    var parentVC: UIViewController!
+    weak var parentVC: UIViewController!
     
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -159,7 +159,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
                 applyID = myMeeting?.participant?[2].apply_id
             }
             //print(college ?? "단과대학")
-            RejectMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
+            RejectMeetingAPI.shared.post(applyID: applyID) { result in
 
                 switch result {
                 case .success(let finalResult):
