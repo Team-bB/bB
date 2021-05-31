@@ -13,22 +13,22 @@
 //    // MARK:- View LifeCycle
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
-//        
+//
 //        picker.delegate = self
 //        picker.allowsEditing = true
 //        view.addSubview(imageShadowView)
 //        imageShadowView.addSubview(imageView)
-//        
+//
 //        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTappedImageView(_:)))
 //        imageView.isUserInteractionEnabled = true
 //        imageView.addGestureRecognizer(tapGestureRecognizer)
-//        
+//
 //        imageView.backgroundColor = .lightGray
 //        imageView.contentMode = . scaleAspectFill
 //        imageView.layer.cornerRadius = 30
 //        imageView.clipsToBounds = true
 //        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        
+//
 //        NSLayoutConstraint.activate([
 //                   imageShadowView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 //                   imageShadowView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -41,25 +41,25 @@
 //                   imageView.bottomAnchor.constraint(equalTo: imageShadowView.bottomAnchor),
 //               ])
 //    }
-//    
+//
 //    // MARK: - 변수
 //    let picker = UIImagePickerController()
 //    let imageShadowView: UIView = {
 //        let aView = UIView()
-//        
+//
 //        aView.layer.shadowOffset = CGSize(width: 5, height: 5)
 //        aView.layer.shadowOpacity = 0.7
 //        aView.layer.shadowRadius = 10
 //        aView.layer.shadowColor = UIColor.gray.cgColor
 //        aView.translatesAutoresizingMaskIntoConstraints = false
-//        
+//
 //        return aView
 //    }()
-//    
+//
 //
 //    // MARK:- @IBOutlet
 //    @IBOutlet weak var imageView: UIImageView!
-//    
+//
 //    // MARK:- 구현한 함수
 //    func requestPHPhotoLibraryAuthorization(completion: @escaping () -> Void) {
 //        if #available(iOS 14, *) {
@@ -79,7 +79,7 @@
 //            }
 //        }
 //    }
-//    
+//
 //    func openLibrary() {
 //        self.requestPHPhotoLibraryAuthorization {
 //            DispatchQueue.main.async {
@@ -89,23 +89,23 @@
 //            }
 //        }
 //    }
-//    
+//
 //    @objc func didTappedImageView(_ sender: UIImageView) {
 //        let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 //        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
 //        let library = UIAlertAction(title: "앨범에서 사진 가져오기", style: .default) { action in
 //            self.openLibrary()
 //        }
-//        
+//
 //        alert.addAction(library)
 //        alert.addAction(cancel)
-//        
+//
 //        present(alert, animated: true, completion: nil)
 //        self.present(self.picker, animated: true, completion: nil)
-//        
+//
 //        count += 1
 //    }
-//    
+//
 //    //MARK : connectML
 //
 //    var count = 0
@@ -117,23 +117,23 @@
 //            let library = UIAlertAction(title: "다시 측정할 사진 가져오기", style: .default) { action in
 //                self.openLibrary()
 //            }
-//            
+//
 //            alert.addAction(library)
 //            alert.addAction(cancel)
-//            
+//
 //            present(alert, animated: true, completion: nil)
 //            self.present(self.picker, animated: true, completion: nil)
 //        }
 //        else{
 //            print("error")
 //        }
-//        
+//
 //    }
 //
 //    func predict(image: CIImage){
 //        guard let model = try? VNCoreMLModel(for: animalFaceML(configuration: MLModelConfiguration.init()).model) else {
 //            fatalError("load error")
-//            
+//
 //        }
 //        let request = VNCoreMLRequest (model: model) { (req, error) in
 //            guard let results = req.results as? [VNClassificationObservation] else{
@@ -145,7 +145,7 @@
 //                self.navigationItem.title = firstResult.identifier
 //                print(firstResult)
 //                self.predictLabel.text = "\(round((firstResult.confidence)*1000)/10) %로 \(firstResult.identifier)상이 가장높게 나왔습니다.😆"
-//                
+//
 //                switch firstResult.identifier {
 //                case "강아지":
 //                    self.imageView.image = #imageLiteral(resourceName: "dog")
@@ -160,12 +160,12 @@
 //                default:
 //                    print("error")
 //                }
-//                
+//
 //            }
-//            
+//
 //        }
 //        let handler = VNImageRequestHandler(ciImage: image)
-//           
+//
 //        do{
 //            try handler.perform([request])
 //        }catch{
@@ -178,7 +178,7 @@
 //// MARK:- UIImagePickerControllerDelegate
 //extension GetUserPhotoVC2: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        
+//
 //        if let originalImage: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
 //                guard let ciimage = CIImage(image: originalImage) else {
 //                    fatalError("CIImage error")

@@ -13,7 +13,7 @@ import Vision
 class GetUserPhotoVC: UIViewController {
     let indicator = CustomIndicator()
     var percent: String?
-    var animalFace: String?
+    var animalFace: AnimalFace?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var measureButton: UIButton!
@@ -21,8 +21,16 @@ class GetUserPhotoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageView.isUserInteractionEnabled = true
         setImageView()
         addGestureToIMG()
+        measureButton.setDisable()
+        measureButton.layer.cornerRadius = 12
+        measureButton.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
+        measureButton.layer.shadowOpacity = 0.5
+        measureButton.layer.shadowOffset = CGSize.zero
+        measureButton.layer.shadowRadius = 4
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,7 +76,7 @@ extension GetUserPhotoVC: UIImagePickerControllerDelegate, UINavigationControlle
     }
 
     func presentPhotoActionSheet() {
-        let actionSheet = UIAlertController(title: "프로필 사진",
+        let actionSheet = UIAlertController(title: "사진 가져오기",
                                             message: "사진을 어떻게 가져올까요?",
                                             preferredStyle: .actionSheet)
         
@@ -94,8 +102,15 @@ extension GetUserPhotoVC: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         print(info)
+        
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
         self.imageView.image = selectedImage
+        
+        if imageView.image != nil && imageView.image != UIImage(named: "defaultImage") {
+            measureButton.setEnable()
+            measureButton.setTitleColor(.white, for: .normal)
+            measureButton.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.8196078431, blue: 0.3450980392, alpha: 1)
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -154,40 +169,40 @@ extension GetUserPhotoVC: UIImagePickerControllerDelegate, UINavigationControlle
         
         indicator.startAnimating(superView: view)
         
-        guard let model = try? VNCoreMLModel(for: animalFaceML(configuration: MLModelConfiguration.init()).model) else {
-            fatalError("load error")
-        }
-        
-        let request = VNCoreMLRequest (model: model) { [weak self] req, error in
-            
-            guard let strongSelf = self else { return }
-            guard let results = req.results as? [VNClassificationObservation] else {
-                fatalError ("ML fail")
+        DispatchQueue.global().async {
+            guard let model = try? VNCoreMLModel(for: animalFaceML(configuration: MLModelConfiguration.init()).model) else {
+                fatalError("load error")
             }
             
-            print ("예상결과: ")
-            print (results)
-            if let firstResult = results.first{
+            let request = VNCoreMLRequest (model: model) { [weak self] req, error in
                 
-                strongSelf.percent = "\(round((firstResult.confidence) * 1000) / 10)"
-                strongSelf.animalFace = firstResult.identifier
+                guard let strongSelf = self else { return }
+                guard let results = req.results as? [VNClassificationObservation] else {
+                    fatalError ("ML fail")
+                }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                    strongSelf.indicator.stopAnimating()
-                    strongSelf.performSegue(withIdentifier: "MeasureResult", sender: nil)
+                print ("예상결과: ")
+                print (results)
+                if let firstResult = results.first{
+                    
+                    strongSelf.percent = "\(round((firstResult.confidence) * 1000) / 10)"
+                    strongSelf.animalFace = AnimalFace(rawValue: firstResult.identifier)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        strongSelf.indicator.stopAnimating()
+                        strongSelf.performSegue(withIdentifier: "MeasureResult", sender: nil)
+                    }
                 }
             }
-            
+            let handler = VNImageRequestHandler(ciImage: image)
+
+            do{
+                try handler.perform([request])
+            }catch{
+                print(error)
+            }
         }
-//
-//        let handler = VNImageRequestHandler(ciImage: image)
-//
-//        do{
-//            try handler.perform([request])
-//        }catch{
-//            print(error)
-//        }
-        
+
     }
 
 }

@@ -21,6 +21,9 @@ class SignUpAPI {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
+        guard let animalIndex = UserDefaults.standard.value(forKey: "animalIndex") as? String else { return }
+    
+
         //POST로 보낼 정보
         let params = [
             "nickname" : paramArray[0].text!,
@@ -31,7 +34,7 @@ class SignUpAPI {
             "mbti": paramArray[4].text!,
             "age": paramArray[5].text!,
             "height": paramArray[6].text!,
-            "animalIdx":"1",
+            "animalIdx": animalIndex,
             "email" :paramArray[7].text! + "@dgu.ac.kr"
                     ] as Dictionary
         
