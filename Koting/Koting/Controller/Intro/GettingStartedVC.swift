@@ -12,6 +12,7 @@ import FirebaseAuth
 class GettingStartedVC: UIViewController {
     
     let indicator = CustomIndicator()
+    @IBOutlet weak var startButton: UIButton!
     
     // MARK:- View LifeCycle
     override func viewDidLoad() {
@@ -23,7 +24,7 @@ class GettingStartedVC: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
 
         
-
+        startButton.setEnable()
     }
 
     // MARK:- @IBAction func

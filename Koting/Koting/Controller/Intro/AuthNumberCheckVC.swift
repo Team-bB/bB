@@ -19,7 +19,6 @@ class AuthNumberCheckVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sendButton.setDefault()
         sendButton.setDisable()
         
         authNumberTextField.becomeFirstResponder()

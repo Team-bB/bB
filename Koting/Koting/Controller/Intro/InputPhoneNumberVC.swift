@@ -16,7 +16,7 @@ class InputPhoneNumberVC: UIViewController {
     // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        sendButton.setDefault()
+
         sendButton.setDisable()
         
         phoneNumberTextField.becomeFirstResponder()

@@ -92,8 +92,7 @@ class MeetingDetailInfoViewController: UIViewController {
             heightLabel.text = "\(height)cm"
             imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
             numberOfParticipant.text = "\(meeting.player)"
-            applyBtnTapped.layer.borderWidth = 0.3
-            applyBtnTapped.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            applyBtnTapped.setEnable(enable: true, backgroundColor: #colorLiteral(red: 0.1882352978, green: 0.8196078539, blue: 0.3450980484, alpha: 1))
             contentLabel.text = meeting.link
             nickNameLabel.text = owner.nickname
         }

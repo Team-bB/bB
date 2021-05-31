@@ -22,6 +22,7 @@ class MeasureResultVC: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     @IBAction func remeasureButtonTapped(_ sender: Any) {

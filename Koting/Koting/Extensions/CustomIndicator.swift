@@ -15,7 +15,7 @@ class CustomIndicator: UIView {
    override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6972082277)
         
         self.addSubview(NVActivityIndicatorView(
             frame: CGRect(
@@ -23,7 +23,7 @@ class CustomIndicator: UIView {
                 size: CGSize(width: 100, height: 100)
             ),
             type: .ballBeat,
-            color: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1),
+            color: #colorLiteral(red: 0.9975556731, green: 0.493971467, blue: 0.2088408768, alpha: 1),
             padding: 0
         ))
 

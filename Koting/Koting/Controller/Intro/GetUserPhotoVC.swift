@@ -31,6 +31,9 @@ class GetUserPhotoVC: UIViewController {
         measureButton.layer.shadowOffset = CGSize.zero
         measureButton.layer.shadowRadius = 4
         
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

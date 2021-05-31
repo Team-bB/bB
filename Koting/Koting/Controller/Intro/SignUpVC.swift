@@ -39,7 +39,6 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        signUpButton.setDefault()
         signUpButton.setDisable()
         
         registerForTextField()
