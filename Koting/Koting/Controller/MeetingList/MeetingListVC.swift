@@ -113,7 +113,7 @@ extension MeetingListVC: UITableViewDataSource {
             if myMeeting == nil {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "NoMyMeetingCell", for: indexPath) as! NoMyMeetingCell
                 cell.buttonCreateMyMeeting = { [unowned self] in
-                    cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .touchUpInside)
+                    cell.noMyMeeting.addTarget(self, action: #selector(tap), for: .primaryActionTriggered)
                 }
                 cell.selectionStyle = .none
                 
@@ -209,7 +209,7 @@ extension MeetingListVC: UITableViewDelegate {
                 let vc = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MyMeetingInfo") as! MyMeetingInfoViewController
                 vc.meeting = myMeeting
                 presentPanModal(vc)
-            }
+            }else {print("clicked!!!")}
         }else {
             let vc = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MeetingDetailInfo") as! MeetingDetailInfoViewController
             vc.meeting = meetings[indexPath.row]
