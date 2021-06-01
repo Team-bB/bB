@@ -898,11 +898,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-<<<<<<< HEAD
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teamkook6;
-=======
 				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teamb;
->>>>>>> 2735c42cf7e417a83a8b0307237b26b34ef50304
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
