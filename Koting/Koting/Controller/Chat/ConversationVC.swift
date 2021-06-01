@@ -18,7 +18,9 @@ class ConversationVC: UIViewController {
         
         table.register(ConversationTableViewCell.self,
                        forCellReuseIdentifier: ConversationTableViewCell.identifier)
+        table.tableFooterView = UIView()
         table.isHidden = true
+        table.tableFooterView?.isHidden = true
         
         return table
     }()
@@ -37,7 +39,8 @@ class ConversationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.largeTitleDisplayMode = .never
+        setNavigation()
+        
         view.addSubview(tableView)
         view.addSubview(noConversationsLabel)
         
@@ -54,6 +57,21 @@ class ConversationVC: UIViewController {
                                             y: (view.bounds.height - 100) / 2,
                                             width: view.bounds.width - 20,
                                             height: 100)
+    }
+    
+    private func setNavigation() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.isTranslucent = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    
+        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        lbl.text = "   채팅"
+        lbl.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        lbl.textAlignment = .left
+        lbl.font = UIFont.boldSystemFont(ofSize: 20)
+        navigationItem.titleView = lbl
     }
     
     private func setupTableView() {
@@ -75,11 +93,13 @@ class ConversationVC: UIViewController {
                 
                 guard !conversations.isEmpty else {
                     self?.tableView.isHidden = true
+                    self?.tableView.tableFooterView?.isHidden = true
                     self?.noConversationsLabel.isHidden = false
                     return
                 }
                 self?.noConversationsLabel.isHidden = true
                 self?.tableView.isHidden = false
+                self?.tableView.tableFooterView?.isHidden = false
                 self?.conversations = conversations
                 
                 DispatchQueue.main.async {
@@ -137,7 +157,7 @@ extension ConversationVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 70
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -156,11 +176,10 @@ extension ConversationVC: UITableViewDelegate, UITableViewDataSource {
                 let otherUserEmail = strongSelf.conversations[indexPath.row].otherUserEmail
                 tableView.beginUpdates()
                 
-                DatabaseManager.shared.deleteConversation(conversationId: conversationId, other: otherUserEmail) { [weak self] success in
+                DatabaseManager.shared.deleteConversation(conversationId: conversationId, other: otherUserEmail) { success in
                     
                     if success {
-//                        self?.conversations.remove(at: indexPath.row)
-//                        tableView.deleteRows(at: [indexPath], with: .left)
+                        print("💬✅ 대화방 삭제완료")
                     }
                 }
             }

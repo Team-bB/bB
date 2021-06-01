@@ -63,7 +63,7 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
         let myInfoHearder = MyInfoHeaderVC(nibName: "MyInfoHeaderVC", bundle: nil)
         if let header = myInfoHearder.view {
             tableView.tableHeaderView = header
-            tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 290)
+            tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 265)
         }
     }
 }
@@ -92,7 +92,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none // 클릭효과 X
         
         if cellName == "회원탈퇴" {
-            cell.textLabel?.textColor = #colorLiteral(red: 0.9205395579, green: 0, blue: 0, alpha: 1)
+            cell.textLabel?.textColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
         } else if cellName == "앱 정보" {
             let versionLabel = UILabel()
             versionLabel.frame = CGRect(x: 0, y: 0, width: 50, height: 15)
@@ -132,7 +132,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
             self.asyncPresentView(identifier: "NoticeVC")
             break
         case "자주 묻는 질문":
-            self.asyncPresentView(identifier: "FAQ")
+            self.asyncPresentView(identifier: "Faq")
         case "앱 정보":
             break
             

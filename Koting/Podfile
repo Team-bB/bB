@@ -6,15 +6,14 @@ target 'Koting' do
   use_frameworks!
 
   # Pods for Koting
-pod 'Alamofire'
-pod 'MaterialComponents/Buttons'
-pod 'PanModal'
-pod 'NVActivityIndicatorView'
-pod 'MaterialComponents/BottomAppBar'
-pod 'PagingKit'
+  pod 'Alamofire'
+  pod 'PanModal'
+  pod 'NVActivityIndicatorView'
+  pod 'PagingKit'
 
-# For Chat
-pod 'Firebase/Database'
-pod 'Firebase/Auth'
-pod 'MessageKit'
+  # For Chat
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'MessageKit'
 end
+

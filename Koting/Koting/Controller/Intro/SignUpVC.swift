@@ -39,7 +39,6 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        signUpButton.setDefault()
         signUpButton.setDisable()
         
         registerForTextField()
@@ -66,7 +65,9 @@ class SignUpVC: UIViewController {
                 switch result {
                 case .success(let message):
                     
-                    let myInfo = Owner(college: strongSelf.college.text, major: strongSelf.major.text, sex: strongSelf.sex.text, mbti: strongSelf.MBTI.text, animal_idx: 1, age: Int(strongSelf.age.text!), height: Int(strongSelf.height.text!), nickname: strongSelf.nickName.text)
+                    guard let animalIdx = UserDefaults.standard.value(forKey: "animalIndex") as? String else { return }
+                    
+                    let myInfo = Owner(college: strongSelf.college.text, major: strongSelf.major.text, sex: strongSelf.sex.text, mbti: strongSelf.MBTI.text, animal_idx: Int(animalIdx), age: Int(strongSelf.age.text!), height: Int(strongSelf.height.text!), nickname: strongSelf.nickName.text)
                     
                     UserDefaults.standard.set(try? PropertyListEncoder().encode(myInfo), forKey:"myInfo")
                     UserDefaults.standard.set(message.result, forKey: "accountId")

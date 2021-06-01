@@ -22,23 +22,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT8-Ux-cYz" customClass="CustomButton" customModule="Koting" customModuleProvider="target">
-                                <rect key="frame" x="127.5" y="417" width="120" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT8-Ux-cYz">
+                                <rect key="frame" x="57.5" y="417" width="260" height="50"/>
+                                <color key="backgroundColor" red="0.9428533912" green="0.56377393009999999" blue="0.30973362920000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="HBW-YU-Qfe"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="HBW-YU-Qfe"/>
                                     <constraint firstAttribute="height" constant="50" id="VpZ-ii-TGH"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vod-8I-osX"/>
                                 </constraints>
                                 <state key="normal" title="시작하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nfr-O5-bY6"/>
                                 </connections>
@@ -56,6 +49,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="jkb-he-wzJ"/>
                     <connections>
+                        <outlet property="startButton" destination="GT8-Ux-cYz" id="xpQ-Ek-97v"/>
                         <segue destination="dgF-sK-ccm" kind="presentation" identifier="MeetingList" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="BRj-FX-Gx7"/>
                         <segue destination="Xof-cP-A9j" kind="show" identifier="PhoneAuth" id="5ym-hH-PON"/>
                     </connections>
@@ -84,7 +78,7 @@
             </objects>
             <point key="canvasLocation" x="3123.1999999999998" y="87.256371814092958"/>
         </scene>
-        <!--Input Phone NumberVC-->
+        <!--전화번호 입력-->
         <scene sceneID="D6u-qW-Weo">
             <objects>
                 <viewController storyboardIdentifier="PhoneAuth" modalPresentationStyle="fullScreen" id="Xof-cP-A9j" customClass="InputPhoneNumberVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,19 +88,8 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgR-gE-LS7">
                                 <rect key="frame" x="120" y="308" width="135" height="36"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="인증번호 전송"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath=".backgroundColor">
-                                        <color key="value" systemColor="opaqueSeparatorColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="buttonTapped:" destination="Xof-cP-A9j" eventType="touchUpInside" id="zXa-Iv-x4T"/>
                                 </connections>
@@ -137,7 +120,7 @@
                             <constraint firstItem="8ZO-Ef-jfr" firstAttribute="trailing" secondItem="dgR-gE-LS7" secondAttribute="trailing" constant="120" id="f1T-cW-bT0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="COL-YS-ti9"/>
+                    <navigationItem key="navigationItem" title="전화번호 입력" id="COL-YS-ti9"/>
                     <connections>
                         <outlet property="phoneNumberTextField" destination="WhW-jS-YjS" id="3jd-ka-Y6E"/>
                         <outlet property="sendButton" destination="dgR-gE-LS7" id="9u7-nq-tdL"/>
@@ -148,7 +131,7 @@
             </objects>
             <point key="canvasLocation" x="1640.8" y="88.605697151424295"/>
         </scene>
-        <!--Auth Number CheckVC-->
+        <!--인증번호 입력-->
         <scene sceneID="8Wd-nY-Nmu">
             <objects>
                 <viewController storyboardIdentifier="AuthNumberCheck" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="2r8-5M-CvO" customClass="AuthNumberCheckVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
@@ -158,17 +141,11 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88e-KR-YA7">
                                 <rect key="frame" x="120" y="308" width="135" height="36"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="확인"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath=".backgroundColor">
-                                        <color key="value" systemColor="opaqueSeparatorColor"/>
+                                        <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -201,7 +178,7 @@
                             <constraint firstItem="88e-KR-YA7" firstAttribute="top" secondItem="PEw-zk-d1c" secondAttribute="bottom" constant="17" id="wk5-Dj-6Jg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8Rp-be-ymk"/>
+                    <navigationItem key="navigationItem" title="인증번호 입력" id="8Rp-be-ymk"/>
                     <connections>
                         <outlet property="authNumberTextField" destination="PEw-zk-d1c" id="yUV-4z-oZb"/>
                         <outlet property="sendButton" destination="88e-KR-YA7" id="vCe-Zx-sfc"/>
@@ -221,13 +198,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1d-Ca-Sav">
-                                <rect key="frame" x="77.5" y="506.5" width="220" height="36"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <rect key="frame" x="77.5" y="550.5" width="220" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="YDi-DL-oKr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="YDi-DL-oKr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="가입하기"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -243,13 +218,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="웹 메일 인증 완료후 서비스 이용이 가능합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOx-5K-u7s">
-                                <rect key="frame" x="10" y="86" width="355" height="13.5"/>
+                                <rect key="frame" x="10" y="130" width="355" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="S0L-yk-fCB">
-                                <rect key="frame" x="77.5" y="114.5" width="220" height="352"/>
+                                <rect key="frame" x="77.5" y="158.5" width="220" height="352"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="neZ-qm-6t0">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="68"/>
@@ -263,7 +238,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex) 파브로" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L6h-Yd-Suq">
                                                 <rect key="frame" x="0.0" y="19" width="220" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="220" id="NL6-fn-Ty7"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="NL6-fn-Ty7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -397,7 +372,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="zxx-Go-A8g">
-                                <rect key="frame" x="77.5" y="30" width="220" height="53"/>
+                                <rect key="frame" x="77.5" y="74" width="220" height="53"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 웹 메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peJ-7x-fmo">
                                         <rect key="frame" x="0.0" y="0.0" width="41" height="16"/>
@@ -408,7 +383,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-sg-g8g">
                                         <rect key="frame" x="0.0" y="19" width="220" height="34"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동국대 웹 메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-t8-0NF">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동국대 웹 메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-t8-0NF">
                                                 <rect key="frame" x="0.0" y="0.0" width="126" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="pop-vN-cj4"/>
@@ -419,7 +394,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text=" @dgu.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-BA-B2z">
                                                 <rect key="frame" x="134" y="0.0" width="86" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="86" id="51q-W9-70Z"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="do2-zl-1tq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -431,6 +406,9 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="Bed-La-CIe"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KRe-Tm-Oyl"/>
@@ -519,13 +497,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH3-Yb-IMH">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH3-Yb-IMH">
                                 <rect key="frame" x="0.0" y="104" width="375" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-bZ-4wE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-bZ-4wE">
                                 <rect key="frame" x="57.5" y="165.5" width="260" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Avb-C5-52X"/>
@@ -533,9 +511,9 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-ji-5WY">
-                                <rect key="frame" x="57.5" y="480.5" width="260" height="50"/>
+                                <rect key="frame" x="57.5" y="483.5" width="260" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="6ie-Ob-2Oq"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="6ie-Ob-2Oq"/>
                                     <constraint firstAttribute="height" constant="50" id="fdO-AB-c4W"/>
                                 </constraints>
                                 <state key="normal" title="동물상 측정하기"/>
@@ -543,17 +521,26 @@
                                     <action selector="measureButtonTapped:" destination="6sB-jP-twZ" eventType="touchUpInside" id="eSK-wG-jja"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상단 탭 - 사진을 업로드 또는 수정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FG7-uy-agY">
+                                <rect key="frame" x="0.0" y="430.5" width="375" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5fA-71-dOb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aH3-Yb-IMH" firstAttribute="top" secondItem="5fA-71-dOb" secondAttribute="top" constant="60" id="7Kx-9l-RL5"/>
+                            <constraint firstItem="FG7-uy-agY" firstAttribute="top" secondItem="b7s-bZ-4wE" secondAttribute="bottom" constant="5" id="8vk-Vy-fnU"/>
+                            <constraint firstItem="Kmd-ji-5WY" firstAttribute="top" secondItem="FG7-uy-agY" secondAttribute="bottom" constant="35" id="AVI-PD-4wG"/>
                             <constraint firstItem="b7s-bZ-4wE" firstAttribute="centerX" secondItem="CTM-HA-X7v" secondAttribute="centerX" id="CiE-41-p3o"/>
                             <constraint firstItem="5fA-71-dOb" firstAttribute="trailing" secondItem="aH3-Yb-IMH" secondAttribute="trailing" id="LjY-oO-OjZ"/>
                             <constraint firstItem="b7s-bZ-4wE" firstAttribute="top" secondItem="aH3-Yb-IMH" secondAttribute="bottom" constant="40" id="Orw-5o-wmI"/>
-                            <constraint firstItem="Kmd-ji-5WY" firstAttribute="top" secondItem="b7s-bZ-4wE" secondAttribute="bottom" constant="55" id="ecu-vd-nIx"/>
+                            <constraint firstItem="FG7-uy-agY" firstAttribute="leading" secondItem="5fA-71-dOb" secondAttribute="leading" id="dst-FU-Mhj"/>
                             <constraint firstItem="Kmd-ji-5WY" firstAttribute="centerX" secondItem="CTM-HA-X7v" secondAttribute="centerX" id="leW-Ak-gDw"/>
                             <constraint firstItem="aH3-Yb-IMH" firstAttribute="leading" secondItem="5fA-71-dOb" secondAttribute="leading" id="mWj-3A-s5i"/>
+                            <constraint firstItem="5fA-71-dOb" firstAttribute="trailing" secondItem="FG7-uy-agY" secondAttribute="trailing" id="zpW-Is-1vH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="동물상 측정" id="OHk-sE-bMk"/>
@@ -575,7 +562,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4p1-u8-zKn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4p1-u8-zKn">
                                 <rect key="frame" x="0.0" y="104" width="375" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -589,21 +576,33 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hS7-x2-KNK">
-                                <rect key="frame" x="57.5" y="480.5" width="260" height="50"/>
+                                <rect key="frame" x="57.5" y="483.5" width="260" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LgH-Mi-51C"/>
-                                    <constraint firstAttribute="width" constant="260" id="ojK-EY-b76"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="ojK-EY-b76"/>
                                 </constraints>
                                 <state key="normal" title="다시 측정하기"/>
+                                <connections>
+                                    <action selector="remeasureButtonTapped:" destination="nMR-kv-qZ7" eventType="touchUpInside" id="7lT-yO-rM2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gs-Qn-Kdb">
-                                <rect key="frame" x="57.5" y="550.5" width="260" height="50"/>
+                                <rect key="frame" x="57.5" y="553.5" width="260" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="AwV-Pr-C1i"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="AwV-Pr-C1i"/>
                                     <constraint firstAttribute="height" constant="50" id="pCA-u1-fgi"/>
                                 </constraints>
                                 <state key="normal" title="동물상 사용하기"/>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="nMR-kv-qZ7" eventType="touchUpInside" id="AOn-s0-PFA"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상단 탭 - 사진을 업로드 또는 수정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xol-gM-z6X">
+                                <rect key="frame" x="0.0" y="430.5" width="375" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BdU-eM-PpS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -611,20 +610,25 @@
                             <constraint firstItem="3gs-Qn-Kdb" firstAttribute="centerX" secondItem="1Da-Zi-rrG" secondAttribute="centerX" id="4yN-zy-hm9"/>
                             <constraint firstItem="3gs-Qn-Kdb" firstAttribute="top" secondItem="hS7-x2-KNK" secondAttribute="bottom" constant="20" id="GjH-4e-5Ux"/>
                             <constraint firstItem="4p1-u8-zKn" firstAttribute="top" secondItem="BdU-eM-PpS" secondAttribute="top" constant="60" id="IBF-qv-NBC"/>
+                            <constraint firstItem="xol-gM-z6X" firstAttribute="top" secondItem="HND-u6-BmV" secondAttribute="bottom" constant="5" id="Tm8-gI-zYp"/>
                             <constraint firstItem="4p1-u8-zKn" firstAttribute="leading" secondItem="BdU-eM-PpS" secondAttribute="leading" id="Z3t-Ss-eeA"/>
+                            <constraint firstItem="xol-gM-z6X" firstAttribute="leading" secondItem="BdU-eM-PpS" secondAttribute="leading" id="cvQ-5A-hej"/>
                             <constraint firstItem="hS7-x2-KNK" firstAttribute="centerX" secondItem="1Da-Zi-rrG" secondAttribute="centerX" id="faX-Kl-2he"/>
                             <constraint firstItem="HND-u6-BmV" firstAttribute="top" secondItem="4p1-u8-zKn" secondAttribute="bottom" constant="40" id="oTg-LA-pje"/>
-                            <constraint firstItem="hS7-x2-KNK" firstAttribute="top" secondItem="HND-u6-BmV" secondAttribute="bottom" constant="55" id="wnv-X7-vml"/>
+                            <constraint firstItem="hS7-x2-KNK" firstAttribute="top" secondItem="xol-gM-z6X" secondAttribute="bottom" constant="35" id="snO-aI-Sue"/>
+                            <constraint firstItem="xol-gM-z6X" firstAttribute="trailing" secondItem="BdU-eM-PpS" secondAttribute="trailing" id="wGj-6q-0KE"/>
                             <constraint firstItem="BdU-eM-PpS" firstAttribute="trailing" secondItem="4p1-u8-zKn" secondAttribute="trailing" id="xcq-lo-ege"/>
                             <constraint firstItem="HND-u6-BmV" firstAttribute="centerX" secondItem="1Da-Zi-rrG" secondAttribute="centerX" id="zLF-yV-J1g"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="측정결과" id="6gX-Zh-pRc"/>
                     <connections>
+                        <outlet property="animalFaceLabel" destination="xol-gM-z6X" id="3e6-6d-RKO"/>
                         <outlet property="imageView" destination="HND-u6-BmV" id="arQ-kW-V69"/>
                         <outlet property="nextButton" destination="3gs-Qn-Kdb" id="wrv-Dh-btO"/>
                         <outlet property="remeasureButton" destination="hS7-x2-KNK" id="5Mx-Xh-QR0"/>
                         <outlet property="resultLabel" destination="4p1-u8-zKn" id="hC5-p1-D28"/>
+                        <segue destination="BX9-UJ-yV5" kind="show" identifier="SignUp" id="KlI-o4-ZjX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGt-wn-U5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -633,14 +637,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="defaultProfile" width="256" height="256"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

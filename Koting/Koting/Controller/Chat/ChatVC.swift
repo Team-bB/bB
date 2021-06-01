@@ -113,7 +113,7 @@ class ChatVC: MessagesViewController {
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         let sender = message.sender
         if sender.senderId == selfSender?.senderId {
-            return #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            return UIColor(cgColor: tintColor)
         }
         return .secondarySystemBackground
     }

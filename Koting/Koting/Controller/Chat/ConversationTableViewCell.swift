@@ -13,15 +13,16 @@ class ConversationTableViewCell: UITableViewCell {
     
     private let userNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 21, weight: .bold)
-        
+        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        label.textColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)
         return label
     }()
     
     private let userMessageLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: 13, weight: .regular)
         label.numberOfLines = 0
+        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         
         return label
     }()
@@ -42,13 +43,13 @@ class ConversationTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         userNameLabel.frame = CGRect(x: 20,
-                                     y: 20,
+                                     y: 15,
                                      width: contentView.bounds.width - 20 - 100 ,
                                      height: 20)
         
         userMessageLabel.frame = CGRect(x: 20,
-                                     y: contentView.bounds.height / 2,
-                                     width: contentView.bounds.width - 20 - 100 ,
+                                     y: 35,
+                                     width: contentView.bounds.width - 40,
                                      height: (contentView.bounds.height - 20) / 2)
     }
     

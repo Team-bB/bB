@@ -148,14 +148,12 @@ extension DatabaseManager {
     public func createNewConversation(with otherUserEmail: String, name: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
         
         // ⚠️ UserDefault에서 닉네임도 불러와야함 ⚠️
-//        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
-//              let currentName = UserDefaults.standard.value(forKey: "nickName") as? String else { return }
         
         guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
               let currentNickname = DatabaseManager.shared.getUserInfo()?.nickname else { return }
         
         let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
-        let otherSafeEmail = DatabaseManager.safeEmail(email: otherUserEmail)
+//        let otherSafeEmail = DatabaseManager.safeEmail(email: otherUserEmail)
     
         let ref = database.child("\(safeEmail)")
 

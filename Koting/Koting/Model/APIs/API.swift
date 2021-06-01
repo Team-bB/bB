@@ -30,4 +30,4 @@ struct User: Codable {
     
 }
 
-let tintColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1).cgColor
+let tintColor = #colorLiteral(red: 0.9960784314, green: 0.4941176471, blue: 0.2078431373, alpha: 1).cgColor

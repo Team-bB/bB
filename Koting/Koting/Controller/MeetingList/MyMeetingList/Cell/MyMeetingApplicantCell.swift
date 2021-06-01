@@ -19,7 +19,7 @@ class MyMeetingApplicantCell: UITableViewCell {
     }
     var currentPage:Int = 0
     
-    var parentVC: UIViewController!
+    weak var parentVC: UIViewController!
     
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -28,8 +28,8 @@ class MyMeetingApplicantCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        acceptBtn.setDefault()
-        rejectBtn.setDefault()
+        acceptBtn.setEnable(enable: true, backgroundColor: #colorLiteral(red: 0.1882352941, green: 0.8196078431, blue: 0.3450980392, alpha: 1))
+        rejectBtn.setEnable(enable: true, backgroundColor: #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1))
         pageControl.hidesForSinglePage = true
     }
     func setColleciontionViewWith(){
@@ -159,7 +159,7 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
                 applyID = myMeeting?.participant?[2].apply_id
             }
             //print(college ?? "단과대학")
-            RejectMeetingAPI.shared.post(applyID: applyID) { [weak self] result in
+            RejectMeetingAPI.shared.post(applyID: applyID) { result in
 
                 switch result {
                 case .success(let finalResult):

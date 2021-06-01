@@ -12,18 +12,14 @@ import FirebaseAuth
 class GettingStartedVC: UIViewController {
     
     let indicator = CustomIndicator()
+    @IBOutlet weak var startButton: UIButton!
     
     // MARK:- View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.barTintColor = view.backgroundColor
-        navigationController?.navigationBar.tintColor = .black
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-
-        
-
+        setNavigationBar()
+        startButton.setEnable()
     }
 
     // MARK:- @IBAction func
@@ -79,6 +75,14 @@ class GettingStartedVC: UIViewController {
     
     // MARK:- 구현한 함수
     // UserDefaults에 accountId 유무를 check하는 함수
+    
+    private func setNavigationBar() {
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    
     private func checkAccountId() -> Bool {
         guard let _ = UserDefaults.standard.string(forKey: "accountId") else { return false }
         return true
