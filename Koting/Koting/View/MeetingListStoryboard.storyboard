@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -23,7 +23,7 @@
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyMeetingCell" rowHeight="100" id="tWu-Zi-j9R" customClass="MyMeetingCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tWu-Zi-j9R" id="Y3n-Ii-Y3T">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
@@ -209,7 +209,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MeetingListTableViewCell" rowHeight="100" id="hdB-I3-qr9" customClass="MeetingListTableViewCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="149.5" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="155.5" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdB-I3-qr9" id="49W-Rs-UEp">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
@@ -392,7 +392,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoMyMeetingCell" rowHeight="100" id="wmL-kn-Khg" customClass="NoMyMeetingCell" customModule="Koting" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="249.5" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="255.5" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wmL-kn-Khg" id="Jsd-cU-NZA">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
@@ -915,31 +915,13 @@
                                     <action selector="createMeetingRoomBtnTapped:" destination="tCT-Cc-YZc" eventType="touchUpInside" id="BWV-Ih-zTZ"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="5WF-zp-7Uz">
-                                <rect key="frame" x="140" y="46" width="148" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="6Sp-Ix-OwY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인  원" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0J-sb-jLU">
-                                <rect key="frame" x="36" y="43" width="70" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="BsB-sy-QRt"/>
-                                    <constraint firstAttribute="width" constant="70" id="uyV-Iq-CsU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" systemColor="systemGrayColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 마디" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4L-0K-W54">
-                                <rect key="frame" x="36" y="102" width="70" height="40"/>
+                                <rect key="frame" x="36" y="110" width="70" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="CNH-yj-LKi"/>
                                     <constraint firstAttribute="height" constant="40" id="CkE-xD-jj9"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -953,28 +935,137 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AUl-sc-mbu">
+                                <rect key="frame" x="17.5" y="55" width="285" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vCi-mM-ffH">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="bPQ-Wj-1gv"/>
+                                            <constraint firstAttribute="width" constant="60" id="uEu-7o-dfF"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.95128625631332397" green="0.40350395441055298" blue="0.033127095550298691" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="1:1">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="participantsButtonSelected:" destination="tCT-Cc-YZc" eventType="touchUpInside" id="Hgc-F1-mka"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Was-ga-Uyg">
+                                        <rect key="frame" x="75" y="0.0" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="LAP-se-tBy"/>
+                                            <constraint firstAttribute="height" constant="40" id="NM7-cw-ae1"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="2:2">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="participantsButtonSelected:" destination="tCT-Cc-YZc" eventType="touchUpInside" id="IAM-9E-MtQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uek-6v-sCk">
+                                        <rect key="frame" x="150" y="0.0" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="oux-rN-fuQ"/>
+                                            <constraint firstAttribute="height" constant="40" id="zgw-ed-Fpq"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="3:3">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="participantsButtonSelected:" destination="tCT-Cc-YZc" eventType="touchUpInside" id="vjE-5f-SuE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntl-z3-bjF">
+                                        <rect key="frame" x="225" y="0.0" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="h6a-aF-HhI"/>
+                                            <constraint firstAttribute="height" constant="40" id="nPe-5U-0zM"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="4:4">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="participantsButtonSelected:" destination="tCT-Cc-YZc" eventType="touchUpInside" id="FmE-T6-un8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjw-gO-N14">
+                                <rect key="frame" x="36" y="12" width="50" height="40"/>
+                                <color key="tintColor" systemColor="systemGrayColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="aet-Sy-5E5"/>
+                                    <constraint firstAttribute="height" constant="40" id="woF-qs-fSv"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="인원">
+                                        <attributes>
+                                            <color key="NSColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rui-5Y-F4M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="e4L-0K-W54" firstAttribute="top" secondItem="Rui-5Y-F4M" secondAttribute="top" constant="110" id="3aU-YO-Wbx"/>
                             <constraint firstItem="e4L-0K-W54" firstAttribute="leading" secondItem="Rui-5Y-F4M" secondAttribute="leading" constant="36" id="3yl-xe-pDG"/>
-                            <constraint firstItem="h0J-sb-jLU" firstAttribute="top" secondItem="Rui-5Y-F4M" secondAttribute="top" constant="43" id="7Aa-CQ-jSi"/>
+                            <constraint firstItem="AUl-sc-mbu" firstAttribute="centerX" secondItem="WIJ-Ot-SBg" secondAttribute="centerX" id="4zw-Fn-rY9"/>
                             <constraint firstItem="3ZE-Nr-cfm" firstAttribute="top" secondItem="2dn-IQ-qWo" secondAttribute="bottom" constant="22" id="FY6-75-ZUJ"/>
                             <constraint firstItem="3ZE-Nr-cfm" firstAttribute="top" secondItem="Rui-5Y-F4M" secondAttribute="top" constant="300" id="LHx-St-niy"/>
-                            <constraint firstItem="h0J-sb-jLU" firstAttribute="leading" secondItem="Rui-5Y-F4M" secondAttribute="leading" constant="36" id="LKy-vs-xcf"/>
-                            <constraint firstItem="5WF-zp-7Uz" firstAttribute="top" secondItem="Rui-5Y-F4M" secondAttribute="top" constant="46" id="Szp-x3-Qkf"/>
+                            <constraint firstItem="yjw-gO-N14" firstAttribute="leading" secondItem="Rui-5Y-F4M" secondAttribute="leading" constant="36" id="YJQ-Iy-c2V"/>
+                            <constraint firstItem="AUl-sc-mbu" firstAttribute="top" secondItem="Rui-5Y-F4M" secondAttribute="top" constant="55" id="gwk-PI-rdD"/>
                             <constraint firstItem="3ZE-Nr-cfm" firstAttribute="centerX" secondItem="WIJ-Ot-SBg" secondAttribute="centerX" id="mNz-6I-e5A"/>
-                            <constraint firstItem="e4L-0K-W54" firstAttribute="top" secondItem="h0J-sb-jLU" secondAttribute="bottom" constant="19" id="oZ4-dg-3cZ"/>
                             <constraint firstItem="2dn-IQ-qWo" firstAttribute="leading" secondItem="Rui-5Y-F4M" secondAttribute="leading" constant="40" id="oZg-Gh-ge2"/>
-                            <constraint firstItem="5WF-zp-7Uz" firstAttribute="leading" secondItem="h0J-sb-jLU" secondAttribute="trailing" constant="34" id="raI-sY-1Lf"/>
-                            <constraint firstItem="Rui-5Y-F4M" firstAttribute="trailing" secondItem="5WF-zp-7Uz" secondAttribute="trailing" constant="32" id="sqa-Ou-JYQ"/>
+                            <constraint firstItem="AUl-sc-mbu" firstAttribute="top" secondItem="yjw-gO-N14" secondAttribute="bottom" constant="3" id="tE2-PC-btX"/>
                             <constraint firstItem="Rui-5Y-F4M" firstAttribute="trailing" secondItem="2dn-IQ-qWo" secondAttribute="trailing" constant="40" id="yzS-c6-FIy"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="createMeetingRoomBtn" destination="3ZE-Nr-cfm" id="GZV-l1-Ihy"/>
-                        <outlet property="participantsNumber" destination="5WF-zp-7Uz" id="e99-iD-PnX"/>
                         <outlet property="shortComment" destination="2dn-IQ-qWo" id="zvx-9l-h1v"/>
+                        <outletCollection property="participantsButton" destination="vCi-mM-ffH" collectionClass="NSMutableArray" id="0vk-SJ-2OW"/>
+                        <outletCollection property="participantsButton" destination="Was-ga-Uyg" collectionClass="NSMutableArray" id="X7G-mZ-90w"/>
+                        <outletCollection property="participantsButton" destination="Uek-6v-sCk" collectionClass="NSMutableArray" id="eiw-Lc-ykd"/>
+                        <outletCollection property="participantsButton" destination="ntl-z3-bjF" collectionClass="NSMutableArray" id="Bm4-K8-WBv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4a-pw-ZOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
