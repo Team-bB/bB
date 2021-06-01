@@ -61,7 +61,7 @@ class ConversationVC: UIViewController {
     
     private func setNavigation() {
         navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
