@@ -8,6 +8,9 @@ PODS:
   - Firebase/Database (8.0.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 8.0.0)
+  - Firebase/Messaging (8.0.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 8.0.0)
   - FirebaseAuth (8.0.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -25,6 +28,18 @@ PODS:
   - FirebaseDatabase (8.0.0):
     - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
+  - FirebaseInstallations (8.0.0):
+    - FirebaseCore (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
+    - PromisesObjC (~> 1.2)
+  - FirebaseMessaging (8.0.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/Reachability (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
   - GoogleDataTransport (9.0.0):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
@@ -43,6 +58,8 @@ PODS:
     - GoogleUtilities/Reachability
   - "GoogleUtilities/NSData+zlib (7.4.1)"
   - GoogleUtilities/Reachability (7.4.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.4.1):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.5.0)
   - InputBarAccessoryView (5.3.1):
@@ -67,6 +84,7 @@ DEPENDENCIES:
   - Alamofire
   - Firebase/Auth
   - Firebase/Database
+  - Firebase/Messaging
   - MessageKit
   - NVActivityIndicatorView
   - PagingKit
@@ -80,6 +98,8 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
+    - FirebaseInstallations
+    - FirebaseMessaging
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
@@ -99,6 +119,8 @@ SPEC CHECKSUMS:
   FirebaseCore: 3f09591d51292843e2a46f18358d60bf4e996255
   FirebaseCoreDiagnostics: a31d987ba0fe16d59886a5dbadc2f1de871f88c8
   FirebaseDatabase: 363961e25451425be8b14bb8801a592515ec58f2
+  FirebaseInstallations: c4aab1005d6547b00a7529777fe52f5d4d45165b
+  FirebaseMessaging: 1a33b4af3c8042ed6ddacb6c031894af2064bfab
   GoogleDataTransport: 11e3a5f2c190327df1a4a5d7e7ae3d4d5b9c9e4c
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
@@ -111,6 +133,6 @@ SPEC CHECKSUMS:
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 0a260d954b62ac41bf193cbe5916b7b99096e2ee
+PODFILE CHECKSUM: 17ac27dba98c0fccea8ac6f084829589741cb2e1
 
 COCOAPODS: 1.10.1
