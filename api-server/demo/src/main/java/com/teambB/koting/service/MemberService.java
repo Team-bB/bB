@@ -79,8 +79,8 @@ public class MemberService {
      */
 //    memberRepository.delete(member);
 
-    member.setEmail(null);
-    member.setNumber(null);
+    member.setEmail(member.getEmail() + "-");
+    member.setNumber(member.getNumber() + "-");
     member.setMyMeetingId(null);
   }
 
