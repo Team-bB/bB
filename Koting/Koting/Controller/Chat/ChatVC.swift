@@ -273,7 +273,13 @@ extension ChatVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
         return messages.count
     }
     
-    
+    func messageStyle(for message: MessageType, at indexPath: IndexPath,
+       in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+
+        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+
+        return .bubbleTail(corner, .curved)
+     }
 }
 ////MARK:- 키보드 열릴때마다 뷰 올려주기
 //extension ChatVC {

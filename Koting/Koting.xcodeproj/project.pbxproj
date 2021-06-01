@@ -110,6 +110,7 @@
 		880714812660D49800FD21AA /* GetFaQAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFaQAPI.swift; sourceTree = "<group>"; };
 		88199DAA26615D49004FD856 /* GetUserPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC.swift; sourceTree = "<group>"; };
 		88199DAC2661691D004FD856 /* MeasureResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureResultVC.swift; sourceTree = "<group>"; };
+		88199DAE26660AA2004FD856 /* Koting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Koting.entitlements; sourceTree = "<group>"; };
 		881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeetingRoomsAPI.swift; sourceTree = "<group>"; };
 		883B4195264A8B3E007EB33C /* NoticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeVC.swift; sourceTree = "<group>"; };
 		883B4197264A8DDE007EB33C /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
@@ -310,6 +311,7 @@
 		889F7F4C26088F6200B3DA62 /* Koting */ = {
 			isa = PBXGroup;
 			children = (
+				88199DAE26660AA2004FD856 /* Koting.entitlements */,
 				D392E1A626512F3600938E85 /* GoogleService-Info.plist */,
 				889F7F5B26088F6300B3DA62 /* Info.plist */,
 				88A3AFB026526ACD00FFF90F /* Resources */,
@@ -864,6 +866,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Koting/Koting.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S633W4FQZA;
 				INFOPLIST_FILE = Koting/Info.plist;
@@ -886,6 +889,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Koting/Koting.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S633W4FQZA;
 				INFOPLIST_FILE = Koting/Info.plist;
@@ -894,7 +898,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teamkook6;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teamb;
+>>>>>>> 2735c42cf7e417a83a8b0307237b26b34ef50304
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -15,5 +15,6 @@ target 'Koting' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'MessageKit'
+  pod 'Firebase/Messaging'
 end
 
