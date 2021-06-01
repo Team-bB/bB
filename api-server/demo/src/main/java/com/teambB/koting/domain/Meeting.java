@@ -43,7 +43,9 @@ public class Meeting {
   }
 
   public void minusApplierCnt() {
-    this.applierCnt -= 1;
+    if (this.applierCnt > 0) {
+      this.applierCnt -= 1;
+    }
   }
 
   public static Meeting createMeeting(Member member, String player, String link) {
