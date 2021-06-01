@@ -54,7 +54,13 @@ class MyMeetingInfoViewController: UIViewController {
     }
     
     @IBAction func deleteBtnTapped(_ sender: Any) {
-        deleteMeeting()
+        let alertController = UIAlertController(title: "알림", message: "미팅을 삭제 하시겠습니까?", preferredStyle: .alert)
+        let removeButton = UIAlertAction(title: "삭제", style: .destructive) { _ in self.deleteMeeting() }
+        let okButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alertController.addAction(removeButton)
+        alertController.addAction(okButton)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func deleteMeeting() {
