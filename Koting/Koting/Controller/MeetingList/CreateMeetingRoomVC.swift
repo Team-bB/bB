@@ -36,7 +36,7 @@ class CreateMeetingRoomVC: UIViewController {
             button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             button.layer.cornerRadius = 10
         }
-        
+        createMeetingRoomBtn.layer.cornerRadius = 12
         //createPicker()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -174,6 +174,11 @@ extension CreateMeetingRoomVC: UITextFieldDelegate, UITextViewDelegate {
 //        }
 //        return true
 //    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let str = textView.text else { return true }
+        let newLength = str.count + text.count - range.length
+        return newLength<=50
+    }
 }
 
 // MARK:- PanModal 설정
@@ -207,7 +212,7 @@ extension CreateMeetingRoomVC: PanModalPresentable {
 // MARK:- 추가구현 함수
 extension CreateMeetingRoomVC {
     private func checkTextFiled() -> Bool {
-        if shortComment.text == "" {
+        if shortComment.text == "" && shortComment.text.count > 50 {
             return false
         }
         
