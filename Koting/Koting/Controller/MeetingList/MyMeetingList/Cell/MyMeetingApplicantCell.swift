@@ -105,83 +105,101 @@ extension MyMeetingApplicantCell: UICollectionViewDataSource {
         var applyID: String?
         //var college: String?
         
-        acceptButtonTapped = { [unowned self] in
-            if pageControl.currentPage == 0 {
-                applyID = myMeeting?.participant?[0].apply_id
-            }
-            else if pageControl.currentPage == 1 {
-                applyID = myMeeting?.participant?[1].apply_id
-            }
-            else {
-                applyID = myMeeting?.participant?[2].apply_id
-            }
-            //print(college ?? "단과대학")
-            AcceptMeetingAPI.shared.post(applyID: applyID) { result in
+        self.acceptButtonTapped = {
+            let alertController = UIAlertController(title: "알림", message: "신청을 수락 하시겠습니까?", preferredStyle: .alert)
+            let acceptButton = UIAlertAction(title: "확인", style: .destructive) {
+                [unowned self] _ in
+                if pageControl.currentPage == 0 {
+                    applyID = myMeeting?.participant?[0].apply_id
+                }
+                else if pageControl.currentPage == 1 {
+                    applyID = myMeeting?.participant?[1].apply_id
+                }
+                else {
+                    applyID = myMeeting?.participant?[2].apply_id
+                }
+                //print(college ?? "단과대학")
+                AcceptMeetingAPI.shared.post(applyID: applyID) { result in
 
-                switch result {
-                case .success(let finalResult):
+                    switch result {
+                    case .success(let finalResult):
 
-                    /// 채팅방을 개설후 상대방에게 기본 메시지를 보냅니다.
-                    if finalResult.result == "true" {
+                        /// 채팅방을 개설후 상대방에게 기본 메시지를 보냅니다.
+                        if finalResult.result == "true" {
 
-                        guard let targetUserEmail = finalResult.targetUserEmail, let targetUserNickname = finalResult.nickname else { return }
-                        
-                        ConversationVC.createNewConversation(name: targetUserNickname, email: targetUserEmail)
+                            guard let targetUserEmail = finalResult.targetUserEmail, let targetUserNickname = finalResult.nickname else { return }
+                            
+                            ConversationVC.createNewConversation(name: targetUserNickname, email: targetUserEmail)
 
-                        DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "수락완료", message: "새로운 채팅이 개설되었습니다!!\n채팅탭에서 확인해주세요.", text: "확인",handler: {(action: UIAlertAction!) in
-                                buttonReloadData!()
-                            })
+                            DispatchQueue.main.async {
+                                parentVC.makeAlertBox(title: "수락완료", message: "새로운 채팅이 개설되었습니다!!\n채팅탭에서 확인해주세요.", text: "확인",handler: {(action: UIAlertAction!) in
+                                    buttonReloadData!()
+                                })
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                parentVC.makeAlertBox(title: "알림", message: "수락 실패", text: "확인",handler: {(action: UIAlertAction!) in
+                                    buttonReloadData!()
+                                })
+                            }
                         }
-                    } else {
-                        DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "수락 실패", text: "확인",handler: {(action: UIAlertAction!) in
-                                buttonReloadData!()
-                            })
-                        }
+                    case .failure:
+                        parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler:{(action: UIAlertAction!) in
+                            buttonReloadData!()
+                        })
                     }
-                case .failure:
-                    parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler:{(action: UIAlertAction!) in
-                        buttonReloadData!()
-                    })
                 }
             }
+            let okButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            alertController.addAction(acceptButton)
+            alertController.addAction(okButton)
+            
+            self.parentVC.present(alertController, animated: true, completion: nil)
         }
         
-        self.rejectButtonTapped = { [unowned self] in
-            if pageControl.currentPage == 0 {
-                applyID = myMeeting?.participant?[0].apply_id
-            }
-            else if pageControl.currentPage == 1 {
-                applyID = myMeeting?.participant?[1].apply_id
-            }
-            else {
-                applyID = myMeeting?.participant?[2].apply_id
-            }
-            //print(college ?? "단과대학")
-            RejectMeetingAPI.shared.post(applyID: applyID) { result in
+        self.rejectButtonTapped = {
+            let alertController = UIAlertController(title: "알림", message: "신청을 거절 하시겠습니까?", preferredStyle: .alert)
+            let rejectButton = UIAlertAction(title: "확인", style: .destructive) {
+                [unowned self] _ in
+                if pageControl.currentPage == 0 {
+                    applyID = myMeeting?.participant?[0].apply_id
+                }
+                else if pageControl.currentPage == 1 {
+                    applyID = myMeeting?.participant?[1].apply_id
+                }
+                else {
+                    applyID = myMeeting?.participant?[2].apply_id
+                }
+                //print(college ?? "단과대학")
+                RejectMeetingAPI.shared.post(applyID: applyID) { result in
 
-                switch result {
-                case .success(let finalResult):
-                    if finalResult.result == "true" {
-                        DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "거절 완료", text: "확인",handler: {(action: UIAlertAction!) in
-                                buttonReloadData!()
-                            })
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            parentVC.makeAlertBox(title: "알림", message: "거절 실패", text: "확인",handler: {(action: UIAlertAction!) in
-                                buttonReloadData!()
-                            })
-                        }
-                        }
-                case .failure:
-                    parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler: {(action: UIAlertAction!) in
-                        buttonReloadData!()
-                    })
+                    switch result {
+                    case .success(let finalResult):
+                        if finalResult.result == "true" {
+                            DispatchQueue.main.async {
+                                parentVC.makeAlertBox(title: "알림", message: "거절 완료", text: "확인",handler: {(action: UIAlertAction!) in
+                                    buttonReloadData!()
+                                })
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                parentVC.makeAlertBox(title: "알림", message: "거절 실패", text: "확인",handler: {(action: UIAlertAction!) in
+                                    buttonReloadData!()
+                                })
+                            }
+                            }
+                    case .failure:
+                        parentVC.makeAlertBox(title: "알림", message: "일어날수 없는일 일어난다면 문의해주세요 제발", text: "확인",handler: {(action: UIAlertAction!) in
+                            buttonReloadData!()
+                        })
+                    }
                 }
             }
+            let okButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            alertController.addAction(okButton)
+            alertController.addAction(rejectButton)
+            
+            self.parentVC.present(alertController, animated: true, completion: nil)
         }
         return cell
     }
