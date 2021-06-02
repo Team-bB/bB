@@ -48,7 +48,7 @@ public class MemberController {
     Member member = memberService.findOneByAccountId(accountId);
     retObject.put("result", memberService.setMemberInfo(member));
 
-    return memberService.setMemberInfo(member);
+    return retObject;
   }
 
   @GetMapping("/auth/number")
