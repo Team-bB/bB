@@ -5,9 +5,11 @@ import com.teambB.koting.domain.ApplyStatus;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
+import com.teambB.koting.firebase.FirebaseCloudMessageService;
 import com.teambB.koting.service.ApplyService;
 import com.teambB.koting.service.MeetingService;
 import com.teambB.koting.service.MemberService;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
@@ -30,7 +32,7 @@ public class ApplyController {
   @Autowired private final MeetingService meetingService;
   @Autowired private final MemberService memberService;
   @Autowired private final ApplyService applyService;
-  private LocalDateTime localDateTime;
+  FirebaseCloudMessageService firebaseCloudMessageService = new FirebaseCloudMessageService();
 
   @GetMapping("/applies")
   public JSONObject getMyMeetingInfo(@RequestParam("account_id") String accountId) {
@@ -105,7 +107,7 @@ public class ApplyController {
   }
 
   @PostMapping("/applies")
-  public JSONObject applyMeeting(@RequestBody JSONObject object) {
+  public JSONObject applyMeeting(@RequestBody JSONObject object) throws IOException {
     JSONObject retObject = new JSONObject();
 
     String accountId = object.get("account_id").toString();
@@ -114,6 +116,8 @@ public class ApplyController {
     Integer result = applyService.applyNotAvailable(accountId, meetingId);
     if (result == 0) {
       applyService.Apply(accountId, meetingId);
+      Member member = memberService.findOneByAccountId(accountId);
+      firebaseCloudMessageService.sendMessageTo(member.getDeviceToken(), "미팅 신청 안내", "누군가로부터 신청이 들어왔습니다.");
       retObject.put("result", "applyMeetingSuccess");
     }
     else if (result == 1) {
@@ -130,11 +134,15 @@ public class ApplyController {
 
   @Transactional
   @PostMapping("/applies/accept")
-  public JSONObject acceptApply(@RequestBody JSONObject object) {
+  public JSONObject acceptApply(@RequestBody JSONObject object) throws IOException {
+
     JSONObject retObject = new JSONObject();
 
     Long applyId = Long.parseLong(object.get("apply_id").toString());
     Apply apply = applyService.findOne(applyId);
+    Member member = apply.getMember();
+    firebaseCloudMessageService.sendMessageTo(member.getDeviceToken(), "매칭 성공", "상대방이 미팅을 수락하였습니다.");
+
     apply.applyAccept();
     Long ownerId = apply.getMeeting().getMemberId();
     // 내 미팅
@@ -149,6 +157,7 @@ public class ApplyController {
       if (apply.getId() == apply_.getId())
         continue ;
       Apply one = applyService.findOne(apply_.getId());
+      firebaseCloudMessageService.sendMessageTo(one.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
       one.rejectAccept();
     }
 
@@ -157,21 +166,23 @@ public class ApplyController {
     Meeting meeting = meetingService.findOne(meetingId);
     meeting.setMeetingStatus(MeetingStatus.CLOSE);
 
-    String ApplierEmail = apply.getMember().getAccount_id() + "@dgu.ac.kr";
-    retObject.put("nickname", apply.getMember().getNickname());
+    String ApplierEmail = member.getAccount_id() + "@dgu.ac.kr";
+    retObject.put("nickname", member.getNickname());
     retObject.put("result", "true");
     retObject.put("targetUserEmail", ApplierEmail);
+
     return retObject;
   }
 
   @Transactional
   @PostMapping("/applies/reject")
-  public JSONObject rejectApply(@RequestBody JSONObject object) {
+  public JSONObject rejectApply(@RequestBody JSONObject object) throws IOException {
     JSONObject retObject = new JSONObject();
 
     Long applyId = Long.parseLong(object.get("apply_id").toString());
     Apply apply = applyService.findOne(applyId);
     apply.rejectAccept();
+    firebaseCloudMessageService.sendMessageTo(apply.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
     Long meetingId = apply.getMeeting().getId();
     Meeting meeting = meetingService.findOne(meetingId);
     meeting.minusApplierCnt();
