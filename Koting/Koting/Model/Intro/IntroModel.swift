@@ -21,6 +21,9 @@ struct PhoneAuth: Codable {
 struct SignUp: Codable {
     var result: String
 }
+struct UpdateDeviceTokenAPIResponse: Codable {
+    let result: String
+}
 
 enum AnimalFace: String, Codable {
     case dog = "강아지"

@@ -1,44 +1,33 @@
 //
-//  SignUpAPI.swift
+//  UpdateDeviceTokenAPI.swift
 //  Koting
 //
-//  Created by 임정우 on 2021/03/24.
+//  Created by 임정우 on 2021/06/02.
 //
 
 import Foundation
+
 import Alamofire
 
-class SignUpAPI {
+class UpdateDeviceTokenAPI {
     
-    static let shared = SignUpAPI()
-    
+    static let shared = UpdateDeviceTokenAPI()
+
     private init() {}
     
-    func post(paramArray: Array<UITextField>, completion: @escaping (Result<SignUp, Error>) -> (Void)) {
+    func put(completion: @escaping (Result<UpdateDeviceTokenAPIResponse, Error>) -> (Void)) {
         let url = API.shared.BASE_URL + "/members"
         var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.timeoutInterval = 10
         
-        guard let animalIndex = UserDefaults.standard.value(forKey: "animalIndex") as? String,
-              let deviceToken = UserDefaults.standard.value(forKey: "device_token") as? String else { return }
-    
-        print("\n\n⭐️device_token : \(deviceToken)\n\n")
-        
         //POST로 보낼 정보
-        let params = [
-            "nickname" : paramArray[0].text!,
-            "phoneNumber" : UserAPI.shared.phoneNumber!,
-            "college": paramArray[1].text!,
-            "major": paramArray[2].text!,
-            "sex": paramArray[3].text!,
-            "mbti": paramArray[4].text!,
-            "age": paramArray[5].text!,
-            "height": paramArray[6].text!,
-            "animalIdx": animalIndex,
-            "email" :paramArray[7].text! + "@dgu.ac.kr",
-            "device_token" : deviceToken] as Dictionary
+        guard let accountId = UserDefaults.standard.string(forKey: "accountId"),
+              let deviceToken = UserDefaults.standard.string(forKey: "device_token") else { return }
+        
+        let params = ["account_id" : accountId,
+                      "device_token" : deviceToken] as Dictionary
         
         // httpBody에 parameters 추가
         do {
@@ -50,18 +39,18 @@ class SignUpAPI {
         AF.request(request).responseData { response in
             switch response.result {
             case .success(let result):
-                print("\n\n회원가입 POST 성공")
+                print("\n\n메일 인증 POST 성공")
       
                 let decoder = JSONDecoder()
                 do {
-                    let product = try decoder.decode(SignUp.self, from: result)
+                    let product = try decoder.decode(UpdateDeviceTokenAPIResponse.self, from: result)
                     debugPrint(response)
-                    print("✅ SignUp Codable Success ✅")
+                    print("✅ Token Update Success ✅")
                     completion(.success(product))
                 
                 } catch {
                     debugPrint(response)
-                    print("❗️ SignUp Codable Error")
+                    print("❗️ Token Update Error")
                     print(error)
                     completion(.failure(error))
                 }
