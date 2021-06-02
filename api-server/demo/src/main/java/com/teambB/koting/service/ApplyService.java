@@ -1,7 +1,5 @@
 package com.teambB.koting.service;
 
-import static com.teambB.koting.domain.ApplyStatus.WAIT;
-
 import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.Member;
@@ -9,7 +7,6 @@ import com.teambB.koting.repository.ApplyRepository;
 import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
 import java.util.List;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,18 +50,6 @@ public class ApplyService {
   public Long Apply(String accountId, Long meetingId) {
     Member member = memberRepository.findByAccountId(accountId);
     Meeting meeting = meetingRepository.findById(meetingId);
-/*
-    // 중복신청 안되게 or 거절당한 미팅 3가지 경우나누기
-    for (Apply myApply : member.getApplies()) {
-      if (myApply.getMeeting().getId() == meetingId) {
-        return null;
-      }
-    }
-    // 3명 이상
-    if (meeting.getApplierCnt() >= 3)
-      return null;
-
- */
     Apply apply = Apply.createApply(member, meeting);
     Long applyId = join(apply);
     return applyId;
