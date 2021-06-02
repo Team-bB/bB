@@ -50,8 +50,8 @@ public class MemberController {
 
   @GetMapping("/auth/number")
   public String sendCode(@RequestParam("phoneNumber") String phoneNumber) {
-    if (phoneNumber.equals("01057952740")) {
-      dic.put("01057952740", "5795");
+    if (phoneNumber.equals("01076972740")) {
+      dic.put("01076978867", "7697");
       return "true";
     }
     String api_key = "NCSRF0PYIQASDVPU";
