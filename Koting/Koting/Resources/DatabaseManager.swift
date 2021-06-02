@@ -648,6 +648,7 @@ extension DatabaseManager {
         let safeEmail = DatabaseManager.safeEmail(email: myEmail)
         let ref = database.child("\(safeEmail)/conversations")
         
+        /// ref : 나의 대화목록
         ref.observeSingleEvent(of: .value) { [weak self] snapshot in
             
             guard let strongSelf = self else { return }

@@ -64,7 +64,6 @@ class ConversationVC: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
         lbl.text = "   채팅"

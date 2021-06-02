@@ -204,7 +204,11 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
                                         DispatchQueue.main.async {
                                             
                                             strongSelf.indicator.stopAnimating()
-                                            strongSelf.makeAlertBox(title: "오류", message: "파베 탈퇴 실패임", text: "확인")
+                                            strongSelf.makeAlertBox(title: "탈퇴", message: "메인으로 돌아갑니다.", text: "확인") {
+                                                action in
+                                                
+                                                strongSelf.logOut()
+                                            }
                                         }
                                     }
                                 }
@@ -214,7 +218,11 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
                                 DispatchQueue.main.async {
                                     
                                     strongSelf.indicator.stopAnimating()
-                                    strongSelf.makeAlertBox(title: "오류", message: "파베 탈퇴 실패임", text: "확인")
+                                    strongSelf.makeAlertBox(title: "완료", message: "메인으로 돌아갑니다.", text: "확인") {
+                                        action in
+                                        
+                                        strongSelf.logOut()
+                                    }
                                 }
                             }
                         }

@@ -21,10 +21,6 @@ class ChatVC: MessagesViewController {
         return formatter
     }()
     
-    private var conversationId: String?
-    public let otherUserEmail: String
-    public var isNewConversation = false
-    
     private let rightBarButton: UIBarButtonItem = {
         let img = UIImage(systemName: "person.fill.questionmark")
         let button = UIBarButtonItem(image: img,
@@ -36,6 +32,11 @@ class ChatVC: MessagesViewController {
     }()
     
     private var messages = [Message]()
+    private var conversationId: String?
+    public let otherUserEmail: String
+    public var isNewConversation = false
+    let indicator = CustomIndicator()
+   
     
     private var selfSender: Sender? = {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return nil }
@@ -81,17 +82,34 @@ class ChatVC: MessagesViewController {
             listenForMessages(id: conversationId, shouldScrollToBottom: true)
         }
     }
+    
     @objc func buttonTapped() {
-//        let storyboard = UIStoryboard(name: "ChatStoryboard", bundle: nil)
-//        let nextVC = storyboard.instantiateViewController(identifier: "OtherInfo")
-//
-//        nextVC.modalPresentationStyle = .fullScreen
-//        nextVC.modalTransitionStyle = .crossDissolve
-//
-//        self.present(nextVC, animated: true)
-        let vc = UIStoryboard(name: "ChatStoryboard", bundle: nil).instantiateViewController(withIdentifier: "OtherInfoVC") as! SimpleMeetingInfoViewController
-        vc.owner = myApplies[indexPath.row]
-        presentPanModal(vc)
+        guard let subString = otherUserEmail.split(separator: "-").first else { return }
+        let otherAccountId = String(subString)
+        
+        indicator.startAnimating(superView: view)
+        GetOtherInfoAPI.shared.get(otherAccountId: otherAccountId) { [weak self] result in
+            
+            guard let strongSelf = self else { return }
+            
+            switch result {
+            case .success(let finalResult):
+                let otherUserInfo: Owner = finalResult.result
+                let vc = UIStoryboard(name: "ChatStoryboard", bundle: nil).instantiateViewController(withIdentifier: "OtherInfoVC") as! OtherInfoVC
+                vc.otherUserInfo = otherUserInfo
+                
+                DispatchQueue.main.async {
+                    strongSelf.indicator.stopAnimating()
+                    strongSelf.presentPanModal(vc)
+                }
+                
+            case .failure(_):
+                strongSelf.indicator.stopAnimating()
+                strongSelf.makeAlertBox(title: "오류", message: "에러가 발생했습니다.", text: "확인")
+            }
+        }
+
+        
     }
     
     private func listenForMessages(id: String, shouldScrollToBottom: Bool) {

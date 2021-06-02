@@ -14,8 +14,9 @@ class GetOtherInfoAPI {
 
     private init() {}
     
-    func get(completion: @escaping (Result<Owner, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/members?account_id="
+    func get(otherAccountId: String, completion: @escaping (Result<GetOtherInfoAPIResponse, Error>) -> (Void)) {
+        let url = API.shared.BASE_URL + "/members?account_id=\(otherAccountId)"
+        
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -25,10 +26,11 @@ class GetOtherInfoAPI {
             switch response.result {
             case .success(let result):
                 do {
-                    let product = try JSONDecoder().decode(Owner.self, from: result)
+                    let finalResult = try JSONDecoder().decode(GetOtherInfoAPIResponse.self, from: result)
                     debugPrint(response)
                     print("✅ Notice Codable Success ✅")
-                    completion(.success(product))
+                    completion(.success(finalResult))
+                    
                 } catch {
                     debugPrint(response)
                     print("❗️ Notice Codable Error")

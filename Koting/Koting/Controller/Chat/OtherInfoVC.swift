@@ -12,7 +12,7 @@ import PanModal
 class OtherInfoVC: UIViewController {
 
     
-    var owner: Owner?
+    var otherUserInfo: Owner?
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var collegeLabel: UILabel!
     @IBOutlet weak var mbtiLabel: UILabel!
@@ -32,19 +32,19 @@ class OtherInfoVC: UIViewController {
     
     private func updateUI() {
         
-        guard let owner = owner else { return }
+        guard let otherUserInfo = otherUserInfo else { return }
         
-        if let college = owner.college,
-           let mbti = owner.mbti,
-           let age = owner.age,
-           let height = owner.height,
-           let animal = owner.animal_idx {
+        if let college = otherUserInfo.college,
+           let mbti = otherUserInfo.mbti,
+           let age = otherUserInfo.age,
+           let height = otherUserInfo.height,
+           let animal = otherUserInfo.animal_idx {
             collegeLabel.text = college
             mbtiLabel.text = mbti
             ageLabel.text = "\(age)살"
             heightLabel.text = "\(height)cm"
             imageView.image = UIImage(named: transAnimal(index: animal, isImage: true))
-            nickNameLabel.text = owner.nickname
+            nickNameLabel.text = otherUserInfo.nickname
         }
     }
     private func transAnimal(index: Int, isImage: Bool) -> String {

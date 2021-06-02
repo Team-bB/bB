@@ -47,3 +47,7 @@ struct Sender: SenderType {
     public var senderId: String
     public var displayName: String
 }
+
+struct GetOtherInfoAPIResponse: Codable {
+    let result: Owner
+}
