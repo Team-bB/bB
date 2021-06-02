@@ -108,7 +108,6 @@ public class MemberService {
     retObject.put("college", member.getCollege());
     retObject.put("nickname", member.getNickname());
     retObject.put("major", member.getMajor());
-    retObject.put("nickname", member.getNickname());
     retObject.put("sex", member.getSex());
     retObject.put("mbti", member.getMbti());
 
