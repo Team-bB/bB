@@ -72,6 +72,7 @@
 		D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEA26554208001502D7 /* animalFaceML.mlmodel */; };
 		D328BBED26564753001502D7 /* SimpleMeetingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEC26564752001502D7 /* SimpleMeetingInfoViewController.swift */; };
 		D328BC14265A40A9001502D7 /* NoAppliesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328BC13265A40A9001502D7 /* NoAppliesCell.swift */; };
+		D35807F42667BB0D00AC71EB /* OtherInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35807F32667BB0D00AC71EB /* OtherInfoVC.swift */; };
 		D392E1282644CDAB00938E85 /* MyMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1272644CDAB00938E85 /* MyMeetingCell.swift */; };
 		D392E12B2644D29E00938E85 /* MyMeetingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */; };
 		D392E12F26455DF000938E85 /* MyMeetingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D392E12E26455DF000938E85 /* MyMeetingList.storyboard */; };
@@ -169,6 +170,7 @@
 		D328BBE926554208001502D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Base; path = Base.lproj/animalFaceML.mlmodel; sourceTree = "<group>"; };
 		D328BBEC26564752001502D7 /* SimpleMeetingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMeetingInfoViewController.swift; sourceTree = "<group>"; };
 		D328BC13265A40A9001502D7 /* NoAppliesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAppliesCell.swift; sourceTree = "<group>"; };
+		D35807F32667BB0D00AC71EB /* OtherInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInfoVC.swift; sourceTree = "<group>"; };
 		D392E1272644CDAB00938E85 /* MyMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingCell.swift; sourceTree = "<group>"; };
 		D392E12A2644D29E00938E85 /* MyMeetingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeetingInfoViewController.swift; sourceTree = "<group>"; };
 		D392E12E26455DF000938E85 /* MyMeetingList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyMeetingList.storyboard; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				88A3AFA32651243100FFF90F /* ConversationVC.swift */,
 				88A3AFA52651244000FFF90F /* ChatVC.swift */,
 				88000B532653F312008671D2 /* ConversationTableViewCell.swift */,
+				D35807F32667BB0D00AC71EB /* OtherInfoVC.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */,
 				88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
+				D35807F42667BB0D00AC71EB /* OtherInfoVC.swift in Sources */,
 				88A3AFA42651243100FFF90F /* ConversationVC.swift in Sources */,
 				88902EF2265E78BA00B98DB3 /* CustomUITextField.swift in Sources */,
 				885C68F82667B322003CBD7E /* GetOtherInfoAPI.swift in Sources */,

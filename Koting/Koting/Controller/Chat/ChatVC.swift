@@ -89,6 +89,9 @@ class ChatVC: MessagesViewController {
 //        nextVC.modalTransitionStyle = .crossDissolve
 //
 //        self.present(nextVC, animated: true)
+        let vc = UIStoryboard(name: "ChatStoryboard", bundle: nil).instantiateViewController(withIdentifier: "OtherInfoVC") as! SimpleMeetingInfoViewController
+        vc.owner = myApplies[indexPath.row]
+        presentPanModal(vc)
     }
     
     private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
