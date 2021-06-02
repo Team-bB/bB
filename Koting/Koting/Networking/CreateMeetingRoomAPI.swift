@@ -14,7 +14,7 @@ class CreateMeetingRoomAPI {
     
     private init() {}
     
-    func post(numberOfParticipants: UITextField!, shortComment: UITextView!, completion: @escaping (Result<CreateMeetingRoomAPIResponse, Error>) -> (Void)) {
+    func post(numberOfParticipants: String!, shortComment: UITextView!, completion: @escaping (Result<CreateMeetingRoomAPIResponse, Error>) -> (Void)) {
         let url = API.shared.BASE_URL + "/meetings"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -22,7 +22,7 @@ class CreateMeetingRoomAPI {
         request.timeoutInterval = 10
         
         guard let token = UserDefaults.standard.string(forKey: "accountId"),
-              let participants = numberOfParticipants.text,
+              let participants = numberOfParticipants,
               let link = shortComment.text else { return }
         
         //POST로 보낼 정보

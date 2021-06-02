@@ -101,3 +101,23 @@ struct RejectMeetingApplicantAPIResponse: Codable {
 struct DeleteCompleteMeetingAPIResponse: Codable {
     let result: String
 }
+
+enum Participants: Int {
+    case oneToOne
+    case twoToTwo
+    case threeToThree
+    case fourToFour
+    
+    func getNumberOfParticipants() -> String {
+        switch self {
+        case .oneToOne:
+            return "1:1"
+        case .twoToTwo:
+            return "2:2"
+        case .threeToThree:
+            return "3:3"
+        case .fourToFour:
+            return "4:4"
+        }
+    }
+}

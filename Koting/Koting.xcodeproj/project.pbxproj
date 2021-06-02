@@ -15,7 +15,6 @@
 		8807147C2660CC4600FD21AA /* FaqVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807147B2660CC4600FD21AA /* FaqVC.swift */; };
 		8807147E2660CC5300FD21AA /* FaqDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807147D2660CC5300FD21AA /* FaqDetailVC.swift */; };
 		880714802660CC6600FD21AA /* FaqCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8807147F2660CC6600FD21AA /* FaqCell.swift */; };
-		880714822660D49800FD21AA /* GetFaQAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880714812660D49800FD21AA /* GetFaQAPI.swift */; };
 		88199DAB26615D49004FD856 /* GetUserPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88199DAA26615D49004FD856 /* GetUserPhotoVC.swift */; };
 		88199DAD2661691D004FD856 /* MeasureResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88199DAC2661691D004FD856 /* MeasureResultVC.swift */; };
 		881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */; };
@@ -107,7 +106,6 @@
 		8807147B2660CC4600FD21AA /* FaqVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqVC.swift; sourceTree = "<group>"; };
 		8807147D2660CC5300FD21AA /* FaqDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqDetailVC.swift; sourceTree = "<group>"; };
 		8807147F2660CC6600FD21AA /* FaqCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqCell.swift; sourceTree = "<group>"; };
-		880714812660D49800FD21AA /* GetFaQAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFaQAPI.swift; sourceTree = "<group>"; };
 		88199DAA26615D49004FD856 /* GetUserPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserPhotoVC.swift; sourceTree = "<group>"; };
 		88199DAC2661691D004FD856 /* MeasureResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureResultVC.swift; sourceTree = "<group>"; };
 		88199DAE26660AA2004FD856 /* Koting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Koting.entitlements; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 				D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */,
 				885BFC28264B84CA0020A210 /* GetNoticeAPI.swift */,
 				885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */,
-				880714812660D49800FD21AA /* GetFaQAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -679,7 +676,6 @@
 				88984E5D2644614400997ED2 /* UIView++.swift in Sources */,
 				889F7F9D2608983800B3DA62 /* IntroModel.swift in Sources */,
 				D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */,
-				880714822660D49800FD21AA /* GetFaQAPI.swift in Sources */,
 				8807147E2660CC5300FD21AA /* FaqDetailVC.swift in Sources */,
 				88556CB22609D8FC00CF7CAC /* MeetingDetailInfoViewController.swift in Sources */,
 				88199DAD2661691D004FD856 /* MeasureResultVC.swift in Sources */,
@@ -898,7 +894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teamb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Koting.Teambb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

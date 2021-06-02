@@ -13,7 +13,7 @@ class FaqVC: UIViewController {
     
     let indicator = CustomIndicator()
     let cellHeight: CGFloat = 80
-    var faqList: [FaQ] = []
+    let faqList = FaQModel().FaQList
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +21,6 @@ class FaqVC: UIViewController {
         super.viewDidLoad()
         
         setTableView()
-        FetchFaQs()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,38 +31,6 @@ class FaqVC: UIViewController {
             return
         }
         faqDetailVC.receivedFaQ = faqList[index]
-    }
-    
-    // MARK: FetchMeetings
-    func FetchFaQs() {
-        
-        if tableView.refreshControl?.isRefreshing == true {
-            print("-----Refreshing -----\n")
-        } else {
-            indicator.startAnimating(superView: view)
-            print("-----Fetching -----\n")
-        }
-        
-        GetFaQAPI.shared.get { [weak self] result in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .success(let finalResult):
-                strongSelf.faqList = finalResult.faq
-                
-                DispatchQueue.main.async {
-                    strongSelf.indicator.stopAnimating()
-                    strongSelf.tableView.refreshControl?.endRefreshing()
-                    strongSelf.tableView.reloadData()
-                }
-                
-            case .failure:
-                DispatchQueue.main.async {
-                    strongSelf.indicator.stopAnimating()
-                    strongSelf.tableView.refreshControl?.endRefreshing()
-                }
-                break
-            }
-        }
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
@@ -79,29 +46,19 @@ class FaqVC: UIViewController {
         tableView.separatorInset.right = 20
         tableView.tableFooterView = UIView()
         
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-//        tableView.reloadData()
-    }
-    
-    @objc private func didPullToRefresh() {
-        print("Start Refresh")
-        FetchFaQs()
+        tableView.reloadData()
     }
 }
 
 extension FaqVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return faqList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! FaqCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
-//        cell.date.textColor = .lightGray
-//        cell.title.text = noticeList[indexPath.row].title
-//        cell.date.text = noticeList[indexPath.row].date
-
+        cell.textLabel?.text = faqList[indexPath.row].title
 
         return cell
         

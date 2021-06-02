@@ -16,15 +16,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="ive-K2-MiR">
-                                <rect key="frame" x="147.5" y="278.5" width="80" height="80"/>
+                                <rect key="frame" x="87.5" y="218.5" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="AbZ-45-AeA"/>
-                                    <constraint firstAttribute="height" constant="80" id="Wl0-ua-rV7"/>
+                                    <constraint firstAttribute="width" constant="200" id="AbZ-45-AeA"/>
+                                    <constraint firstAttribute="height" constant="200" id="Wl0-ua-rV7"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99065107109999995" green="0.49464112519999998" blue="0.1891637444" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ive-K2-MiR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RCO-HW-UFi"/>
                             <constraint firstItem="ive-K2-MiR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-15" id="pdZ-fP-8v3"/>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Launch_Icon" width="239.5" height="336.5"/>
+        <image name="Launch_Icon" width="256" height="256"/>
     </resources>
 </document>
