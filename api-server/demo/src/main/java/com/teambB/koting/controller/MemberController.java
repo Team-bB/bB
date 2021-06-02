@@ -40,6 +40,14 @@ public class MemberController {
     return retObejct;
   }
 
+  @GetMapping("/members")
+  public JSONObject getMember(@RequestBody JSONObject object) {
+
+    String accountId = object.get("account_id").toString();
+    Member member = memberService.findOneByAccountId(accountId);
+    return memberService.setMemberInfo(member);
+  }
+
   @GetMapping("/auth/number")
   public String sendCode(@RequestParam("phoneNumber") String phoneNumber) {
     String api_key = "NCSRF0PYIQASDVPU";
