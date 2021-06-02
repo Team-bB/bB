@@ -82,14 +82,14 @@ class CreateMeetingRoomVC: UIViewController {
                 
                 if result == "createFail" {
                     DispatchQueue.main.async {
-                        self?.indicator.stopAnimating()
+                        strongSelf.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "알림", message: "이미 개설된 미팅이 존재합니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self?.indicator.stopAnimating()
+                        strongSelf.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "알림", message: "미팅을 개설했습니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
@@ -97,7 +97,7 @@ class CreateMeetingRoomVC: UIViewController {
                 }
             case .failure:
                 DispatchQueue.main.async {
-                    self?.indicator.stopAnimating()
+                    strongSelf.indicator.stopAnimating()
                 }
                 break
             }

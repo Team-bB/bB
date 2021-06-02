@@ -384,11 +384,11 @@ extension DatabaseManager {
             
             let messages: [Message] = value.compactMap { dictonary in
                 guard let name = dictonary["name"] as? String,
-                      let isRead = dictonary["is_read"] as? Bool,
+                      let _ = dictonary["is_read"] as? Bool,
                       let messageID = dictonary["id"] as? String,
                       let content = dictonary["content"] as? String,
                       let senderEmail = dictonary["sender_email"] as? String,
-                      let type = dictonary["type"] as? String,
+                      let _ = dictonary["type"] as? String,
                       let dateString = dictonary["date"] as? String,
                       let date = ChatVC.dateFormatter.date(from: dateString)
                 else {

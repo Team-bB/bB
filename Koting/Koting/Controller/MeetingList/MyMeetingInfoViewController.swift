@@ -76,14 +76,14 @@ class MyMeetingInfoViewController: UIViewController {
                 
                 if result == "true" {
                     DispatchQueue.main.async {
-                        self?.indicator.stopAnimating()
+                        strongSelf.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "알림", message: "미팅을 삭제했습니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self?.indicator.stopAnimating()
+                        strongSelf.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "알림", message: "삭제에 실패했습니다..", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
@@ -91,7 +91,7 @@ class MyMeetingInfoViewController: UIViewController {
                 }
             case .failure:
                 DispatchQueue.main.async {
-                    self?.indicator.stopAnimating()
+                    strongSelf.indicator.stopAnimating()
                 }
                 break
             }
