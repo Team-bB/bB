@@ -4,6 +4,7 @@ import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.service.MeetingService;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.service.MemberService;
+import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +65,7 @@ public class MeetController {
   }
 
   @DeleteMapping("/meetings")
-  public JSONObject deleteMeeting(@RequestBody JSONObject object) {
+  public JSONObject deleteMeeting(@RequestBody JSONObject object) throws IOException {
     JSONObject retObject = new JSONObject();
 
     String accountId = object.get("account_id").toString();

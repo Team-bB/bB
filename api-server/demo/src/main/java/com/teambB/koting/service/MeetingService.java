@@ -4,8 +4,10 @@ import com.teambB.koting.domain.Apply;
 import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
+import com.teambB.koting.firebase.FirebaseCloudMessageService;
 import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Collections;
@@ -79,7 +81,7 @@ public class MeetingService {
     return jArray;
   }
 
-  public void deleteMeeting(String accountId) {
+  public void deleteMeeting(String accountId) throws IOException {
     Member member = memberRepository.findByAccountId(accountId);
 
     // 삭제 말고 전체 거절처리
@@ -87,6 +89,8 @@ public class MeetingService {
     for (Apply apply_ : myMeeting.getParticipants()) {
       Apply one = applyService.findOne(apply_.getId());
       one.rejectAccept();
+      FirebaseCloudMessageService firebaseCloudMessageService = new FirebaseCloudMessageService();
+      firebaseCloudMessageService.sendMessageTo(one.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
     }
     myMeeting.setMeetingStatus(MeetingStatus.CLOSE);
     member.setMyMeetingId(null);
