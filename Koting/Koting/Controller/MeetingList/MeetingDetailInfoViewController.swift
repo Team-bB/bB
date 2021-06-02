@@ -10,6 +10,8 @@ import PanModal
 
 class MeetingDetailInfoViewController: UIViewController {
     
+    private let indicator = CustomIndicator()
+    
     var meeting: Meeting?
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var applyBtnTapped: UIButton!
@@ -34,6 +36,7 @@ class MeetingDetailInfoViewController: UIViewController {
     }
     
     @IBAction func applyButtonTapped(_ sender: Any) {
+        indicator.startAnimating(superView: view)
         
         ApplyMeetingAPI.shared.post(meetingId: meeting?.meeting_id) { [weak self] result in
             
@@ -44,24 +47,28 @@ class MeetingDetailInfoViewController: UIViewController {
                 
                 if finalResult.result == "applyMeetingSuccess" {
                     DispatchQueue.main.async {
+                        self?.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "성공", message: "미팅신청에 성공했습니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }else if finalResult.result == "applyMeetingApplied" {
                     DispatchQueue.main.async {
+                        self?.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "실패", message: "이미 신청한 미팅입니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }else if finalResult.result == "applyMeetingRejected" {
                     DispatchQueue.main.async {
+                        self?.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "실패", message: "거절된 미팅입니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }else {
                     DispatchQueue.main.async {
+                        self?.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "실패", message: "신청이 마감되었습니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
@@ -69,6 +76,7 @@ class MeetingDetailInfoViewController: UIViewController {
                 }
             case .failure:
                 DispatchQueue.main.async {
+                    self?.indicator.stopAnimating()
                     strongSelf.makeAlertBox(title: "실패", message: "Error", text: "확인") { (action) in
                         strongSelf.dismiss(animated: true, completion: nil)
                     }

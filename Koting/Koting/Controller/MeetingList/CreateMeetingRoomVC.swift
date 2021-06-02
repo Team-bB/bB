@@ -10,6 +10,7 @@ import UIKit
 import PanModal
 
 class CreateMeetingRoomVC: UIViewController {
+    private let indicator = CustomIndicator()
     //MARK: Outlet설정
     @IBOutlet weak var shortComment: UITextView!
     @IBOutlet weak var createMeetingRoomBtn: UIButton!
@@ -69,6 +70,8 @@ class CreateMeetingRoomVC: UIViewController {
         return .oneToOne
     }
     func createMeeting() {
+        indicator.startAnimating(superView: view)
+        
         CreateMeetingRoomAPI.shared.post(numberOfParticipants: getParticipants().getNumberOfParticipants(), shortComment: shortComment) { [weak self] result in
             
             guard let strongSelf = self else { return }
@@ -79,18 +82,23 @@ class CreateMeetingRoomVC: UIViewController {
                 
                 if result == "createFail" {
                     DispatchQueue.main.async {
+                        self?.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "알림", message: "이미 개설된 미팅이 존재합니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
+                        self?.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "알림", message: "미팅을 개설했습니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }
             case .failure:
+                DispatchQueue.main.async {
+                    self?.indicator.stopAnimating()
+                }
                 break
             }
         }

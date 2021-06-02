@@ -10,6 +10,9 @@ import Alamofire
 import PanModal
 
 class MeetingListVC: UIViewController {
+    
+    private let indicator = CustomIndicator()
+    
     var meetings = [Meeting]()
     var myMeeting: Meeting?
         
@@ -65,6 +68,9 @@ class MeetingListVC: UIViewController {
     }
     // MARK: FetchMeetings
     func FetchMeetings() {
+        indicator.startAnimating(superView: view)
+
+        
         FetchMeetingRoomsAPI.shared.get(accountID: UserDefaults.standard.string(forKey: "accountId")) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
@@ -75,11 +81,13 @@ class MeetingListVC: UIViewController {
                 DispatchQueue.main.async {
                     strongSelf.tableView.refreshControl?.endRefreshing()
                     strongSelf.tableView.reloadData()
+                    self?.indicator.stopAnimating()
                 }
                 
             case .failure:
                 DispatchQueue.main.async {
                     strongSelf.tableView.refreshControl?.endRefreshing()
+                    self?.indicator.stopAnimating()
                 }
                 break
             }

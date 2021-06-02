@@ -9,9 +9,10 @@ import UIKit
 import PanModal
 
 class MyMeetingInfoViewController: UIViewController {
-
+    
+    private let indicator = CustomIndicator()
+    
     @IBOutlet weak var imageView: UIImageView!
-    //@IBOutlet weak var animalLabel: UILabel!
     @IBOutlet weak var collegeLabel: UILabel!
     @IBOutlet weak var mbtiLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
@@ -64,6 +65,7 @@ class MyMeetingInfoViewController: UIViewController {
     }
     
     func deleteMeeting() {
+        indicator.startAnimating(superView: view)
         DeleteMeetingRoomAPI.shared.delete() { [weak self] result in
             
             guard let strongSelf = self else { return }
@@ -74,18 +76,23 @@ class MyMeetingInfoViewController: UIViewController {
                 
                 if result == "true" {
                     DispatchQueue.main.async {
+                        self?.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "알림", message: "미팅을 삭제했습니다.", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
+                        self?.indicator.stopAnimating()
                         strongSelf.makeAlertBox(title: "알림", message: "삭제에 실패했습니다..", text: "확인") { (action) in
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }
             case .failure:
+                DispatchQueue.main.async {
+                    self?.indicator.stopAnimating()
+                }
                 break
             }
         }
