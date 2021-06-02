@@ -36,6 +36,7 @@
 		885BFC29264B84CA0020A210 /* GetNoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BFC28264B84CA0020A210 /* GetNoticeAPI.swift */; };
 		885BFC2B264BC9E80020A210 /* WithdrawalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */; };
 		885C68F626677989003CBD7E /* UpdateDeviceTokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */; };
+		885C68F82667B322003CBD7E /* GetOtherInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C68F72667B322003CBD7E /* GetOtherInfoAPI.swift */; };
 		886D82D1260A514C00EE411C /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82D0260A514C00EE411C /* SignUpVC.swift */; };
 		886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82D3260A551E00EE411C /* SignUpModel.swift */; };
 		886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82DE260AF5A300EE411C /* SignUpAPI.swift */; };
@@ -129,6 +130,7 @@
 		885BFC28264B84CA0020A210 /* GetNoticeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeAPI.swift; sourceTree = "<group>"; };
 		885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalAPI.swift; sourceTree = "<group>"; };
 		885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeviceTokenAPI.swift; sourceTree = "<group>"; };
+		885C68F72667B322003CBD7E /* GetOtherInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOtherInfoAPI.swift; sourceTree = "<group>"; };
 		886D82D0260A514C00EE411C /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		886D82D3260A551E00EE411C /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		886D82DE260AF5A300EE411C /* SignUpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				885BFC28264B84CA0020A210 /* GetNoticeAPI.swift */,
 				885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */,
 				885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */,
+				885C68F72667B322003CBD7E /* GetOtherInfoAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
 				88A3AFA42651243100FFF90F /* ConversationVC.swift in Sources */,
 				88902EF2265E78BA00B98DB3 /* CustomUITextField.swift in Sources */,
+				885C68F82667B322003CBD7E /* GetOtherInfoAPI.swift in Sources */,
 				D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */,
 				D392E151264574B500938E85 /* MyMeetingApplicantCell.swift in Sources */,
 				D392E13E264565A300938E85 /* MenuCell.swift in Sources */,
@@ -868,7 +872,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Koting/Koting.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S633W4FQZA;
+				DEVELOPMENT_TEAM = NJ49S5QG3H;
 				INFOPLIST_FILE = Koting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -891,7 +895,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Koting/Koting.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S633W4FQZA;
+				DEVELOPMENT_TEAM = NJ49S5QG3H;
 				INFOPLIST_FILE = Koting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (

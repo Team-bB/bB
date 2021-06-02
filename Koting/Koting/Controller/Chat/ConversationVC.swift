@@ -64,7 +64,7 @@ class ConversationVC: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     
         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
         lbl.text = "   채팅"
@@ -97,10 +97,12 @@ class ConversationVC: UIViewController {
                     self?.noConversationsLabel.isHidden = false
                     return
                 }
+                
                 self?.noConversationsLabel.isHidden = true
                 self?.tableView.isHidden = false
                 self?.tableView.tableFooterView?.isHidden = false
                 self?.conversations = conversations
+                self?.conversations.sort(by: {$0.latestMessage.date > $1.latestMessage.date})
                 
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()

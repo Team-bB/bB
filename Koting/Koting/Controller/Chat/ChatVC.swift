@@ -25,6 +25,15 @@ class ChatVC: MessagesViewController {
     public let otherUserEmail: String
     public var isNewConversation = false
     
+    private let rightBarButton: UIBarButtonItem = {
+        let img = UIImage(systemName: "person.fill.questionmark")
+        let button = UIBarButtonItem(image: img,
+                                     style: .plain,
+                                     target: self, action: #selector(buttonTapped))
+        button.tintColor = #colorLiteral(red: 0.9960784314, green: 0.4941176471, blue: 0.2117647059, alpha: 1)
+        
+        return button
+    }()
     
     private var messages = [Message]()
     
@@ -62,14 +71,24 @@ class ChatVC: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
-        
+        navigationItem.rightBarButtonItem = rightBarButton
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messageInputBar.inputTextView.becomeFirstResponder()
         if let conversationId = conversationId {
             listenForMessages(id: conversationId, shouldScrollToBottom: true)
         }
+    }
+    @objc func buttonTapped() {
+//        let storyboard = UIStoryboard(name: "ChatStoryboard", bundle: nil)
+//        let nextVC = storyboard.instantiateViewController(identifier: "OtherInfo")
+//
+//        nextVC.modalPresentationStyle = .fullScreen
+//        nextVC.modalTransitionStyle = .crossDissolve
+//
+//        self.present(nextVC, animated: true)
     }
     
     private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
@@ -128,7 +147,7 @@ class ChatVC: MessagesViewController {
     }
     
     func setSendButton() {
-        messageInputBar.sendButton.setTitleColor(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), for: .normal)
+        messageInputBar.sendButton.setTitleColor(#colorLiteral(red: 0.9960784314, green: 0.4941176471, blue: 0.2117647059, alpha: 1), for: .normal)
         messageInputBar.sendButton.setTitle("전송", for: .normal)
     }
 }

@@ -84,7 +84,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  마이페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRe-RU-mK1">
-                    <rect key="frame" x="16" y="49" width="343" height="40"/>
+                    <rect key="frame" x="16" y="50" width="343" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Diw-5j-4yH"/>
                     </constraints>
@@ -102,7 +102,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CRe-RU-mK1" secondAttribute="trailing" constant="16" id="E68-Tl-4oQ"/>
                 <constraint firstItem="CRe-RU-mK1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JVV-ya-Lp2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aXB-dl-3y6" secondAttribute="trailing" constant="16" id="SHo-vS-wt2"/>
-                <constraint firstItem="CRe-RU-mK1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="49" id="VZE-X3-1vz"/>
+                <constraint firstItem="CRe-RU-mK1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="VZE-X3-1vz"/>
                 <constraint firstItem="aXB-dl-3y6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="XdQ-aQ-GfG"/>
                 <constraint firstItem="aXB-dl-3y6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="110" id="uw1-Pf-6jq"/>
             </constraints>
