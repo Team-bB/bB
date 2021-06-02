@@ -21,6 +21,9 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.18.16'
 	implementation 'junit:junit:4.12'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
+	implementation 'com.google.firebase:firebase-admin:6.8.1'
+	implementation group: 'com.squareup.okhttp3', name :'okhttp', version: '4.2.2'
+
 	runtimeOnly 'mysql:mysql-connector-java'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
