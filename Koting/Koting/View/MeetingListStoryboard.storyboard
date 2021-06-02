@@ -436,7 +436,7 @@
                             <constraint firstItem="Ovb-vu-7Ed" firstAttribute="bottom" secondItem="VRs-Mh-5jg" secondAttribute="bottom" id="a0F-5j-1Wb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="lA3-6U-dTk"/>
+                    <tabBarItem key="tabBarItem" title="" image="person.2" catalog="system" selectedImage="person.2.fill" id="lA3-6U-dTk"/>
                     <navigationItem key="navigationItem" id="dAm-c2-XEa">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="list.star" catalog="system" id="GcR-Pj-RZQ">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1119,9 +1119,9 @@
     <resources>
         <image name="applyCount_empty" width="50" height="50"/>
         <image name="applyCount_full" width="50" height="50"/>
-        <image name="house" catalog="system" width="128" height="106"/>
-        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="list.star" catalog="system" width="128" height="94"/>
+        <image name="person.2" catalog="system" width="128" height="81"/>
+        <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

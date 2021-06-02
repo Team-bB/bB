@@ -37,6 +37,9 @@ class MyMeetingApplicantCell: UITableViewCell {
         self.collectionView.isPagingEnabled = true
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.collectionView.layer.borderWidth = 0.3
+        self.collectionView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        self.collectionView.layer.cornerRadius = 30
 //        pageControl.hidesForSinglePage = true
     }
 

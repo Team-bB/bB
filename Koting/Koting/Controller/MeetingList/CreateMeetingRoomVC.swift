@@ -37,7 +37,7 @@ class CreateMeetingRoomVC: UIViewController {
             button.layer.cornerRadius = 10
         }
         createMeetingRoomBtn.layer.cornerRadius = 12
-        //createPicker()
+        placeholderSetting()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.addKeyboardNotifications()
@@ -163,21 +163,27 @@ extension CreateMeetingRoomVC {
 
 // MARK:- TextFiled 관련
 extension CreateMeetingRoomVC: UITextFieldDelegate, UITextViewDelegate {
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        if textField == participantsNumber {
-//            participantsNumber.text = participantsArray[participantsPicker.selectedRow(inComponent: 0)]
-//        }
-//        return true
-//    }
+    //글자수 제한
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let str = textView.text else { return true }
         let newLength = str.count + text.count - range.length
         return newLength<=50
+    }
+    func placeholderSetting() {
+        shortComment.text = "50자 제한입니다."
+        shortComment.textColor = UIColor.lightGray
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "50자 제한입니다."
+            textView.textColor = UIColor.lightGray
+        }
     }
 }
 
@@ -212,7 +218,7 @@ extension CreateMeetingRoomVC: PanModalPresentable {
 // MARK:- 추가구현 함수
 extension CreateMeetingRoomVC {
     private func checkTextFiled() -> Bool {
-        if shortComment.text == "" && shortComment.text.count > 50 {
+        if shortComment.text == "" || shortComment.text.count > 50 || shortComment.text == "50자 제한입니다." {
             return false
         }
         
