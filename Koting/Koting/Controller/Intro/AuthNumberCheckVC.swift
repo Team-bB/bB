@@ -76,20 +76,31 @@ class AuthNumberCheckVC: UIViewController {
                             UserDefaults.standard.set(authCheck, forKey: "mailAuthChecked")
                             strongSelf.loginFirebaseUser(email: email)
                             
-                            if authCheck {
-                                DispatchQueue.main.async {
-                                    strongSelf.indicator.stopAnimating()
-                                    strongSelf.performSegue(withIdentifier: "MeetingList", sender: nil)
+                            UpdateDeviceTokenAPI.shared.put() { result in
+                                switch result {
+                                
+                                case .success(let finalResult):
+                                    if finalResult.result == "true" {
+                                        if authCheck {
+                                            DispatchQueue.main.async {
+                                                strongSelf.indicator.stopAnimating()
+                                                strongSelf.performSegue(withIdentifier: "MeetingList", sender: nil)
+                                            }
+                                        } else {
+                                            // MARK:- 여기서 알러트 띄우고 이동하는게 좋음.
+                                            DispatchQueue.main.async {
+                                                strongSelf.indicator.stopAnimating()
+                                            }
+                                            strongSelf.asyncPresentView(identifier: "GettingStarted")
+                                        }
+                                    }
+                                case .failure(_):
+                                    print("에러 발생")
+                                    DispatchQueue.main.async {
+                                        strongSelf.indicator.stopAnimating()
+                                    }
                                 }
-                            } else {
-                                // MARK:- 여기서 알러트 띄우고 이동하는게 좋음.
-                                DispatchQueue.main.async {
-                                    strongSelf.indicator.stopAnimating()
-                                }
-                                strongSelf.asyncPresentView(identifier: "GettingStarted")
                             }
-                            
-                            
                             
                         case .failure(let error):
                             DispatchQueue.main.async {

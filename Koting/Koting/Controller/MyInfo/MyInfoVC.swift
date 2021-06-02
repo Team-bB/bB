@@ -137,7 +137,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
             break
             
         case "문의하기":
-            showMessageView(email: "ghdghkgud@naver.com", subject: "[Koting] 문의사항", body: "Content")
+            showMessageView(email: "lgwl81@gmail.com", subject: "[Koting] 문의사항", body: "Content")
             break
             
         case "로그아웃":

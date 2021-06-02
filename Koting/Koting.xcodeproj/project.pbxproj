@@ -35,6 +35,7 @@
 		88556CB92609D96A00CF7CAC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556CB82609D96A00CF7CAC /* API.swift */; };
 		885BFC29264B84CA0020A210 /* GetNoticeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BFC28264B84CA0020A210 /* GetNoticeAPI.swift */; };
 		885BFC2B264BC9E80020A210 /* WithdrawalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */; };
+		885C68F626677989003CBD7E /* UpdateDeviceTokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */; };
 		886D82D1260A514C00EE411C /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82D0260A514C00EE411C /* SignUpVC.swift */; };
 		886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82D3260A551E00EE411C /* SignUpModel.swift */; };
 		886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82DE260AF5A300EE411C /* SignUpAPI.swift */; };
@@ -127,6 +128,7 @@
 		88556CB82609D96A00CF7CAC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		885BFC28264B84CA0020A210 /* GetNoticeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeAPI.swift; sourceTree = "<group>"; };
 		885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalAPI.swift; sourceTree = "<group>"; };
+		885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeviceTokenAPI.swift; sourceTree = "<group>"; };
 		886D82D0260A514C00EE411C /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		886D82D3260A551E00EE411C /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		886D82DE260AF5A300EE411C /* SignUpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				D392E16E264833E000938E85 /* DeleteCompleteMeetingAPI.swift */,
 				885BFC28264B84CA0020A210 /* GetNoticeAPI.swift */,
 				885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */,
+				885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
 				88000B542653F312008671D2 /* ConversationTableViewCell.swift in Sources */,
 				884FB1F92619A3FC00448B83 /* GetUserPhotoVC2.swift in Sources */,
+				885C68F626677989003CBD7E /* UpdateDeviceTokenAPI.swift in Sources */,
 				D328BBED26564753001502D7 /* SimpleMeetingInfoViewController.swift in Sources */,
 				88984E57264444B200997ED2 /* MyInfoModel.swift in Sources */,
 				883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */,
