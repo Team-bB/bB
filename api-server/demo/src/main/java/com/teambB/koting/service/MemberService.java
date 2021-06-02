@@ -29,7 +29,6 @@ public class MemberService {
   private JavaMailSender javaMailSender;
   private final MemberRepository memberRepository;
   private final MeetingRepository meetingRepository;
-  private final ApplyService applyService;
   private final ApplyRepository applyRepository;
 
   public Long join(Member member) {
@@ -138,5 +137,10 @@ public class MemberService {
     mimeMessageHelper.setSubject(subject);
     mimeMessageHelper.setText(body.toString(), true);
     javaMailSender.send(message);
+  }
+
+  public void updateDeviceToken(String accountId, String deviceToken) {
+    Member member = memberRepository.findByAccountId(accountId);
+    member.setDeviceToken(deviceToken);
   }
 }
