@@ -36,6 +36,7 @@ public class Member {
   private String nickname;
   private String email;
   private String number;
+  private String deviceToken;
   private int animalIdx;
   private String authKey;
   private Boolean authStatus;
@@ -47,6 +48,7 @@ public class Member {
   public static Member createMember(JSONObject object) {
     Member member = new Member();
     member.setAccount_id(member.makeRandomString(16));
+    member.setDeviceToken(object.get("device_token").toString());
     member.setSex(object.get("sex").toString());
     member.setCollege(object.get("college").toString());
     member.setMajor(object.get("major").toString());
