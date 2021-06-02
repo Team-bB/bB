@@ -116,8 +116,9 @@ public class ApplyController {
     Integer result = applyService.applyNotAvailable(accountId, meetingId);
     if (result == 0) {
       applyService.Apply(accountId, meetingId);
-      Member member = memberService.findOneByAccountId(accountId);
-      firebaseCloudMessageService.sendMessageTo(member.getDeviceToken(), "미팅 신청 안내", "누군가로부터 신청이 들어왔습니다.");
+      Meeting meeting = meetingService.findOne(meetingId);
+      Member owner = memberService.findOne(meeting.getId());
+      firebaseCloudMessageService.sendMessageTo(owner.getDeviceToken(), "미팅 신청 안내", "누군가로부터 신청이 들어왔습니다. 😍");
       retObject.put("result", "applyMeetingSuccess");
     }
     else if (result == 1) {
