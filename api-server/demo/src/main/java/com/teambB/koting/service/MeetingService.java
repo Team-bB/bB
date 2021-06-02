@@ -5,6 +5,7 @@ import com.teambB.koting.domain.Meeting;
 import com.teambB.koting.domain.MeetingStatus;
 import com.teambB.koting.domain.Member;
 import com.teambB.koting.firebase.FirebaseCloudMessageService;
+import com.teambB.koting.firebase.FirebaseService;
 import com.teambB.koting.repository.MeetingRepository;
 import com.teambB.koting.repository.MemberRepository;
 import java.io.IOException;
@@ -90,7 +91,8 @@ public class MeetingService {
       Apply one = applyService.findOne(apply_.getId());
       one.rejectAccept();
       FirebaseCloudMessageService firebaseCloudMessageService = new FirebaseCloudMessageService();
-      firebaseCloudMessageService.sendMessageTo(one.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
+      FirebaseService.sendReject(one.getMember().getDeviceToken());
+//      firebaseCloudMessageService.sendMessageTo(one.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
     }
     myMeeting.setMeetingStatus(MeetingStatus.CLOSE);
     member.setMyMeetingId(null);
