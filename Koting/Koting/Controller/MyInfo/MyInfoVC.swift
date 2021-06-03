@@ -141,7 +141,7 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
             asyncPresentView(identifier: "OSL")
             
         case "문의하기":
-            showMessageView(email: "lgwl81@gmail.com", subject: "[Koting] 문의사항", body: "Content")
+            showMessageView(email: "lgwl81@gmail.com", subject: "[동마담] 문의사항", body: "")
             
         case "로그아웃":
             makeLogOutAlert()

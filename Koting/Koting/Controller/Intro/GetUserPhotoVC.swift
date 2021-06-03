@@ -25,7 +25,7 @@ class GetUserPhotoVC: UIViewController {
         setImageView()
         addGestureToIMG()
         measureButton.setDisable()
-        measureButton.layer.cornerRadius = 12
+        measureButton.layer.cornerRadius = 8
         measureButton.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
         measureButton.layer.shadowOpacity = 0.5
         measureButton.layer.shadowOffset = CGSize.zero

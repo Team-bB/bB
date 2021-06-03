@@ -37,7 +37,7 @@ class CreateMeetingRoomVC: UIViewController {
             button.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             button.layer.cornerRadius = 10
         }
-        createMeetingRoomBtn.layer.cornerRadius = 12
+        createMeetingRoomBtn.layer.cornerRadius = 8
         placeholderSetting()
     }
     override func viewWillAppear(_ animated: Bool) {

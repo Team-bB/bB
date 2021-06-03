@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Koting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNe-jZ-qmj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DongMadame" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNe-jZ-qmj">
                                 <rect key="frame" x="0.0" y="194" width="375" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <nil key="textColor"/>
@@ -24,11 +24,12 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT8-Ux-cYz">
                                 <rect key="frame" x="57.5" y="417" width="260" height="50"/>
-                                <color key="backgroundColor" red="0.9428533912" green="0.56377393009999999" blue="0.30973362920000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.99607843137254903" green="0.49411764705882355" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="HBW-YU-Qfe"/>
                                     <constraint firstAttribute="height" constant="50" id="VpZ-ii-TGH"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="시작하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -86,38 +87,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgR-gE-LS7">
-                                <rect key="frame" x="120" y="308" width="135" height="36"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="XRh-vl-yER">
+                                <rect key="frame" x="12.5" y="134" width="350" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="본인 인증을 위한 전화번호를 입력하세요. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZr-Us-djD">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="TyP-2D-0B7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화번호는 어디에도 공개되지 않으며, 안전하게 저장됩니다. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVv-vJ-fTx">
+                                        <rect key="frame" x="39.5" y="37" width="271.5" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="Oc0-Du-yno"/>
+                                </constraints>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-jS-YjS">
+                                <rect key="frame" x="62.5" y="249" width="250" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Gml-Ew-3ct"/>
+                                    <constraint firstAttribute="width" constant="250" id="u84-S4-dYB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgR-gE-LS7">
+                                <rect key="frame" x="62.5" y="299" width="250" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="5M5-6O-TzY"/>
+                                    <constraint firstAttribute="height" constant="35" id="KHd-Xf-BFX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="인증번호 전송"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="Xof-cP-A9j" eventType="touchUpInside" id="zXa-Iv-x4T"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="본인 인증을 위한 전화번호를 입력하세요. " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZr-Us-djD">
-                                <rect key="frame" x="0.0" y="182" width="375" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-jS-YjS">
-                                <rect key="frame" x="120" y="257" width="135" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8ZO-Ef-jfr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="WhW-jS-YjS" firstAttribute="top" secondItem="EZr-Us-djD" secondAttribute="bottom" constant="51" id="8Af-zH-r5M"/>
-                            <constraint firstItem="8ZO-Ef-jfr" firstAttribute="trailing" secondItem="EZr-Us-djD" secondAttribute="trailing" id="FVG-dw-Pcx"/>
-                            <constraint firstItem="8ZO-Ef-jfr" firstAttribute="trailing" secondItem="WhW-jS-YjS" secondAttribute="trailing" constant="120" id="Luk-rT-0aU"/>
-                            <constraint firstItem="WhW-jS-YjS" firstAttribute="leading" secondItem="8ZO-Ef-jfr" secondAttribute="leading" constant="120" id="LxK-6H-U2D"/>
-                            <constraint firstItem="dgR-gE-LS7" firstAttribute="leading" secondItem="8ZO-Ef-jfr" secondAttribute="leading" constant="120" id="QkZ-b2-Wc4"/>
-                            <constraint firstItem="EZr-Us-djD" firstAttribute="top" secondItem="8ZO-Ef-jfr" secondAttribute="top" constant="138" id="dFQ-Hn-roo"/>
-                            <constraint firstItem="EZr-Us-djD" firstAttribute="leading" secondItem="8ZO-Ef-jfr" secondAttribute="leading" id="e1G-4t-tN3"/>
-                            <constraint firstItem="dgR-gE-LS7" firstAttribute="top" secondItem="WhW-jS-YjS" secondAttribute="bottom" constant="17" id="etz-hv-jGM"/>
-                            <constraint firstItem="8ZO-Ef-jfr" firstAttribute="trailing" secondItem="dgR-gE-LS7" secondAttribute="trailing" constant="120" id="f1T-cW-bT0"/>
+                            <constraint firstItem="dgR-gE-LS7" firstAttribute="centerX" secondItem="lao-zM-Qfn" secondAttribute="centerX" id="9eR-T6-m3u"/>
+                            <constraint firstItem="dgR-gE-LS7" firstAttribute="top" secondItem="WhW-jS-YjS" secondAttribute="bottom" constant="15" id="ETc-IP-mqy"/>
+                            <constraint firstItem="WhW-jS-YjS" firstAttribute="top" secondItem="XRh-vl-yER" secondAttribute="bottom" constant="35" id="MbS-xb-FP6"/>
+                            <constraint firstItem="WhW-jS-YjS" firstAttribute="centerX" secondItem="lao-zM-Qfn" secondAttribute="centerX" id="VI6-xG-FBj"/>
+                            <constraint firstItem="XRh-vl-yER" firstAttribute="top" secondItem="8ZO-Ef-jfr" secondAttribute="top" constant="90" id="fSe-Tb-c4l"/>
+                            <constraint firstItem="XRh-vl-yER" firstAttribute="centerX" secondItem="lao-zM-Qfn" secondAttribute="centerX" id="n83-dw-NPV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="전화번호 입력" id="COL-YS-ti9"/>
@@ -140,8 +163,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88e-KR-YA7">
-                                <rect key="frame" x="120" y="308" width="135" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="62.5" y="299" width="250" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="G3N-s0-XPq"/>
+                                    <constraint firstAttribute="width" constant="250" id="sSW-Qw-1y6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="확인"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -152,14 +179,18 @@
                                     <action selector="buttonTapped:" destination="2r8-5M-CvO" eventType="touchUpInside" id="0uY-QO-Ivl"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEw-zk-d1c">
-                                <rect key="frame" x="120" y="257" width="135" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEw-zk-d1c">
+                                <rect key="frame" x="62.5" y="249" width="250" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Ild-mk-vjK"/>
+                                    <constraint firstAttribute="width" constant="250" id="dyP-8m-QD3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증번호 4자리를 입력하세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5L-zq-aXf">
-                                <rect key="frame" x="0.0" y="182" width="375" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="0.0" y="163" width="375" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -167,15 +198,13 @@
                         <viewLayoutGuide key="safeArea" id="8Gm-Sf-Bex"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PEw-zk-d1c" firstAttribute="top" secondItem="f5L-zq-aXf" secondAttribute="bottom" constant="51" id="CE3-Ws-dHQ"/>
-                            <constraint firstItem="PEw-zk-d1c" firstAttribute="leading" secondItem="8Gm-Sf-Bex" secondAttribute="leading" constant="120" id="R6B-j2-fxY"/>
-                            <constraint firstItem="88e-KR-YA7" firstAttribute="leading" secondItem="8Gm-Sf-Bex" secondAttribute="leading" constant="120" id="ak2-2R-umG"/>
+                            <constraint firstItem="PEw-zk-d1c" firstAttribute="top" secondItem="f5L-zq-aXf" secondAttribute="bottom" constant="62" id="SDQ-O1-kbA"/>
+                            <constraint firstItem="PEw-zk-d1c" firstAttribute="centerX" secondItem="oRZ-it-J7A" secondAttribute="centerX" id="aDN-E2-MjV"/>
                             <constraint firstItem="8Gm-Sf-Bex" firstAttribute="trailing" secondItem="f5L-zq-aXf" secondAttribute="trailing" id="cwg-na-XMu"/>
-                            <constraint firstItem="f5L-zq-aXf" firstAttribute="top" secondItem="8Gm-Sf-Bex" secondAttribute="top" constant="138" id="dEF-zk-neo"/>
-                            <constraint firstItem="8Gm-Sf-Bex" firstAttribute="trailing" secondItem="88e-KR-YA7" secondAttribute="trailing" constant="120" id="e0S-Mr-lYR"/>
+                            <constraint firstItem="f5L-zq-aXf" firstAttribute="top" secondItem="8Gm-Sf-Bex" secondAttribute="top" constant="119" id="dEF-zk-neo"/>
                             <constraint firstItem="f5L-zq-aXf" firstAttribute="leading" secondItem="oRZ-it-J7A" secondAttribute="leading" id="gy4-MW-zAb"/>
-                            <constraint firstItem="8Gm-Sf-Bex" firstAttribute="trailing" secondItem="PEw-zk-d1c" secondAttribute="trailing" constant="120" id="rrR-ml-emf"/>
-                            <constraint firstItem="88e-KR-YA7" firstAttribute="top" secondItem="PEw-zk-d1c" secondAttribute="bottom" constant="17" id="wk5-Dj-6Jg"/>
+                            <constraint firstItem="88e-KR-YA7" firstAttribute="centerX" secondItem="oRZ-it-J7A" secondAttribute="centerX" id="lHu-pl-dhE"/>
+                            <constraint firstItem="88e-KR-YA7" firstAttribute="top" secondItem="PEw-zk-d1c" secondAttribute="bottom" constant="15" id="lfE-nY-c2D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="인증번호 입력" id="8Rp-be-ymk"/>
@@ -202,7 +231,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="YDi-DL-oKr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="가입하기"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -516,6 +545,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="6ie-Ob-2Oq"/>
                                     <constraint firstAttribute="height" constant="50" id="fdO-AB-c4W"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="동물상 측정하기"/>
                                 <connections>
                                     <action selector="measureButtonTapped:" destination="6sB-jP-twZ" eventType="touchUpInside" id="eSK-wG-jja"/>
@@ -581,6 +611,7 @@
                                     <constraint firstAttribute="height" constant="50" id="LgH-Mi-51C"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="ojK-EY-b76"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="다시 측정하기"/>
                                 <connections>
                                     <action selector="remeasureButtonTapped:" destination="nMR-kv-qZ7" eventType="touchUpInside" id="7lT-yO-rM2"/>
@@ -592,6 +623,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="AwV-Pr-C1i"/>
                                     <constraint firstAttribute="height" constant="50" id="pCA-u1-fgi"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="동물상 사용하기"/>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="nMR-kv-qZ7" eventType="touchUpInside" id="AOn-s0-PFA"/>
@@ -640,6 +672,9 @@
         <image name="defaultProfile" width="256" height="256"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

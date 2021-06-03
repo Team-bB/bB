@@ -59,7 +59,7 @@ class MeasureResultVC: UIViewController {
         
         remeasureButton.setTitleColor(.white, for: .normal)
         remeasureButton.backgroundColor = .link
-        remeasureButton.layer.cornerRadius = 12
+        remeasureButton.layer.cornerRadius = 8
         remeasureButton.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
         remeasureButton.layer.shadowOpacity = 0.5
         remeasureButton.layer.shadowOffset = CGSize.zero
@@ -67,7 +67,7 @@ class MeasureResultVC: UIViewController {
         
         nextButton.setTitleColor(.white, for: .normal)
         nextButton.backgroundColor = #colorLiteral(red: 0.1882352941, green: 0.8196078431, blue: 0.3450980392, alpha: 1)
-        nextButton.layer.cornerRadius = 12
+        nextButton.layer.cornerRadius = 8
         nextButton.layer.shadowColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1).cgColor
         nextButton.layer.shadowOpacity = 0.5
         nextButton.layer.shadowOffset = CGSize.zero
