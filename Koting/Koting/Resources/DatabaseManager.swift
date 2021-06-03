@@ -219,7 +219,6 @@ extension DatabaseManager {
             ]
             
             // Update recipient conversation entry
-            
             self?.database.child("\(otherUserEmail)/conversations").observeSingleEvent(of: .value) { [weak self] snapshot in
                 
                 if var conversations = snapshot.value as? [[String: Any]] {
@@ -643,6 +642,7 @@ extension DatabaseManager {
     }
     
     public func withdrawal(completion: @escaping (Bool) -> Void) {
+        // RealTimeDB: 나와 연관된 대화삭제 -> 내 정보 삭제
         guard let myEmail = UserDefaults.standard.value(forKey: "email") as? String else { return }
         
         let safeEmail = DatabaseManager.safeEmail(email: myEmail)

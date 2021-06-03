@@ -79,11 +79,11 @@ extension OtherInfoVC: PanModalPresentable {
     }
 
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(200)
+        return .contentHeight(110)
     }
 
     var longFormHeight: PanModalHeight {
-        return .contentHeight(200)
+        return .contentHeight(110)
     }
 
     var anchorModalToLongForm: Bool {

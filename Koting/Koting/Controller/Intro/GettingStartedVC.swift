@@ -78,7 +78,7 @@ class GettingStartedVC: UIViewController {
     
     private func setNavigationBar() {
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.barTintColor = view.backgroundColor
         navigationController?.navigationBar.tintColor = .black
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }

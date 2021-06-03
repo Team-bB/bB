@@ -129,24 +129,25 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
         
         switch cellName {
         case "공지사항":
-            self.asyncPresentView(identifier: "NoticeVC")
-            break
+            asyncPresentView(identifier: "NoticeVC")
+            
         case "자주 묻는 질문":
-            self.asyncPresentView(identifier: "Faq")
+            asyncPresentView(identifier: "Faq")
+            
         case "앱 정보":
             break
             
+        case "오픈소스 라이선스":
+            asyncPresentView(identifier: "OSL")
+            
         case "문의하기":
             showMessageView(email: "lgwl81@gmail.com", subject: "[Koting] 문의사항", body: "Content")
-            break
             
         case "로그아웃":
             makeLogOutAlert()
-            break
             
         case "회원탈퇴":
             makeWithdrawalAlert()
-            break
             
         default:
             break

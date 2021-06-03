@@ -217,6 +217,48 @@
             </objects>
             <point key="canvasLocation" x="-359.19999999999999" y="-1164.4677661169417"/>
         </scene>
+        <!--오픈소스 라이선스-->
+        <scene sceneID="Prt-Js-I3e">
+            <objects>
+                <viewController id="EuC-0o-IZh" customClass="OpenSourceLicenseVC" customModule="Koting" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NuD-lp-CRs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HP3-Jp-zw9">
+                                <rect key="frame" x="20" y="54" width="335" height="603"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="x8N-VS-dRk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="x8N-VS-dRk" firstAttribute="bottom" secondItem="HP3-Jp-zw9" secondAttribute="bottom" constant="10" id="e5x-g9-CrF"/>
+                            <constraint firstItem="HP3-Jp-zw9" firstAttribute="top" secondItem="x8N-VS-dRk" secondAttribute="top" constant="10" id="jeF-qc-I5h"/>
+                            <constraint firstItem="HP3-Jp-zw9" firstAttribute="leading" secondItem="x8N-VS-dRk" secondAttribute="leading" constant="20" id="o6R-vF-9RM"/>
+                            <constraint firstItem="x8N-VS-dRk" firstAttribute="trailing" secondItem="HP3-Jp-zw9" secondAttribute="trailing" constant="20" id="uHK-pG-b2G"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="오픈소스 라이선스" id="idl-WE-zBq">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="xmark" catalog="system" id="9Th-C4-dyJ">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="buttonTapped:" destination="EuC-0o-IZh" id="fVc-wC-x4n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="HP3-Jp-zw9" id="IGM-XL-xAT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qxz-dN-i43" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-359.19999999999999" y="-482.60869565217394"/>
+        </scene>
         <!--Notice DetailVC-->
         <scene sceneID="yer-sS-f6C">
             <objects>
@@ -392,6 +434,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pp-sr-lPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="564" y="-1164"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hoi-Fi-SRZ">
+            <objects>
+                <navigationController storyboardIdentifier="OSL" automaticallyAdjustsScrollViewInsets="NO" id="A4N-EH-Ool" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5yf-ce-Twg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EuC-0o-IZh" kind="relationship" relationship="rootViewController" id="DcJ-Wj-Kag"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSx-pF-KER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1274" y="-482"/>
         </scene>
     </scenes>
     <resources>

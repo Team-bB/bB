@@ -31,9 +31,9 @@ class MeetingListVC: UIViewController {
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
         navigationItem.titleView = lbl
         
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = view.backgroundColor
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         tableView.delegate = self
         tableView.dataSource = self

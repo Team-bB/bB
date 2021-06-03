@@ -37,6 +37,7 @@
 		885BFC2B264BC9E80020A210 /* WithdrawalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */; };
 		885C68F626677989003CBD7E /* UpdateDeviceTokenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */; };
 		885C68F82667B322003CBD7E /* GetOtherInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C68F72667B322003CBD7E /* GetOtherInfoAPI.swift */; };
+		885C68FC26689078003CBD7E /* OpenSourceLicenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C68FB26689078003CBD7E /* OpenSourceLicenseVC.swift */; };
 		886D82D1260A514C00EE411C /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82D0260A514C00EE411C /* SignUpVC.swift */; };
 		886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82D3260A551E00EE411C /* SignUpModel.swift */; };
 		886D82DF260AF5A300EE411C /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D82DE260AF5A300EE411C /* SignUpAPI.swift */; };
@@ -94,7 +95,6 @@
 		D392E1CA26527FC400938E85 /* NoMyMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D392E1C926527FC400938E85 /* NoMyMeetingCell.swift */; };
 		D3BC8CEB260A4EBC000625DF /* MeetingListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */; };
 		D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF1260B1835000625DF /* MeetingModel.swift */; };
-		D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */; };
 		D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */; };
 		D3BC8D31260CB73E000625DF /* CreateMeetingRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */; };
 /* End PBXBuildFile section */
@@ -132,6 +132,7 @@
 		885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalAPI.swift; sourceTree = "<group>"; };
 		885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeviceTokenAPI.swift; sourceTree = "<group>"; };
 		885C68F72667B322003CBD7E /* GetOtherInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOtherInfoAPI.swift; sourceTree = "<group>"; };
+		885C68FB26689078003CBD7E /* OpenSourceLicenseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLicenseVC.swift; sourceTree = "<group>"; };
 		886D82D0260A514C00EE411C /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		886D82D3260A551E00EE411C /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		886D82DE260AF5A300EE411C /* SignUpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
@@ -192,7 +193,6 @@
 		D392E1C926527FC400938E85 /* NoMyMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMyMeetingCell.swift; sourceTree = "<group>"; };
 		D3BC8CEA260A4EBC000625DF /* MeetingListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingListVC.swift; sourceTree = "<group>"; };
 		D3BC8CF1260B1835000625DF /* MeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingModel.swift; sourceTree = "<group>"; };
-		D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListAndMyInfoAPI.swift; sourceTree = "<group>"; };
 		D3BC8D2D260C988B000625DF /* CreateMeetingRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMeetingRoomVC.swift; sourceTree = "<group>"; };
 		D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMeetingRoomAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,7 +245,6 @@
 				88556CA72609D8D300CF7CAC /* AuthNumberCheckAPI.swift */,
 				886D82DE260AF5A300EE411C /* SignUpAPI.swift */,
 				88556CA62609D8D300CF7CAC /* MailAuthAPI.swift */,
-				D3BC8CF4260C1B47000625DF /* MeetingListAndMyInfoAPI.swift */,
 				D3BC8D30260CB73E000625DF /* CreateMeetingRoomAPI.swift */,
 				881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */,
 				889DB25A263D520300E8B1BE /* ApplyMeetingAPI.swift */,
@@ -394,6 +393,7 @@
 				88984E5926444C9B00997ED2 /* StrechyHeader.swift */,
 				88869F1726429C0C0078A74F /* MyInfoHeaderVC.swift */,
 				88869F1826429C0C0078A74F /* MyInfoHeaderVC.xib */,
+				885C68FB26689078003CBD7E /* OpenSourceLicenseVC.swift */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -667,7 +667,6 @@
 				883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */,
 				88000B5B26567F4C008671D2 /* UINavigationBar++.swift in Sources */,
 				883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */,
-				D3BC8CF5260C1B47000625DF /* MeetingListAndMyInfoAPI.swift in Sources */,
 				D392E15A26459F5300938E85 /* ApplicantCollectionViewCell.swift in Sources */,
 				88199DAB26615D49004FD856 /* GetUserPhotoVC.swift in Sources */,
 				88A3AFA62651244000FFF90F /* ChatVC.swift in Sources */,
@@ -695,6 +694,7 @@
 				886D82D4260A551E00EE411C /* SignUpModel.swift in Sources */,
 				88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */,
 				887C404C2608C3F100A641DA /* InputPhoneNumberVC.swift in Sources */,
+				885C68FC26689078003CBD7E /* OpenSourceLicenseVC.swift in Sources */,
 				D35807F42667BB0D00AC71EB /* OtherInfoVC.swift in Sources */,
 				88A3AFA42651243100FFF90F /* ConversationVC.swift in Sources */,
 				88902EF2265E78BA00B98DB3 /* CustomUITextField.swift in Sources */,
