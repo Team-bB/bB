@@ -41,14 +41,13 @@ public class MemberController {
   }
 
   @GetMapping("/members")
-  public JSONObject getMember(@RequestBody JSONObject object) {
+  public JSONObject getMember(@RequestParam("account_id") String accountId) {
     JSONObject retObject = new JSONObject();
 
-    String accountId = object.get("account_id").toString();
     Member member = memberService.findOneByAccountId(accountId);
     retObject.put("result", memberService.setMemberInfo(member));
 
-    return memberService.setMemberInfo(member);
+    return retObject;
   }
 
   @GetMapping("/auth/number")
