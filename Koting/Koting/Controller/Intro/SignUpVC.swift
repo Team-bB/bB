@@ -52,56 +52,68 @@ class SignUpVC: UIViewController {
     
     // MARK:- @IBAction func
     @IBAction func signUpButtonTapped(_ sender: Any) {
-        guard  let email = mail.text else { return }
         
-        let totalEmail = email + form.mailDomain
-        
-        if (isValidEmail(totalEmail)) {
-            indicator.startAnimating(superView: view)
+        let alertController = UIAlertController(title: "알림", message: "가입 후 정보변경이 불가능합니다.\n진행하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+        let yesButton = UIAlertAction(title: "예", style: UIAlertAction.Style.default) { [weak self] _ in
             
-            SignUpAPI.shared.post(paramArray: infoArray) { [weak self] result in
+            guard let strongSelf = self else { return }
+            guard  let email = strongSelf.mail.text else { return }
+            
+            let totalEmail = email + strongSelf.form.mailDomain
+            
+            if (strongSelf.isValidEmail(totalEmail)) {
+                strongSelf.indicator.startAnimating(superView: strongSelf.view)
                 
-                guard let strongSelf = self else { return }
-                switch result {
-                case .success(let message):
+                SignUpAPI.shared.post(paramArray: strongSelf.infoArray) { result in
                     
-                    guard let animalIdx = UserDefaults.standard.value(forKey: "animalIndex") as? String else { return }
-                    
-                    let myInfo = Owner(college: strongSelf.college.text, major: strongSelf.major.text, sex: strongSelf.sex.text, mbti: strongSelf.MBTI.text, animal_idx: Int(animalIdx), age: Int(strongSelf.age.text!), height: Int(strongSelf.height.text!), nickname: strongSelf.nickName.text)
-                    
-                    UserDefaults.standard.set(try? PropertyListEncoder().encode(myInfo), forKey:"myInfo")
-                    UserDefaults.standard.set(message.result, forKey: "accountId")
-                    UserDefaults.standard.set(message.result + strongSelf.form.mailDomain, forKey: "email")
-                    UserDefaults.standard.set(false, forKey: "mailAuthChecked")
-                    
-                    // MARK: - Firebase 채팅서버 유저생성
-                    strongSelf.createFirebaseUser(email: message.result + strongSelf.form.mailDomain, userInfo: myInfo)
-                    
-                    DispatchQueue.main.async {
-                        strongSelf.indicator.stopAnimating()
-                        let alertController = UIAlertController(title: "가입완료", message: "메일 인증후 이용가능합니다.", preferredStyle: UIAlertController.Style.alert)
-                        let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel) { action in
-                            strongSelf.asyncPresentView(identifier: "GettingStarted")
+                    switch result {
+                    case .success(let message):
+                        
+                        guard let animalIdx = UserDefaults.standard.value(forKey: "animalIndex") as? String else { return }
+                        
+                        let myInfo = Owner(college: strongSelf.college.text, major: strongSelf.major.text, sex: strongSelf.sex.text, mbti: strongSelf.MBTI.text, animal_idx: Int(animalIdx), age: Int(strongSelf.age.text!), height: Int(strongSelf.height.text!), nickname: strongSelf.nickName.text)
+                        
+                        UserDefaults.standard.set(try? PropertyListEncoder().encode(myInfo), forKey:"myInfo")
+                        UserDefaults.standard.set(message.result, forKey: "accountId")
+                        UserDefaults.standard.set(message.result + strongSelf.form.mailDomain, forKey: "email")
+                        UserDefaults.standard.set(false, forKey: "mailAuthChecked")
+                        
+                        // MARK: - Firebase 채팅서버 유저생성
+                        strongSelf.createFirebaseUser(email: message.result + strongSelf.form.mailDomain, userInfo: myInfo)
+                        
+                        DispatchQueue.main.async {
+                            strongSelf.indicator.stopAnimating()
+                            let alertController = UIAlertController(title: "가입완료", message: "메일 인증후 이용가능합니다.", preferredStyle: UIAlertController.Style.alert)
+                            let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.default) { action in
+                                strongSelf.asyncPresentView(identifier: "GettingStarted")
+                            }
+                            
+                            alertController.addAction(okButton)
+                            
+                            strongSelf.present(alertController, animated: true, completion: nil)
                         }
-                        
-                        alertController.addAction(okButton)
-                        
-                        strongSelf.present(alertController, animated: true, completion: nil)
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            strongSelf.indicator.stopAnimating()
+                            let alertController = UIAlertController(title: "에러", message: "CodableError", preferredStyle: UIAlertController.Style.alert)
+                            let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel)
+                            alertController.addAction(okButton)
+                            strongSelf.present(alertController, animated: true, completion: nil)
+                        }
+                        print(error)
                     }
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        strongSelf.indicator.stopAnimating()
-                        let alertController = UIAlertController(title: "에러", message: "CodableError", preferredStyle: UIAlertController.Style.alert)
-                        let okButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel)
-                        alertController.addAction(okButton)
-                        strongSelf.present(alertController, animated: true, completion: nil)
-                    }
-                    print(error)
                 }
+            } else {
+                print("Not Valid !!!!!!!!!")
             }
-        } else {
-            print("Not Valid !!!!!!!!!")
         }
+        let noButton = UIAlertAction(title: "아니요", style: UIAlertAction.Style.cancel, handler: nil)
+        
+        alertController.addAction(yesButton)
+        alertController.addAction(noButton)
+        
+        present(alertController, animated: true, completion: nil)
+        
     }
 }
 

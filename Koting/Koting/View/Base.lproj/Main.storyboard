@@ -526,21 +526,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰입니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH3-Yb-IMH">
-                                <rect key="frame" x="0.0" y="104" width="375" height="21.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진은 동물상을 판단하는 용도로만 쓰이며, 어디에도 저장되지 않습니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH3-Yb-IMH">
+                                <rect key="frame" x="12.5" y="89" width="350" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="0oY-1k-H9e"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-bZ-4wE">
-                                <rect key="frame" x="57.5" y="165.5" width="260" height="260"/>
+                                <rect key="frame" x="57.5" y="172" width="260" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Avb-C5-52X"/>
                                     <constraint firstAttribute="height" constant="260" id="Jaw-oA-EdP"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-ji-5WY">
-                                <rect key="frame" x="57.5" y="483.5" width="260" height="50"/>
+                                <rect key="frame" x="57.5" y="490" width="260" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="6ie-Ob-2Oq"/>
                                     <constraint firstAttribute="height" constant="50" id="fdO-AB-c4W"/>
@@ -552,7 +555,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상단 탭 - 사진을 업로드 또는 수정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FG7-uy-agY">
-                                <rect key="frame" x="0.0" y="430.5" width="375" height="18"/>
+                                <rect key="frame" x="0.0" y="437" width="375" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -561,15 +564,14 @@
                         <viewLayoutGuide key="safeArea" id="5fA-71-dOb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aH3-Yb-IMH" firstAttribute="top" secondItem="5fA-71-dOb" secondAttribute="top" constant="60" id="7Kx-9l-RL5"/>
+                            <constraint firstItem="aH3-Yb-IMH" firstAttribute="top" secondItem="5fA-71-dOb" secondAttribute="top" constant="45" id="7Kx-9l-RL5"/>
                             <constraint firstItem="FG7-uy-agY" firstAttribute="top" secondItem="b7s-bZ-4wE" secondAttribute="bottom" constant="5" id="8vk-Vy-fnU"/>
                             <constraint firstItem="Kmd-ji-5WY" firstAttribute="top" secondItem="FG7-uy-agY" secondAttribute="bottom" constant="35" id="AVI-PD-4wG"/>
                             <constraint firstItem="b7s-bZ-4wE" firstAttribute="centerX" secondItem="CTM-HA-X7v" secondAttribute="centerX" id="CiE-41-p3o"/>
-                            <constraint firstItem="5fA-71-dOb" firstAttribute="trailing" secondItem="aH3-Yb-IMH" secondAttribute="trailing" id="LjY-oO-OjZ"/>
+                            <constraint firstItem="aH3-Yb-IMH" firstAttribute="centerX" secondItem="CTM-HA-X7v" secondAttribute="centerX" id="HGS-9C-eOk"/>
                             <constraint firstItem="b7s-bZ-4wE" firstAttribute="top" secondItem="aH3-Yb-IMH" secondAttribute="bottom" constant="40" id="Orw-5o-wmI"/>
                             <constraint firstItem="FG7-uy-agY" firstAttribute="leading" secondItem="5fA-71-dOb" secondAttribute="leading" id="dst-FU-Mhj"/>
                             <constraint firstItem="Kmd-ji-5WY" firstAttribute="centerX" secondItem="CTM-HA-X7v" secondAttribute="centerX" id="leW-Ak-gDw"/>
-                            <constraint firstItem="aH3-Yb-IMH" firstAttribute="leading" secondItem="5fA-71-dOb" secondAttribute="leading" id="mWj-3A-s5i"/>
                             <constraint firstItem="5fA-71-dOb" firstAttribute="trailing" secondItem="FG7-uy-agY" secondAttribute="trailing" id="zpW-Is-1vH"/>
                         </constraints>
                     </view>

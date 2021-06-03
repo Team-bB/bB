@@ -31,6 +31,8 @@ class GetUserPhotoVC: UIViewController {
         measureButton.layer.shadowOffset = CGSize.zero
         measureButton.layer.shadowRadius = 4
         
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barTintColor = view.backgroundColor
         navigationController?.navigationBar.tintColor = .black
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
