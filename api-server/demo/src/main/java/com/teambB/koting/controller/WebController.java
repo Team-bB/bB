@@ -10,4 +10,9 @@ public class WebController {
   public String introPage() {
     return "index";
   }
+
+  @GetMapping("/privacyPolicy")
+  public String privacyPage() {
+    return "privacy";
+  }
 }
