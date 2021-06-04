@@ -82,18 +82,18 @@ extension GetUserPhotoVC: UIImagePickerControllerDelegate, UINavigationControlle
 
     func presentPhotoActionSheet() {
         let actionSheet = UIAlertController(title: "사진 가져오기",
-                                            message: "사진을 어떻게 가져올까요?",
+                                            message: "얼굴 사진을 불러와 주세요.",
                                             preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "취소",
                                             style: .cancel,
                                             handler: nil))
         
-        actionSheet.addAction(UIAlertAction(title: "카메라로 촬영하기",
-                                            style: .default,
-                                            handler: { [weak self] _ in
-                                                self?.openCamera()
-                                            }))
+//        actionSheet.addAction(UIAlertAction(title: "카메라로 촬영하기",
+//                                            style: .default,
+//                                            handler: { [weak self] _ in
+//                                                self?.openCamera()
+//                                            }))
                               
         actionSheet.addAction(UIAlertAction(title: "앨범에서 가져오기",
                                             style: .default,
