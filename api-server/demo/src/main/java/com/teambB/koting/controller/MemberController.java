@@ -61,7 +61,7 @@ public class MemberController {
 
     Message coolsms = new Message(api_key, api_secret);
     String code = Member.makeRandomNumber(4);
-    String message = "[코팅] 인증번호[" + code + "]를 입력해주세요.";
+    String message = "[동마담] 인증번호[" + code + "]를 입력해주세요.";
     dic.put(phoneNumber, code);
 
     HashMap<String, String> params = new HashMap<String, String>();

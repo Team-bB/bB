@@ -118,7 +118,7 @@ public class MemberService {
 
     String to = email;
     String from = "noreply@koting.kr";
-    String subject = "[코팅] 회원가입 인증메일입니다. ";
+    String subject = "[동마담] 회원가입 인증메일입니다. ";
     String url = "https://koting.kr/auth/email?email=" + email + "&authKey=" + authKey;
 
     StringBuilder body = new StringBuilder();
