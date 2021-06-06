@@ -206,6 +206,25 @@ extension MeetingListVC: UITableViewDataSource {
         default: return "nil"
         }
     }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        guard indexPath.section == 1 else { return nil }
+        
+        let block = UIContextualAction(style: .normal, title: "차단") { action, view, success in
+            
+            success(true)
+        }
+        block.backgroundColor = .gray
+        
+        let report = UIContextualAction(style: .normal, title: "신고") { action, view, success in
+            
+            success(true)
+        }
+        report.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions:[report, block])
+    }
 }
 
 extension MeetingListVC: UITableViewDelegate {

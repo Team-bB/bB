@@ -25,9 +25,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>카메라 접근권한을 허용해주세요.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>사진 접근권한을 허용해주세요.</string>
+	<string>동물상 판별을 위해서 사진을 사용합니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>사진 접근권한을 허용해주세요.</string>
+	<string>동물상 판별을 위해서 사진을 사용합니다.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
