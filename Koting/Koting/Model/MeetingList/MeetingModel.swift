@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Info: Codable {
     let sex: String
@@ -102,6 +103,10 @@ struct DeleteCompleteMeetingAPIResponse: Codable {
     let result: String
 }
 
+struct ReportAPIResponse: Codable {
+    let result: String
+}
+
 
 enum Participants: Int {
     case oneToOne
@@ -121,4 +126,8 @@ enum Participants: Int {
             return "4:4"
         }
     }
+}
+
+struct reportModel {
+    let reportReasons = ["욕설 및 비하", "사칭, 사기", "음란물, 불건전한 만남", "정당, 정치인 비하", "기타"]
 }

@@ -10,15 +10,19 @@ import UIKit
 import PanModal
 
 class OtherInfoVC: UIViewController {
-
     
+    let indicator = CustomIndicator()
+    let reportReasons = reportModel().reportReasons
     var otherUserInfo: Owner?
+    var otherAccountId: String?
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var collegeLabel: UILabel!
     @IBOutlet weak var mbtiLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var reportButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +30,75 @@ class OtherInfoVC: UIViewController {
         self.imageView.layer.cornerRadius = imageView.frame.width / 2
         self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
         self.imageView.clipsToBounds = true
-        
+        reportButton.setEnable(enable: true, backgroundColor: .systemRed)
         updateUI()
+    }
+    
+    @IBAction func reportButtonTapped(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "신고 사유",
+                                            message: "사유를 선택해주세요",
+                                            preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "취소",
+                                            style: .cancel,
+                                            handler: nil))
+
+
+        for reason in reportReasons {
+            actionSheet.addAction(UIAlertAction(title: reason,
+                                                style: .default,
+                                                handler: { [weak self] _ in
+                                                    guard let strongSelf = self else { return }
+                                                    let alertController = UIAlertController(title: "신고", message: "정말로 신고하시겠습니까?", preferredStyle: .alert)
+                                                    
+                                                    let yesButton = UIAlertAction(title: "예", style: .default, handler: { _ in
+                                                        guard let otherId = strongSelf.otherAccountId else { return }
+                                                        
+                                                        strongSelf.indicator.startAnimating(superView: strongSelf.view)
+                                                        
+                                                        ReportMemberAPI.shared.post(accountId: otherId, content: reason) { result in
+                                                            switch result {
+
+                                                            case .success(let finalResult):
+                                                                
+                                                                if finalResult.result == "success" {
+                                                                    DispatchQueue.main.async {
+                                                                        strongSelf.indicator.stopAnimating()
+                                                                        strongSelf.makeAlertBox(title: "신고완료", message: "신고가 접수되었습니다.", text: "확인") { _ in
+                                                                            strongSelf.dismiss(animated: true, completion: nil)
+                                                                        }
+                                                                    }
+                                                                } else {
+                                                                    DispatchQueue.main.async {
+                                                                        strongSelf.indicator.stopAnimating()
+                                                                        strongSelf.makeAlertBox(title: "오류", message: "알 수 없는 오류가 발생했습니다.", text: "확인") { _ in
+                                                                            strongSelf.dismiss(animated: true, completion: nil)
+                                                                        }
+                                                                    }
+                                                                }
+        
+                                                            case .failure(let error):
+                                                                print(error)
+                                                                DispatchQueue.main.async {
+                                                                    strongSelf.indicator.stopAnimating()
+                                                                    strongSelf.makeAlertBox(title: "오류", message: "알 수 없는 오류가 발생했습니다.", text: "확인") { _ in
+                                                                        strongSelf.dismiss(animated: true, completion: nil)
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    })
+                                                    
+                                                    let noButton = UIAlertAction(title: "아니요", style: .cancel) { _ in
+                                                        strongSelf.dismiss(animated: true, completion: nil)
+                                                    }
+                                            
+                                                    alertController.addAction(yesButton)
+                                                    alertController.addAction(noButton)
+                                                    strongSelf.present(alertController, animated: true, completion: nil)
+                                                }))
+        }
+        present(actionSheet, animated: true, completion: nil)
     }
     
     private func updateUI() {
@@ -79,11 +150,11 @@ extension OtherInfoVC: PanModalPresentable {
     }
 
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(110)
+        return .contentHeight(170)
     }
 
     var longFormHeight: PanModalHeight {
-        return .contentHeight(110)
+        return .contentHeight(170)
     }
 
     var anchorModalToLongForm: Bool {

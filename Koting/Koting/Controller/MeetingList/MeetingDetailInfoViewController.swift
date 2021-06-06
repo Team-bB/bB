@@ -104,7 +104,6 @@ class MeetingDetailInfoViewController: UIViewController {
             contentLabel.text = meeting.link
             nickNameLabel.text = owner.nickname
             
-            reportButton.setEnable(enable: true, backgroundColor: .systemRed)
         }
     }
     

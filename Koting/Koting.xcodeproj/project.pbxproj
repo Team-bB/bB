@@ -68,6 +68,8 @@
 		88A3AFAD265257F900FFF90F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3AFAC265257F900FFF90F /* DatabaseManager.swift */; };
 		88A3AFAF26525A0100FFF90F /* ChatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */; };
 		88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B51DC426496ADD00E460FA /* CustomIndicator.swift */; };
+		88F06334266D1828000C7EE5 /* ReportMemberAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F06333266D1827000C7EE5 /* ReportMemberAPI.swift */; };
+		88F06336266D29EF000C7EE5 /* ReportMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F06335266D29EF000C7EE5 /* ReportMeetingAPI.swift */; };
 		D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEA26554208001502D7 /* animalFaceML.mlmodel */; };
 		D328BBED26564753001502D7 /* SimpleMeetingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEC26564752001502D7 /* SimpleMeetingInfoViewController.swift */; };
 		D328BC14265A40A9001502D7 /* NoAppliesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D328BC13265A40A9001502D7 /* NoAppliesCell.swift */; };
@@ -163,6 +165,8 @@
 		88A3AFAC265257F900FFF90F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatStoryboard.storyboard; sourceTree = "<group>"; };
 		88B51DC426496ADD00E460FA /* CustomIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
+		88F06333266D1827000C7EE5 /* ReportMemberAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMemberAPI.swift; sourceTree = "<group>"; };
+		88F06335266D29EF000C7EE5 /* ReportMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingAPI.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
 		D328BBE926554208001502D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Base; path = Base.lproj/animalFaceML.mlmodel; sourceTree = "<group>"; };
 		D328BBEC26564752001502D7 /* SimpleMeetingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMeetingInfoViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				885BFC2A264BC9E80020A210 /* WithdrawalAPI.swift */,
 				885C68F526677989003CBD7E /* UpdateDeviceTokenAPI.swift */,
 				885C68F72667B322003CBD7E /* GetOtherInfoAPI.swift */,
+				88F06333266D1827000C7EE5 /* ReportMemberAPI.swift */,
+				88F06335266D29EF000C7EE5 /* ReportMeetingAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -646,6 +652,7 @@
 				88849D5C2644116600E2B1AF /* HeaderView.swift in Sources */,
 				D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */,
 				881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */,
+				88F06336266D29EF000C7EE5 /* ReportMeetingAPI.swift in Sources */,
 				88556CA32609D8B500CF7CAC /* UIViewController++.swift in Sources */,
 				88556CB52609D8FC00CF7CAC /* MyMeetingViewController.swift in Sources */,
 				88556CA92609D8D300CF7CAC /* MailAuthAPI.swift in Sources */,
@@ -694,6 +701,7 @@
 				D392E169264830B900938E85 /* RejectMeetingAPI.swift in Sources */,
 				D392E151264574B500938E85 /* MyMeetingApplicantCell.swift in Sources */,
 				D392E13E264565A300938E85 /* MenuCell.swift in Sources */,
+				88F06334266D1828000C7EE5 /* ReportMemberAPI.swift in Sources */,
 				883B4196264A8B3E007EB33C /* NoticeVC.swift in Sources */,
 				887C403326089ABA00A641DA /* GettingStartedVC.swift in Sources */,
 				D392E1542645750C00938E85 /* MyApplyCell.swift in Sources */,

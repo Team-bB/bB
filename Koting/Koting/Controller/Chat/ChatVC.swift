@@ -97,6 +97,7 @@ class ChatVC: MessagesViewController {
                 let otherUserInfo: Owner = finalResult.result
                 let vc = UIStoryboard(name: "ChatStoryboard", bundle: nil).instantiateViewController(withIdentifier: "OtherInfoVC") as! OtherInfoVC
                 vc.otherUserInfo = otherUserInfo
+                vc.otherAccountId = otherAccountId
                 
                 DispatchQueue.main.async {
                     strongSelf.indicator.stopAnimating()

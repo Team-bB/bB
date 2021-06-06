@@ -12,6 +12,7 @@ import PanModal
 class MeetingListVC: UIViewController {
     
     private let indicator = CustomIndicator()
+    let reportReasons = reportModel().reportReasons
     
     var meetings = [Meeting]()
     var myMeeting: Meeting?
@@ -210,20 +211,71 @@ extension MeetingListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         guard indexPath.section == 1 else { return nil }
-        
-        let block = UIContextualAction(style: .normal, title: "차단") { action, view, success in
+  
+        let report = UIContextualAction(style: .normal, title: "신고") { [weak self] action, view, success in
+            
+            guard let strongSelf = self else { return }
             
             success(true)
-        }
-        block.backgroundColor = .gray
-        
-        let report = UIContextualAction(style: .normal, title: "신고") { action, view, success in
+            let actionSheet = UIAlertController(title: "신고 사유",
+                                                message: "사유를 선택해주세요",
+                                                preferredStyle: .actionSheet)
             
-            success(true)
+            actionSheet.addAction(UIAlertAction(title: "취소",
+                                                style: .cancel,
+                                                handler: nil))
+
+ 
+            for reason in strongSelf.reportReasons {
+                actionSheet.addAction(UIAlertAction(title: reason,
+                                                    style: .default,
+                                                    handler: { _ in
+                                                        
+                                                        let alertController = UIAlertController(title: "신고", message: "정말로 신고하시겠습니까?", preferredStyle: .alert)
+                                                        
+                                                        let yesButton = UIAlertAction(title: "예", style: .default, handler: { _ in
+                                                            
+                                                            strongSelf.indicator.startAnimating(superView: view)
+                                                            ReportMeetingAPI.shared.post(meetingId: strongSelf.meetings[indexPath.row].meeting_id ?? 0, content: reason) { result in
+                                                                switch result {
+
+                                                                case .success(let finalResult):
+                                                                    
+                                                                    if finalResult.result == "success" {
+                                                                        DispatchQueue.main.async {
+                                                                            strongSelf.indicator.stopAnimating()
+                                                                            strongSelf.makeAlertBox(title: "신고완료", message: "신고가 접수되었습니다.", text: "확인")
+                                                                        }
+                                                                    } else {
+                                                                        DispatchQueue.main.async {
+                                                                            strongSelf.indicator.stopAnimating()
+                                                                            strongSelf.makeAlertBox(title: "오류", message: "알 수 없는 오류가 발생했습니다.", text: "확인")
+                                                                        }
+                                                                    }
+            
+                                                                case .failure(let error):
+                                                                    print(error)
+                                                                    DispatchQueue.main.async {
+                                                                        strongSelf.indicator.stopAnimating()
+                                                                        strongSelf.makeAlertBox(title: "오류", message: "알 수 없는 오류가 발생했습니다.", text: "확인")
+                                                                    }
+                                                                }
+                                                            }
+                                                        })
+                                                        
+                                                        let noButton = UIAlertAction(title: "아니요", style: .cancel)
+                                                
+                                                        alertController.addAction(yesButton)
+                                                        alertController.addAction(noButton)
+                                                        strongSelf.present(alertController, animated: true, completion: nil)
+                                                    }))
+            }
+            strongSelf.present(actionSheet, animated: true, completion: nil)
         }
+        
         report.backgroundColor = .systemRed
         
-        return UISwipeActionsConfiguration(actions:[report, block])
+        return UISwipeActionsConfiguration(actions:[report])
     }
 }
 
