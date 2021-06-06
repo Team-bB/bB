@@ -19,7 +19,6 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.isScrollEnabled = false
         
         return tableView
     }()
@@ -53,6 +52,7 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.separatorInset.left = 30
         tableView.separatorInset.right = 30
+        tableView.contentInset.bottom = 30
         tableView.contentInsetAdjustmentBehavior = .never
         
         addMyInfoHearder(vc: self)
@@ -339,7 +339,6 @@ extension MyInfoVC: MFMailComposeViewControllerDelegate {
     fileprivate func presentMailErrorAlert(email: String, subject: String, bodyText: String) {
         self.makeAlertBox(title: "실패", message: "이메일 설정을 확인후 시도해주세요.", text: "확인") { action in
             print("🔔 Ok button Tapped 🔔")
-            self.dismiss(animated: true, completion:  nil)
         }
     }
     

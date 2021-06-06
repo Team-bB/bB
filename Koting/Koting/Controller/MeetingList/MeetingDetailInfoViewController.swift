@@ -103,6 +103,8 @@ class MeetingDetailInfoViewController: UIViewController {
             applyBtnTapped.setEnable(enable: true, backgroundColor: #colorLiteral(red: 0.1882352978, green: 0.8196078539, blue: 0.3450980484, alpha: 1))
             contentLabel.text = meeting.link
             nickNameLabel.text = owner.nickname
+            
+            reportButton.setEnable(enable: true, backgroundColor: .systemRed)
         }
     }
     
