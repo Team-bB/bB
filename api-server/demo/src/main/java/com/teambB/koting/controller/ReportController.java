@@ -39,8 +39,8 @@ public class ReportController {
   public JSONObject reportMember(@RequestBody JSONObject object) {
     JSONObject retObject = new JSONObject();
 
-    String myAccountId = object.get("myAccount_id").toString();
-    String yourAccountId = object.get("yourAccount_id").toString();
+    String myAccountId = object.get("my_account_id").toString();
+    String yourAccountId = object.get("your_account_id").toString();
     String category = object.get("category").toString();
     ReportMember reportMember = ReportMember.createReportMember(myAccountId, yourAccountId, category);
     reportMemberRepository.save(reportMember);
