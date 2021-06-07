@@ -52,16 +52,17 @@ class OtherInfoVC: UIViewController {
                                                     let alertController = UIAlertController(title: "신고", message: "정말로 신고하시겠습니까?", preferredStyle: .alert)
                                                     
                                                     let yesButton = UIAlertAction(title: "예", style: .default, handler: { _ in
-                                                        guard let otherId = strongSelf.otherAccountId else { return }
+                                                        guard let otherId = strongSelf.otherAccountId,
+                                                              let accountId = UserDefaults.standard.value(forKey: "accountId") as? String else { return }
                                                         
                                                         strongSelf.indicator.startAnimating(superView: strongSelf.view)
                                                         
-                                                        ReportMemberAPI.shared.post(accountId: otherId, content: reason) { result in
+                                                        ReportMemberAPI.shared.post(accountId: accountId, otherId: otherId, content: reason) { result in
                                                             switch result {
 
                                                             case .success(let finalResult):
                                                                 
-                                                                if finalResult.result == "success" {
+                                                                if finalResult.result == "true" {
                                                                     DispatchQueue.main.async {
                                                                         strongSelf.indicator.stopAnimating()
                                                                         strongSelf.makeAlertBox(title: "신고완료", message: "신고가 접수되었습니다.", text: "확인") { _ in

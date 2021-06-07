@@ -14,8 +14,8 @@ class ReportMemberAPI {
     
     private init() {}
     
-    func post(accountId: String, content: String, completion: @escaping (Result<ReportAPIResponse, Error>) -> (Void)) {
-        let url = API.shared.BASE_URL + "/reportMember"
+    func post(accountId: String, otherId: String, content: String, completion: @escaping (Result<ReportAPIResponse, Error>) -> (Void)) {
+        let url = API.shared.BASE_URL + "/report/member"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -23,8 +23,9 @@ class ReportMemberAPI {
         
         //POST로 보낼 정보
         let params = [
-            "account_id" : accountId,
-            "content" : content] as Dictionary
+            "my_account_id" : accountId,
+            "your_account_id" : otherId,
+            "category" : content] as Dictionary
         
         // httpBody에 parameters 추가
         do {
