@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bY2-CH-fJA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bY2-CH-fJA">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,16 +43,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="1Xh-xP-Bqp">
-                                <rect key="frame" x="137.5" y="38" width="100" height="53"/>
+                                <rect key="frame" x="137.5" y="38" width="110" height="53"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zic-4q-uTH">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="02O-l6-v8X"/>
-                                            <constraint firstAttribute="width" constant="100" id="8AY-to-NQi"/>
+                                            <constraint firstAttribute="width" constant="110" id="8AY-to-NQi"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="단과대학">
+                                            <fragment content="바이오시스템대학">
                                                 <attributes>
                                                     <color key="NSColor" white="0.20832681615336412" alpha="1" colorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="15" name="AppleSDGothicNeo-Light"/>
@@ -63,10 +63,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwQ-S1-g59">
-                                        <rect key="frame" x="0.0" y="28" width="100" height="25"/>
+                                        <rect key="frame" x="0.0" y="28" width="110" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="XYg-UP-MON"/>
-                                            <constraint firstAttribute="width" constant="100" id="bMA-8B-tOc"/>
+                                            <constraint firstAttribute="width" constant="110" id="bMA-8B-tOc"/>
                                         </constraints>
                                         <attributedString key="attributedText">
                                             <fragment content="MBTI">
@@ -98,7 +98,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Roj-z2-dPc">
-                                <rect key="frame" x="251.5" y="38" width="50" height="50"/>
+                                <rect key="frame" x="256.5" y="38" width="50" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhf-zD-g6s">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
@@ -155,9 +155,9 @@
                         <constraints>
                             <constraint firstItem="XT6-jf-f90" firstAttribute="centerX" secondItem="0Qt-Tq-frt" secondAttribute="centerX" constant="-104" id="3pm-BK-tD0"/>
                             <constraint firstItem="1Xh-xP-Bqp" firstAttribute="top" secondItem="qby-7y-2VG" secondAttribute="top" constant="38" id="9Ov-cN-c2q"/>
-                            <constraint firstItem="1Xh-xP-Bqp" firstAttribute="centerX" secondItem="0Qt-Tq-frt" secondAttribute="centerX" id="GHL-BT-3Ic"/>
+                            <constraint firstItem="1Xh-xP-Bqp" firstAttribute="centerX" secondItem="0Qt-Tq-frt" secondAttribute="centerX" constant="5" id="GHL-BT-3Ic"/>
                             <constraint firstItem="lMA-ri-hlz" firstAttribute="top" secondItem="1Xh-xP-Bqp" secondAttribute="bottom" constant="23" id="HN6-QI-vLC"/>
-                            <constraint firstItem="Roj-z2-dPc" firstAttribute="leading" secondItem="1Xh-xP-Bqp" secondAttribute="trailing" constant="14" id="R0C-Qy-9zy"/>
+                            <constraint firstItem="Roj-z2-dPc" firstAttribute="leading" secondItem="1Xh-xP-Bqp" secondAttribute="trailing" constant="9" id="R0C-Qy-9zy"/>
                             <constraint firstItem="XT6-jf-f90" firstAttribute="top" secondItem="qby-7y-2VG" secondAttribute="top" constant="87" id="Tcd-Fy-89y"/>
                             <constraint firstItem="Roj-z2-dPc" firstAttribute="top" secondItem="qby-7y-2VG" secondAttribute="top" constant="38" id="WOm-Ma-LpE"/>
                             <constraint firstItem="1Xh-xP-Bqp" firstAttribute="leading" secondItem="hkR-Uk-L56" secondAttribute="trailing" constant="14" id="aIL-Ds-Uxe"/>

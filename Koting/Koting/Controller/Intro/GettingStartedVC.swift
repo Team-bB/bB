@@ -13,6 +13,7 @@ class GettingStartedVC: UIViewController {
     
     let indicator = CustomIndicator()
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     // MARK:- View LifeCycle
     override func viewDidLoad() {

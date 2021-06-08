@@ -52,7 +52,7 @@ class MyInfoVC: UIViewController, UINavigationControllerDelegate {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.separatorInset.left = 30
         tableView.separatorInset.right = 30
-        tableView.contentInset.bottom = 30
+        tableView.contentInset.bottom = 50
         tableView.contentInsetAdjustmentBehavior = .never
         
         addMyInfoHearder(vc: self)
@@ -148,6 +148,10 @@ extension MyInfoVC: UITableViewDataSource, UITableViewDelegate {
             
         case "회원탈퇴":
             makeWithdrawalAlert()
+        case "개인정보 처리방침":
+            asyncPresentView(identifier: "PersonalInfoProcess")
+        case "서비스 이용약관":
+            asyncPresentView(identifier: "ServiceUsing")
             
         default:
             break
