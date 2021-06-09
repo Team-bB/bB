@@ -23,6 +23,7 @@ class OtherInfoVC: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var blockButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,12 @@ class OtherInfoVC: UIViewController {
         self.imageView.layer.cornerRadius = imageView.frame.width / 2
         self.imageView.contentMode = UIImageView.ContentMode.scaleAspectFill
         self.imageView.clipsToBounds = true
-        reportButton.setEnable(enable: true, backgroundColor: .systemRed)
+        
         updateUI()
+    }
+    
+    @IBAction func blockButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "차단", message: "정말로 차단하시겠습니까?", preferredStyle: .alert)
     }
     
     @IBAction func reportButtonTapped(_ sender: Any) {
@@ -105,6 +110,9 @@ class OtherInfoVC: UIViewController {
     private func updateUI() {
         
         guard let otherUserInfo = otherUserInfo else { return }
+        
+        reportButton.setEnable(enable: true, backgroundColor: .systemRed)
+        blockButton.setEnable(enable: true, backgroundColor: .lightGray)
         
         if let college = otherUserInfo.college,
            let mbti = otherUserInfo.mbti,
