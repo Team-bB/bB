@@ -107,6 +107,9 @@ struct ReportAPIResponse: Codable {
     let result: String
 }
 
+struct BlockMemberAPIResponse: Codable {
+    let result : String
+}
 
 enum Participants: Int {
     case oneToOne

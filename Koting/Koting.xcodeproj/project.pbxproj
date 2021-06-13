@@ -71,6 +71,7 @@
 		88A3AFAD265257F900FFF90F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3AFAC265257F900FFF90F /* DatabaseManager.swift */; };
 		88A3AFAF26525A0100FFF90F /* ChatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */; };
 		88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B51DC426496ADD00E460FA /* CustomIndicator.swift */; };
+		88E7FB902675EBD9001881E3 /* BlockMemberAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7FB8F2675EBD9001881E3 /* BlockMemberAPI.swift */; };
 		88F06334266D1828000C7EE5 /* ReportMemberAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F06333266D1827000C7EE5 /* ReportMemberAPI.swift */; };
 		88F06336266D29EF000C7EE5 /* ReportMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F06335266D29EF000C7EE5 /* ReportMeetingAPI.swift */; };
 		D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEA26554208001502D7 /* animalFaceML.mlmodel */; };
@@ -171,6 +172,7 @@
 		88A3AFAC265257F900FFF90F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatStoryboard.storyboard; sourceTree = "<group>"; };
 		88B51DC426496ADD00E460FA /* CustomIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
+		88E7FB8F2675EBD9001881E3 /* BlockMemberAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMemberAPI.swift; sourceTree = "<group>"; };
 		88F06333266D1827000C7EE5 /* ReportMemberAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMemberAPI.swift; sourceTree = "<group>"; };
 		88F06335266D29EF000C7EE5 /* ReportMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingAPI.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				885C68F72667B322003CBD7E /* GetOtherInfoAPI.swift */,
 				88F06335266D29EF000C7EE5 /* ReportMeetingAPI.swift */,
 				88F06333266D1827000C7EE5 /* ReportMemberAPI.swift */,
+				88E7FB8F2675EBD9001881E3 /* BlockMemberAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				D392E12B2644D29E00938E85 /* MyMeetingInfoViewController.swift in Sources */,
 				88556CB42609D8FC00CF7CAC /* MeetingListTableViewCell.swift in Sources */,
 				D392E16F264833E000938E85 /* DeleteCompleteMeetingAPI.swift in Sources */,
+				88E7FB902675EBD9001881E3 /* BlockMemberAPI.swift in Sources */,
 				D392E16026481B6800938E85 /* DeleteMyMeetingAPI.swift in Sources */,
 				88849D5C2644116600E2B1AF /* HeaderView.swift in Sources */,
 				D3BC8CF2260B1835000625DF /* MeetingModel.swift in Sources */,
