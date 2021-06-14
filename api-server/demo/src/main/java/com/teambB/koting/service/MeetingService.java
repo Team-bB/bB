@@ -66,7 +66,8 @@ public class MeetingService {
       2. 닫힌 미팅(성사되었거나, 삭제한 미팅)
       3. 같은 과인 미팅
       4. 나랑 성별이 같은 미팅
-      5. 차단한 사용자
+      5. 내가 차단한 사용자
+      6. 나를 차단한 사용
        */
       Long ownerId = meeting.getMemberId();
       Member owner_ = memberService.findOne(ownerId);
@@ -80,15 +81,21 @@ public class MeetingService {
         continue ;
       }
 
-      isBlock(member, meeting);
-
       jArray.add(setMeetingInfo(owner, meeting));
     }
     return jArray;
   }
 
   private boolean isBlock(Member member, Meeting meeting) {
+    // 내가 차단한 사람
     for (Long id : member.getBlock()) {
+      if (id == meeting.getMemberId()) {
+        return true;
+      }
+    }
+
+    // 나를 차단한 사람
+    for (Long id : member.getBlocked()) {
       if (id == meeting.getMemberId()) {
         return true;
       }

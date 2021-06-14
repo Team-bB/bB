@@ -45,6 +45,9 @@ public class Member {
   @ElementCollection
   private List<Long> block = new ArrayList<>();
 
+  @ElementCollection
+  private List<Long> blocked = new ArrayList<>();
+
   @OneToMany(mappedBy = "member")
   private List<Apply> applies = new ArrayList<>();
 

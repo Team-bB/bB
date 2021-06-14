@@ -148,9 +148,6 @@ public class MemberService {
     Member your = memberRepository.findByAccountId(yourAccountId);
 
     me.getBlock().add(your.getId());
-    List<Long> block = me.getBlock();
-    for (Long id : block) {
-      System.out.println("Long = " + id);
-    }
+    your.getBlocked().add(me.getId());
   }
 }
