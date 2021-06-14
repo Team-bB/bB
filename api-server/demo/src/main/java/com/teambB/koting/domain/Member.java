@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,6 @@ public class Member {
   private Long id;
 
   private Long myMeetingId;
-
   private String account_id;
   private String sex;
   private String college;
@@ -41,6 +41,9 @@ public class Member {
   private String authKey;
   private Boolean authStatus;
   private LocalDateTime createDate;
+
+  @ElementCollection
+  private List<Long> block = new ArrayList<>();
 
   @OneToMany(mappedBy = "member")
   private List<Apply> applies = new ArrayList<>();

@@ -66,6 +66,7 @@ public class MeetingService {
       2. 닫힌 미팅(성사되었거나, 삭제한 미팅)
       3. 같은 과인 미팅
       4. 나랑 성별이 같은 미팅
+      5. 차단한 사용자
        */
       Long ownerId = meeting.getMemberId();
       Member owner_ = memberService.findOne(ownerId);
@@ -74,12 +75,25 @@ public class MeetingService {
       if (member.getId() == meeting.getMemberId()
           || meeting.getMeetingStatus() == MeetingStatus.CLOSE
           || member.getMajor().equals(owner_.getMajor())
-          || member.getSex().equals(owner_.getSex())) {
+          || member.getSex().equals(owner_.getSex())
+          || isBlock(member, meeting)) {
         continue ;
       }
+
+      isBlock(member, meeting);
+
       jArray.add(setMeetingInfo(owner, meeting));
     }
     return jArray;
+  }
+
+  private boolean isBlock(Member member, Meeting meeting) {
+    for (Long id : member.getBlock()) {
+      if (id == meeting.getMemberId()) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public void deleteMeeting(String accountId) throws IOException {

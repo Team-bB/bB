@@ -142,4 +142,15 @@ public class MemberService {
     Member member = memberRepository.findByAccountId(accountId);
     member.setDeviceToken(deviceToken);
   }
+
+  public void addBlockMember(String myAccountId, String yourAccountId) {
+    Member me = memberRepository.findByAccountId(myAccountId);
+    Member your = memberRepository.findByAccountId(yourAccountId);
+
+    me.getBlock().add(your.getId());
+    List<Long> block = me.getBlock();
+    for (Long id : block) {
+      System.out.println("Long = " + id);
+    }
+  }
 }
