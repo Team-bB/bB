@@ -98,6 +98,8 @@ class ChatVC: MessagesViewController {
                 let vc = UIStoryboard(name: "ChatStoryboard", bundle: nil).instantiateViewController(withIdentifier: "OtherInfoVC") as! OtherInfoVC
                 vc.otherUserInfo = otherUserInfo
                 vc.otherAccountId = otherAccountId
+                vc.conversationId = strongSelf.conversationId
+                vc.blockDelegate = self
                 
                 DispatchQueue.main.async {
                     strongSelf.indicator.stopAnimating()
@@ -138,7 +140,7 @@ class ChatVC: MessagesViewController {
                 print("✉️❌ 메세지를 가져오는데 실패했습니다 ✉️❌: \(error)")
                 
                 DispatchQueue.main.async {
-                    let alertController = UIAlertController(title: "알림", message: "상대방이 대화방을 나갔습니다.", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "알림", message: "대화방이 삭제되었습니다.", preferredStyle: .alert)
                     let okButton = UIAlertAction(title: "확인", style: .default) { action in
                     
                         strongSelf.navigationController?.popViewController(animated: true)
@@ -261,7 +263,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
                     print("⛔️ 메세지 전송 실패 ⛔️")
                     
                     DispatchQueue.main.async {
-                        let alertController = UIAlertController(title: "알림", message: "상대방이 대화방을 나갔습니다.", preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "알림", message: "대화방이 삭제되었습니다.", preferredStyle: .alert)
                         let okButton = UIAlertAction(title: "확인", style: .default) { action in
                         
                             strongSelf.navigationController?.popViewController(animated: true)
@@ -322,30 +324,29 @@ extension ChatVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
         return .bubbleTail(corner, .curved)
      }
 }
-////MARK:- 키보드 열릴때마다 뷰 올려주기
-//extension ChatVC {
-//    func addKeyboardNotifications() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-//    func removeKeyboardNotifications() {
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
-//    }
-//
-//    @objc func keyboardWillShow(_ noti: NSNotification) {
-//        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let keyboardHeight = keyboardRectangle.height
-//            self.messagesCollectionView.frame.origin.y -= keyboardHeight
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(_ noti: NSNotification) {
-//        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let keyboardHeight = keyboardRectangle.height
-//            self.messagesCollectionView.frame.origin.y += keyboardHeight
-//        }
-//    }
-//}
+
+extension ChatVC: BlockDelegate {
+    
+    func blockUserButtonTapped() {
+        guard let conversationId = conversationId else { return }
+        indicator.startAnimating(superView: view)
+        DatabaseManager.shared.deleteConversation(conversationId: conversationId, other: otherUserEmail) { [weak self] success in
+            guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.indicator.stopAnimating()
+            }
+            
+            if success {
+                strongSelf.makeAlertBox(title: "완료", message: "상대방을 차단했습니다.", text: "확인") { _ in
+                    strongSelf.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                strongSelf.makeAlertBox(title: "오류", message: "알 수 없는 오류가 발생했습니다.", text: "확인") { _ in
+                    strongSelf.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+}

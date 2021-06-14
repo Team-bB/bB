@@ -28,12 +28,12 @@ class GetOtherInfoAPI {
                 do {
                     let finalResult = try JSONDecoder().decode(GetOtherInfoAPIResponse.self, from: result)
                     debugPrint(response)
-                    print("✅ Notice Codable Success ✅")
+                    print("✅ GetOtherInfo Codable Success ✅")
                     completion(.success(finalResult))
                     
                 } catch {
                     debugPrint(response)
-                    print("❗️ Notice Codable Error")
+                    print("❗️ GetOtherInfo Codable Error")
                     print(error)
                     completion(.failure(error))
                 }

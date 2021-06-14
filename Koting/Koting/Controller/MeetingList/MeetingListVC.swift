@@ -273,14 +273,9 @@ extension MeetingListVC: UITableViewDataSource {
             strongSelf.present(actionSheet, animated: true, completion: nil)
         }
         
-        let block = UIContextualAction(style: .normal, title: "차단") { [weak self] action, view, success in
-            success(true)
-        }
-        
         report.backgroundColor = .systemRed
-        block.backgroundColor = .systemGray
         
-        return UISwipeActionsConfiguration(actions:[report, block])
+        return UISwipeActionsConfiguration(actions:[report])
     }
 }
 

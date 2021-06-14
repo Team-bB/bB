@@ -15,6 +15,8 @@ class OtherInfoVC: UIViewController {
     let reportReasons = reportModel().reportReasons
     var otherUserInfo: Owner?
     var otherAccountId: String?
+    var conversationId: String?
+    var blockDelegate: BlockDelegate?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var collegeLabel: UILabel!
@@ -36,7 +38,58 @@ class OtherInfoVC: UIViewController {
     }
     
     @IBAction func blockButtonTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "차단", message: "정말로 차단하시겠습니까?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "차단", message: "상대방을 차단하고 대화방을 나갑니다.\n채팅내역은 영구적으로 삭제됩니다.", preferredStyle: .alert)
+        
+        let noButton = UIAlertAction(title: "아니요", style: .cancel) { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.dismiss(animated: true, completion: nil)
+        }
+        
+        let yesButton = UIAlertAction(title: "예", style: .default, handler: { [weak self] _ in
+            guard let strongSelf = self,
+                  let otherId = strongSelf.otherAccountId,
+                  let accountId = UserDefaults.standard.value(forKey: "accountId") as? String else { return }
+            
+            strongSelf.indicator.startAnimating(superView: strongSelf.view)
+            
+            BlockMemberAPI.shared.post(accountId: accountId, otherId: otherId) { result in
+                switch result {
+
+                case .success(let finalResult):
+                    
+                    if finalResult.result == "true" {
+                        DispatchQueue.main.async {
+                            strongSelf.indicator.stopAnimating()
+                            strongSelf.dismiss(animated: true) {
+                                strongSelf.blockDelegate?.blockUserButtonTapped()
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            strongSelf.indicator.stopAnimating()
+                            strongSelf.makeAlertBox(title: "오류", message: "알 수 없는 오류가 발생했습니다.", text: "확인") { _ in
+                                strongSelf.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                    }
+
+                case .failure(let error):
+                    print(error)
+                    DispatchQueue.main.async {
+                        strongSelf.indicator.stopAnimating()
+                        strongSelf.makeAlertBox(title: "오류", message: "알 수 없는 오류가 발생했습니다.", text: "확인") { _ in
+                            strongSelf.dismiss(animated: true) {
+
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        
+        alertController.addAction(yesButton)
+        alertController.addAction(noButton)
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func reportButtonTapped(_ sender: Any) {

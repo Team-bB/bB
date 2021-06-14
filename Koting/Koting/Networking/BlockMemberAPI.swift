@@ -14,9 +14,9 @@ class BlockMemberAPI {
     
     private init() {}
     
-    func post(accountId: String, otherId: String, content: String, completion: @escaping (Result<BlockMemberAPIResponse, Error>) -> (Void)) {
+    func post(accountId: String, otherId: String, completion: @escaping (Result<BlockMemberAPIResponse, Error>) -> (Void)) {
         
-        let url = API.shared.BASE_URL + "/"
+        let url = API.shared.BASE_URL + "/block"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

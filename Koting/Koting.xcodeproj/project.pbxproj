@@ -72,6 +72,7 @@
 		88A3AFAF26525A0100FFF90F /* ChatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */; };
 		88B51DC526496ADD00E460FA /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B51DC426496ADD00E460FA /* CustomIndicator.swift */; };
 		88E7FB902675EBD9001881E3 /* BlockMemberAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7FB8F2675EBD9001881E3 /* BlockMemberAPI.swift */; };
+		88E7FB922675F365001881E3 /* BlockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7FB912675F365001881E3 /* BlockDelegate.swift */; };
 		88F06334266D1828000C7EE5 /* ReportMemberAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F06333266D1827000C7EE5 /* ReportMemberAPI.swift */; };
 		88F06336266D29EF000C7EE5 /* ReportMeetingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F06335266D29EF000C7EE5 /* ReportMeetingAPI.swift */; };
 		D328BBE826554208001502D7 /* animalFaceML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D328BBEA26554208001502D7 /* animalFaceML.mlmodel */; };
@@ -173,6 +174,7 @@
 		88A3AFAE26525A0100FFF90F /* ChatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatStoryboard.storyboard; sourceTree = "<group>"; };
 		88B51DC426496ADD00E460FA /* CustomIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		88E7FB8F2675EBD9001881E3 /* BlockMemberAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMemberAPI.swift; sourceTree = "<group>"; };
+		88E7FB912675F365001881E3 /* BlockDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDelegate.swift; sourceTree = "<group>"; };
 		88F06333266D1827000C7EE5 /* ReportMemberAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMemberAPI.swift; sourceTree = "<group>"; };
 		88F06335266D29EF000C7EE5 /* ReportMeetingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMeetingAPI.swift; sourceTree = "<group>"; };
 		992AE72DD2AA339D5630AED8 /* Pods-Koting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koting.release.xcconfig"; path = "Target Support Files/Pods-Koting/Pods-Koting.release.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				88000B5626567581008671D2 /* ConversationModel.swift */,
 				88000B5826567589008671D2 /* ChatModel.swift */,
+				88E7FB912675F365001881E3 /* BlockDelegate.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				D3BC8D2E260C988B000625DF /* CreateMeetingRoomVC.swift in Sources */,
 				880714802660CC6600FD21AA /* FaqCell.swift in Sources */,
 				88849D5526440EE600E2B1AF /* StrechyHeaderController.swift in Sources */,
+				88E7FB922675F365001881E3 /* BlockDelegate.swift in Sources */,
 				88000B542653F312008671D2 /* ConversationTableViewCell.swift in Sources */,
 				885C68F626677989003CBD7E /* UpdateDeviceTokenAPI.swift in Sources */,
 				D328BBED26564753001502D7 /* SimpleMeetingInfoViewController.swift in Sources */,
@@ -892,7 +896,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Koting/Koting.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.03;
 				DEVELOPMENT_TEAM = NJ49S5QG3H;
 				INFOPLIST_FILE = Koting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -916,7 +920,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Koting/Koting.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.03;
 				DEVELOPMENT_TEAM = NJ49S5QG3H;
 				INFOPLIST_FILE = Koting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

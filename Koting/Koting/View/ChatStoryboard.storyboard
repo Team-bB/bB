@@ -144,7 +144,7 @@
                                             <constraint firstAttribute="width" constant="80" id="4DH-90-EWH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="차단하기">
+                                        <state key="normal" title="차단">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -159,7 +159,7 @@
                                             <constraint firstAttribute="width" constant="80" id="ZYI-2M-e9M"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="14"/>
-                                        <state key="normal" title="신고하기">
+                                        <state key="normal" title="신고">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
