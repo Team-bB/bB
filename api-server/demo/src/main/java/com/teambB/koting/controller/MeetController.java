@@ -33,6 +33,7 @@ public class MeetController {
       retObject.put("meeting", meetingService.getMeetingList(member));
     }
 
+
     if (member.getMyMeetingId() != null) {
       JSONObject owner = memberService.setMemberInfo(member);
       Meeting myMeeting = meetingService.findOne(member.getMyMeetingId());
