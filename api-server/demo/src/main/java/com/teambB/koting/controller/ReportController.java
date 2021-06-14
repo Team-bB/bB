@@ -11,6 +11,7 @@ import com.teambB.koting.service.MemberService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -74,11 +75,20 @@ public class ReportController {
   }
 
   @GetMapping("/block")
-  public void getBlockMember(@RequestParam("account_id") String accountId) {
+  public JSONObject getBlockMember(@RequestParam("account_id") String accountId) {
+    JSONObject retObject = new JSONObject();
+
     Member member = memberRepository.findByAccountId(accountId);
     List<Long> block = member.getBlock();
+    JSONArray jArray = new JSONArray();
     for (Long id : block) {
-      log.info("block id = {}", id);
+      Member one = memberService.findOne(id);
+      JSONObject Info = memberService.setMemberInfo(one);
+      Info.put("account_id", one.getAccount_id());
+      jArray.add(Info);
+
     }
+    retObject.put("result", jArray);
+    return retObject;
   }
 }
