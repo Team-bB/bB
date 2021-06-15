@@ -1,17 +1,1 @@
-# ToDo
-## 기능구현
--  회원가입, 로그인 & 이메일 인증 ✅
--  미팅 만들기 ✅
--  미팅 신청하기 ✅
--  ML Model 연동 ❌
--  미팅 수락, 거절 ✅
--  나의 미팅 목록 관리 ✅
--  내 정보 수정 ❌
-
-## CoreML
-- 데이터 재수집 ✅
-- 분류 모델 보완 ❌
-
-## UI / UX
-- TintColor 수정
-- AutoLayout 수정
+<a href="https://apps.apple.com/kr/app/%EB%8F%99%EB%A7%88%EB%8B%B4/id1570634413"><img src="AppStore.eps"/></a>
