@@ -29,5 +29,5 @@
 # Contributors
 * __[한종호](https://github.com/hanjongho)__ - 기획 / 디자인 / Server
 * __[임정우](https://github.com/imjeongwoo)__ - 기획 / 디자인 / iOS
-* __[홍화형](https://github.com/gringreem)__ - 기획 / 디자인 / iOS
+* __[홍화형](https://github.com/honghwahyeong)__ - 기획 / 디자인 / iOS
 * __[최재원](https://github.com/chlwodnjs)__ - 기획 / 디자인 / ML
