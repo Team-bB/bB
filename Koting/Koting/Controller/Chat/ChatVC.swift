@@ -323,6 +323,16 @@ extension ChatVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
 
         return .bubbleTail(corner, .curved)
      }
+//    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+//        guard let message = message as? Message else { return nil }
+//        if message.sender.senderId == selfSender?.senderId && message.read == true {
+//            return NSAttributedString(string: "읽음", attributes: [.foregroundColor : UIColor.lightGray, .font : UIFont.systemFont(ofSize: 12, weight: .semibold) ])
+//        }
+//        return nil
+//    }
+//    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+//        return 30
+//    }
 }
 
 extension ChatVC: BlockDelegate {

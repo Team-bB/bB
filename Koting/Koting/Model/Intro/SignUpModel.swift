@@ -8,7 +8,7 @@
 import Foundation
 
 struct SignUpForm {
-    let mailDomain = "@dgu.ac.kr"
+    let mailDomain = "@dongguk.edu"
 
     let sexArray = ["남자", "여자"]
 

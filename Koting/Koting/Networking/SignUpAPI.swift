@@ -37,7 +37,7 @@ class SignUpAPI {
             "age": paramArray[5].text!,
             "height": paramArray[6].text!,
             "animalIdx": animalIndex,
-            "email" :paramArray[7].text! + "@dgu.ac.kr",
+            "email" :paramArray[7].text! + "@dongguk.edu",
             "device_token" : deviceToken] as Dictionary
         
         // httpBody에 parameters 추가
