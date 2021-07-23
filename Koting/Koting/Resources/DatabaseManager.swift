@@ -737,6 +737,12 @@ extension DatabaseManager {
             completion(fcmToken)
         }
     }
+    
+    public func updateDeviceToken(token: String) {
+        guard let currentEmail = UserDefaults.standard.string(forKey: "email") else { return }
+        let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
+        database.child("\(safeEmail)").updateChildValues(["fcm_token": token])
+    }
 }
 
 struct ChatAppUser {

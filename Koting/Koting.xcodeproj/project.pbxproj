@@ -18,7 +18,7 @@
 		88199DAB26615D49004FD856 /* GetUserPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88199DAA26615D49004FD856 /* GetUserPhotoVC.swift */; };
 		88199DAD2661691D004FD856 /* MeasureResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88199DAC2661691D004FD856 /* MeasureResultVC.swift */; };
 		881A11C026393CA800A5DD0F /* FetchMeetingRoomsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */; };
-		882E8ACE26AAF14E0032AA05 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882E8ACD26AAF14E0032AA05 /* Key.swift */; };
+		882E8AD026AB06350032AA05 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882E8ACF26AB06350032AA05 /* Key.swift */; };
 		883B4196264A8B3E007EB33C /* NoticeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4195264A8B3E007EB33C /* NoticeVC.swift */; };
 		883B4198264A8DDE007EB33C /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4197264A8DDE007EB33C /* NoticeCell.swift */; };
 		883B419A264AC298007EB33C /* NoticeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883B4199264AC298007EB33C /* NoticeDetailVC.swift */; };
@@ -119,7 +119,7 @@
 		88199DAC2661691D004FD856 /* MeasureResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureResultVC.swift; sourceTree = "<group>"; };
 		88199DAE26660AA2004FD856 /* Koting.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Koting.entitlements; sourceTree = "<group>"; };
 		881A11BF26393CA800A5DD0F /* FetchMeetingRoomsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMeetingRoomsAPI.swift; sourceTree = "<group>"; };
-		882E8ACD26AAF14E0032AA05 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		882E8ACF26AB06350032AA05 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		883B4195264A8B3E007EB33C /* NoticeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeVC.swift; sourceTree = "<group>"; };
 		883B4197264A8DDE007EB33C /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 		883B4199264AC298007EB33C /* NoticeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailVC.swift; sourceTree = "<group>"; };
@@ -296,7 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				88556CB82609D96A00CF7CAC /* API.swift */,
-				882E8ACD26AAF14E0032AA05 /* Key.swift */,
+				882E8ACF26AB06350032AA05 /* Key.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -735,7 +735,7 @@
 				88849D502642BDB500E2B1AF /* GradientView.swift in Sources */,
 				885BFC29264B84CA0020A210 /* GetNoticeAPI.swift in Sources */,
 				D392E1632648265600938E85 /* DoneMeetingListAPI.swift in Sources */,
-				882E8ACE26AAF14E0032AA05 /* Key.swift in Sources */,
+				882E8AD026AB06350032AA05 /* Key.swift in Sources */,
 				88A3AFAD265257F900FFF90F /* DatabaseManager.swift in Sources */,
 				D392E16626482A6700938E85 /* AcceptMeetingAPI.swift in Sources */,
 				88000B5726567581008671D2 /* ConversationModel.swift in Sources */,

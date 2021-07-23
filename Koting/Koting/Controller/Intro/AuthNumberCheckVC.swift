@@ -84,6 +84,11 @@ class AuthNumberCheckVC: UIViewController {
                                         if authCheck {
                                             DispatchQueue.main.async {
                                                 strongSelf.indicator.stopAnimating()
+                                                
+                                                if let fcmToken = UserDefaults.standard.string(forKey: "device_token") {
+                                                    DatabaseManager.shared.updateDeviceToken(token: fcmToken)
+                                                }
+                                    
                                                 strongSelf.performSegue(withIdentifier: "MeetingList", sender: nil)
                                             }
                                         } else {
