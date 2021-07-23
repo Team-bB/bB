@@ -8,6 +8,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import Alamofire
 
 class ChatVC: MessagesViewController {
     
@@ -236,8 +237,14 @@ extension ChatVC: InputBarAccessoryViewDelegate {
             
             // name: 받는 사람 닉네임
             DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage) { [weak self] success in
-                
+                guard let strongSelf = self else { return }
                 if success {
+                    
+                    DatabaseManager.shared.getDeviceToken(otherUserEmail: strongSelf.otherUserEmail) { token in
+                        guard let token: String = token else { return }
+                        strongSelf.sendNotification(to: token, title: strongSelf.selfSender?.displayName ?? "상대방", text:  "메시지가 도착했어요 💌")
+                    
+                    }
                     print("📝 메세지 전송 완료. 📝")
                     self?.isNewConversation = false
                     let newConversationId = "conversation_\(mmessage.messageId)"
@@ -258,6 +265,10 @@ extension ChatVC: InputBarAccessoryViewDelegate {
                 guard let strongSelf = self else { return }
                 
                 if success {
+                    DatabaseManager.shared.getDeviceToken(otherUserEmail: strongSelf.otherUserEmail) { token in
+                        guard let token: String = token else { return }
+                        strongSelf.sendNotification(to: token, title: strongSelf.selfSender?.displayName ?? "상대방", text:  "메시지가 도착했어요 💌")
+                    }
                     print("📝 메세지 전송 완료. 📝")
                 } else {
                     print("⛔️ 메세지 전송 실패 ⛔️")
@@ -356,6 +367,35 @@ extension ChatVC: BlockDelegate {
                     strongSelf.dismiss(animated: true, completion: nil)
                 }
             }
+        }
+    }
+    
+}
+
+extension ChatVC {
+    private func sendNotification(to: String, title: String, text: String) {
+        
+        let url = "https://fcm.googleapis.com/fcm/send"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("key=\(Key.key)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+    
+        //POST로 보낼 정보
+        let params: [String:Any] = [
+            "notification" : ["title": title, "body": text],
+            "to" : to] as Dictionary
+        
+        // httpBody에 parameters 추가
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("http Body Error")
+        }
+        
+        AF.request(request).responseData { response in
+            print(response)
         }
     }
     

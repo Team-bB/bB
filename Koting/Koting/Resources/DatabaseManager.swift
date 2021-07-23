@@ -67,7 +67,8 @@ extension DatabaseManager {
             "age": user.age,
             "college": user.college,
             "major": user.major,
-            "mbti": user.mbti
+            "mbti": user.mbti,
+            "fcm_token": user.fcmToken
         ]) { [weak self] error, _ in
             
             guard let strongSelf = self else { return }
@@ -725,6 +726,17 @@ extension DatabaseManager {
         }
         return nil
     }
+    
+    public func getDeviceToken(otherUserEmail: String, completion: @escaping (String?) -> Void) {
+        database.child("\(otherUserEmail)/fcm_token").getData { err, snapshot  in
+            guard err == nil else {
+                completion(nil)
+                return
+            }
+            guard let fcmToken: String = snapshot.value as? String else { return }
+            completion(fcmToken)
+        }
+    }
 }
 
 struct ChatAppUser {
@@ -734,7 +746,7 @@ struct ChatAppUser {
     let college: String
     let major: String
     let mbti: String
-    
+    let fcmToken: String
     var safeEmail: String {
         var safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
