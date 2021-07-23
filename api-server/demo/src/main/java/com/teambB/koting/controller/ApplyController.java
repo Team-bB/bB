@@ -120,7 +120,7 @@ public class ApplyController {
       Meeting meeting = meetingService.findOne(meetingId);
       Member owner = memberService.findOne(meeting.getMemberId());
       FirebaseService.sendApply(owner.getDeviceToken());
-      firebaseCloudMessageService.sendMessageTo(owner.getDeviceToken(), "미팅 신청 안내", "누군가로부터 신청이 들어왔습니다. 😍");
+//      firebaseCloudMessageService.sendMessageTo(owner.getDeviceToken(), "미팅 신청 안내", "누군가로부터 신청이 들어왔습니다. 😍");
       retObject.put("result", "applyMeetingSuccess");
     }
     else if (result == 1) {
@@ -145,7 +145,7 @@ public class ApplyController {
     Apply apply = applyService.findOne(applyId);
     Member member = apply.getMember();
     FirebaseService.sendSuccess(member.getDeviceToken());
-    firebaseCloudMessageService.sendMessageTo(member.getDeviceToken(), "매칭 성공", "상대방이 미팅을 수락하였습니다. 채팅 탭에서 대화를 시작해보세요 👏");
+//    firebaseCloudMessageService.sendMessageTo(member.getDeviceToken(), "매칭 성공", "상대방이 미팅을 수락하였습니다. 채팅 탭에서 대화를 시작해보세요 👏");
 
     apply.applyAccept();
     Long ownerId = apply.getMeeting().getMemberId();
@@ -162,7 +162,7 @@ public class ApplyController {
         continue ;
       Apply one = applyService.findOne(apply_.getId());
       FirebaseService.sendReject(one.getMember().getDeviceToken());
-      firebaseCloudMessageService.sendMessageTo(one.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
+//      firebaseCloudMessageService.sendMessageTo(one.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
       one.rejectAccept();
     }
 
@@ -188,7 +188,7 @@ public class ApplyController {
     Apply apply = applyService.findOne(applyId);
     apply.rejectAccept();
     FirebaseService.sendReject(apply.getMember().getDeviceToken());
-    firebaseCloudMessageService.sendMessageTo(apply.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
+//    firebaseCloudMessageService.sendMessageTo(apply.getMember().getDeviceToken(), "매칭 실패", "상대방이 미팅을 거절하였습니다.");
     Long meetingId = apply.getMeeting().getId();
     Meeting meeting = meetingService.findOne(meetingId);
     meeting.minusApplierCnt();
