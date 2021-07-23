@@ -36,7 +36,7 @@
                                                     <constraint firstAttribute="height" constant="200" id="HlC-va-MlE"/>
                                                     <constraint firstAttribute="width" constant="300" id="Xj7-8r-4I6"/>
                                                 </constraints>
-                                                <mutableString key="text">“동마담”은 “정보통신망 이용촉진 및 정보보호에 관한법률”, “개인정보보호법”, “통신비밀보호법”, “전기통신사업법” 및 “전자상거래등에서 소비자 보호에 관한 법률” 등 정보통신 서비스 제공자가 준수해야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하겠습니다. 회사는 이용자의 개인정보를 [개인정보의 수집목적]에서 고지한 범위 내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 제공 또는 위탁하지 않습니다.
+                                                <string key="text">“동마담”은 “정보통신망 이용촉진 및 정보보호에 관한법률”, “개인정보보호법”, “통신비밀보호법”, “전기통신사업법” 및 “전자상거래등에서 소비자 보호에 관한 법률” 등 정보통신 서비스 제공자가 준수해야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하겠습니다. 회사는 이용자의 개인정보를 [개인정보의 수집목적]에서 고지한 범위 내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 제공 또는 위탁하지 않습니다.
 
 -개인정보 활용처-
 
@@ -108,7 +108,7 @@
 
 -고지의 의무-
 
-“동마담”은 법률이나 서비스의 변경사항을 반영하기 위한 목적 등으로 개인정보처리방침을 수정할 수 있습니다.</mutableString>
+“동마담”은 법률이나 서비스의 변경사항을 반영하기 위한 목적 등으로 개인정보처리방침을 수정할 수 있습니다.</string>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -137,7 +137,7 @@
 
 -계정 관련-
 
-“동마담”은 모바일 서비스 특성상 별다른 비밀번호 없이 휴대전화 번호와 email로 계정을 생성하실 수 있습니다. 다만, 실제 휴대전화 소유주임을 확인하기 위해서 가입 당시 인증 절차를 거치게 됩니다. 또한, 동국대학교 학생임을 인증하기 위해서 @dgu.ac.kr의 도메인을 갖는 email만을 사용하여 인증 하셔야 합니다. 또한, 다른 모바일 기기에서 서비스 사용을 연속하기 위해서는 기존에 가입하고 인증했던 휴대전화 번호로 재인증을 해야 합니다. 아래의 경우에는 계정 생성을 승인하지 않을 수 있습니다.
+“동마담”은 모바일 서비스 특성상 별다른 비밀번호 없이 휴대전화 번호와 email로 계정을 생성하실 수 있습니다. 다만, 실제 휴대전화 소유주임을 확인하기 위해서 가입 당시 인증 절차를 거치게 됩니다. 또한, 동국대학교 학생임을 인증하기 위해서 @dongguk.edu 의 도메인을 갖는 email만을 사용하여 인증 하셔야 합니다. 또한, 다른 모바일 기기에서 서비스 사용을 연속하기 위해서는 기존에 가입하고 인증했던 휴대전화 번호로 재인증을 해야 합니다. 아래의 경우에는 계정 생성을 승인하지 않을 수 있습니다.
 
 1. 다른 사람의 명의나 휴대전화 번호 등 개인정보를 이용하여 계정을 생성하려 한 경우
 2. 동일인이 다수의 계정을 생성하려 한 경우
@@ -654,19 +654,19 @@
                                         <rect key="frame" x="0.0" y="19" width="220" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="동국대 웹 메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSK-t8-0NF">
-                                                <rect key="frame" x="0.0" y="0.0" width="126" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="113.5" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="pop-vN-cj4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text=" @dgu.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-BA-B2z">
-                                                <rect key="frame" x="134" y="0.0" width="86" height="34"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text=" @dongguk.edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-BA-B2z">
+                                                <rect key="frame" x="121.5" y="0.0" width="98.5" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="do2-zl-1tq"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
