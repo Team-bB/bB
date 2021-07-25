@@ -13,8 +13,9 @@ import UserNotifications
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var notification: String!
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         Thread.sleep(forTimeInterval: 1.0)
@@ -32,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    
+
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
       Messaging.messaging().apnsToken = deviceToken
@@ -57,8 +58,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("\(#function)")
-        completionHandler([.alert, .sound])
+        
+        let userInfo = notification.request.content
+            .userInfo
+        
+        if let aps = userInfo["aps"] as? NSDictionary, let category = aps["category"] as? String {
+            if category == "chat" {
+                let window = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window
+                if let tabVC = window?.rootViewController as? UITabBarController, tabVC.selectedIndex == 1 {
+                    return
+                }
+            }
+        }
+        
+        completionHandler([.alert, .sound, .badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let userInfo = response.notification.request.content
+            .userInfo
+        
+
+        
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+        print(userInfo)
+        
+        let window = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window
+        if let aps = userInfo["aps"] as? NSDictionary, let category = aps["category"] as? String {
+            if category == "chat" {
+                let chatVC = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(identifier: "MeetingList") as! UITabBarController
+                chatVC.selectedIndex = 1
+                window?.rootViewController = chatVC
+                window?.makeKeyAndVisible()
+            }
+        }
+        completionHandler()
     }
 }
 

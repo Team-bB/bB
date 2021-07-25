@@ -202,7 +202,7 @@
         <!--Item-->
         <scene sceneID="hu8-hA-kgf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bY2-CH-fJA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ChatVC" automaticallyAdjustsScrollViewInsets="NO" id="bY2-CH-fJA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="dw4-vL-VJz"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

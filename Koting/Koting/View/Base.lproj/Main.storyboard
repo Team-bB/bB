@@ -131,7 +131,7 @@
                                                     <constraint firstAttribute="width" constant="300" id="DAz-OP-mq0"/>
                                                     <constraint firstAttribute="height" constant="200" id="qTs-pC-PGZ"/>
                                                 </constraints>
-                                                <mutableString key="text">안녕하세요!
+                                                <string key="text">안녕하세요!
 
 “동마담” 서비스를 이용해 주셔서 감사합니다. 동국대학교의 온라인 만해광장(미팅 서비스)를 제공하는 동마담이 준비한 아래 약관을 읽어주시면 감사드리겠습니다.
 
@@ -188,7 +188,7 @@
 
 사용자가 본 약관을 준수하지 않은 경우에, 동마담이 즉시 조치를 취하지 않더라도 동마담이 가지고 있는 권리를 포기하는 것이 아니며, 본 약관 중 일부 조항의 집행이 불가능하게 되더라도 다른 조항에는 영향을 미치지 않습니다.
 
-본 약관 또는 동마담 서비스와 관련하여서는 대한민국의 법률이 적용됩니다.</mutableString>
+본 약관 또는 동마담 서비스와 관련하여서는 대한민국의 법률이 적용됩니다.</string>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

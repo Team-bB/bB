@@ -373,9 +373,24 @@ extension DatabaseManager {
         }
         
     }
+    public func removeChatObserver(chatId: String) {
+        database.child("\(chatId)/messages").removeAllObservers()
+    }
+    
+//    public func updateUnread(with id: String, sender: String) {
+//        let myMail = DatabaseManager.safeEmail(email: sender)
+//        
+//        database.child("\(id)/messages").observeSingleEvent(of: .value) { snapshot in
+//            
+//            guard var currentMessages = snapshot.value as? [[String: Any]] else {
+//                return
+//            }
+//        }
+//    }
     
     /// Gets all messages for a given conversation
-    public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<[Message], Error>) -> Void) {
+    public func getAllMessagesForConversation(with id: String, sender: String, completion: @escaping (Result<[Message], Error>) -> Void) {
+        
         database.child("\(id)/messages").observe(.value) { snapshot in
             guard let value = snapshot.value as? [[String: Any]] else {
                 completion(.failure(DatabaseError.failedToFetch))
@@ -384,7 +399,7 @@ extension DatabaseManager {
             
             let messages: [Message] = value.compactMap { dictonary in
                 guard let name = dictonary["name"] as? String,
-                      let _ = dictonary["is_read"] as? Bool,
+                      let isRead = dictonary["is_read"] as? Bool,
                       let messageID = dictonary["id"] as? String,
                       let content = dictonary["content"] as? String,
                       let senderEmail = dictonary["sender_email"] as? String,
@@ -402,7 +417,8 @@ extension DatabaseManager {
                 return Message(sender: sender,
                                messageId: messageID,
                                sentDate: date,
-                               kind: .text(content))
+                               kind: .text(content),
+                               isRead: isRead)
             }
             completion(.success(messages))
         }
@@ -742,6 +758,10 @@ extension DatabaseManager {
         guard let currentEmail = UserDefaults.standard.string(forKey: "email") else { return }
         let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
         database.child("\(safeEmail)").updateChildValues(["fcm_token": token])
+    }
+    
+    public func removeChatObserver() {
+        
     }
 }
 
