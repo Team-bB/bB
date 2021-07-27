@@ -132,7 +132,7 @@ class ChatVC: MessagesViewController {
     }
     
     private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
-        
+        indicator.startAnimating(superView: view)
         DatabaseManager.shared.getAllMessagesForConversation(with: id, sender: selfSender?.senderId ?? "") { [weak self] result in
             
             guard let strongSelf = self else { return }
@@ -145,10 +145,12 @@ class ChatVC: MessagesViewController {
                 strongSelf.messages = messages
                 
                 DispatchQueue.main.async {
+                    strongSelf.indicator.stopAnimating()
                     strongSelf.messagesCollectionView.reloadDataAndKeepOffset()
                     if shouldScrollToBottom {
                         strongSelf.messagesCollectionView.scrollToLastItem(animated: false)
                     }
+                    
                 }
                 
             case .failure(let error):
@@ -257,7 +259,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
         DispatchQueue.global().async {
             DatabaseManager.shared.getDeviceToken(otherUserEmail: self.otherUserEmail) { [weak self] token in
                 guard let strongSelf = self, let token: String = token else { return }
-                strongSelf.sendNotification(to: token, title: selfSender.displayName , text:  "메시지가 도착했어요 💌")
+                strongSelf.sendNotification(to: token, title: selfSender.displayName , text:  "메시지가 도착했어요 💌", category: "chat")
             }
         }
         
@@ -386,7 +388,7 @@ extension ChatVC: BlockDelegate {
 }
 
 extension ChatVC {
-    private func sendNotification(to: String, title: String, text: String) {
+    private func sendNotification(to: String, title: String, text: String, category: String) {
         
         let url = "https://fcm.googleapis.com/fcm/send"
         var request = URLRequest(url: URL(string: url)!)
@@ -397,8 +399,16 @@ extension ChatVC {
     
         //POST로 보낼 정보
         let params: [String:Any] = [
-            "notification" : ["title": title, "body": text],
-            "to" : to] as Dictionary
+            "notification" :
+                ["title": title,
+                 "body": text,
+                 "click_action": category],
+            "to" : to,
+            "data" :
+                ["sender_email": DatabaseManager.safeEmail(email: selfSender!.senderId),
+                 "chat_id": conversationId,
+                 "sender_name": selfSender!.displayName]
+        ]as Dictionary
         
         // httpBody에 parameters 추가
         do {
@@ -434,8 +444,4 @@ extension ChatVC {
 //        accessoryView.backgroundColor = .none
 //        accessoryView.bounds = CGRect(x: 0, y: 0, width: 30, height: 30)
 //    }
-}
-
-extension ChatVC {
-    
 }

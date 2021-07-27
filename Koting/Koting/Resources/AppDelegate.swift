@@ -85,12 +85,26 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print(userInfo)
         
         let window = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window
-        if let aps = userInfo["aps"] as? NSDictionary, let category = aps["category"] as? String {
+        if let aps = userInfo["aps"] as? NSDictionary,
+           let category = aps["category"] as? String,
+           let chatId = userInfo["chat_id"] as? String,
+           let senderEmail = userInfo["sender_email"] as? String,
+           let senderName = userInfo["sender_name"] as? String {
             if category == "chat" {
-                let chatVC = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(identifier: "MeetingList") as! UITabBarController
-                chatVC.selectedIndex = 1
-                window?.rootViewController = chatVC
+                let tabVC = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(identifier: "MeetingList") as! UITabBarController
+                tabVC.selectedIndex = 1
+                window?.rootViewController = tabVC
+                
+                
+                let nextVC = ChatVC(with: senderEmail, id: chatId)
+                nextVC.title = senderName
+                nextVC.navigationItem.largeTitleDisplayMode = .never
+
                 window?.makeKeyAndVisible()
+                if let tabVC = window?.rootViewController as? UITabBarController,
+                   let navVC = tabVC.selectedViewController as? UINavigationController {
+                    navVC.pushViewController(nextVC, animated: true)
+                }
             }
         }
         completionHandler()
