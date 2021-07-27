@@ -87,7 +87,7 @@ class ChatVC: MessagesViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        messageInputBar.inputTextView.becomeFirstResponder()
+
         if let conversationId = conversationId {
             listenForMessages(id: conversationId, shouldScrollToBottom: true)
         }
@@ -133,7 +133,7 @@ class ChatVC: MessagesViewController {
     
     private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
         indicator.startAnimating(superView: view)
-        DatabaseManager.shared.getAllMessagesForConversation(with: id, sender: selfSender?.senderId ?? "") { [weak self] result in
+        DatabaseManager.shared.getAllMessagesForConversation(with: id, selfSender: selfSender?.senderId ?? "") { [weak self] result in
             
             guard let strongSelf = self else { return }
             
@@ -150,7 +150,6 @@ class ChatVC: MessagesViewController {
                     if shouldScrollToBottom {
                         strongSelf.messagesCollectionView.scrollToLastItem(animated: false)
                     }
-                    
                 }
                 
             case .failure(let error):
@@ -215,7 +214,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
                 strongSelf.isNewConversation = false
                 let newConversationId = "conversation_\(mmessage.messageId)"
                 strongSelf.conversationId = newConversationId
-                strongSelf.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
+//                strongSelf.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
                 
             } else {
                 print("⛔️ 메세지 전송 실패 ⛔️")
@@ -335,19 +334,21 @@ extension ChatVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
         return .bubbleTail(corner, .curved)
      }
     
-/* 읽음 표시
+
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         guard let message = message as? Message else { return nil }
-        if message.sender.senderId == selfSender?.senderId && message.isRead == true {
-            return NSAttributedString(string: "읽음", attributes: [.foregroundColor : UIColor.lightGray, .font : UIFont.systemFont(ofSize: 12, weight: .semibold) ])
+        if message.sender.senderId == selfSender?.senderId && message.isRead == false {
+            return NSAttributedString(string: "안읽음", attributes: [.foregroundColor : UIColor.lightGray, .font : UIFont.systemFont(ofSize: 11, weight: .semibold) ])
         }
-        return NSAttributedString(string: "안읽음", attributes: [.foregroundColor : UIColor.lightGray, .font : UIFont.systemFont(ofSize: 11, weight: .semibold) ])
+        return nil
     }
     
     func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 15
+        guard let message = message as? Message else { return 0 }
+        if message.isRead { return 0}
+        else { return 15 }
     }
-*/
+
     
 /* 닉네임
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
@@ -427,21 +428,7 @@ extension ChatVC {
 extension ChatVC {
     func configureLayout() {
         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
-        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 3, left: 0, bottom: 2, right: 15)))
-        layout?.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 3, left: 15, bottom: 2, right: 0)))
-//        layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 3, left: 5, bottom: 2, right: 0)))
+        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 15)))
+        layout?.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 3, left: 15, bottom: 0, right: 0)))
     }
-    
-//    func configureAccessoryView(_ accessoryView: UIView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-//        let label: UILabel = {
-//            let label: UILabel = UILabel()
-//            label.text = "시벨fkfkfkkfkfkfkfkfkfkfkfkf"
-//            label.textColor = .black
-//            return label
-//        }()
-//        accessoryView.l
-//        accessoryView.addSubview(label)
-//        accessoryView.backgroundColor = .none
-//        accessoryView.bounds = CGRect(x: 0, y: 0, width: 30, height: 30)
-//    }
 }

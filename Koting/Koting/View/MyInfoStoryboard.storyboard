@@ -462,9 +462,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MGr-F2-T0Y">
-                                <rect key="frame" x="10" y="54" width="355" height="603"/>
+                                <rect key="frame" x="0.0" y="54" width="375" height="603"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">“동마담”은 “정보통신망 이용촉진 및 정보보호에 관한법률”, “개인정보보호법”, “통신비밀보호법”, “전기통신사업법” 및 “전자상거래등에서 소비자 보호에 관한 법률” 등 정보통신 서비스 제공자가 준수해야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하겠습니다. 회사는 이용자의 개인정보를 [개인정보의 수집목적]에서 고지한 범위 내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 제공 또는 위탁하지 않습니다.
+                                <string key="text">“동마담”은 “정보통신망 이용촉진 및 정보보호에 관한법률”, “개인정보보호법”, “통신비밀보호법”, “전기통신사업법” 및 “전자상거래등에서 소비자 보호에 관한 법률” 등 정보통신 서비스 제공자가 준수해야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하겠습니다. 회사는 이용자의 개인정보를 [개인정보의 수집목적]에서 고지한 범위 내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 제공 또는 위탁하지 않습니다.
 
 -개인정보 활용처-
 
@@ -536,7 +536,7 @@
 
 -고지의 의무-
 
-“동마담”은 법률이나 서비스의 변경사항을 반영하기 위한 목적 등으로 개인정보처리방침을 수정할 수 있습니다.</mutableString>
+“동마담”은 법률이나 서비스의 변경사항을 반영하기 위한 목적 등으로 개인정보처리방침을 수정할 수 있습니다.</string>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -545,10 +545,10 @@
                         <viewLayoutGuide key="safeArea" id="73w-F3-99A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="73w-F3-99A" firstAttribute="trailing" secondItem="MGr-F2-T0Y" secondAttribute="trailing" constant="10" id="GJE-Q5-RwR"/>
+                            <constraint firstItem="73w-F3-99A" firstAttribute="trailing" secondItem="MGr-F2-T0Y" secondAttribute="trailing" id="GJE-Q5-RwR"/>
                             <constraint firstItem="73w-F3-99A" firstAttribute="bottom" secondItem="MGr-F2-T0Y" secondAttribute="bottom" constant="10" id="Q2C-9Z-Lqm"/>
                             <constraint firstItem="MGr-F2-T0Y" firstAttribute="top" secondItem="73w-F3-99A" secondAttribute="top" constant="10" id="bfi-ek-Ic2"/>
-                            <constraint firstItem="MGr-F2-T0Y" firstAttribute="leading" secondItem="73w-F3-99A" secondAttribute="leading" constant="10" id="iyq-cO-FT7"/>
+                            <constraint firstItem="MGr-F2-T0Y" firstAttribute="leading" secondItem="73w-F3-99A" secondAttribute="leading" id="iyq-cO-FT7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="개인정보 처리방침" id="KOT-jx-RFF">
@@ -591,7 +591,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="u52-tL-VPl">
-                                <rect key="frame" x="20" y="54" width="335" height="603"/>
+                                <rect key="frame" x="0.0" y="54" width="375" height="603"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <mutableString key="text">안녕하세요!
 
@@ -599,7 +599,7 @@
 
 -계정 관련-
 
-“동마담”은 모바일 서비스 특성상 별다른 비밀번호 없이 휴대전화 번호와 email로 계정을 생성하실 수 있습니다. 다만, 실제 휴대전화 소유주임을 확인하기 위해서 가입 당시 인증 절차를 거치게 됩니다. 또한, 동국대학교 학생임을 인증하기 위해서 @dgu.ac.kr의 도메인을 갖는 email만을 사용하여 인증 하셔야 합니다. 또한, 다른 모바일 기기에서 서비스 사용을 연속하기 위해서는 기존에 가입하고 인증했던 휴대전화 번호로 재인증을 해야 합니다. 아래의 경우에는 계정 생성을 승인하지 않을 수 있습니다.
+“동마담”은 모바일 서비스 특성상 별다른 비밀번호 없이 휴대전화 번호와 email로 계정을 생성하실 수 있습니다. 다만, 실제 휴대전화 소유주임을 확인하기 위해서 가입 당시 인증 절차를 거치게 됩니다. 또한, 동국대학교 학생임을 인증하기 위해서 '@dongguk.edu' 의 도메인을 갖는 email만을 사용하여 인증 하셔야 합니다. 또한, 다른 모바일 기기에서 서비스 사용을 연속하기 위해서는 기존에 가입하고 인증했던 휴대전화 번호로 재인증을 해야 합니다. 아래의 경우에는 계정 생성을 승인하지 않을 수 있습니다.
 
 1. 다른 사람의 명의나 휴대전화 번호 등 개인정보를 이용하여 계정을 생성하려 한 경우
 2. 동일인이 다수의 계정을 생성하려 한 경우
@@ -659,9 +659,9 @@
                         <viewLayoutGuide key="safeArea" id="8RA-V5-eNh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="u52-tL-VPl" firstAttribute="leading" secondItem="8RA-V5-eNh" secondAttribute="leading" constant="20" id="6uH-Fm-blt"/>
+                            <constraint firstItem="u52-tL-VPl" firstAttribute="leading" secondItem="8RA-V5-eNh" secondAttribute="leading" id="6uH-Fm-blt"/>
                             <constraint firstItem="8RA-V5-eNh" firstAttribute="bottom" secondItem="u52-tL-VPl" secondAttribute="bottom" constant="10" id="XVq-3H-0hy"/>
-                            <constraint firstItem="8RA-V5-eNh" firstAttribute="trailing" secondItem="u52-tL-VPl" secondAttribute="trailing" constant="20" id="nWf-tr-lc5"/>
+                            <constraint firstItem="8RA-V5-eNh" firstAttribute="trailing" secondItem="u52-tL-VPl" secondAttribute="trailing" id="nWf-tr-lc5"/>
                             <constraint firstItem="u52-tL-VPl" firstAttribute="top" secondItem="8RA-V5-eNh" secondAttribute="top" constant="10" id="qVu-N6-DPa"/>
                         </constraints>
                     </view>

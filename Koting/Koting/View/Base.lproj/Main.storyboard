@@ -131,13 +131,13 @@
                                                     <constraint firstAttribute="width" constant="300" id="DAz-OP-mq0"/>
                                                     <constraint firstAttribute="height" constant="200" id="qTs-pC-PGZ"/>
                                                 </constraints>
-                                                <string key="text">안녕하세요!
+                                                <mutableString key="text">안녕하세요!
 
 “동마담” 서비스를 이용해 주셔서 감사합니다. 동국대학교의 온라인 만해광장(미팅 서비스)를 제공하는 동마담이 준비한 아래 약관을 읽어주시면 감사드리겠습니다.
 
 -계정 관련-
 
-“동마담”은 모바일 서비스 특성상 별다른 비밀번호 없이 휴대전화 번호와 email로 계정을 생성하실 수 있습니다. 다만, 실제 휴대전화 소유주임을 확인하기 위해서 가입 당시 인증 절차를 거치게 됩니다. 또한, 동국대학교 학생임을 인증하기 위해서 @dongguk.edu 의 도메인을 갖는 email만을 사용하여 인증 하셔야 합니다. 또한, 다른 모바일 기기에서 서비스 사용을 연속하기 위해서는 기존에 가입하고 인증했던 휴대전화 번호로 재인증을 해야 합니다. 아래의 경우에는 계정 생성을 승인하지 않을 수 있습니다.
+“동마담”은 모바일 서비스 특성상 별다른 비밀번호 없이 휴대전화 번호와 email로 계정을 생성하실 수 있습니다. 다만, 실제 휴대전화 소유주임을 확인하기 위해서 가입 당시 인증 절차를 거치게 됩니다. 또한, 동국대학교 학생임을 인증하기 위해서 '@dongguk.edu' 의 도메인을 갖는 email만을 사용하여 인증 하셔야 합니다. 또한, 다른 모바일 기기에서 서비스 사용을 연속하기 위해서는 기존에 가입하고 인증했던 휴대전화 번호로 재인증을 해야 합니다. 아래의 경우에는 계정 생성을 승인하지 않을 수 있습니다.
 
 1. 다른 사람의 명의나 휴대전화 번호 등 개인정보를 이용하여 계정을 생성하려 한 경우
 2. 동일인이 다수의 계정을 생성하려 한 경우
@@ -188,7 +188,7 @@
 
 사용자가 본 약관을 준수하지 않은 경우에, 동마담이 즉시 조치를 취하지 않더라도 동마담이 가지고 있는 권리를 포기하는 것이 아니며, 본 약관 중 일부 조항의 집행이 불가능하게 되더라도 다른 조항에는 영향을 미치지 않습니다.
 
-본 약관 또는 동마담 서비스와 관련하여서는 대한민국의 법률이 적용됩니다.</string>
+본 약관 또는 동마담 서비스와 관련하여서는 대한민국의 법률이 적용됩니다.</mutableString>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

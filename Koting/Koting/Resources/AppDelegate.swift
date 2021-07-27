@@ -14,7 +14,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var notification: String!
-    
+    var badgeCount = 0
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -70,7 +70,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 }
             }
         }
-        
         completionHandler([.alert, .sound, .badge])
     }
     
