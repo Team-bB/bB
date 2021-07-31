@@ -69,6 +69,7 @@ class ChatVC: MessagesViewController {
         navigationController?.navigationBar.tintColor = .black
         
         hideAvatar()
+        messagesCollectionView.backgroundColor = .systemGray6
         scrollsToLastItemOnKeyboardBeginsEditing = true
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -175,7 +176,7 @@ class ChatVC: MessagesViewController {
         if sender.senderId == selfSender?.senderId {
             return UIColor(cgColor: tintColor)
         }
-        return .secondarySystemBackground
+        return .white
     }
     
     func hideAvatar() {
