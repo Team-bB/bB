@@ -35,8 +35,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = initVC
         self.window?.makeKeyAndVisible()
         
-//        self.window?.rootViewController = UIStoryboard(name: "MeetingListStoryboard", bundle: nil).instantiateViewController(withIdentifier: "MeetingList")
-//        self.window?.makeKeyAndVisible()
     }
 
     func changeRootVC (_ vc: UIViewController, animated: Bool) {

@@ -259,13 +259,17 @@ extension SignUpVC {
                 print("❌ Creating User 에러 발생 ❌")
                 return
             }
-            
+            guard let fcmToken: String = UserDefaults.standard.string(forKey: "device_token") else {
+                print("❌ device Token 에러 발생 ❌")
+                return
+            }
             let chatUser = ChatAppUser(nickName: "\(userInfo.nickname!)",
                                        emailAddress: email,
                                        age: "\(userInfo.age!)살",
                                        college: userInfo.college!,
                                        major: userInfo.major!,
-                                       mbti: userInfo.mbti!)
+                                       mbti: userInfo.mbti!,
+                                       fcmToken: fcmToken)
             
             DatabaseManager.shared.insertUser(with: chatUser) { success in
                 

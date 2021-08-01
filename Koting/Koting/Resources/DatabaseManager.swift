@@ -67,7 +67,8 @@ extension DatabaseManager {
             "age": user.age,
             "college": user.college,
             "major": user.major,
-            "mbti": user.mbti
+            "mbti": user.mbti,
+            "fcm_token": user.fcmToken
         ]) { [weak self] error, _ in
             
             guard let strongSelf = self else { return }
@@ -203,7 +204,8 @@ extension DatabaseManager {
                 "latest_message": [
                     "date": dateString,
                     "message": message,
-                    "is_read": false
+                    "is_read": true,
+                    "sender": safeEmail
                 ]
             ]
             
@@ -214,7 +216,8 @@ extension DatabaseManager {
                 "latest_message": [
                     "date": dateString,
                     "message": message,
-                    "is_read": false
+                    "is_read": false,
+                    "sender": safeEmail
                 ]
             ]
             
@@ -354,14 +357,16 @@ extension DatabaseManager {
                       let latestMessage = dictonary["latest_message"] as? [String: Any],
                       let date = latestMessage["date"] as? String,
                       let message = latestMessage["message"] as? String,
-                      let isRead = latestMessage["is_read"] as? Bool
+                      let isRead = latestMessage["is_read"] as? Bool,
+                      let sender = latestMessage["sender"] as? String
                 else {
                     return nil
                 }
                 
                 let latestMessageObject = LatestMessage(date: date,
                                                         text: message,
-                                                        isRead: isRead)
+                                                        isRead: isRead,
+                                                        sender: sender)
                 
                 return Conversation(id: conversationId,
                                     name: name,
@@ -372,41 +377,128 @@ extension DatabaseManager {
         }
         
     }
-    
+    public func removeChatObserver(chatId: String) {
+        database.child("\(chatId)/messages").removeAllObservers()
+    }
+
+    private func updateLatestMessage(with id: String, selfSender: String) {
+        database.child("\(selfSender)/conversations").observeSingleEvent(of: .value) { [weak self] snapshot in
+            if let strongSelf = self, let value = snapshot.value as? [[String:Any]] {
+                let conversations: [[String:Any]] = value.compactMap { dictonary in
+                    
+                    guard let conversationId = dictonary["id"] as? String,
+                          let name = dictonary["name"] as? String,
+                          let otherUserEmail = dictonary["other_user_email"] as? String,
+                          let latestMessage = dictonary["latest_message"] as? [String: Any],
+                          let date = latestMessage["date"] as? String,
+                          let message = latestMessage["message"] as? String,
+                          let isRead = latestMessage["is_read"] as? Bool,
+                          let sender = latestMessage["sender"] as? String
+                    else {
+                        return nil
+                    }
+                    
+                    return conversationId == id ?
+                        ["id": conversationId,
+                         "latest_message":
+                            ["date": date,
+                             "is_read": true,
+                             "message": message,
+                             "sender": sender],
+                         "name": name,
+                         "other_user_email": otherUserEmail] :
+                        ["id": conversationId,
+                         "latest_message":
+                            ["date": date,
+                             "is_read": isRead,
+                             "message": message,
+                             "sender": sender],
+                         "name": name,
+                         "other_user_email": otherUserEmail]
+                }
+                strongSelf.database.child("\(selfSender)/conversations").setValue(conversations)
+            }
+        }
+    }
     /// Gets all messages for a given conversation
-    public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<[Message], Error>) -> Void) {
-        database.child("\(id)/messages").observe(.value) { snapshot in
-            guard let value = snapshot.value as? [[String: Any]] else {
+    public func getAllMessagesForConversation(with id: String, selfSender: String, completion: @escaping (Result<[Message], Error>) -> Void) {
+        
+        database.child("\(id)/messages").observe(.value) { [weak self] snapshot in
+            guard let strongSelf = self, let value = snapshot.value as? [[String: Any]] else {
                 completion(.failure(DatabaseError.failedToFetch))
                 return
             }
             
-            let messages: [Message] = value.compactMap { dictonary in
-                guard let name = dictonary["name"] as? String,
-                      let _ = dictonary["is_read"] as? Bool,
-                      let messageID = dictonary["id"] as? String,
-                      let content = dictonary["content"] as? String,
-                      let senderEmail = dictonary["sender_email"] as? String,
-                      let _ = dictonary["type"] as? String,
-                      let dateString = dictonary["date"] as? String,
-                      let date = ChatVC.dateFormatter.date(from: dateString)
-                else {
-                    return nil
+            /// Update unread message
+            strongSelf.database.child("\(id)/messages").observeSingleEvent(of: .value) { snapshot in
+                
+                if let messages = snapshot.value as? [[String:Any]] {
+                    let updateMessages: [[String:Any]] = messages.compactMap { dictonary in
+                        guard let name = dictonary["name"] as? String,
+                              let isRead = dictonary["is_read"] as? Bool,
+                              let messageID = dictonary["id"] as? String,
+                              let content = dictonary["content"] as? String,
+                              let senderEmail = dictonary["sender_email"] as? String,
+                              let type = dictonary["type"] as? String,
+                              let dateString = dictonary["date"] as? String,
+                              let date = ChatVC.dateFormatter.date(from: dateString)
+                        else {
+                            return nil
+                        }
+                        
+                        let sender = Sender(photoURL: "",
+                                            senderId: senderEmail,
+                                            displayName: name)
+                        
+                        return (selfSender == sender.senderId) ?
+                            ["id": messageID,
+                             "type": type,
+                             "content": content,
+                             "date": dateString,
+                             "sender_email": senderEmail,
+                             "is_read": isRead,
+                             "name": name] :
+                            ["id": messageID,
+                             "type": type,
+                             "content": content,
+                             "date": dateString,
+                             "sender_email": senderEmail,
+                             "is_read": true,
+                             "name": name]
+                    }
+                    
+                    strongSelf.database.child("\(id)/messages").setValue(updateMessages)
                 }
+                strongSelf.updateLatestMessage(with: id, selfSender: selfSender)
                 
-                let sender = Sender(photoURL: "",
-                                    senderId: senderEmail,
-                                    displayName: name)
-                
-                return Message(sender: sender,
-                               messageId: messageID,
-                               sentDate: date,
-                               kind: .text(content))
+                /// getAllMessages
+                let messages: [Message] = value.compactMap { dictonary in
+                    guard let name = dictonary["name"] as? String,
+                          let isRead = dictonary["is_read"] as? Bool,
+                          let messageID = dictonary["id"] as? String,
+                          let content = dictonary["content"] as? String,
+                          let senderEmail = dictonary["sender_email"] as? String,
+                          let _ = dictonary["type"] as? String,
+                          let dateString = dictonary["date"] as? String,
+                          let date = ChatVC.dateFormatter.date(from: dateString)
+                    else {
+                        return nil
+                    }
+                    
+                    let sender = Sender(photoURL: "",
+                                        senderId: senderEmail,
+                                        displayName: name)
+                    
+                    return Message(sender: sender,
+                                   messageId: messageID,
+                                   sentDate: date,
+                                   kind: .text(content),
+                                   isRead: isRead)
+                }
+                completion(.success(messages))
             }
-            completion(.success(messages))
         }
     }
-    
     /// Sends a message with tagrget conversation and message
     public func sendMessage(to conversation: String, otherUserEmail: String, name: String, newMessage: Message, completion: @escaping (Bool) -> Void) {
         // Add new message to messages
@@ -495,8 +587,9 @@ extension DatabaseManager {
                     
                     let updatedValue: [String: Any] = [
                         "date": dateString,
-                        "is_read": false,
-                        "message": message
+                        "is_read": true,
+                        "message": message,
+                        "sender": currentEmail
                     ]
                     
                     var targetConversation: [String: Any]?
@@ -536,7 +629,8 @@ extension DatabaseManager {
                             let updatedValue: [String: Any] = [
                                 "date": dateString,
                                 "is_read": false,
-                                "message": message
+                                "message": message,
+                                "sender": currentEmail
                             ]
                             
                             var targetConversation: [String: Any]?
@@ -725,6 +819,27 @@ extension DatabaseManager {
         }
         return nil
     }
+    
+    public func getDeviceToken(otherUserEmail: String, completion: @escaping (String?) -> Void) {
+        database.child("\(otherUserEmail)/fcm_token").getData { err, snapshot  in
+            guard err == nil else {
+                completion(nil)
+                return
+            }
+            guard let fcmToken: String = snapshot.value as? String else { return }
+            completion(fcmToken)
+        }
+    }
+    
+    public func updateDeviceToken(token: String) {
+        guard let currentEmail = UserDefaults.standard.string(forKey: "email") else { return }
+        let safeEmail = DatabaseManager.safeEmail(email: currentEmail)
+        database.child("\(safeEmail)").updateChildValues(["fcm_token": token])
+    }
+    
+    public func removeChatObserver() {
+        
+    }
 }
 
 struct ChatAppUser {
@@ -734,7 +849,7 @@ struct ChatAppUser {
     let college: String
     let major: String
     let mbti: String
-    
+    let fcmToken: String
     var safeEmail: String {
         var safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")

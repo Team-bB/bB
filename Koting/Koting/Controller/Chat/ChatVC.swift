@@ -8,6 +8,8 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import Alamofire
+import UserNotifications
 
 class ChatVC: MessagesViewController {
     
@@ -67,20 +69,35 @@ class ChatVC: MessagesViewController {
         navigationController?.navigationBar.tintColor = .black
         
         hideAvatar()
-        
+        messagesCollectionView.backgroundColor = .systemGray6
+        scrollsToLastItemOnKeyboardBeginsEditing = true
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
+        messageInputBar.sendButton.activityViewColor = .white
+        messageInputBar.sendButton.layer.cornerRadius = 8
+        messageInputBar.sendButton.setTitleColor(.darkGray, for: .normal)
+        messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill")
+        messageInputBar.sendButton.setTitleColor(.white, for: .highlighted)
+        messageInputBar.sendButton.imageView?.tintColor = UIColor(cgColor: tintColor)
+        messageInputBar.inputTextView.placeholder = "메시지를 입력하세요."
+        configureLayout()
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        messageInputBar.inputTextView.becomeFirstResponder()
+
         if let conversationId = conversationId {
             listenForMessages(id: conversationId, shouldScrollToBottom: true)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        guard let id = conversationId else { return }
+        DatabaseManager.shared.removeChatObserver(chatId: id)
+        print("removeChatObserver")
     }
     
     @objc func buttonTapped() {
@@ -116,8 +133,8 @@ class ChatVC: MessagesViewController {
     }
     
     private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
-        
-        DatabaseManager.shared.getAllMessagesForConversation(with: id) { [weak self] result in
+        indicator.startAnimating(superView: view)
+        DatabaseManager.shared.getAllMessagesForConversation(with: id, selfSender: selfSender?.senderId ?? "") { [weak self] result in
             
             guard let strongSelf = self else { return }
             
@@ -129,6 +146,7 @@ class ChatVC: MessagesViewController {
                 strongSelf.messages = messages
                 
                 DispatchQueue.main.async {
+                    strongSelf.indicator.stopAnimating()
                     strongSelf.messagesCollectionView.reloadDataAndKeepOffset()
                     if shouldScrollToBottom {
                         strongSelf.messagesCollectionView.scrollToLastItem(animated: false)
@@ -158,7 +176,7 @@ class ChatVC: MessagesViewController {
         if sender.senderId == selfSender?.senderId {
             return UIColor(cgColor: tintColor)
         }
-        return .secondarySystemBackground
+        return .white
     }
     
     func hideAvatar() {
@@ -184,7 +202,8 @@ extension ChatVC: InputBarAccessoryViewDelegate {
         let mmessage = Message(sender: selfSender,
                                messageId: messageId ,
                                sentDate: Date(),
-                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요!!\n⚠️채팅을 삭제하면 영구적으로 삭제됩니다.\n- 코팅 운영진😃 -"))
+                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요!!\n⚠️채팅을 삭제하면 영구적으로 삭제됩니다.\n- 동마담 운영진😃 -"),
+                               isRead: false)
         
         // name: 받는 사람 닉네임
         DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: otherNickname, firstMessage: mmessage) { [weak self] success in
@@ -196,7 +215,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
                 strongSelf.isNewConversation = false
                 let newConversationId = "conversation_\(mmessage.messageId)"
                 strongSelf.conversationId = newConversationId
-                strongSelf.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
+//                strongSelf.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
                 
             } else {
                 print("⛔️ 메세지 전송 실패 ⛔️")
@@ -228,32 +247,24 @@ extension ChatVC: InputBarAccessoryViewDelegate {
         let mmessage = Message(sender: selfSender,
                                messageId: messageId ,
                                sentDate: Date(),
-                               kind: .text(text))
+                               kind: .text(text),
+                               isRead: false)
         
-        // Send Meaage
-        if isNewConversation {
-            // create convo in database
-            
-            // name: 받는 사람 닉네임
-            DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage) { [weak self] success in
-                
-                if success {
-                    print("📝 메세지 전송 완료. 📝")
-                    self?.isNewConversation = false
-                    let newConversationId = "conversation_\(mmessage.messageId)"
-                    self?.conversationId = newConversationId
-                    self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
-                } else {
-                    print("⛔️ 메세지 전송 실패 ⛔️")
-                }
+        /// Send Meaage
+        /// append to existing conversation data
+        
+        guard let conversationId = conversationId else { return }
+        let name = self.title ?? "User"
+        
+        DispatchQueue.global().async {
+            DatabaseManager.shared.getDeviceToken(otherUserEmail: self.otherUserEmail) { [weak self] token in
+                guard let strongSelf = self, let token: String = token else { return }
+                strongSelf.sendNotification(to: token, title: selfSender.displayName , text:  "메시지가 도착했어요 💌", category: "chat")
             }
-        } else {
-            // append to existing conversation data
-            
-            guard let conversationId = conversationId else { return }
-            let name = self.title ?? "User"
-            
-            DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: mmessage) { [weak self] success in
+        }
+        
+        DispatchQueue.global().async {
+            DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: self.otherUserEmail, name: name, newMessage: mmessage) { [weak self] success in
                 
                 guard let strongSelf = self else { return }
                 
@@ -323,16 +334,33 @@ extension ChatVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
 
         return .bubbleTail(corner, .curved)
      }
-//    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-//        guard let message = message as? Message else { return nil }
-//        if message.sender.senderId == selfSender?.senderId && message.read == true {
-//            return NSAttributedString(string: "읽음", attributes: [.foregroundColor : UIColor.lightGray, .font : UIFont.systemFont(ofSize: 12, weight: .semibold) ])
-//        }
-//        return nil
-//    }
-//    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-//        return 30
-//    }
+    
+
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        guard let message = message as? Message else { return nil }
+        if message.sender.senderId == selfSender?.senderId && message.isRead == false {
+            return NSAttributedString(string: "안읽음", attributes: [.foregroundColor : UIColor.lightGray, .font : UIFont.systemFont(ofSize: 11, weight: .semibold) ])
+        }
+        return nil
+    }
+    
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        guard let message = message as? Message else { return 0 }
+        if message.isRead { return 0}
+        else { return 15 }
+    }
+
+    
+/* 닉네임
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 15
+    }
+
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        guard message.sender.senderId != selfSender?.senderId else { return nil }
+        return NSAttributedString(string: message.sender.displayName, attributes: [.foregroundColor : UIColor.darkGray, .font : UIFont.systemFont(ofSize: 15, weight: .semibold) ])
+    }
+ */
 }
 
 extension ChatVC: BlockDelegate {
@@ -359,4 +387,49 @@ extension ChatVC: BlockDelegate {
         }
     }
     
+}
+
+extension ChatVC {
+    private func sendNotification(to: String, title: String, text: String, category: String) {
+        
+        let url = "https://fcm.googleapis.com/fcm/send"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("key=\(Key.key)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+    
+        //POST로 보낼 정보
+        let params: [String:Any] = [
+            "notification" :
+                ["title": title,
+                 "body": text,
+                 "click_action": category],
+            "to" : to,
+            "data" :
+                ["sender_email": DatabaseManager.safeEmail(email: selfSender!.senderId),
+                 "chat_id": conversationId,
+                 "sender_name": selfSender!.displayName]
+        ]as Dictionary
+        
+        // httpBody에 parameters 추가
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("http Body Error")
+        }
+        
+        AF.request(request).responseData { response in
+            print(response)
+        }
+    }
+    
+}
+
+extension ChatVC {
+    func configureLayout() {
+        let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
+        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 15)))
+        layout?.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 3, left: 15, bottom: 0, right: 0)))
+    }
 }

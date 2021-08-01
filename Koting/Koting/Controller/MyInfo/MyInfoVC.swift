@@ -14,7 +14,7 @@ fileprivate let reuseIdentifier = "cell"
 class MyInfoVC: UIViewController, UINavigationControllerDelegate {
     fileprivate let infoList = MyInfo()
     let indicator = CustomIndicator()
-    let version = "1.0.0"
+    let version = "1.0.2"
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
