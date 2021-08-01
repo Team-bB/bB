@@ -202,7 +202,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
         let mmessage = Message(sender: selfSender,
                                messageId: messageId ,
                                sentDate: Date(),
-                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요!!\n⚠️채팅을 삭제하면 영구적으로 삭제됩니다.\n- 코팅 운영진😃 -"),
+                               kind: .text("🎊 미팅이 성사 되었습니다!! 🎊\n상대방과 대화를 나눠보세요!!\n⚠️채팅을 삭제하면 영구적으로 삭제됩니다.\n- 동마담 운영진😃 -"),
                                isRead: false)
         
         // name: 받는 사람 닉네임
